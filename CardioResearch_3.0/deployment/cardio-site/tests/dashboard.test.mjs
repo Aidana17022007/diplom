@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {build} from 'esbuild';
 const bundle=await build({entryPoints:['client/src/dashboardData.ts'],bundle:true,format:'esm',write:false});
-const {dashboardSummary,dashboardCalibration,dashboardMetric}=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
+const {dashboardSummary,dashboardCalibration,dashboardMetric,dashboardUncertainty}=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 const reports=JSON.parse(fs.readFileSync(new URL('../data/evaluation.json',import.meta.url))).datasets;
 
 test('dashboard uses the actual BRFSS test and averaged UCI OOF counts without mixing protocols',()=>{
@@ -20,9 +20,38 @@ test('dashboard uses the actual BRFSS test and averaged UCI OOF counts without m
 });
 test('dashboard refuses stale datasets and inconsistent aggregate totals',()=>{
  assert.throws(()=>dashboardSummary(reports.uci,'brfss'),/dataset mismatch/);
+ assert.throws(()=>dashboardSummary({...reports.uci,evaluation:'mean_outer_cv'},'uci'),/protocol mismatch/);
  assert.throws(()=>dashboardSummary({...reports.brfss,n:reports.brfss.n+1},'brfss'),/totals/);
  const record=structuredClone(reports.uci);record.calibration[1].n++;
  assert.throws(()=>dashboardSummary(record,'uci'),/Calibration counts/);
+});
+
+test('dashboard retains saved Wilson bounds and displays the correct conditional denominators',()=>{
+ for(const [ds,denominators] of [['brfss',[7262,11876,78486,73872]],['uci',[139,133,164,170]]]){
+  const record=reports[ds],estimates=dashboardUncertainty(record);
+  assert.deepEqual(estimates.map(estimate=>estimate.denominator),denominators);
+  assert.deepEqual(estimates.map(estimate=>estimate.key),['recall','precision','specificity','npv']);
+  for(const estimate of estimates){
+   assert.deepEqual(estimate.interval,record.intervals[estimate.key]);
+   assert.equal(estimate.value,record.metrics[estimate.key]);
+   assert.ok(estimate.interval[0]<=estimate.value&&estimate.value<=estimate.interval[1]);
+  }
+ }
+});
+
+test('uncertainty fails closed for inconsistent values or invalid interval bounds',()=>{
+ const incorrectMetric=structuredClone(reports.brfss);incorrectMetric.metrics.precision=.99;
+ assert.throws(()=>dashboardUncertainty(incorrectMetric),/metric disagrees/);
+ for(const interval of [[.8,.2],[-.1,.8],[.2,1.1],[NaN,.8],[.1,.2],[.1],['0.4',.8]]){
+  const invalid=structuredClone(reports.brfss);invalid.intervals.recall=interval;
+  assert.throws(()=>dashboardUncertainty(invalid),/Invalid dashboard interval/);
+ }
+ const unavailable=structuredClone(reports.uci);delete unavailable.intervals;
+ assert.ok(dashboardUncertainty(unavailable).every(estimate=>estimate.interval===null));
+ const emptyClass={dataset:'edge',n:3,positive:0,negative:3,confusion:[[3,0],[0,0]],metrics:{},intervals:{recall:null,precision:null},calibration:[{n:3,lower:0,upper:1,mean_probability:0,observed_rate:0}]};
+ const estimates=dashboardUncertainty(emptyClass);
+ assert.equal(estimates[0].value,null);assert.equal(estimates[1].value,null);
+ assert.equal(estimates[2].value,1);assert.ok(estimates.every(estimate=>estimate.interval===null));
 });
 test('empty classes and unavailable metrics stay undefined, not fabricated zero scores',()=>{
  const record={dataset:'edge',n:3,positive:0,negative:3,confusion:[[3,0],[0,0]],metrics:{average_precision:null},calibration:[{n:3,lower:0,upper:1,mean_probability:0,observed_rate:0}]};

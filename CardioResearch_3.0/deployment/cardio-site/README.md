@@ -1,5 +1,9 @@
 # CardioResearch hosted application
 
+## Application 3.1
+
+The experiments hub now exposes saved SHAP, prevalence, calibration and missingness diagnostics through aggregate-only `/api/scientific-audit`. The overview adds saved Wilson intervals and calibration-bin tables. The artery atlas supports a resilient 2D fallback, PNG export and explicit return to 3D. The frozen predictors and thresholds are unchanged. Full local Python mode and this hosted UI share matching source files. Publication to the existing Sites account remains unavailable; the built bundle is ready locally.
+
 ## Diploma topic supplied by the student
 
 - Қазақша: Жүрек-қан тамырлары ауруларын болжауға арналған машиналық оқыту модельдерін әзірлеу

@@ -6,3 +6,5 @@ data/raw/LLCP2023.xpt
 data/processed/*.pkl
 *.log
 frontend/dist/
+
+*.tsbuildinfo

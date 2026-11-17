@@ -7,7 +7,7 @@ async function load(entry){
  return import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 }
 const {arteryViewports}=await load('client/src/arteryComparison.ts');
-const {arterySnapshot}=await load('client/src/arterySnapshot.ts');
+const {arterySnapshot,arteryDiagramSnapshot}=await load('client/src/arterySnapshot.ts');
 
 test('comparison panes cover both edges with equal scale, a small gutter and no overlap',()=>{
  for(const width of [2,17,320,390,559,560,561,801,1440])for(const height of [2,3,17,301,620,1001]){
@@ -79,4 +79,43 @@ test('single-view export uses the entire current frame and never labels a second
  assert.equal(draws.length,1);assert.deepEqual(draws[0].slice(1,5),[0,0,1024,600]);
  assert.equal(texts.filter(([, ,y])=>y===210).length,0);
  assert.throws(()=>capture({canvas:{width:0,height:600},views},{lang:'ru',narrowing:0,sectionPosition:0,cutaway:true}),/dimensions/);
+});
+
+function diagram(details){
+ const old=globalThis.document,canvases=[];
+ globalThis.document={createElement(tag){
+  assert.equal(tag,'canvas');
+  const calls={arcs:[],draws:[],texts:[]};
+  const context={fillRect(){},fillText(...args){calls.texts.push(args)},drawImage(...args){calls.draws.push(args)},beginPath(){},moveTo(){},lineTo(){},stroke(){},arc(...args){calls.arcs.push(args)},fill(){}};
+  const canvas={width:0,height:0,getContext(kind){assert.equal(kind,'2d','the fallback must not require WebGL');return context},calls};
+  canvases.push(canvas);return canvas;
+ }};
+ try{return {output:arteryDiagramSnapshot(details),canvases}}finally{if(old===undefined)delete globalThis.document;else globalThis.document=old}
+}
+
+test('2D export works without WebGL and draws reference and narrowed sections to the same scale',()=>{
+ const {output,canvases:[source]}=diagram({lang:'ru',narrowing:50,sectionPosition:0,cutaway:true,compare:true});
+ assert.equal(source.width,1600);assert.equal(source.height,800);
+ const radii=source.calls.arcs.map(([, ,radius])=>radius);
+ assert.deepEqual(radii,[306,255,255,330,306,255,127.5,330]);
+ assert.equal(output.width,1600);assert.equal(output.height,1280);
+ assert.equal(output.calls.draws.length,2);
+ assert.deepEqual(output.calls.draws[0].slice(1,5),[0,0,800,800]);
+ assert.deepEqual(output.calls.draws[1].slice(1,5),[800,0,800,800]);
+ assert.equal(output.calls.draws[0][7],output.calls.draws[1][7]);
+ const texts=output.calls.texts.map(([text])=>text);
+ assert.match(texts[0],/2D/);assert.ok(texts.some(text=>text.includes('25.0%')));
+ assert.ok(!texts.some(text=>text.includes('Частицы')),'static sections must not imply particle simulation');
+ assert.ok(!texts.some(text=>text.includes('Разрез включён')),'longitudinal cutaway is not applicable to a 2D slice');
+});
+
+test('2D export uses the selected slice rather than central narrowing in both languages',()=>{
+ for(const lang of ['ru','kk']){
+  const {output,canvases:[source]}=diagram({lang,narrowing:80,sectionPosition:3.6,cutaway:false,compare:false});
+  assert.equal(source.width,800);assert.equal(source.calls.arcs[2][2],255,'end slice remains fully open');
+  assert.equal(output.calls.draws.length,1);
+  const texts=output.calls.texts.map(([text])=>text);
+  assert.match(texts[0],/2D/);assert.ok(texts.some(text=>text.includes('100.0%')));
+  assert.ok(texts.some(text=>text.includes('ML')));
+ }
 });

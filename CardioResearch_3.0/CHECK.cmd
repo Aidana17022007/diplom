@@ -1,10 +1,8 @@
 @echo off
-chcp 65001 >nul
+setlocal
 cd /d "%~dp0"
-if not exist ".venv\Scripts\python.exe" (
- echo Python ортасы табылмады. Алдымен setup.ps1 іске қосыңыз.
- pause
- exit /b 1
-)
-".venv\Scripts\python.exe" -X utf8 -m cardio.doctor
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0run.ps1" -CheckOnly %*
+set "cardio_exit=%ERRORLEVEL%"
+if not "%cardio_exit%"=="0" echo CardioResearch checks failed. See the error above.
 pause
+exit /b %cardio_exit%

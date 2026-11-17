@@ -21,7 +21,8 @@ test('frontend and aggregate routes are available while private artifacts are in
  for(const path of ['/data/models.json','/reports/student_profile.json','/models/uci.joblib','/api/missing'])assert.equal((await call(path)).status,404,path);
  const html=await(await call('/')).text();assert.ok(html.includes('CardioResearch'));const asset=html.match(/src="([^"]+\.js)"/)[1];assert.equal((await call(asset)).status,200);
  const library=await(await call('/api/library')).json();assert.equal(library.counts.atherosclerosis,12);
- assert.equal(library.counts.papers,13);
+ assert.equal(library.counts.papers,library.papers.length);
+ assert.ok(library.papers.some(row=>row.doi==='10.1186/s12916-019-1466-7'));
  const suggested=library.papers.find(row=>row.doi==='10.1016/j.atherosclerosis.2026.120745');
  assert.equal(suggested?.verification_scope,'abstract');assert.equal(suggested?.pubmed_url,'https://pubmed.ncbi.nlm.nih.gov/42177119/');
 });

@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-17T06:48:49.383225+00:00",
+  "scope": "saved_exploratory_diagnostics",
+  "production_model_replaced": false,
+  "sources": [
+    {
+      "file": "literature_experiments.json",
+      "sha256": "e22e6dc975a67d21e7fd63969b07f399885df09a80eda9fb20cb81206c552e0e"
+    },
+    {
+      "file": "explanation_audit.json",
+      "sha256": "a5b93e12a60aeb41a438a81bb2e9d422b252fa407236d92314c81a34c530cde3"
+    }
+  ],
+  "threshold": 0.19042448230963954,
+  "missingness": [
+    {
+      "numeric_missing_indicators": false,
+      "folds": [
+        {
+          "fold": 1,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.29110039824744305,
+          "roc_auc": 0.8323009543076341,
+          "brier": 0.0674636602567015,
+          "fit_and_score_seconds": 0.14659019999999146,
+          "transformed_features": 47
+        },
+        {
+          "fold": 2,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.31150867240962227,
+          "roc_auc": 0.8103928114165173,
+          "brier": 0.06770475520763515,
+          "fit_and_score_seconds": 0.14911840000058874,
+          "transformed_features": 47
+        },
+        {
+          "fold": 3,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.2902330820619681,
+          "roc_auc": 0.8202362621557532,
+          "brier": 0.06788794957318071,
+          "fit_and_score_seconds": 0.1324994999995397,
+          "transformed_features": 47
+        }
+      ],
+      "mean": {
+        "average_precision": 0.29761405090634446,
+        "roc_auc": 0.8209766759599683,
+        "brier": 0.0676854550125058
+      }
+    },
+    {
+      "numeric_missing_indicators": true,
+      "folds": [
+        {
+          "fold": 1,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.29022009523932407,
+          "roc_auc": 0.8326168485549656,
+          "brier": 0.06753373153972173,
+          "fit_and_score_seconds": 0.1525262000013754,
+          "transformed_features": 50
+        },
+        {
+          "fold": 2,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.31108492809257715,
+          "roc_auc": 0.8109657000078158,
+          "brier": 0.0677300332852036,
+          "fit_and_score_seconds": 0.14933560000099533,
+          "transformed_features": 50
+        },
+        {
+          "fold": 3,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.29157384704287304,
+          "roc_auc": 0.8201323203438299,
+          "brier": 0.06786024528853178,
+          "fit_and_score_seconds": 0.24270720000095025,
+          "transformed_features": 50
+        }
+      ],
+      "mean": {
+        "average_precision": 0.29762629012492475,
+        "roc_auc": 0.821238289635537,
+        "brier": 0.06770800337115236
+      }
+    }
+  ],
+  "calibration": [
+    {
+      "version": "raw",
+      "n": 85748,
+      "observed_fraction": 0.08469002192470962,
+      "mean_probability": 0.0851244215042551,
+      "mean_error_pp": 0.0434399579545483,
+      "intercept_slope_fixed_1": -0.006630820358649811,
+      "clipped_predictions": 0,
+      "joint_intercept": 0.012222080006686061,
+      "slope": 1.0107540052161799,
+      "status": "ok",
+      "brier": 0.06597238538197245,
+      "roc_auc": 0.8388685147257342,
+      "average_precision": 0.32087306860285136
+    },
+    {
+      "version": "deployed_sigmoid",
+      "n": 85748,
+      "observed_fraction": 0.08469002192470962,
+      "mean_probability": 0.08554866803090369,
+      "mean_error_pp": 0.0858646106194072,
+      "intercept_slope_fixed_1": -0.013023604294131508,
+      "clipped_predictions": 0,
+      "joint_intercept": 0.03189054764132931,
+      "slope": 1.0256290897582065,
+      "status": "ok",
+      "brier": 0.06595875512181058,
+      "roc_auc": 0.8388685147257342,
+      "average_precision": 0.32087306860285136
+    }
+  ],
+  "prevalence_scenarios": [
+    {
+      "assumed_prevalence": 0.01,
+      "roc_auc": 0.8388685147259118,
+      "average_precision": 0.05300465751189453,
+      "precision_fixed_threshold": 0.04679677634577923
+    },
+    {
+      "assumed_prevalence": 0.05,
+      "roc_auc": 0.8388685147256867,
+      "average_precision": 0.21710403080835605,
+      "precision_fixed_threshold": 0.20369914661804153
+    },
+    {
+      "assumed_prevalence": 0.08469002192470962,
+      "roc_auc": 0.8388685147257342,
+      "average_precision": 0.32087306860285136,
+      "precision_fixed_threshold": 0.3102054563826204
+    },
+    {
+      "assumed_prevalence": 0.1,
+      "roc_auc": 0.8388685147258267,
+      "average_precision": 0.35932288464702633,
+      "precision_fixed_threshold": 0.3506647438845111
+    },
+    {
+      "assumed_prevalence": 0.2,
+      "roc_auc": 0.838868514725598,
+      "average_precision": 0.5440147261496138,
+      "precision_fixed_threshold": 0.5485494731169702
+    }
+  ],
+  "literature_protocol": {
+    "fixed_date": "2026-11-17",
+    "status": "Exploratory follow-up; specified before running these additional experiments, not an original preregistration",
+    "missingness": {
+      "dataset": "BRFSS original benchmark_train row IDs only",
+      "n": 12000,
+      "cv": "3-fold stratified, seed 20261107, shared folds",
+      "model": "LogisticRegression C=1, no class weights, max_iter=1500",
+      "comparison": "Identical pipeline with and without numeric missing-value indicators",
+      "primary_metric": "Average Precision",
+      "test_used": false,
+      "production_model_replaced": false
+    },
+    "prevalence": {
+      "source": "Frozen BRFSS test predictions",
+      "scenarios": [
+        0.01,
+        0.05,
+        "observed",
+        0.1,
+        0.2
+      ],
+      "method": "Class-constant reweighting, keeping within-class score distributions fixed",
+      "not_survey_weights": true,
+      "not_new_patient_samples": true,
+      "threshold": "Frozen production threshold"
+    },
+    "calibration": {
+      "source": "BRFSS held-out test, before and after existing validation-selected sigmoid",
+      "output": "Offset intercept with slope fixed to 1; jointly fitted intercept and slope; mean predicted minus observed",
+      "clip": 1e-06,
+      "ci": "Not calculated",
+      "test_fitted_coefficients_applied_to_model": false
+    },
+    "sources": [
+      "https://doi.org/10.1371/journal.pone.0174944",
+      "https://doi.org/10.1371/journal.pone.0118432",
+      "https://doi.org/10.1186/s12916-019-1466-7"
+    ],
+    "limitations": [
+      "No causal inference from missingness",
+      "No future-event horizon or treatment thresholds transferred from Weng et al.",
+      "Descriptive folds are not independent population confidence intervals",
+      "Hypothetical prevalence weights do not establish transfer to Kazakhstan",
+      "Calibration summaries do not prove calibration for every subgroup"
+    ]
+  },
+  "explanation": {
+    "protocol": {
+      "version": 1,
+      "fixed_date": "2026-11-17",
+      "purpose": "Post-hoc numerical explanation audit; no classifier, calibration or threshold selection",
+      "datasets": [
+        "brfss",
+        "uci"
+      ],
+      "profiles_per_dataset": 6,
+      "profile_selection": "Seeded selection from saved training-background rows after row 30; no target or error selection",
+      "seed": 20261117,
+      "production_seed": 20261107,
+      "background_size": 30,
+      "background_reference": "First 30 saved training-background rows, exactly as the local API",
+      "alternative_background": "30 seeded rows outside both reference background and selected audit profiles",
+      "permutation_budgets": [
+        12,
+        48,
+        192
+      ],
+      "seeds_per_budget": 20,
+      "exact_game": "Mean uncalibrated model probability over finite background, all 2^d coalitions",
+      "primary_measure": "Mean absolute attribution error in percentage points versus exhaustive enumeration",
+      "secondary_measures": [
+        "maximum absolute error",
+        "top-3 absolute attribution overlap",
+        "sign agreement excluding exact contributions below 0.01 percentage points",
+        "additivity residual"
+      ],
+      "background_sensitivity": "Exact attributions under a different empirical reference distribution; this is not Monte Carlo approximation error",
+      "ranking_ties": "Stable feature-order tie break; top-k metrics are sensitive to near ties",
+      "limits": [
+        "Six training profiles per dataset, not a representative population evaluation",
+        "Seeds and profiles are dependent for inference; no population CI or significance claims",
+        "Interventional replacement may form unrealistic correlated-feature combinations",
+        "No medical diagnosis, causal claims, or clinical validation",
+        "No raw profiles or individual input values are published"
+      ]
+    },
+    "datasets": [
+      {
+        "dataset": "brfss",
+        "model": "Logistic Regression",
+        "features": 11,
+        "coalitions_per_profile": 2048,
+        "profiles": 6,
+        "summary": [
+          {
+            "permutations": 12,
+            "profile_seed_pairs": 120,
+            "mean_mae_pp": 0.02510422548612008,
+            "p95_max_error_pp": 0.2004622704710221,
+            "worst_error_pp": 0.31872274076012314,
+            "mean_top3_overlap": 1.0,
+            "mean_sign_agreement": 1.0
+          },
+          {
+            "permutations": 48,
+            "profile_seed_pairs": 120,
+            "mean_mae_pp": 0.01327064208586548,
+            "p95_max_error_pp": 0.12361685802021245,
+            "worst_error_pp": 0.15760675102628463,
+            "mean_top3_overlap": 1.0,
+            "mean_sign_agreement": 1.0
+          },
+          {
+            "permutations": 192,
+            "profile_seed_pairs": 120,
+            "mean_mae_pp": 0.0067552916726813395,
+            "p95_max_error_pp": 0.06350568558745197,
+            "worst_error_pp": 0.11034152968831812,
+            "mean_top3_overlap": 1.0,
+            "mean_sign_agreement": 1.0
+          }
+        ],
+        "background_change_mean_mae_pp": 0.4320513045911365,
+        "background_change_max_error_pp": 2.7720020106671575,
+        "exact_max_additivity_error": 1.942890293094024e-16
+      },
+      {
+        "dataset": "uci",
+        "model": "Random Forest",
+        "features": 13,
+        "coalitions_per_profile": 8192,
+        "profiles": 6,
+        "summary": [
+          {
+            "permutations": 12,
+            "profile_seed_pairs": 120,
+            "mean_mae_pp": 0.1563255166962567,
+            "p95_max_error_pp": 0.9046895396969618,
+            "worst_error_pp": 1.191223145566027,
+            "mean_top3_overlap": 0.9694444444444444,
+            "mean_sign_agreement": 0.9916666666666667
+          },
+          {
+            "permutations": 48,
+            "profile_seed_pairs": 120,
+            "mean_mae_pp": 0.07566336255032428,
+            "p95_max_error_pp": 0.4391451819586644,
+            "worst_error_pp": 0.574584458355877,
+            "mean_top3_overlap": 0.9722222222222221,
+            "mean_sign_agreement": 1.0
+          },
+          {
+            "permutations": 192,
+            "profile_seed_pairs": 120,
+            "mean_mae_pp": 0.038319364689519866,
+            "p95_max_error_pp": 0.22100603858675633,
+            "worst_error_pp": 0.2960312470119311,
+            "mean_top3_overlap": 0.975,
+            "mean_sign_agreement": 1.0
+          }
+        ],
+        "background_change_mean_mae_pp": 0.7109999487719249,
+        "background_change_max_error_pp": 2.13907982297481,
+        "exact_max_additivity_error": 4.440892098500626e-16
+      }
+    ]
+  }
+}

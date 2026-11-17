@@ -2,7 +2,25 @@ import {sectionMetrics} from './arteryGeometry';
 import type {Lang} from './ui';
 import type {ArteryFrame} from './arteryComparison';
 
-type SnapshotDetails={lang:Lang;narrowing:number;sectionPosition:number;cutaway:boolean};
+type SnapshotDetails={lang:Lang;narrowing:number;sectionPosition:number;cutaway:boolean;mode?:'3d'|'2d'};
+
+/** Export the same circular geometry even when a WebGL context is unavailable. */
+export function arteryDiagramSnapshot(details:SnapshotDetails&{compare:boolean}):HTMLCanvasElement {
+  const canvas=document.createElement('canvas');
+  canvas.width=details.compare?1600:800;canvas.height=800;
+  const context=canvas.getContext('2d');if(!context)throw new Error('Canvas export is unavailable');
+  const local=sectionMetrics(details.sectionPosition,details.narrowing);
+  const views=(details.compare?['reference','altered']:['altered']).map((kind,index)=>({kind:kind as 'reference'|'altered',left:index*800,top:0,width:800,height:800}));
+  for(const pane of views){
+    const x=pane.left+400,y=400,radius=pane.kind==='reference'?1:local.radius;
+    const circle=(r:number,color:string)=>{context.fillStyle=color;context.beginPath();context.arc(x,y,r,0,Math.PI*2);context.fill();};
+    circle(306,'#cf7b87');circle(255,'#e7b961');circle(255*radius,'#173d48');
+    context.strokeStyle='#9de6ee';context.lineWidth=3;
+    context.beginPath();context.arc(x,y,330,0,Math.PI*2);context.stroke();
+    context.beginPath();context.moveTo(x-255*radius,y);context.lineTo(x+255*radius,y);context.stroke();
+  }
+  return arterySnapshot({canvas,views},{...details,mode:'2d'});
+}
 
 /** Copy the fresh WebGL frame synchronously, before awaiting PNG encoding. */
 export function arterySnapshot(frame:ArteryFrame,details:SnapshotDetails):HTMLCanvasElement {
@@ -14,12 +32,12 @@ export function arterySnapshot(frame:ArteryFrame,details:SnapshotDetails):HTMLCa
   const section=sectionMetrics(details.sectionPosition,details.narrowing);
   context.fillStyle='#133742';context.fillRect(0,0,output.width,output.height);
   context.fillStyle='#f2fbf9';context.font='600 37px "Segoe UI",sans-serif';
-  context.fillText(t('CardioResearch · 3D-артерия','CardioResearch · 3D-артерия'),56,67);
+  context.fillText(details.mode==='2d'?t('CardioResearch · 2D-сечение артерии','CardioResearch · артерияның 2D қимасы'):t('CardioResearch · 3D-артерия','CardioResearch · 3D-артерия'),56,67);
   context.fillStyle='#bed5db';context.font='23px "Segoe UI",sans-serif';
   context.fillText(t('Учебная схема атеросклероза — не изображение пациента','Атеросклероздың оқу сызбасы — пациенттің суреті емес'),56,111);
   context.fillStyle='#9fe4d5';context.font='24px "Segoe UI",sans-serif';
-  context.fillText(t(`Макс. сужение диаметра: ${details.narrowing}%   ·   Срез x = ${section.position.toFixed(1)}   ·   Разрез ${details.cutaway?'включён':'выключен'}`,
-    `Диаметрдің ең үлкен тарылуы: ${details.narrowing}%   ·   Қима x = ${section.position.toFixed(1)}   ·   Бойлық қима ${details.cutaway?'қосулы':'өшірулі'}`),56,155);
+  context.fillText(t(`Макс. сужение диаметра: ${details.narrowing}%   ·   Срез x = ${section.position.toFixed(1)}`+(details.mode==='2d'?'':`   ·   Разрез ${details.cutaway?'включён':'выключен'}`),
+    `Диаметрдің ең үлкен тарылуы: ${details.narrowing}%   ·   Қима x = ${section.position.toFixed(1)}`+(details.mode==='2d'?'':`   ·   Бойлық қима ${details.cutaway?'қосулы':'өшірулі'}`)),56,155);
   const comparison=frame.views.length===2;
   const boxes=comparison?[{x:48,y:222,width:736,height:780},{x:816,y:222,width:736,height:780}]:[{x:48,y:182,width:1504,height:820}];
   frame.views.forEach((view,index)=>{
@@ -33,7 +51,7 @@ export function arterySnapshot(frame:ArteryFrame,details:SnapshotDetails):HTMLCa
   });
   if(comparison){context.strokeStyle='#496772';context.lineWidth=1;context.beginPath();context.moveTo(800,190);context.lineTo(800,1000);context.stroke();}
   context.strokeStyle='#496772';context.lineWidth=1;context.beginPath();context.moveTo(56,1022);context.lineTo(1544,1022);context.stroke();
-  const legends=[['#d58591',t('Стенка','Қабырға')],['#e6b45f',t('Бляшка','Түйіндақ')],['#73c6c1',t('Просвет','Қуыс')],['#ed6774',t('Частицы','Бөлшектер')],['#9de6ee',t('Выбранный срез','Таңдалған қима')]];
+  const legends=[['#d58591',t('Стенка','Қабырға')],['#e6b45f',t('Бляшка','Түйіндақ')],['#73c6c1',t('Просвет','Қуыс')],...(details.mode==='2d'?[]:[['#ed6774',t('Частицы','Бөлшектер')]]),['#9de6ee',t('Выбранный срез','Таңдалған қима')]];
   context.font='22px "Segoe UI",sans-serif';
   legends.forEach(([color,label],i)=>{const x=58+i*290;context.fillStyle=color;context.beginPath();context.arc(x+7,1065,7,0,Math.PI*2);context.fill();context.fillStyle='#e5f0ee';context.fillText(label,x+25,1073)});
   context.fillStyle='#d9eeea';context.font='24px "Segoe UI",sans-serif';

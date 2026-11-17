@@ -6,7 +6,7 @@ import {arteryViewports, ArteryFrame} from './arteryComparison';
 import type {T} from './ui';
 
 export type ArteryCapture={capture:()=>ArteryFrame|null};
-type Props = {compare?:boolean;narrowing: number; sectionPosition: number; cutaway: boolean; moving: boolean; reset: number; view: 'side' | 'end' | 'top'; highlight:'wall'|'plaque'|'lumen'; t: T; captureRef:RefObject<ArteryCapture|null>; onReady:(ready:boolean)=>void};
+type Props = {compare?:boolean;narrowing: number; sectionPosition: number; cutaway: boolean; moving: boolean; reset: number; view: 'side' | 'end' | 'top'; highlight:'wall'|'plaque'|'lumen'; t: T; captureRef:RefObject<ArteryCapture|null>; onReady:(ready:boolean)=>void; onUnavailable?:()=>void};
 type SceneApi = {compare:(enabled:boolean)=>void;update: (n: number, cut: boolean) => void; section: (position: number) => void; motion:(moving:boolean)=>void; highlight:(part:Props['highlight'])=>void; reset: (view: Props['view']) => void};
 
 function surface(point: (u: number, v: number) => number[], nu = 64, nv = 72) {
@@ -23,7 +23,7 @@ function surface(point: (u: number, v: number) => number[], nu = 64, nv = 72) {
   return geometry;
 }
 
-export default function ArteryScene({compare=false, narrowing, sectionPosition, cutaway, moving, reset, view, highlight, t, captureRef, onReady}: Props) {
+export default function ArteryScene({compare=false, narrowing, sectionPosition, cutaway, moving, reset, view, highlight, t, captureRef, onReady, onUnavailable}: Props) {
   const host = useRef<HTMLDivElement>(null);
   const api = useRef<SceneApi | null>(null);
   const currentView = useRef(view);
@@ -233,6 +233,7 @@ export default function ArteryScene({compare=false, narrowing, sectionPosition, 
   useEffect(() => {api.current?.highlight(highlight);}, [highlight]);
   useEffect(() => {api.current?.reset(view);}, [reset, view]);
   useEffect(() => {onReady(ready&&!failed);}, [ready,failed,onReady]);
+  useEffect(() => {if(failed)onUnavailable?.();}, [failed,onUnavailable]);
 
   const section=sectionMetrics(sectionPosition,narrowing);
   return <div className={'artery-renderer'+(compare?' artery-renderer-compare':'')+(stacked?' artery-renderer-stacked':'')}>

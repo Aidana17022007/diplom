@@ -1,19 +1,20 @@
 import {useEffect,useId,useState} from 'react';
-import {ArrowDownToLine,ArrowRight,ArrowUpRight,BarChart3,Database,Layers,RotateCcw,ShieldCheck,Target} from 'lucide-react';
+import {ArrowDownToLine,ArrowRight,ArrowUpRight,BarChart3,ChevronDown,Database,Layers,RotateCcw,ScanLine,ShieldCheck,Target} from 'lucide-react';
 import {api,count,Empty,Lang,Loading,T} from './ui';
-import {DashboardEvaluation,dashboardCalibration,dashboardMetric,dashboardSummary} from './dashboardData';
+import {DashboardEstimate,DashboardEvaluation,dashboardCalibration,dashboardMetric,dashboardSummary,dashboardUncertainty} from './dashboardData';
 import './dashboard.css';
+import './dashboard-evidence.css';
 
 const number=(n:unknown,digits=3)=>{const value=dashboardMetric(n);return value===null?'—':value.toFixed(digits)};
 const percentage=(n:unknown,digits=1)=>{const value=dashboardMetric(n);return value===null?'—':`${(value*100).toFixed(digits)}%`};
 type Summary=ReturnType<typeof dashboardSummary>;
 export default function ResearchDashboard({ds,lang,featureCount,totalRows,onNavigate}:{ds:string;lang:Lang;featureCount:number;totalRows:number;onNavigate:(page:string)=>void}){
  const t:T=(ru,kk)=>lang==='kk'?kk:ru;
- const [data,setData]=useState<{record:DashboardEvaluation;summary:Summary}|null>(null),[error,setError]=useState(false),[attempt,setAttempt]=useState(0);
+ const [data,setData]=useState<{record:DashboardEvaluation;summary:Summary;evidence:DashboardEstimate[]}|null>(null),[error,setError]=useState(false),[attempt,setAttempt]=useState(0);
  useEffect(()=>{
   const controller=new AbortController();setData(null);setError(false);
   api('/evaluation/'+ds,{signal:controller.signal}).then((record:DashboardEvaluation)=>{
-   const summary=dashboardSummary(record,ds);if(!controller.signal.aborted)setData({record,summary});
+   const summary=dashboardSummary(record,ds),evidence=dashboardUncertainty(record);if(!controller.signal.aborted)setData({record,summary,evidence});
   }).catch(()=>{if(!controller.signal.aborted)setError(true)});
   return()=>controller.abort();
  },[ds,attempt]);
@@ -30,13 +31,14 @@ export default function ResearchDashboard({ds,lang,featureCount,totalRows,onNavi
    <Kpi label="Recall" score={percentage(m.recall)} caption={t('Найдено среди фактически положительных','Нақты оң бақылаулар арасынан табылды')} detail={`TP / (TP + FN) · ${count(s.tp)} / ${count(r.positive)}`} icon={Target}/>
    <Kpi label="Precision" score={percentage(m.precision)} caption={t('Верны среди положительных ответов','Оң жауаптардың арасындағы дұрыстары')} detail={`TP / (TP + FP) · ${count(s.tp)} / ${count(s.tp+s.fp)}`} icon={ShieldCheck}/>
   </div>
+  <UncertaintyPanel key={ds} estimates={data.evidence} ds={ds} t={t} onNavigate={onNavigate}/>
   <div className="dashboard-main-grid">
    <section className="dashboard-panel dashboard-errors"><div className="dashboard-panel-heading"><div><h3>{t('Где модель ошибается','Модель қай жерде қателеседі')}</h3><p>{t('Доли внутри каждого фактического класса','Әр нақты сынып ішіндегі үлестер')}</p></div><span className="dashboard-threshold">{t('Порог','Шек')} {number(r.threshold,4)}</span></div>
     <OutcomeRow title={t('Фактически положительные','Нақты оң бақылаулар')} total={r.positive} first={{code:'TP',name:t('Найдены','Табылды'),n:s.tp,share:s.detectedShare}} second={{code:'FN',name:t('Пропущены','Өткізіліп алынды'),n:s.fn,share:s.missedShare}}/>
     <OutcomeRow title={t('Фактически отрицательные','Нақты теріс бақылаулар')} total={r.negative} first={{code:'TN',name:t('Верно отрицательные','Дұрыс теріс'),n:s.tn,share:s.correctNegativeShare}} second={{code:'FP',name:t('Ложные срабатывания','Жалған оң'),n:s.fp,share:s.falsePositiveShare}}/>
     <div className="dashboard-panel-footer"><span>{ds==='brfss'?t('Порог зафиксирован на валидации до теста.','Шек тестке дейін валидацияда бекітілген.'):t('Порог 0.5 для средних OOF-вероятностей.','Орташа OOF ықтималдықтары үшін шек 0.5.')}</span><button onClick={()=>onNavigate('lab')}>{ds==='brfss'?t('Исследовать порог','Шекті зерттеу'):t('Проверить неопределённость','Белгісіздікті тексеру')}<ArrowRight size={15}/></button></div>
    </section>
-   <section className="dashboard-panel dashboard-calibration"><div className="dashboard-panel-heading"><div><h3>{t('Вероятность и наблюдения','Ықтималдық пен бақылаулар')}</h3><p>{t('Калибровка · 10 равных интервалов','Калибрлеу · 10 бірдей аралық')}</p></div><span className="dashboard-brier">Brier ↓ <strong>{number(m.brier,4)}</strong></span></div><CalibrationPlot record={r} t={t}/><p className="dashboard-plot-note">{t('Пунктир — совпадение вероятности и доли. Пустые интервалы пропущены.','Үзік сызық — ықтималдық пен үлестің сәйкестігі. Бос аралықтар көрсетілмеген.')}</p></section>
+   <section className="dashboard-panel dashboard-calibration"><div className="dashboard-panel-heading"><div><h3>{t('Вероятность и наблюдения','Ықтималдық пен бақылаулар')}</h3><p>{t('Калибровка · 10 равных интервалов','Калибрлеу · 10 бірдей аралық')}</p></div><span className="dashboard-brier">Brier ↓ <strong>{number(m.brier,4)}</strong></span></div><CalibrationPlot record={r} t={t}/><p className="dashboard-plot-note">{t('Пунктир — совпадение вероятности и доли. Пустые интервалы пропущены.','Үзік сызық — ықтималдық пен үлестің сәйкестігі. Бос аралықтар көрсетілмеген.')}</p><CalibrationTable key={ds} record={r} t={t}/></section>
   </div>
   <div className="dashboard-bottom-grid">
    <section className="dashboard-panel dashboard-ap"><div className="dashboard-panel-heading"><div><h3>{t('AP в контексте выборки','Іріктеме аясындағы AP')}</h3><p>{t('Одна шкала от 0 до 1','0-ден 1-ге дейінгі бір шкала')}</p></div><BarChart3 size={21}/></div><ScoreBar title={t('AP модели','Модель AP көрсеткіші')} value={s.ap}/><ScoreBar title={t('Ориентир: доля класса 1','Бағдар: 1 сыныбының үлесі')} value={s.prevalence} baseline/><p className="dashboard-ap-context">{t('Доля класса — описательный ориентир AP для случайного ранжирования в этой выборке, а не результат другого обученного алгоритма.','Сынып үлесі — осы іріктемедегі кездейсоқ ранжирлеу AP көрсеткішінің сипаттамалық бағдары, басқа оқытылған алгоритмнің нәтижесі емес.')}</p><button className="dashboard-text-action" onClick={()=>onNavigate('models')}>{t('Сравнить все алгоритмы','Барлық алгоритмді салыстыру')}<ArrowRight size={15}/></button></section>
@@ -50,6 +52,29 @@ function Kpi({label,score,caption,detail,icon:Icon,accent=false}:{label:string;s
 type Outcome={code:string;name:string;n:number;share:number|null};
 function OutcomeRow({title,total,first,second}:{title:string;total:number;first:Outcome;second:Outcome}){return <div className="dashboard-outcome"><div className="dashboard-outcome-heading"><strong>{title}</strong><span>n = {count(total)}</span></div><div className="dashboard-outcome-bar" aria-hidden="true"><span style={{width:first.share===null?'0%':percentage(first.share,5)}}/><span style={{width:second.share===null?'0%':percentage(second.share,5)}}/></div><div className="dashboard-outcome-labels">{[first,second].map((item,index)=><div key={item.code} className={index?'incorrect':'correct'}><span><i/>{item.code} · {item.name}</span><strong>{count(item.n)} <small>{percentage(item.share)}</small></strong></div>)}</div></div>}
 function ScoreBar({title,value,baseline=false}:{title:string;value:number|null;baseline?:boolean}){return <div className={'dashboard-score-bar '+(baseline?'baseline':'')}><div><span>{title}</span><strong>{number(value)}</strong></div><div aria-hidden="true"><span style={{width:value===null?'0%':percentage(value,5)}}/></div></div>}
+function UncertaintyPanel({estimates,ds,t,onNavigate}:{estimates:DashboardEstimate[];ds:string;t:T;onNavigate:(page:string)=>void}){
+ const labels={recall:t('Чувствительность','Сезімталдық'),precision:t('Точность положительного ответа','Оң жауаптың дәлдігі'),specificity:t('Специфичность','Ерекшелік'),npv:t('Точность отрицательного ответа','Теріс жауаптың дәлдігі')};
+ const names={recall:'Recall',precision:'Precision',specificity:'Specificity',npv:'NPV'};
+ const formulas={recall:'TP / (TP + FN)',precision:'TP / (TP + FP)',specificity:'TN / (TN + FP)',npv:'TN / (TN + FN)'};
+ const available=estimates.filter(estimate=>estimate.interval!==null).length;
+ return <details className="dashboard-evidence">
+  <summary><ScanLine size={19}/><span><strong>{t('Насколько точны оценки?','Бағалар қаншалықты дәл?')}</strong><small>{t('Интервалы и объём выборки за каждой метрикой','Әр метриканың аралығы мен іріктеме көлемі')}</small></span><span className="dashboard-evidence-badge">{available===0?t('Интервалы не сохранены','Аралықтар сақталмаған'):`95% · Wilson · ${available}/4`}</span><ChevronDown className="dashboard-evidence-chevron" size={18}/></summary>
+  <div className="dashboard-evidence-content">
+   <p className="dashboard-evidence-intro">{t('Точка показывает долю, отрезок — сохранённый 95% описательный интервал Уилсона. Все отрезки используют общую шкалу 0–100%.','Нүкте үлесті, кесінді сақталған 95% сипаттамалық Уилсон аралығын көрсетеді. Барлық кесінді үшін ортақ шкала — 0–100%.')}</p>
+   <div className="dashboard-estimates">{estimates.map(estimate=><article key={estimate.key} className="dashboard-estimate">
+    <div className="dashboard-estimate-heading"><span><strong>{names[estimate.key]}</strong><small>{labels[estimate.key]}</small></span><strong>{percentage(estimate.value)}</strong></div>
+    <div className="dashboard-estimate-track" aria-hidden="true">{estimate.interval&&<span style={{left:percentage(estimate.interval[0],5),width:percentage(estimate.interval[1]-estimate.interval[0],5)}}/>}{estimate.value!==null&&<i style={{left:percentage(estimate.value,5)}}/>}</div>
+    <div className="dashboard-estimate-range"><span>{t('95% интервал','95% аралық')}</span><strong>{estimate.interval?`${percentage(estimate.interval[0])}–${percentage(estimate.interval[1])}`:t('Не определён','Анықталмаған')}</strong></div>
+    <p>{formulas[estimate.key]} = {count(estimate.numerator)} / {count(estimate.denominator)}</p>
+   </article>)}</div>
+   <p className="dashboard-evidence-limits">{ds==='brfss'?t('Интервалы условны на сохранённых прогнозах и предполагают независимые наблюдения. Они не учитывают сложный дизайн BRFSS, обучение и выбор модели.','Аралықтар сақталған болжамдарға шартты және бақылаулардың тәуелсіздігін болжайды. BRFSS күрделі дизайны, модельді оқыту мен таңдау ескерілмейді.'):t('Для усреднённых OOF-прогнозов это описательные биномиальные интервалы: зависимость из-за пересекающихся обучающих выборок, обучение и выбор модели не учтены. Это не оценка финального артефакта.','Орташаланған OOF болжамдары үшін бұл сипаттамалық биномдық аралықтар: қабаттасатын оқыту іріктемелерінің тәуелділігі, оқыту және модель таңдау ескерілмейді. Бұл соңғы артефактінің бағасы емес.')}</p>
+   <button className="dashboard-text-action" onClick={()=>onNavigate('lab')}>{t('Открыть анализ неопределённости','Белгісіздік талдауын ашу')}<ArrowRight size={15}/></button>
+  </div>
+ </details>;
+}
+function CalibrationTable({record,t}:{record:DashboardEvaluation;t:T}){
+ return <details className="dashboard-calibration-table"><summary>{t('Показать значения графика','График мәндерін көрсету')}<ChevronDown size={15}/></summary><div className="dashboard-calibration-scroll" role="region" tabIndex={0} aria-label={t('Таблица калибровки','Калибрлеу кестесі')}><table><caption>{t('Сохранённые интервалы вероятности; пустые интервалы без оценки.','Сақталған ықтималдық аралықтары; бос аралықтарда баға жоқ.')}</caption><thead><tr><th scope="col">{t('Интервал','Аралық')}</th><th scope="col">n</th><th scope="col">{t('Средняя p','Орташа p')}</th><th scope="col">{t('Доля класса 1','1 сыныбының үлесі')}</th></tr></thead><tbody>{record.calibration.map((bin,index)=><tr key={index}><th scope="row">{`${bin.lower.toFixed(1)}–${bin.upper.toFixed(1)}`}</th><td>{count(bin.n)}</td><td>{bin.n>0?percentage(bin.mean_probability):'—'}</td><td>{bin.n>0?percentage(bin.observed_rate):'—'}</td></tr>)}</tbody></table></div></details>;
+}
 function CalibrationPlot({record,t}:{record:DashboardEvaluation;t:T}){
  const id=useId(),points=dashboardCalibration(record.calibration);
  const x=(value:number)=>43+value*327,y=(value:number)=>188-value*157;
