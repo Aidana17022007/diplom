@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-11-17",
+  "application_version": "3.3.0",
+  "scope": "Supplementary Docker build and runtime smoke audit; not a new model evaluation or a complete unit-test run inside the container.",
+  "status": "passed",
+  "base_github_commit": "27e3ecf1c5e859c62b6cfd104f29135f192ffeda",
+  "source_note": "The image was built from the audit working tree after the Dockerfile topic-JSON fix. Subsequent working-tree changes are not automatically included in this image.",
+  "fix": {
+    "file": "Dockerfile",
+    "line": 6,
+    "change": "COPY reports/thesis-topic.json /app/data/thesis-topic.json",
+    "reason": "frontend/src/ThesisPrep.tsx imports ../../data/thesis-topic.json; the previous frontend stage copied only frontend/, while .dockerignore excludes data/."
+  },
+  "docker": {
+    "engine_version": "29.1.5",
+    "image_tag": "cardioresearch:qa-20261117-33",
+    "image_id": "sha256:6224ecfd67ace5259a543161b96662e52f6874e20148e5922f28058082a0f1db",
+    "base_images": [
+      "node:22-slim@sha256:e9f565d32859f0cbfb52125eafe8be39390f24dac302dc3cdf566e8ba3ab21ee",
+      "python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b"
+    ],
+    "build_command": "docker build --progress plain -t cardioresearch:qa-20261117-33 .",
+    "build_exit_code": 0,
+    "build_steps_passed": [
+      "npm ci from the existing frontend lockfile",
+      "TypeScript compilation",
+      "Vite production frontend build",
+      "pip install --no-cache-dir -r requirements-tested.txt in Python 3.12",
+      "Copy model artifacts, assets, reports and built frontend into the runtime image"
+    ],
+    "npm_audit_reported_vulnerabilities": 0,
+    "npm_audit_scope": "The frontend npm ci output reported zero vulnerabilities; no additional security scanner or Python vulnerability audit was run."
+  },
+  "runtime": {
+    "run_command": "docker run --rm --detach --name cardio-qa-20261117-33 -p 127.0.0.1::8000 cardioresearch:qa-20261117-33",
+    "binding": "An automatically assigned host port bound only to 127.0.0.1, forwarding to container port 8000",
+    "health": {
+      "status": "ok",
+      "version": "3.3.0",
+      "runtime": "python-local",
+      "models": {"brfss": true, "uci": true}
+    },
+    "frontend": {
+      "html_passed": true,
+      "assets_fetched": [
+        "/assets/index-5F2weKTd.js",
+        "/assets/index-BQ7pgVka.css"
+      ],
+      "asset_names_match_windows_build": true,
+      "visual_browser_check_performed_in_this_audit": false
+    },
+    "synthetic_predictions": [
+      {
+        "dataset": "brfss",
+        "input_source": "The fixed synthetic row returned by /api/template/brfss",
+        "probability": 0.026823487279290383,
+        "threshold": 0.19042448230963954,
+        "model_version": "b40179c28ed8",
+        "finite_probability_and_threshold_decision_verified": true
+      },
+      {
+        "dataset": "uci",
+        "input_source": "The fixed synthetic row returned by /api/template/uci",
+        "probability": 0.16200839748829313,
+        "threshold": 0.5,
+        "model_version": "e31f6af32e30",
+        "finite_probability_and_threshold_decision_verified": true
+      }
+    ],
+    "exports": [
+      {
+        "dataset": "brfss",
+        "metric_csv_rows": 8,
+        "required_metric_csv_fields_checked": ["mcc", "mcc_fold_sd", "fpr", "fnr", "npv"],
+        "synthetic_batch_validation_invalid_rows": 0,
+        "synthetic_batch_output_rows": 1,
+        "pdf_bytes": 27231,
+        "pdf_signature_verified": true
+      },
+      {
+        "dataset": "uci",
+        "metric_csv_rows": 8,
+        "required_metric_csv_fields_checked": ["mcc", "mcc_fold_sd", "fpr", "fnr", "npv"],
+        "synthetic_batch_validation_invalid_rows": 0,
+        "synthetic_batch_output_rows": 1,
+        "pdf_bytes": 27273,
+        "pdf_signature_verified": true
+      }
+    ],
+    "aggregate_json_routes_passed": [
+      "/api/quality",
+      "/api/release-checks",
+      "/api/metrics-insights",
+      "/api/development-study",
+      "/api/scientific-audit",
+      "/api/evaluation/brfss",
+      "/api/evaluation/uci"
+    ],
+    "dependency_check_command": "docker exec <owned-qa-container-id> python -m pip check",
+    "dependency_check_result": "No broken requirements found.",
+    "owned_container_stopped_and_removed": true,
+    "qa_image_retained": true
+  },
+  "test_counts": {
+    "http_smoke_checks_passed": 21,
+    "dependency_checks_passed": 1,
+    "failed": 0,
+    "count_definition": "One health response, one HTML response, two assets, two predictions, two metric CSVs, two batch validations, two batch predictions, two PDFs and seven aggregate JSON responses. Template setup requests and startup polling are not counted.",
+    "unit_test_suite_run_inside_container": false
+  },
+  "limitations": [
+    "Smoke checks use synthetic templates and do not establish clinical model performance.",
+    "No visual browser check or PDF page-layout rendering was performed by this Docker audit.",
+    "Training workflows were not exercised in the image; processed training datasets are excluded by the current Docker context.",
+    "The exact application release archive was not overwritten; the Dockerfile correction requires a new uniquely named verified archive."
+  ]
+}

@@ -161,7 +161,7 @@ def quality():
             'missing_fields':[{'name':f['name'],'label':f['label'],'count':training.get('missing',{}).get(f['name']),
                 'fraction':training.get('missing',{}).get(f['name'],0)/training['n'] if training.get('n') else None} for f in SCHEMAS[ds]]})
         datasets[ds]=row
-    verification=optional_report('verification.json') or {}
+    from .release_checks import docker_quality_limit
     release=release_checks(); py=release['checks']['python']
     counts=[py.get(key) for key in ('passed','failed','errors','skipped')]
     tests={**py,'tests':sum(counts) if all(isinstance(v,int) for v in counts) else None,
@@ -173,7 +173,7 @@ def quality():
       {'id':'survey','title':'План обследования','detail':'Основные интервалы BRFSS не учитывают полностью сложный план обследования.','status':'limitation'},
       {'id':'uci_protocol','title':'UCI и финальное обучение','detail':'Внешняя CV оценила поиск по двум конфигурациям; финальный артефакт повторно настраивался по трём. Среднее CV не является независимым тестом именно финального артефакта.','status':'limitation'},
       {'id':'uci_sd','title':'Неопределённость','detail':'SD шести зависимых folds не является 95% доверительным интервалом. Дополнительные интервалы, если доступны, имеют отдельные условия в разделе надёжности.','status':'limitation'},
-      {'id':'docker','title':'Контейнерный запуск','detail':verification.get('docker','Состояние запуска не проверено'),'status':'not_verified'}]
+      docker_quality_limit(release)]
     return {'datasets':datasets,'tests':tests,'release':release,'environment':optional_report('environment.json') or {},'limits':limits,
         'privacy':{'answers_saved':False,'experiment_metadata_only':True,'batch_max_rows':BATCH_MAX_ROWS,'batch_max_bytes':BATCH_MAX_BYTES}}
 

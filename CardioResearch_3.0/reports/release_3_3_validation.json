@@ -1,23 +1,24 @@
 {
   "release": "3.3.0",
   "checked_date": "2026-11-17",
-  "scope": "software threshold-cost exploration, complete metric CSV exports and current release provenance; manuscript unchanged",
+  "scope": "Software audit: numerical consistency, tests, desktop/mobile browser smoke, clean container build, runtime, packaging; manuscript and models unchanged.",
   "python_tests": {
-    "passed": 155,
+    "passed": 166,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
-    "seconds": 25.318,
-    "report": "metrics_3_3_tests.xml",
+    "seconds": 12.71,
+    "report": "audit_3_3_tests.xml",
     "warning": "Starlette TestClient httpx deprecation; no test failure"
   },
   "worker_tests": {
-    "passed": 97,
+    "passed": 99,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
-    "seconds": 2.7718575,
-    "command": "node --test --test-reporter=spec tests/*.test.mjs"
+    "seconds": 2.3141118,
+    "command": "node --test --test-reporter=spec tests/*.test.mjs",
+    "report": "audit_3_3_worker.txt"
   },
   "builds": {
     "local_frontend": "TypeScript and Vite passed",
@@ -31,9 +32,10 @@
     "dependency_note": "Core ML versions match the saved lock; several non-core runtime versions differ. Historical lock preserved."
   },
   "browser": {
-    "checked": false,
-    "status": "not_verified",
-    "reason": "Browser/computer-use tools unavailable; new panels have not been visually verified"
+    "checked": true,
+    "status": "passed",
+    "report": "audit_3_3_browser_20261117.json",
+    "scope": "Bounded local browser smoke; 16 main sections, desktop/mobile, RU/KK, controls, synthetic predictions, 3D/2D; browser downloads not verified."
   },
   "changes": {
     "threshold_cost_lab": {
@@ -56,7 +58,9 @@
       "legacy_report_45_tests_replaced": true,
       "stale_and_unknown_states_explicit": true,
       "checks_measured_on_request": false
-    }
+    },
+    "docker_build_fix": "Copy canonical thesis-topic.json into the Node build stage.",
+    "docker_status": "Local API and Worker derive Docker status from matching saved build/health evidence and expose its SHA-256; missing or stale evidence is not passed."
   },
   "frozen_artifacts_sha256": {
     "data/processed/brfss.pkl": "9cbb18fb26f324a363994e8f80254806def15d1cc0058cf8f3a96e79440998e7",
@@ -84,9 +88,20 @@
     "sites_blocker": "Prior Sites project not found; no new publishing access"
   },
   "remaining_limits": [
-    "Browser verification of new panels unavailable",
     "No new model fitting or independent clinical validation",
     "Original disease presence/history classification; no future-event horizon",
-    "Docker runtime not checked"
-  ]
+    "Browser download delivery not verified; see browser audit for coverage limits.",
+    "Docker inference/exports tested; training data are excluded from the image."
+  ],
+  "docker": {
+    "checked": true,
+    "status": "passed",
+    "report": "audit_3_3_docker_20261117.json",
+    "followup_report": "audit_3_3_docker_final_20261117.json"
+  },
+  "scientific_audit": {
+    "status": "passed",
+    "report": "audit_3_3_science_20261117.json"
+  },
+  "verification_environment_note": "A restricted full pytest rerun became unresponsive before reporting progress; it was stopped and the complete suite passed in the normal local environment with faulthandler enabled. No failures were suppressed."
 }

@@ -18,5 +18,11 @@ test('public passport and quality expose the same versioned evidence',async()=>{
  assert.equal(report.measured_now,false);
  assert.equal(quality.tests.measured_now,false);
  assert.equal(quality.privacy.answers_saved,false);
+ const docker=quality.limits.filter(row=>row.id==='docker');
+ assert.equal(docker.length,1);
+ const evidence=report.checks.docker;
+ const expected=report.version_match&&['passed','failed'].includes(evidence?.status)?evidence.status:'not_verified';
+ assert.equal(docker[0].status,expected);
+ assert.equal(docker[0].report_sha256,evidence?.report_sha256??null);
  assert.equal((await worker.fetch(new Request('https://cardio.example/data/release-checks.json'),{})).status,404);
 });

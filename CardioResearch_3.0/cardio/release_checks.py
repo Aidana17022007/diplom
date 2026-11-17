@@ -133,6 +133,62 @@ def _public_hashes(value):
     return result
 
 
+def _docker(value, reports, release):
+    result = {'status': 'unknown', 'detail': 'Docker build and runtime evidence is missing or incomplete.',
+              'report_file': None, 'report_sha256': None}
+    if not isinstance(value, dict):
+        return result
+    if value.get('status') == 'failed':
+        return {**result, 'status': 'failed', 'detail': 'Docker verification was recorded as failed.'}
+    if value.get('checked') is False:
+        return {**result, 'status': 'not_verified', 'detail': 'Docker verification was not performed in this release.'}
+    name = value.get('report')
+    if (value.get('checked') is not True or value.get('status') != 'passed'
+            or not isinstance(name, str) or not re.fullmatch(r'[A-Za-z0-9_-]+\.json', name)):
+        return result
+    path = reports / name
+    if path.is_symlink():
+        return result
+    try:
+        raw = path.read_bytes()
+        evidence = json.loads(raw)
+    except (OSError, ValueError):
+        return result
+    result.update({'report_file': name, 'report_sha256': _hash(raw)})
+    if (not isinstance(evidence, dict) or evidence.get('schema_version') != 1
+            or evidence.get('application_version') != release):
+        return result
+    build = evidence.get('docker')
+    runtime = evidence.get('runtime')
+    health = runtime.get('health') if isinstance(runtime, dict) else None
+    exit_code = build.get('build_exit_code') if isinstance(build, dict) else None
+    if evidence.get('status') == 'failed' or (type(exit_code) is int and exit_code != 0):
+        return {**result, 'status': 'failed', 'detail': 'Docker build or runtime verification was recorded as failed.'}
+    if (evidence.get('status') != 'passed' or type(exit_code) is not int or exit_code != 0
+            or not isinstance(health, dict) or health.get('version') != release):
+        return result
+    models = health.get('models')
+    if (health.get('status') == 'ok' and isinstance(models, dict)
+            and models.get('brfss') is True and models.get('uci') is True):
+        result.update({'status': 'passed', 'detail': 'Saved Docker build and runtime health checks passed; this is not a full unit-test run inside the image.'})
+    return result
+
+
+def docker_quality_limit(passport):
+    """Only evidence for this application release can confirm its Docker check."""
+    check = passport.get('checks', {}).get('docker', {})
+    status = check.get('status') if passport.get('version_match') is True else 'not_verified'
+    if status not in ('passed', 'failed'):
+        status = 'not_verified'
+    details = {
+        'passed': 'Сохранённый отчёт подтверждает сборку Docker и запуск моделей; полный набор тестов внутри контейнера не запускался.',
+        'failed': 'В сохранённой проверке Docker зафиксирована ошибка.',
+        'not_verified': 'Нет подтверждённой сборки и запуска Docker для этой версии приложения.',
+    }
+    return {'id': 'docker', 'title': 'Контейнерный запуск', 'detail': details[status], 'status': status,
+            'report_file': check.get('report_file'), 'report_sha256': check.get('report_sha256')}
+
+
 def build_release_checks(reports: Path, application_version: str):
     """Select the greatest eligible semantic version; fail closed on its bad report.
 
@@ -150,7 +206,7 @@ def build_release_checks(reports: Path, application_version: str):
         'checks': {'python': _counts(None, require_errors=True),
                    'worker': _counts(None, require_errors=False),
                    'builds': _builds(None), 'browser': _browser(None),
-                   'startup': _startup(None, reports, None)},
+                   'startup': _startup(None, reports, None), 'docker': _docker(None, reports, None)},
         'frozen_artifact_count': 0, 'frozen_artifacts_sha256': {},
         'issues': [],
     }
@@ -203,6 +259,7 @@ def build_release_checks(reports: Path, application_version: str):
         'builds': _builds(report.get('builds')),
         'browser': _browser(report.get('browser')),
         'startup': _startup(report.get('startup'), reports, report['release']),
+        'docker': _docker(report.get('docker'), reports, report['release']),
     }
     hashes = _public_hashes(report.get('frozen_artifacts_sha256'))
     result.update({'frozen_artifact_count': len(hashes), 'frozen_artifacts_sha256': hashes})

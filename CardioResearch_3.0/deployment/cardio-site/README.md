@@ -6,7 +6,11 @@ The BRFSS research lab adds hypothetical FP/FN penalty scenarios on 36 saved val
 
 `/api/release-checks` and `/api/quality` now use the versioned release passport instead of the old 45-test verification snapshot. The UI exposes report date/hash, individual check states, stale/unknown status and JSON download. After recording a new software-validation report, run `python scripts/export_release_checks.py` from the Python project before bundling the Worker. The export is not a fresh test run.
 
-155 Python tests, 97 Worker tests, both frontend builds and the local HTTP smoke check passed. New panels were not visually checked because browser tools were unavailable. Saved models and scientific results are unchanged; existing Sites publication access remains unavailable.
+166 Python tests, 99 Worker tests, both frontend builds and the local HTTP smoke check passed. A fresh Docker build and container run passed 21 HTTP checks and `pip check`.
+
+Local browser smoke checks covered all 16 main pages, the 390×844 mobile layout in RU/KK, navigation, cost constraints/filter/reset, all 13 metrics and pair comparison, empty UCI diagnostic groups, study folds, a synthetic UCI prediction of 16.2% with its explanation, and artery comparison at 75% narrowing, fullscreen and 2D. Downloads through the UI remain unconfirmed because the browser tool was interrupted; CSV/PDF exports passed API checks.
+
+Evidence: [release validation](../../reports/release_3_3_validation.json), [browser audit](../../reports/audit_3_3_browser_20261117.json), [Docker audit](../../reports/audit_3_3_docker_20261117.json) and [release passport](../../reports/release-checks.json). The application remains version 3.3.0; the new archive is `CardioResearch_3.3_verified_20261117.zip`. Saved models and scientific results are unchanged. The existing public Sites deployment has not been updated; publication access remains unavailable.
 
 ## Application 3.2
 

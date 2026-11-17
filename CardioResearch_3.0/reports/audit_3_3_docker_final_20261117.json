@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-11-17",
+  "checked_at_utc": "2026-11-17T15:29:31.268193+00:00",
+  "application_version": "3.3.0",
+  "scope": "Supplementary cached-image check after the Docker quality-status change; health, release-passport status and two synthetic predictions only.",
+  "status": "passed",
+  "source_note": "The image captures the working tree at build time. Later report-count or archive updates are not automatically included. Source hashes below were read from this image.",
+  "docker": {
+    "image_tag": "cardioresearch:qa-final-20261117-33",
+    "build_command": "docker build --progress plain -t cardioresearch:qa-final-20261117-33 .",
+    "build_exit_code": 0,
+    "dependency_and_frontend_layers_reused_from_cache": [
+      "apt-get/libgomp1",
+      "npm ci",
+      "npm run build",
+      "pip install -r requirements-tested.txt"
+    ],
+    "dependency_installation_rerun_in_successful_build": false,
+    "network_note": "The successful build resolved registry base-image metadata; apt/npm/pip layers were CACHED and no dependency download step was rerun.",
+    "earlier_attempt": {
+      "command": "docker build --network=none --progress plain -t cardioresearch:qa-final-20261117-33 .",
+      "exit_code": 1,
+      "reason": "Changing the RUN network mode invalidated dependency-layer cache matching. apt failed because networking was disabled; npm ci was canceled. Repeating with the original mode reused all dependency layers.",
+      "application_runtime_was_tested_in_this_attempt": false
+    },
+    "engine_version": "29.1.5",
+    "image_id": "sha256:81b751564e540f1798519f7fce9c03c8fe6cc634dd71bb1ae8c57565d545bd81",
+    "image_source_sha256": {
+      "cardio/api.py": "76a2c0cf37b54b7aa2df1f3bc51f8b4c203b22eef7dc7eaa4022ef394118a0b1",
+      "cardio/release_checks.py": "32993ec4ba8865e9b0ec5237cb0ff6bf558c4d590648c74f2a271e2568df5b22",
+      "reports/release-checks.json": "910d882106f68b7a2e8f4f21b23d1bda352b7a413aa10ece1408553e22f9b7b2",
+      "reports/release_3_3_validation.json": "44ff2933500041346c2405a99283e9aae1254eaa3eda4e979a59e3954898b524",
+      "reports/audit_3_3_docker_20261117.json": "4705641cc1eacc61c366bd6778a9b428aa3c400b4a8928c69459b5bc4bbdebe1",
+      "reports/audit_3_3_browser_20261117.json": "6ebf06fbed1418d72cbcb1d8e878eea6a47f0c932566d462c9cd00b2b037099e"
+    }
+  },
+  "runtime": {
+    "run_command": "docker run --rm --detach --name cardio-qa-final-20261117-33 -p 127.0.0.1::8000 cardioresearch:qa-final-20261117-33",
+    "binding": "127.0.0.1:50652",
+    "binding_scope": "Loopback only; automatic host port.",
+    "health": {
+      "status": "ok",
+      "models": {
+        "brfss": true,
+        "uci": true
+      },
+      "runtime": "python-local",
+      "version": "3.3.0"
+    },
+    "quality_docker_limit": {
+      "id": "docker",
+      "title": "Контейнерный запуск",
+      "detail": "Сохранённый отчёт подтверждает сборку Docker и запуск моделей; полный набор тестов внутри контейнера не запускался.",
+      "status": "passed",
+      "report_file": "audit_3_3_docker_20261117.json",
+      "report_sha256": "4705641cc1eacc61c366bd6778a9b428aa3c400b4a8928c69459b5bc4bbdebe1"
+    },
+    "release_passport": {
+      "application_version": "3.3.0",
+      "checked_release": "3.3.0",
+      "checked_date": "2026-11-17",
+      "report_file": "release_3_3_validation.json",
+      "report_sha256": "44ff2933500041346c2405a99283e9aae1254eaa3eda4e979a59e3954898b524",
+      "status": "current",
+      "version_match": true,
+      "measured_now": false,
+      "checks": {
+        "python": {
+          "status": "passed",
+          "passed": 155,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "worker": {
+          "status": "passed",
+          "passed": 97,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "builds": {
+          "status": "passed"
+        },
+        "browser": {
+          "status": "passed",
+          "detail": "Browser verification was explicitly recorded as passed."
+        },
+        "startup": {
+          "status": "passed",
+          "detail": "Saved preflight and HTTP smoke checks passed.",
+          "report_file": "metrics_3_3_smoke.json",
+          "report_sha256": "5ad668d292717e3cec7d69864e083fa91970f8cb64d2d49ad9fb1a402fa3c018"
+        },
+        "docker": {
+          "status": "passed",
+          "detail": "Saved Docker build and runtime health checks passed; this is not a full unit-test run inside the image.",
+          "report_file": "audit_3_3_docker_20261117.json",
+          "report_sha256": "4705641cc1eacc61c366bd6778a9b428aa3c400b4a8928c69459b5bc4bbdebe1"
+        }
+      }
+    },
+    "synthetic_predictions": [
+      {
+        "dataset": "brfss",
+        "input_source": "/api/template/brfss fixed synthetic example",
+        "probability": 0.026823487279290383,
+        "threshold": 0.19042448230963954,
+        "positive": false,
+        "model_version": "b40179c28ed8",
+        "finite_probability_and_threshold_decision_verified": true
+      },
+      {
+        "dataset": "uci",
+        "input_source": "/api/template/uci fixed synthetic example",
+        "probability": 0.16200839748829313,
+        "threshold": 0.5,
+        "positive": false,
+        "model_version": "e31f6af32e30",
+        "finite_probability_and_threshold_decision_verified": true
+      }
+    ],
+    "owned_container_stopped_and_removed": true,
+    "qa_image_retained": true
+  },
+  "checks": [
+    {
+      "id": "health",
+      "path": "/api/health",
+      "status": "passed"
+    },
+    {
+      "id": "quality_docker_passed",
+      "path": "/api/quality",
+      "status": "passed"
+    },
+    {
+      "id": "release_browser_and_docker_passed",
+      "path": "/api/release-checks",
+      "status": "passed"
+    },
+    {
+      "id": "synthetic_prediction_brfss",
+      "path": "/api/predict",
+      "status": "passed"
+    },
+    {
+      "id": "synthetic_prediction_uci",
+      "path": "/api/predict",
+      "status": "passed"
+    }
+  ],
+  "limitations": [
+    "This is a five-case HTTP smoke check; it does not rerun the original 21-case audit, pip check or a unit-test suite inside the container.",
+    "Predictions use the fixed API synthetic examples, not patient records or a clinical validation set.",
+    "No visual browser, UI-download, Compose or training-workflow check is performed by this audit.",
+    "The report is created after the image build and is not embedded in the image being checked."
+  ],
+  "test_counts": {
+    "http_smoke_checks_passed": 5,
+    "failed": 0,
+    "count_definition": "Health, quality Docker status, release browser/Docker status, and two synthetic predictions. Template setup requests and startup polling are excluded.",
+    "dependency_check_rerun": false,
+    "unit_test_suite_run_inside_container": false
+  }
+}

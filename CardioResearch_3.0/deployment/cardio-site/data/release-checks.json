@@ -4,7 +4,7 @@
   "checked_release": "3.3.0",
   "checked_date": "2026-11-17",
   "report_file": "release_3_3_validation.json",
-  "report_sha256": "a2ab220c6eba77c451adbcaf1607f99676e4f608e2f5223054250a8805ab3e6b",
+  "report_sha256": "a91200de52389c5d8560bf88cb3667fed5bbad14c6213fdec0d478dda5840822",
   "version_match": true,
   "status": "current",
   "scope": "Saved software release verification; not a new measurement or clinical validation.",
@@ -12,14 +12,14 @@
   "checks": {
     "python": {
       "status": "passed",
-      "passed": 155,
+      "passed": 166,
       "failed": 0,
       "errors": 0,
       "skipped": 0
     },
     "worker": {
       "status": "passed",
-      "passed": 97,
+      "passed": 99,
       "failed": 0,
       "errors": 0,
       "skipped": 0
@@ -28,14 +28,20 @@
       "status": "passed"
     },
     "browser": {
-      "status": "not_verified",
-      "detail": "Browser verification was not performed in this release."
+      "status": "passed",
+      "detail": "Browser verification was explicitly recorded as passed."
     },
     "startup": {
       "status": "passed",
       "detail": "Saved preflight and HTTP smoke checks passed.",
       "report_file": "metrics_3_3_smoke.json",
       "report_sha256": "5ad668d292717e3cec7d69864e083fa91970f8cb64d2d49ad9fb1a402fa3c018"
+    },
+    "docker": {
+      "status": "passed",
+      "detail": "Saved Docker build and runtime health checks passed; this is not a full unit-test run inside the image.",
+      "report_file": "audit_3_3_docker_20261117.json",
+      "report_sha256": "4705641cc1eacc61c366bd6778a9b428aa3c400b4a8928c69459b5bc4bbdebe1"
     }
   },
   "frozen_artifact_count": 18,

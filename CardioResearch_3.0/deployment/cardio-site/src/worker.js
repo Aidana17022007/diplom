@@ -9,6 +9,7 @@ import temporal from '../data/temporal.json';
 import metricsInsights from '../data/metrics-insights.json';
 import developmentStudy from '../data/development-study.json';
 import releaseChecks from '../data/release-checks.json';
+import {dockerQualityLimit} from './release-quality.js';
 import scientificAudit from '../data/scientific-audit.json';
 import release from '../package.json';
 import literatureAdditions from '../data/literature-additions.json';
@@ -151,7 +152,7 @@ async function route(request,env){
       if(pathname==='/api/transfer-export/uci')return download(JSON.stringify(transfer,null,2),'application/json; charset=utf-8','uci_transfer.json');
       if(pathname==='/api/library')return json(withLiteratureAdditions(reports.library,literatureAdditions));
       if(pathname==='/api/release-checks')return json(releaseChecks);
-      if(pathname==='/api/quality'){const py=releaseChecks.checks.python,counts=['passed','failed','errors','skipped'].map(key=>py[key]);return json({...reports.quality,release:releaseChecks,tests:{...py,tests:counts.every(Number.isInteger)?counts.reduce((a,b)=>a+b,0):null,source:releaseChecks.report_file,checked_release:releaseChecks.checked_release,version_match:releaseChecks.version_match,measured_now:false}})}
+      if(pathname==='/api/quality'){const py=releaseChecks.checks.python,counts=['passed','failed','errors','skipped'].map(key=>py[key]);return json({...reports.quality,limits:[...(reports.quality.limits||[]).filter(item=>item.id!=='docker'),dockerQualityLimit(releaseChecks)],release:releaseChecks,tests:{...py,tests:counts.every(Number.isInteger)?counts.reduce((a,b)=>a+b,0):null,source:releaseChecks.report_file,checked_release:releaseChecks.checked_release,version_match:releaseChecks.version_match,measured_now:false}})}
       const fixed={'/api/environment':'environment','/api/reliability':'reliability','/api/experiments':'experiments'};
       if(fixed[pathname])return json(reports[fixed[pathname]]);
       let match=pathname.match(/^\/api\/(schema|research|data)\/([^/]+)$/);

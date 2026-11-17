@@ -3,6 +3,7 @@ WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN npm ci
 COPY frontend/ ./
+COPY reports/thesis-topic.json /app/data/thesis-topic.json
 RUN npm run build
 
 FROM python:3.12-slim
