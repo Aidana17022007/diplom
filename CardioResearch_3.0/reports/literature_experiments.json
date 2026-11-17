@@ -1,0 +1,210 @@
+{
+  "created_utc": "2026-11-17T06:48:49.383225+00:00",
+  "python": "3.12.15",
+  "protocol": {
+    "fixed_date": "2026-11-17",
+    "status": "Exploratory follow-up; specified before running these additional experiments, not an original preregistration",
+    "missingness": {
+      "dataset": "BRFSS original benchmark_train row IDs only",
+      "n": 12000,
+      "cv": "3-fold stratified, seed 20261107, shared folds",
+      "model": "LogisticRegression C=1, no class weights, max_iter=1500",
+      "comparison": "Identical pipeline with and without numeric missing-value indicators",
+      "primary_metric": "Average Precision",
+      "test_used": false,
+      "production_model_replaced": false
+    },
+    "prevalence": {
+      "source": "Frozen BRFSS test predictions",
+      "scenarios": [
+        0.01,
+        0.05,
+        "observed",
+        0.1,
+        0.2
+      ],
+      "method": "Class-constant reweighting, keeping within-class score distributions fixed",
+      "not_survey_weights": true,
+      "not_new_patient_samples": true,
+      "threshold": "Frozen production threshold"
+    },
+    "calibration": {
+      "source": "BRFSS held-out test, before and after existing validation-selected sigmoid",
+      "output": "Offset intercept with slope fixed to 1; jointly fitted intercept and slope; mean predicted minus observed",
+      "clip": 1e-06,
+      "ci": "Not calculated",
+      "test_fitted_coefficients_applied_to_model": false
+    },
+    "sources": [
+      "https://doi.org/10.1371/journal.pone.0174944",
+      "https://doi.org/10.1371/journal.pone.0118432",
+      "https://doi.org/10.1186/s12916-019-1466-7"
+    ],
+    "limitations": [
+      "No causal inference from missingness",
+      "No future-event horizon or treatment thresholds transferred from Weng et al.",
+      "Descriptive folds are not independent population confidence intervals",
+      "Hypothetical prevalence weights do not establish transfer to Kazakhstan",
+      "Calibration summaries do not prove calibration for every subgroup"
+    ]
+  },
+  "protocol_sha256": "dcda5ee158f7bb103e5d7223a9aec13743f49055a15755b1142ef400e2de2c33",
+  "missingness": [
+    {
+      "numeric_missing_indicators": false,
+      "folds": [
+        {
+          "fold": 1,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.29110039824744305,
+          "roc_auc": 0.8323009543076341,
+          "brier": 0.0674636602567015,
+          "fit_and_score_seconds": 0.14659019999999146,
+          "transformed_features": 47
+        },
+        {
+          "fold": 2,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.31150867240962227,
+          "roc_auc": 0.8103928114165173,
+          "brier": 0.06770475520763515,
+          "fit_and_score_seconds": 0.14911840000058874,
+          "transformed_features": 47
+        },
+        {
+          "fold": 3,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.2902330820619681,
+          "roc_auc": 0.8202362621557532,
+          "brier": 0.06788794957318071,
+          "fit_and_score_seconds": 0.1324994999995397,
+          "transformed_features": 47
+        }
+      ],
+      "mean": {
+        "average_precision": 0.29761405090634446,
+        "roc_auc": 0.8209766759599683,
+        "brier": 0.0676854550125058
+      }
+    },
+    {
+      "numeric_missing_indicators": true,
+      "folds": [
+        {
+          "fold": 1,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.29022009523932407,
+          "roc_auc": 0.8326168485549656,
+          "brier": 0.06753373153972173,
+          "fit_and_score_seconds": 0.1525262000013754,
+          "transformed_features": 50
+        },
+        {
+          "fold": 2,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.31108492809257715,
+          "roc_auc": 0.8109657000078158,
+          "brier": 0.0677300332852036,
+          "fit_and_score_seconds": 0.14933560000099533,
+          "transformed_features": 50
+        },
+        {
+          "fold": 3,
+          "n_fit": 8000,
+          "n_validation": 4000,
+          "average_precision": 0.29157384704287304,
+          "roc_auc": 0.8201323203438299,
+          "brier": 0.06786024528853178,
+          "fit_and_score_seconds": 0.24270720000095025,
+          "transformed_features": 50
+        }
+      ],
+      "mean": {
+        "average_precision": 0.29762629012492475,
+        "roc_auc": 0.821238289635537,
+        "brier": 0.06770800337115236
+      }
+    }
+  ],
+  "calibration": [
+    {
+      "version": "raw",
+      "n": 85748,
+      "observed_fraction": 0.08469002192470962,
+      "mean_probability": 0.0851244215042551,
+      "mean_error_pp": 0.0434399579545483,
+      "intercept_slope_fixed_1": -0.006630820358649811,
+      "clipped_predictions": 0,
+      "joint_intercept": 0.012222080006686061,
+      "slope": 1.0107540052161799,
+      "status": "ok",
+      "brier": 0.06597238538197245,
+      "roc_auc": 0.8388685147257342,
+      "average_precision": 0.32087306860285136
+    },
+    {
+      "version": "deployed_sigmoid",
+      "n": 85748,
+      "observed_fraction": 0.08469002192470962,
+      "mean_probability": 0.08554866803090369,
+      "mean_error_pp": 0.0858646106194072,
+      "intercept_slope_fixed_1": -0.013023604294131508,
+      "clipped_predictions": 0,
+      "joint_intercept": 0.03189054764132931,
+      "slope": 1.0256290897582065,
+      "status": "ok",
+      "brier": 0.06595875512181058,
+      "roc_auc": 0.8388685147257342,
+      "average_precision": 0.32087306860285136
+    }
+  ],
+  "prevalence_scenarios": [
+    {
+      "assumed_prevalence": 0.01,
+      "roc_auc": 0.8388685147259118,
+      "average_precision": 0.05300465751189453,
+      "precision_fixed_threshold": 0.04679677634577923
+    },
+    {
+      "assumed_prevalence": 0.05,
+      "roc_auc": 0.8388685147256867,
+      "average_precision": 0.21710403080835605,
+      "precision_fixed_threshold": 0.20369914661804153
+    },
+    {
+      "assumed_prevalence": 0.08469002192470962,
+      "roc_auc": 0.8388685147257342,
+      "average_precision": 0.32087306860285136,
+      "precision_fixed_threshold": 0.3102054563826204
+    },
+    {
+      "assumed_prevalence": 0.1,
+      "roc_auc": 0.8388685147258267,
+      "average_precision": 0.35932288464702633,
+      "precision_fixed_threshold": 0.3506647438845111
+    },
+    {
+      "assumed_prevalence": 0.2,
+      "roc_auc": 0.838868514725598,
+      "average_precision": 0.5440147261496138,
+      "precision_fixed_threshold": 0.5485494731169702
+    }
+  ],
+  "test_prediction_max_delta": 9.974659986866641e-17,
+  "threshold": 0.19042448230963954,
+  "input_sha256": {
+    "models\\brfss.joblib": "b40179c28ed81d3d0363f314c167d649eae7dc83065b48637871ff079e6cc2b2",
+    "models\\uci.joblib": "e31f6af32e30b748a6da3d1ed3f5e892897ea9919aa49d0266bcbd73f255acf9",
+    "reports\\brfss_results.json": "25cba37e4ff90ad3fcf155504572a7395e23085ad075f1c40b37977f24fcc5f1",
+    "reports\\uci_results.json": "588c11daf88753c02b24be8f5d6d87df67cdeb4fdc37d1163c31f341a64267d5",
+    "data\\processed\\brfss.pkl": "9cbb18fb26f324a363994e8f80254806def15d1cc0058cf8f3a96e79440998e7",
+    "reports\\brfss_splits.json": "a5c1be2d31f1a2803baf4df7e5bc3fa47da526f91ac2437566f4ec7b16701b5d",
+    "reports\\brfss_test_predictions.csv": "18c8ddc03e8b1451884e925975e8935047507e0e804741deab32ed7d8211c489"
+  },
+  "inputs_unchanged": true
+}

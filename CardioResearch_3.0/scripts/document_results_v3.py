@@ -43,10 +43,15 @@ def add_results(doc):
 
 def verification_text():
     r = read('release_3_0_validation.json')
+    evidence = 'reports/verification_3_0_python.xml және reports/verification_3_0_worker.txt'
+    if (ROOT/'reports/research_extension_validation.json').exists():
+        latest = read('research_extension_validation.json')
+        r = {**r, 'python': {'passed': latest['python_passed']}, 'worker': {'passed': latest['worker_passed']}}
+        evidence = 'reports/research_extension_tests.xml және reports/research_extension_worker.txt'
     return (f"{r['checked_date']} күнгі қайта тексеруде Python жиынындағы {r['python']['passed']} тест және Worker жиынындағы {r['worker']['passed']} тест өтті; қате саны нөл. "
             'Python 3.12 ортасында бекітілген тәуелділіктер қолданылды. ASGI қосылу мекенжайын тестке беру тәсілі орнатылған Starlette нұсқасына сәйкестендірілді; loopback және Origin қорғаныстары өзгертілген жоқ. '
             'TypeScript, Vite және Worker жинақталуы тексерілді. Docker үшін Python нұсқасы мен тәуелділіктер тізімі сәйкестендірілді, бірақ Docker Engine іске қосылмағандықтан контейнерлік іске қосу тексерілген жоқ. '
-            'Бұл техникалық тексерулер пайдаланушылармен зерттеуді немесе клиникалық валидацияны алмастырмайды. Нақты хаттамалар reports/verification_3_0_python.xml және reports/verification_3_0_worker.txt файлдарында сақталған.')
+            f'Бұл техникалық тексерулер пайдаланушылармен зерттеуді немесе клиникалық валидацияны алмастырмайды. Нақты хаттамалар {evidence} файлдарында сақталған.')
 
 
 def add_defense_update(doc):

@@ -1,0 +1,9 @@
+{
+  "fixed_date": "2026-11-17",
+  "status": "Exploratory follow-up; specified before running these additional experiments, not an original preregistration",
+  "missingness": {"dataset": "BRFSS original benchmark_train row IDs only", "n": 12000, "cv": "3-fold stratified, seed 20261107, shared folds", "model": "LogisticRegression C=1, no class weights, max_iter=1500", "comparison": "Identical pipeline with and without numeric missing-value indicators", "primary_metric": "Average Precision", "test_used": false, "production_model_replaced": false},
+  "prevalence": {"source": "Frozen BRFSS test predictions", "scenarios": [0.01,0.05,"observed",0.1,0.2], "method": "Class-constant reweighting, keeping within-class score distributions fixed", "not_survey_weights": true, "not_new_patient_samples": true, "threshold": "Frozen production threshold"},
+  "calibration": {"source": "BRFSS held-out test, before and after existing validation-selected sigmoid", "output": "Offset intercept with slope fixed to 1; jointly fitted intercept and slope; mean predicted minus observed", "clip": 0.000001, "ci": "Not calculated", "test_fitted_coefficients_applied_to_model": false},
+  "sources": ["https://doi.org/10.1371/journal.pone.0174944", "https://doi.org/10.1371/journal.pone.0118432", "https://doi.org/10.1186/s12916-019-1466-7"],
+  "limitations": ["No causal inference from missingness", "No future-event horizon or treatment thresholds transferred from Weng et al.", "Descriptive folds are not independent population confidence intervals", "Hypothetical prevalence weights do not establish transfer to Kazakhstan", "Calibration summaries do not prove calibration for every subgroup"]
+}

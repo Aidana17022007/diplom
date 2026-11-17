@@ -1,5 +1,7 @@
 # CardioResearch 3.0
 
+Научное дополнение 17.11.2026: [отчёт на казахском](CardioResearch_3.0/output/CardioResearch_research_extension_KZ.pdf), [диплом — разделы 4.10–4.14](CardioResearch_3.0/output/Diplom_CardioResearch_KZ.pdf), [обновлённый полный ZIP](CardioResearch_3.0_research_20261117.zip). Выполнены проверка индикаторов пропусков, анализ зависимости AP от доли класса, диагностика калибровки и численный аудит Shapley-объяснений. Идеи сопоставлены с тремя указанными научными статьями; ограничения и отрицательный результат абляции сохранены. Проверено: 68 Python-тестов, 70 Worker-тестов, сборка сайта. Дизайн и основные модели не изменены, Sites не публиковался. [Протокол проверки](CardioResearch_3.0/reports/research_extension_validation.json).
+
 Полный проект: [CardioResearch_3.0/](CardioResearch_3.0/). Готовый архив: [CardioResearch_3.0_verified_20261117.zip](CardioResearch_3.0_verified_20261117.zip). Репозиторий: [Aidana17022007/diplom](https://github.com/Aidana17022007/diplom), ветка `main`.
 
 После установки запустите `START_RESEARCH.cmd`, затем откройте http://127.0.0.1:8000/#experiments. Команда использует окружение проекта `.venv`, а на исходном компьютере также поддерживает ранее проверенное локальное окружение. Окно сервера должно оставаться открытым. `START_SITE.cmd` показывает веб-демо после его сборки; обучение в демо отключено.

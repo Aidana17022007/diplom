@@ -79,8 +79,8 @@
     },
     {
       "path": "CardioResearch_3.0/README.md",
-      "bytes": 39221,
-      "sha256": "7e74fda23e4c630e38ce8741eed44ae1c552b793f0ec10f3a6077dd418df0441"
+      "bytes": 42785,
+      "sha256": "09b9be91ee88395bdf64f8af1fb5bc9db624ecee1f51ab7aff5cf88fe90e7424"
     },
     {
       "path": "CardioResearch_3.0/REPRODUCE.cmd",
@@ -118,6 +118,11 @@
       "sha256": "ddcdba1f216c7c6645cf2f759b4c261c5864b7effe4cfd7af402682f9cddc608"
     },
     {
+      "path": "CardioResearch_3.0/cardio/calibration_audit.py",
+      "bytes": 2537,
+      "sha256": "3cf6905f97caf8ec37ed0675c97e6905c634f4ee43f4239b541c34df7bb73758"
+    },
+    {
       "path": "CardioResearch_3.0/cardio/config.py",
       "bytes": 5345,
       "sha256": "c64a28e6dae1584be94c37cb6efd54145283805c54f6790f26cd6fb31d563e1b"
@@ -141,6 +146,11 @@
       "path": "CardioResearch_3.0/cardio/explain.py",
       "bytes": 1141,
       "sha256": "3931f9ad43878cd24cdbf66aad39e8a5705664c985966ade655bb51c5d89d8ab"
+    },
+    {
+      "path": "CardioResearch_3.0/cardio/explanation_audit.py",
+      "bytes": 3338,
+      "sha256": "2b015d9b6bb497f1e61a6656d6f79c36dce41b22fde3ac89cf1f97765108b07a"
     },
     {
       "path": "CardioResearch_3.0/cardio/history.py",
@@ -489,8 +499,8 @@
     },
     {
       "path": "CardioResearch_3.0/deployment/cardio-site/data/literature-additions.json",
-      "bytes": 4058,
-      "sha256": "fed6813d44f716f5d36d263432d7cae7a450ccf3f29488883eea2c84d6ab9862"
+      "bytes": 6723,
+      "sha256": "cdd0f65e63c9cebc3cd9ffede0b8ddb7da397adda5ddfa321f94f756fdb86dbc"
     },
     {
       "path": "CardioResearch_3.0/deployment/cardio-site/data/models.json",
@@ -739,8 +749,8 @@
     },
     {
       "path": "CardioResearch_3.0/deployment/cardio-site/tests/literature.test.mjs",
-      "bytes": 3852,
-      "sha256": "0e2284a6f7f0cc3a94c1ed8ea5f27b3879a1c14d5b3dcc86deac43c1ad467154"
+      "bytes": 4035,
+      "sha256": "8b603b8ccbef2d7f0e30de765b1c6db49e589062b9050c30c03500ce3c28c213"
     },
     {
       "path": "CardioResearch_3.0/deployment/cardio-site/tests/model-metrics.test.mjs",
@@ -1108,19 +1118,29 @@
       "sha256": "f82f933f3cbfb192b0d610c945bef48139559b1ece26f6b00969548399585eff"
     },
     {
+      "path": "CardioResearch_3.0/output/CardioResearch_research_extension_KZ.html",
+      "bytes": 16654,
+      "sha256": "a925c9989a8417234012dbb85aaaa5e8c71d3809bc1c4aee90dd34cb9bc4a7ae"
+    },
+    {
+      "path": "CardioResearch_3.0/output/CardioResearch_research_extension_KZ.pdf",
+      "bytes": 216900,
+      "sha256": "4722be5471e376ad344d49201f6c0e9216630d951b3ff67a1d416dad178059e0"
+    },
+    {
       "path": "CardioResearch_3.0/output/DRAFT_STATUS.txt",
       "bytes": 2114,
       "sha256": "65c68ac5b98e9ab5bd273e253649dc53c56194752296547ad230c0f472a90785"
     },
     {
       "path": "CardioResearch_3.0/output/Diplom_CardioResearch_KZ.html",
-      "bytes": 75268,
-      "sha256": "04f9f95d0e2ba3692696bfcd3c34c1d057f49aa3bd6d908ae7647ff681786eea"
+      "bytes": 88456,
+      "sha256": "a61a165885d1ef18fdbec9d2aca6529fc8b5656da5a45aa20acc62be7962a901"
     },
     {
       "path": "CardioResearch_3.0/output/Diplom_CardioResearch_KZ.pdf",
-      "bytes": 601678,
-      "sha256": "55bd55ae178f74092a909e49a82099b0f9547d036637bf78d1712ca268204dc2"
+      "bytes": 787374,
+      "sha256": "dc3a94c7ed450527338f9565fcb4b585459fb4c53a83a27e92144b80f1c67a8b"
     },
     {
       "path": "CardioResearch_3.0/output/Qorgau_CardioResearch_KZ.html",
@@ -1253,6 +1273,21 @@
       "sha256": "8d7e92998b9711ac56fc15136e584463eaac8f3af81eaf4cd06a0c3af86abd29"
     },
     {
+      "path": "CardioResearch_3.0/reports/explanation_audit.json",
+      "bytes": 172234,
+      "sha256": "a5b93e12a60aeb41a438a81bb2e9d422b252fa407236d92314c81a34c530cde3"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/explanation_audit_pilot.json",
+      "bytes": 32990,
+      "sha256": "600dcf6d7f07389fe7d4715f063d3eb3ae1825b846a38e837b04e7910b681273"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/explanation_audit_protocol.json",
+      "bytes": 1708,
+      "sha256": "a937c3715a05506a9cd0425ffa1b10276607091883b99dd97884957a6fcee418"
+    },
+    {
       "path": "CardioResearch_3.0/reports/figures/app_overview.jpg",
       "bytes": 70246,
       "sha256": "e98efb5d88a0c123a83af588a418483d7b1e5da7694d7afb14ca5ac5fec939bd"
@@ -1308,6 +1343,21 @@
       "sha256": "1de77ac0a4fd966e2b6ce32de67dd01c860e8ccfe7e743300c15ebcb5a237beb"
     },
     {
+      "path": "CardioResearch_3.0/reports/figures/research_mlp_architecture.png",
+      "bytes": 36700,
+      "sha256": "0886556f090d9e8bfa4e0129e6295b1eb851ba1a87e308b29853828535d70b50"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/figures/research_prevalence.png",
+      "bytes": 54291,
+      "sha256": "f16bc7f4e30f06ac9b6b7ded54feb5ed7c282b18e079deb619c05474e9a4211e"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/figures/research_shap_precision.png",
+      "bytes": 63768,
+      "sha256": "4cf3048890110e6447ec50d4631118697f3239e85106c776f245721c39339723"
+    },
+    {
       "path": "CardioResearch_3.0/reports/figures/roc.png",
       "bytes": 67355,
       "sha256": "9922800f53841acb4665cfe13ec6cb2f4581f6eaadc9f66e8db7c687e0e6a66b"
@@ -1349,13 +1399,23 @@
     },
     {
       "path": "CardioResearch_3.0/reports/literature-additions.json",
-      "bytes": 4058,
-      "sha256": "fed6813d44f716f5d36d263432d7cae7a450ccf3f29488883eea2c84d6ab9862"
+      "bytes": 6723,
+      "sha256": "cdd0f65e63c9cebc3cd9ffede0b8ddb7da397adda5ddfa321f94f756fdb86dbc"
     },
     {
       "path": "CardioResearch_3.0/reports/literature_books.json",
       "bytes": 37487,
       "sha256": "2459d6a4699c3ded33bcf0fbd705b57e44244ae8dd51607d914f655599a50a48"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/literature_experiments.json",
+      "bytes": 7630,
+      "sha256": "e22e6dc975a67d21e7fd63969b07f399885df09a80eda9fb20cb81206c552e0e"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/literature_experiments_protocol.json",
+      "bytes": 1683,
+      "sha256": "dcda5ee158f7bb103e5d7223a9aec13743f49055a15755b1142ef400e2de2c33"
     },
     {
       "path": "CardioResearch_3.0/reports/literature_papers.json",
@@ -1386,6 +1446,31 @@
       "path": "CardioResearch_3.0/reports/research_audit.txt",
       "bytes": 23508,
       "sha256": "48a783fa51d10ce76ecc60551be1da82babc229c7f509f70a44457a53f5c1fa6"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/research_extension_build.txt",
+      "bytes": 714,
+      "sha256": "dd21e0b73474447fb8215dd3d36c810a7347d0e94e943e2f8efb08df3277caec"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/research_extension_tests.xml",
+      "bytes": 8646,
+      "sha256": "33abde2475af0c32a04ce37d2f106d556373c844daaf4b41432cca1ff8dad90f"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/research_extension_validation.json",
+      "bytes": 973,
+      "sha256": "a58331da38777ed09fe9ad3e932c9682f8dd0e896fbdd3ddcde65c70603cb490"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/research_extension_worker.txt",
+      "bytes": 16535,
+      "sha256": "ec514edc0144ce96418fe3db20e57e920131fd6fa0315863ff592848a8f19772"
+    },
+    {
+      "path": "CardioResearch_3.0/reports/research_mlp_architecture.json",
+      "bytes": 244,
+      "sha256": "722f90a22e854fbb87ce2dc5bba9642e1f7922606e9e924935d11b0b09393d8c"
     },
     {
       "path": "CardioResearch_3.0/reports/sample_prediction.pdf",
@@ -1523,9 +1608,14 @@
       "sha256": "478735eea511f84d4914be8e1e7b67b4dfba22dee0317b0c30b09f3bf335d2b7"
     },
     {
+      "path": "CardioResearch_3.0/scripts/audit_explanations.py",
+      "bytes": 6323,
+      "sha256": "3b3c85af6c6e8047ae7fe695327ab9d39f9b3052057e4bfb99499103f8826e92"
+    },
+    {
       "path": "CardioResearch_3.0/scripts/build_documents.py",
-      "bytes": 92883,
-      "sha256": "ed81120b35a66e008e898bae1ea40e3f78f1e5e4db146ab989a708d06a6855b1"
+      "bytes": 93289,
+      "sha256": "0d2e3172efcda4eb2689cf95651270b7ad86b0328bafddb50d3ccc33b924685a"
     },
     {
       "path": "CardioResearch_3.0/scripts/build_evidence_pdf.py",
@@ -1544,8 +1634,8 @@
     },
     {
       "path": "CardioResearch_3.0/scripts/document_results_v3.py",
-      "bytes": 10539,
-      "sha256": "59a8b3778e9b6013e9583fba98e62fbced17b460b387841801e3c3edaa6067ee"
+      "bytes": 10914,
+      "sha256": "174dd4e30428cf4b9aa4c4eb129070f40a45f053a19059cc088a9a890b92cb11"
     },
     {
       "path": "CardioResearch_3.0/scripts/export_site_payload.py",
@@ -1573,6 +1663,11 @@
       "sha256": "9fd170e1c0789c708cf1e62cf3c86439375a6af503838e1ed06faef3df414c4e"
     },
     {
+      "path": "CardioResearch_3.0/scripts/literature_experiments.py",
+      "bytes": 4597,
+      "sha256": "1170e84467cc017143d0e76f3e5b2421a94f0f58d707b9f66ddb1c385cfb2da7"
+    },
+    {
       "path": "CardioResearch_3.0/scripts/ocr_regulations.ps1",
       "bytes": 2395,
       "sha256": "e7dbb4a1b3157173b8c3118c5eed7b118100a1f2cbff684890b69ec8a548c75f"
@@ -1588,6 +1683,11 @@
       "sha256": "c63d23bb1f93c9c100bd1a300f9e099fe7e7693f44943591cd00024ad58e0b2d"
     },
     {
+      "path": "CardioResearch_3.0/scripts/research_extensions_document.py",
+      "bytes": 19748,
+      "sha256": "06afd27ce9a29692968f61f1aebdc0b5a0da898efc6854a32e98f8d1197a6966"
+    },
+    {
       "path": "CardioResearch_3.0/scripts/test_web_pdf.mjs",
       "bytes": 3483,
       "sha256": "0592358b1edefa360161a2d8ed3f48722033f31bcb9f81e70677ec0f1045fe02"
@@ -1601,6 +1701,16 @@
       "path": "CardioResearch_3.0/tests/test_api_v2.py",
       "bytes": 9112,
       "sha256": "a1e2158070ed5c08ab0217a9fde552347b0d6735e6bf618fefc9f5f1feff77a0"
+    },
+    {
+      "path": "CardioResearch_3.0/tests/test_calibration_audit.py",
+      "bytes": 1163,
+      "sha256": "0b412f29972a2bf0c28b18572a40c68ba7e8ed5faa47abfa4128edf1651363ed"
+    },
+    {
+      "path": "CardioResearch_3.0/tests/test_explanation_audit.py",
+      "bytes": 1515,
+      "sha256": "2bc52f46eafc17a17915c4ba96b29a6a51666279017808692838c7372ff777df"
     },
     {
       "path": "CardioResearch_3.0/tests/test_project.py",
@@ -1628,6 +1738,11 @@
       "sha256": "1b51c127b51909085c71980f3522a49e6d419e31052c14f07d674b870a61500b"
     },
     {
+      "path": "CardioResearch_3.0_research_20261117.zip",
+      "bytes": 16460398,
+      "sha256": "1918c08236485ad1d91a57cdc9d8d89a47576a50b980640a0dc957ce1d781267"
+    },
+    {
       "path": "CardioResearch_3.0_verified_20261117.zip",
       "bytes": 15943620,
       "sha256": "62b60aea50c0c85f44e40ebd350861969be440f9fe27e9fcfcb2a2fb74b6dd1b"
@@ -1639,8 +1754,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6726,
-      "sha256": "f55210e75cb0acccca06933efedff1686f475fa3f67411d20a682761b5e1c34b"
+      "bytes": 7834,
+      "sha256": "d0cb110427c491b3bc74ec66dd983eaa3ec0dec2176cfc0b4604d5fd2c96693f"
     },
     {
       "path": "START_RESEARCH.cmd",
@@ -1703,7 +1818,7 @@
     "Research verification dates and scope are retained in verification-v3.0.json.",
     "Original publication verification is historical; updated drafts and checks are in the 20261117 archive. No new credential scan is claimed."
   ],
-  "total_bytes": 231103289,
+  "total_bytes": 248444428,
   "update_20261117": {
     "python_passed": 62,
     "worker_passed": 70,
@@ -1721,11 +1836,44 @@
     "credential_pattern_findings": 0
   },
   "verification": {
-    "python_passed": 62,
+    "python_passed": 68,
     "worker_passed": 70,
     "build_passed": true,
     "corrected_archive_crc_verified": true,
     "frozen_model_and_experiment_files_unchanged": true,
     "production_deployed": false
+  },
+  "research_extension_20261117": {
+    "checked_date": "2026-11-17",
+    "python_passed": 68,
+    "worker_passed": 70,
+    "build_passed": true,
+    "production_deployed": false,
+    "design_source_changed": false,
+    "models_reselected": false,
+    "evidence": [
+      "research_extension_tests.xml",
+      "research_extension_worker.txt",
+      "research_extension_build.txt",
+      "explanation_audit.json",
+      "literature_experiments.json"
+    ],
+    "pdf_review": {
+      "research_report_pages": 8,
+      "thesis_draft_pages": 32,
+      "rendered_and_visually_reviewed": true
+    },
+    "local_library": {
+      "three_requested_dois_each_present_once": true
+    },
+    "limits": [
+      "Six training profiles per dataset; no patient-level generalization claim from explanation audit.",
+      "Exploratory follow-up analyses, not retrospective preregistration.",
+      "Calibration diagnostic fits on test are not applied to prediction.",
+      "Main thesis remains a draft, not a completed 100-page manuscript."
+    ],
+    "new_archive": "CardioResearch_3.0_research_20261117.zip",
+    "archive_crc_verified": true,
+    "frozen_inputs_unchanged": true
   }
 }

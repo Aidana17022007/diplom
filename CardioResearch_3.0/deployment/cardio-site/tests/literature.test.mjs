@@ -7,13 +7,14 @@ import {withLiteratureAdditions} from '../src/literature.js';
 
 const load=name=>JSON.parse(readFileSync(new URL('../data/'+name,import.meta.url)));
 const library=load('reports.json').library, additions=load('literature-additions.json');
+const expectedPaperCount=library.papers.length+additions.records.length;
 
 test('supplementary review is merged without mutating frozen reports or archive counts',()=>{
  const original=JSON.stringify(library), extra=JSON.stringify(additions);
  const result=withLiteratureAdditions(library,additions);
- assert.equal(result.papers.length,13);
- assert.equal(result.counts.papers,13);
- assert.deepEqual(result.counts,{books:10,papers:13,software:8,atherosclerosis:12});
+ assert.equal(result.papers.length,expectedPaperCount);
+ assert.equal(result.counts.papers,expectedPaperCount);
+ assert.deepEqual(result.counts,{books:10,papers:expectedPaperCount,software:8,atherosclerosis:12});
  assert.equal(JSON.stringify(library),original);assert.equal(JSON.stringify(additions),extra);
  assert.equal(result.atherosclerosis.archive.pdf_count,library.atherosclerosis.archive.pdf_count);
  result.papers[0].title='Changed result only';
@@ -26,13 +27,13 @@ test('DOI normalization deduplicates repeated additions and duplicates across ca
  assert.deepEqual(twice,once);
  const archiveDOI=library.atherosclerosis.records.find(record=>record.doi).doi;
  assert.deepEqual(withLiteratureAdditions(library,{records:[{id:'duplicate-archive',title:'Duplicate',doi:archiveDOI}]}).papers,library.papers);
- assert.equal(withLiteratureAdditions(once,{records:[{id:additions.records[0].id,title:'Another title'}]}).papers.length,13);
+ assert.equal(withLiteratureAdditions(once,{records:[{id:additions.records[0].id,title:'Another title'}]}).papers.length,expectedPaperCount);
 });
 
 test('optional archive and absent paper lists do not prevent a supplementary reference',()=>{
  const result=withLiteratureAdditions({atherosclerosis:null,papers:null,books:null,software:null,counts:null},additions);
- assert.equal(result.papers.length,1);
- assert.deepEqual(result.counts,{books:0,papers:1,software:0,atherosclerosis:0});
+ assert.equal(result.papers.length,additions.records.length);
+ assert.deepEqual(result.counts,{books:0,papers:additions.records.length,software:0,atherosclerosis:0});
  assert.equal(result.atherosclerosis,null);
 });
 

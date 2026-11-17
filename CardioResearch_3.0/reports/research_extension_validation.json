@@ -1,0 +1,30 @@
+{
+  "checked_date": "2026-11-17",
+  "python_passed": 68,
+  "worker_passed": 70,
+  "build_passed": true,
+  "production_deployed": false,
+  "design_source_changed": false,
+  "models_reselected": false,
+  "evidence": [
+    "research_extension_tests.xml",
+    "research_extension_worker.txt",
+    "research_extension_build.txt",
+    "explanation_audit.json",
+    "literature_experiments.json"
+  ],
+  "pdf_review": {
+    "research_report_pages": 8,
+    "thesis_draft_pages": 32,
+    "rendered_and_visually_reviewed": true
+  },
+  "local_library": {
+    "three_requested_dois_each_present_once": true
+  },
+  "limits": [
+    "Six training profiles per dataset; no patient-level generalization claim from explanation audit.",
+    "Exploratory follow-up analyses, not retrospective preregistration.",
+    "Calibration diagnostic fits on test are not applied to prediction.",
+    "Main thesis remains a draft, not a completed 100-page manuscript."
+  ]
+}

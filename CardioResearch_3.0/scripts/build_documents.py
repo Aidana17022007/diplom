@@ -200,7 +200,11 @@ UCI таңдама көлемі шағын болғандықтан, сыртқ�
 
 Әр алгоритмнің гиперпараметрлері ішкі CV-де таңдалғанымен, ең жақсы алгоритмді бірнеше кандидат арасынан таңдау қосымша белгісіздік туғызады. Оны жою үшін тәуелсіз сыртқы клиникалық дерек қажет. 3.0 материалдарында басқа үш орталыққа ретроспективті тасымал бөлек зерттелді (4.8 бөлім). Бұл зерттеу клиникалық қолдануға жарамдылықты дәлелдемейді. UCI метрикаларының BRFSS-тен жоғары болуы клиникалық белгілер, іріктеу және мақсат айырмашылықтарымен бірге қарастырылуы тиіс.''')
     d.figure('uci','8-сурет. UCI Cleveland: Average Precision орташа мәні және сыртқы CV стандартты ауытқуы.');d.page()
-    add_results(d);d.page()
+    add_results(d)
+    if (ROOT/'reports/explanation_audit.json').exists() and (ROOT/'reports/literature_experiments.json').exists():
+        from research_extensions_document import add_sections
+        add_sections(d)
+    d.page()
     d.h('5 Қосымшаның архитектурасы және іске асырылуы')
     paragraphs(d,'''CardioResearch үш логикалық қабатқа бөлінген. Деректер мен модель қабаты архивтерді оқиды, белгілерді дайындайды, тәжірибелерді жүргізеді және артефакттарды сақтайды. FastAPI сервері сақталған модель арқылы сұрауларды өңдейді. React және TypeScript интерфейсі анкетаны, салыстыру кестелерін, Plotly графиктерін және файл жүктеуді көрсетеді.
 
@@ -258,6 +262,9 @@ SQLite базасында тек эксперименттің атауы, уақ
       '[8] CDC BRFSS 2023 Codebook. Жергілікті архив: codebook23_llcp-v2-508 (1).zip; файл: USCODE23_LLCP_021924.HTML. Таңдалған үзінділер reports/codebook_excerpts.json файлында сақталған.'
     ]
     refs.append('[9] CDC. 2024 BRFSS Survey Data and Documentation. https://www.cdc.gov/brfss/annual_data/annual_2024.html. Тексерілген: 17.11.2026.')
+    if (ROOT/'reports/explanation_audit.json').exists() and (ROOT/'reports/literature_experiments.json').exists():
+        from research_extensions_document import SOURCES
+        refs.extend(SOURCES)
     for r in refs:d.p(r,style='SmallKK')
     d.p('Онлайн дереккөздер тексерілген күн: 2026 жылғы 7 қараша. Нәтижелер жергілікті архивтердің сақталған бақылау сомаларына қатысты.',style='SmallKK');d.page()
     d.h('Қосымша А Белгілер сөздігі')

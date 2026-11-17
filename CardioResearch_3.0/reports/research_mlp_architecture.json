@@ -1,0 +1,10 @@
+{
+  "original_features": 11,
+  "encoded_inputs": 47,
+  "hidden_layers": [
+    24
+  ],
+  "output_units": 1,
+  "source": "Saved BRFSS benchmark best_params and shared fixed-schema preprocessing",
+  "learned_weights_visualized": false
+}

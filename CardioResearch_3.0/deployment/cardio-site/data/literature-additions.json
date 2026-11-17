@@ -4,7 +4,16 @@
     {
       "id": "USER-2026-120745",
       "title": "Atherosclerosis and dementia - causal aspects and preventive potential",
-      "authors": ["Ida Juul Rasmussen", "Jiao Luo", "Katrine Laura Rasmussen", "Emilie Westerlin Kjeldsen", "Lucia Sanchez Schneider", "Nicolai Sandau", "Jesper Qvist Thomassen", "Ruth Frikke-Schmidt"],
+      "authors": [
+        "Ida Juul Rasmussen",
+        "Jiao Luo",
+        "Katrine Laura Rasmussen",
+        "Emilie Westerlin Kjeldsen",
+        "Lucia Sanchez Schneider",
+        "Nicolai Sandau",
+        "Jesper Qvist Thomassen",
+        "Ruth Frikke-Schmidt"
+      ],
       "year": 2026,
       "journal": "Atherosclerosis",
       "volume": "417",
@@ -28,6 +37,33 @@
       "verification_kk": "PubMed арқылы библиографиялық деректер мен аннотация тексерілді. Баспагердің толық мәтінін оқу мүмкін болмады (403); толық мәтін бойынша қорытынды жасалмаған.",
       "source_checked_at": "2026-11-09",
       "suggested_section": "Теоретическая основа и ограничения интерпретации / Теориялық негіз және түсіндіру шектеулері"
+    },
+    {
+      "id": "WENG-2017-0174944",
+      "title": "Can machine-learning improve cardiovascular risk prediction using routine clinical data?",
+      "authors": [
+        "Stephen F. Weng",
+        "Jenna Reps",
+        "Joe Kai",
+        "Jonathan M. Garibaldi",
+        "Nadeem Qureshi"
+      ],
+      "year": 2017,
+      "journal": "PLOS ONE",
+      "doi": "10.1371/journal.pone.0174944",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0174944",
+      "type": "prospective_cohort",
+      "citation": "Weng SF, Reps J, Kai J, Garibaldi JM, Qureshi N. PLOS ONE. 2017;12(4):e0174944. doi:10.1371/journal.pone.0174944.",
+      "summary_ru": "Сравнение четырёх алгоритмов для десятилетних сердечно-сосудистых событий в британских клинических данных.",
+      "summary_kk": "Британдық клиникалық деректерде он жылдық жүрек-қан тамырлары оқиғалары үшін төрт алгоритм салыстырылған.",
+      "project_use_ru": "Выполнена отдельная проверка индикаторов отсутствующих числовых значений на 12 000 исходных обучающих строках BRFSS; отчёт literature_experiments.json.",
+      "project_use_kk": "BRFSS бастапқы оқыту бөлігінің 12 000 жолында сандық бос мән индикаторлары бөлек тексерілді; есеп: literature_experiments.json.",
+      "limitations_ru": "Другая целевая задача и популяция. Десятилетний горизонт, признаки CPRD и порог лечения не переносятся в CardioResearch.",
+      "limitations_kk": "Мақсат пен популяция басқа. Он жылдық мерзім, CPRD белгілері және емдеу шегі CardioResearch-ке көшірілмейді.",
+      "verification_scope": "full_text_sections",
+      "verification_ru": "На странице издателя проверены библиография, методы обработки пропусков, целевая задача и подпись к рис. 2.",
+      "verification_kk": "Баспагер бетінде библиография, бос мән әдістемесі, мақсатты міндет және 2-суреттің түсіндірмесі тексерілді.",
+      "source_checked_at": "2026-11-17"
     }
   ]
 }

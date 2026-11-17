@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "fixed_date": "2026-11-17",
+  "purpose": "Post-hoc numerical explanation audit; no classifier, calibration or threshold selection",
+  "datasets": ["brfss", "uci"],
+  "profiles_per_dataset": 6,
+  "profile_selection": "Seeded selection from saved training-background rows after row 30; no target or error selection",
+  "seed": 20261117,
+  "production_seed": 20261107,
+  "background_size": 30,
+  "background_reference": "First 30 saved training-background rows, exactly as the local API",
+  "alternative_background": "30 seeded rows outside both reference background and selected audit profiles",
+  "permutation_budgets": [12, 48, 192],
+  "seeds_per_budget": 20,
+  "exact_game": "Mean uncalibrated model probability over finite background, all 2^d coalitions",
+  "primary_measure": "Mean absolute attribution error in percentage points versus exhaustive enumeration",
+  "secondary_measures": ["maximum absolute error", "top-3 absolute attribution overlap", "sign agreement excluding exact contributions below 0.01 percentage points", "additivity residual"],
+  "background_sensitivity": "Exact attributions under a different empirical reference distribution; this is not Monte Carlo approximation error",
+  "ranking_ties": "Stable feature-order tie break; top-k metrics are sensitive to near ties",
+  "limits": ["Six training profiles per dataset, not a representative population evaluation", "Seeds and profiles are dependent for inference; no population CI or significance claims", "Interventional replacement may form unrealistic correlated-feature combinations", "No medical diagnosis, causal claims, or clinical validation", "No raw profiles or individual input values are published"]
+}
