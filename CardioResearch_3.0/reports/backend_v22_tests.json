@@ -1,0 +1,15 @@
+{
+  "release": "2.2.0",
+  "python_tests": 45,
+  "python_failures": 0,
+  "worker_tests": 20,
+  "worker_failures": 0,
+  "evidence": "Full regression run by backend_upgrade; Python 17.60s, Node 2.71s",
+  "new_checks": [
+    "Scenario probability parity between Python and Worker",
+    "Auth before request-body processing",
+    "Bounded 2-9 distinct values and 32 KiB",
+    "No mutation of baseline input",
+    "Allowlisted aggregate metadata export"
+  ]
+}

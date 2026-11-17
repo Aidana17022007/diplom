@@ -1,0 +1,13 @@
+{
+  "release": "2.4.0",
+  "verified_on": "2026-11-09",
+  "typecheck_and_production_build": "passed",
+  "automated_tests": {"passed": 23, "failed": 0},
+  "browser_qa": {
+    "verified": ["legacy #battle redirects to #thesis", "Russian thesis checklist", "checkbox progress", "Kazakh localization", "390px mobile layout after heading repair", "checkboxes reset on reload"],
+    "console_errors_observed": 0,
+    "no_horizontal_document_overflow_mobile": true
+  },
+  "scope": "Replaced competition preparation with thesis readiness. Preserved trained models and existing reports. Corrected CRLF handling in the project-archive README update.",
+  "manuscript": "Existing PDF/HTML documents remain unrevised drafts. Final text, source review, formatting, official paperwork and department approval remain outstanding."
+}

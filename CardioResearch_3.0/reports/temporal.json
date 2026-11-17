@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "dataset": "brfss",
+  "model": "Logistic Regression",
+  "threshold": 0.19042448230963954,
+  "scope": {
+    "ru": "Исследовательский перенос между годами при изменившейся доступности признаков",
+    "kk": "Белгілердің қолжетімділігі өзгерген кездегі жылдар арасындағы зерттеу тасымалы"
+  },
+  "missing_features": [
+    {
+      "feature": "hypertension",
+      "source": "BPHIGH6"
+    },
+    {
+      "feature": "cholesterol",
+      "source": "TOLDHI3"
+    }
+  ],
+  "cohorts": [
+    {
+      "id": "test_2023",
+      "year": 2023,
+      "label": {
+        "ru": "Тест 2023 · исходные признаки",
+        "kk": "2023 тесті · бастапқы белгілер"
+      },
+      "n": 85748,
+      "positive": 7262,
+      "negative": 78486,
+      "prevalence": 0.08469002192470962,
+      "threshold": 0.19042448230963954,
+      "weighting": "unweighted",
+      "metrics": {
+        "roc_auc": 0.8388685147257342,
+        "average_precision": 0.32087306860285136,
+        "accuracy": 0.8627373233194944,
+        "precision": 0.3102054563826204,
+        "recall": 0.5072982649407877,
+        "specificity": 0.8956246973982621,
+        "f1": 0.3849932072316857,
+        "brier": 0.06595875512181058
+      },
+      "confusion": [
+        [
+          70294,
+          8192
+        ],
+        [
+          3578,
+          3684
+        ]
+      ],
+      "survey_weighted_metrics": {
+        "roc_auc": 0.852574666871531,
+        "average_precision": 0.30684601812223194,
+        "accuracy": 0.8961340540992792,
+        "precision": 0.2990122674013713,
+        "recall": 0.4642863828615992,
+        "specificity": 0.9256377170663752,
+        "f1": 0.3637562414533273,
+        "brier": 0.05086578817969289
+      },
+      "feature_missingness": {
+        "age_group": 1456,
+        "sex": 0,
+        "bmi": 7879,
+        "smoking": 4496,
+        "activity": 224,
+        "diabetes": 147,
+        "hypertension": 324,
+        "cholesterol": 10831,
+        "general_health": 237,
+        "physical_days": 2053,
+        "mental_days": 1579
+      },
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 61537,
+          "mean_probability": 0.03087083642857255,
+          "observed_rate": 0.027804410354745925
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 13260,
+          "mean_probability": 0.14280399806636923,
+          "observed_rate": 0.15520361990950227
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 5844,
+          "mean_probability": 0.24400259602202584,
+          "observed_rate": 0.25598904859685145
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 2838,
+          "mean_probability": 0.34643332435855306,
+          "observed_rate": 0.34319943622269206
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 1343,
+          "mean_probability": 0.4456446849222817,
+          "observed_rate": 0.40804169769173493
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 634,
+          "mean_probability": 0.5401548298191718,
+          "observed_rate": 0.4921135646687697
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 242,
+          "mean_probability": 0.6419161128933802,
+          "observed_rate": 0.5495867768595041
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 50,
+          "mean_probability": 0.7383178338066658,
+          "observed_rate": 0.6
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null
+        }
+      ]
+    },
+    {
+      "id": "masked_2023",
+      "year": 2023,
+      "label": {
+        "ru": "Тест 2023 · два признака скрыты",
+        "kk": "2023 тесті · екі белгі жасырылған"
+      },
+      "n": 85748,
+      "positive": 7262,
+      "negative": 78486,
+      "prevalence": 0.08469002192470962,
+      "threshold": 0.19042448230963954,
+      "weighting": "unweighted",
+      "metrics": {
+        "roc_auc": 0.8264291914863341,
+        "average_precision": 0.297539975706478,
+        "accuracy": 0.8908079488734432,
+        "precision": 0.34639567188185405,
+        "recall": 0.32621867254199943,
+        "specificity": 0.9430471676477333,
+        "f1": 0.33600453868519964,
+        "brier": 0.06811106930555283
+      },
+      "confusion": [
+        [
+          74016,
+          4470
+        ],
+        [
+          4893,
+          2369
+        ]
+      ],
+      "survey_weighted_metrics": {
+        "roc_auc": 0.8426083507436551,
+        "average_precision": 0.27798365066925346,
+        "accuracy": 0.9180298284755789,
+        "precision": 0.3370351991690089,
+        "recall": 0.2913757543797238,
+        "specificity": 0.9608425882297137,
+        "f1": 0.312546701663356,
+        "brier": 0.05243077206276095
+      },
+      "feature_missingness": {
+        "age_group": 1456,
+        "sex": 0,
+        "bmi": 7879,
+        "smoking": 4496,
+        "activity": 224,
+        "diabetes": 147,
+        "hypertension": 85748,
+        "cholesterol": 85748,
+        "general_health": 237,
+        "physical_days": 2053,
+        "mental_days": 1579
+      },
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 67042,
+          "mean_probability": 0.03402808991450207,
+          "observed_rate": 0.03846842277975001
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 12465,
+          "mean_probability": 0.1391570063943097,
+          "observed_rate": 0.19935820296831128
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 4066,
+          "mean_probability": 0.24140422486043814,
+          "observed_rate": 0.31554353172651256
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 1492,
+          "mean_probability": 0.34151216430345505,
+          "observed_rate": 0.39544235924932974
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 484,
+          "mean_probability": 0.4411977752265321,
+          "observed_rate": 0.4462809917355372
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 178,
+          "mean_probability": 0.5332882880181893,
+          "observed_rate": 0.5449438202247191
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 21,
+          "mean_probability": 0.6168980277834943,
+          "observed_rate": 0.5714285714285714
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null
+        }
+      ]
+    },
+    {
+      "id": "transfer_2024",
+      "year": 2024,
+      "label": {
+        "ru": "Перенос 2024 · два признака отсутствуют",
+        "kk": "2024-ке тасымалдау · екі белгі жоқ"
+      },
+      "n": 452464,
+      "positive": 42338,
+      "negative": 410126,
+      "prevalence": 0.09357208529297359,
+      "threshold": 0.19042448230963954,
+      "weighting": "unweighted",
+      "metrics": {
+        "roc_auc": 0.8205849011631869,
+        "average_precision": 0.31607844935116725,
+        "accuracy": 0.8848703985289438,
+        "precision": 0.3667777534965035,
+        "recall": 0.31713826822240065,
+        "specificity": 0.9434783456791328,
+        "f1": 0.3401565627137537,
+        "brier": 0.07467713894454212
+      },
+      "confusion": [
+        [
+          386945,
+          23181
+        ],
+        [
+          28911,
+          13427
+        ]
+      ],
+      "survey_weighted_metrics": {
+        "roc_auc": 0.8368236589090723,
+        "average_precision": 0.28202895022433355,
+        "accuracy": 0.9140076508521154,
+        "precision": 0.34173893059598964,
+        "recall": 0.28545866519419105,
+        "specificity": 0.9598751768357608,
+        "f1": 0.3110737019006563,
+        "brier": 0.05572206543390199
+      },
+      "feature_missingness": {
+        "age_group": 8023,
+        "sex": 0,
+        "bmi": 42183,
+        "smoking": 31382,
+        "activity": 1194,
+        "diabetes": 771,
+        "hypertension": 452464,
+        "cholesterol": 452464,
+        "general_health": 1201,
+        "physical_days": 10546,
+        "mental_days": 7757
+      },
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 352728,
+          "mean_probability": 0.03407884492871317,
+          "observed_rate": 0.04434578485405185
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 66125,
+          "mean_probability": 0.13934087329231268,
+          "observed_rate": 0.21382230623818527
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 21981,
+          "mean_probability": 0.24124474439273227,
+          "observed_rate": 0.3300577771711933
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 7884,
+          "mean_probability": 0.3427935600518606,
+          "observed_rate": 0.4275748351090817
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 2694,
+          "mean_probability": 0.4420969620393363,
+          "observed_rate": 0.48106904231625836
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 919,
+          "mean_probability": 0.5338740513808432,
+          "observed_rate": 0.5984766050054406
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 133,
+          "mean_probability": 0.618890089133014,
+          "observed_rate": 0.6390977443609023
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null
+        }
+      ]
+    }
+  ],
+  "schema": {
+    "required": [
+      "_AGEG5YR",
+      "SEXVAR",
+      "_BMI5",
+      "_SMOKER3",
+      "EXERANY2",
+      "DIABETE4",
+      "BPHIGH6",
+      "TOLDHI3",
+      "GENHLTH",
+      "PHYSHLTH",
+      "MENTHLTH"
+    ],
+    "present": [
+      "_AGEG5YR",
+      "SEXVAR",
+      "_BMI5",
+      "_SMOKER3",
+      "EXERANY2",
+      "DIABETE4",
+      "GENHLTH",
+      "PHYSHLTH",
+      "MENTHLTH"
+    ],
+    "absent": [
+      "BPHIGH6",
+      "TOLDHI3"
+    ],
+    "features": [
+      {
+        "feature": "age_group",
+        "source": "_AGEG5YR",
+        "present_2024": true,
+        "kind": "category",
+        "label": "Возрастная группа",
+        "allowed_values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "transformation": "Documented categories; other values -> missing"
+      },
+      {
+        "feature": "sex",
+        "source": "SEXVAR",
+        "present_2024": true,
+        "kind": "category",
+        "label": "Пол",
+        "allowed_values": [
+          1,
+          2
+        ],
+        "transformation": "Documented categories; other values -> missing"
+      },
+      {
+        "feature": "bmi",
+        "source": "_BMI5",
+        "present_2024": true,
+        "kind": "number",
+        "label": "Индекс массы тела",
+        "allowed_values": [],
+        "transformation": "BMI / 100"
+      },
+      {
+        "feature": "smoking",
+        "source": "_SMOKER3",
+        "present_2024": true,
+        "kind": "category",
+        "label": "Курение",
+        "allowed_values": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "transformation": "Documented categories; other values -> missing"
+      },
+      {
+        "feature": "activity",
+        "source": "EXERANY2",
+        "present_2024": true,
+        "kind": "category",
+        "label": "Физическая активность за последний месяц",
+        "allowed_values": [
+          1,
+          2
+        ],
+        "transformation": "Documented categories; other values -> missing"
+      },
+      {
+        "feature": "diabetes",
+        "source": "DIABETE4",
+        "present_2024": true,
+        "kind": "category",
+        "label": "Сообщали ли вам о диабете?",
+        "allowed_values": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "transformation": "Documented categories; other values -> missing"
+      },
+      {
+        "feature": "hypertension",
+        "source": "BPHIGH6",
+        "present_2024": false,
+        "kind": "category",
+        "label": "Сообщали ли вам о повышенном давлении?",
+        "allowed_values": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "transformation": "Documented categories; other values -> missing"
+      },
+      {
+        "feature": "cholesterol",
+        "source": "TOLDHI3",
+        "present_2024": false,
+        "kind": "category",
+        "label": "Сообщали ли вам о высоком холестерине?",
+        "allowed_values": [
+          1,
+          2
+        ],
+        "transformation": "Documented categories; other values -> missing"
+      },
+      {
+        "feature": "general_health",
+        "source": "GENHLTH",
+        "present_2024": true,
+        "kind": "category",
+        "label": "Общая оценка здоровья",
+        "allowed_values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "transformation": "Documented categories; other values -> missing"
+      },
+      {
+        "feature": "physical_days",
+        "source": "PHYSHLTH",
+        "present_2024": true,
+        "kind": "number",
+        "label": "Дней плохого физического самочувствия за 30 дней",
+        "allowed_values": [],
+        "transformation": "88 days -> 0; 77/99 -> missing"
+      },
+      {
+        "feature": "mental_days",
+        "source": "MENTHLTH",
+        "present_2024": true,
+        "kind": "number",
+        "label": "Дней плохого эмоционального самочувствия за 30 дней",
+        "allowed_values": [],
+        "transformation": "88 days -> 0; 77/99 -> missing"
+      }
+    ],
+    "source_raw_rows": 457670,
+    "source_columns": 301,
+    "unknown_target_removed": 5206,
+    "target_mismatches": 0,
+    "target": "CVDINFR4=1 OR CVDCRHD4=1 => 1; both=2 => 0; otherwise exclude; checked against _MICHD",
+    "missing_policy": "Absent predictors become NaN; the frozen training pipeline encodes unknown categorical values as -1. No fitting or replacement with a healthy category."
+  },
+  "provenance": {
+    "sources": [
+      "https://www.cdc.gov/brfss/annual_data/2024/files/LLCP2024XPT.zip",
+      "https://www.cdc.gov/brfss/annual_data/2024/zip/codebook24_llcp-v2-508.zip",
+      "https://www.cdc.gov/brfss/annual_data/2024/llcp_varlayout_24_onecolumn.html"
+    ],
+    "source_sha256": "d33de91a584e866f657d29b1d5b51b5672467286ed22d021e36ee3c7b4d712a4",
+    "codebook_sha256": "06c1c0e9c384d70c5b204e7869b1b1ad3f402a37a730c1d9a1f5aeee94fd1918",
+    "model_sha256": "b40179c28ed81d3d0363f314c167d649eae7dc83065b48637871ff079e6cc2b2",
+    "created": "2026-11-09T18:46:40.877944+00:00",
+    "threshold_source": "Original validation maximum F1; fixed before original held-out test; unchanged",
+    "frozen_files_unchanged": true,
+    "frozen_file_count": 68,
+    "refit": false,
+    "recalibration": false,
+    "threshold_retuning": false
+  },
+  "limitations": {
+    "ru": [
+      "В 2024 нет BPHIGH6 и TOLDHI3. Результат одновременно отражает другой год, состав выборки и отсутствие двух признаков.",
+      "Контроль 2023 с двумя скрытыми признаками показывает чувствительность той же модели на тех же тестовых наблюдениях; это не новый независимый тест.",
+      "Основные метрики невзвешенные. Дополнительные оценки с весами не заменяют анализ сложного дизайна опроса.",
+      "Таблицы описывают зарегистрированное заболевание, а не будущие события. Новый год не является повторным наблюдением тех же людей.",
+      "Не проводились клиническая валидация, проверка в Казахстане, переобучение или выбор лучшей модели по данным 2024.",
+      "Average Precision зависит от доли положительного класса; изменение AP между годами само по себе не доказывает улучшение модели."
+    ],
+    "kk": [
+      "2024 жылы BPHIGH6 және TOLDHI3 жоқ. Нәтиже басқа жылды, іріктеме құрамын және екі белгінің болмауын бірге көрсетеді.",
+      "Екі белгісі жасырылған 2023 бақылауы сол модельдің сол тест жазбаларындағы сезімталдығын көрсетеді; бұл жаңа тәуелсіз тест емес.",
+      "Негізгі метрикалар салмақсыз. Салмақпен қосымша бағалау сауалнаманың күрделі дизайнын талдауды алмастырмайды.",
+      "Кестелер болашақ оқиғаларды емес, тіркелген ауруды сипаттайды. Жаңа жыл сол адамдарды қайта бақылау емес.",
+      "Клиникалық валидация, Қазақстанда тексеру, қайта оқыту немесе 2024 деректері бойынша үздік модельді таңдау жүргізілген жоқ.",
+      "Average Precision оң кластың үлесіне тәуелді; жылдар арасындағы AP өзгерісі өздігінен модельдің жақсарғанын дәлелдемейді."
+    ]
+  }
+}

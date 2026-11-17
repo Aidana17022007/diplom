@@ -1,0 +1,15 @@
+{
+  "id": "appgdep_6af0430f66d081918d7f147b83693a58",
+  "project_id": "appgprj_6aef562fe80881918d472f0b94e8ba2d",
+  "title": "CardioResearch — жүрек-қан тамырлары ауруларын зерттеу",
+  "version_id": "appgprj_6aef562fe80881918d472f0b94e8ba2d~appgver_b017d4ad3fd88191b63ae6bbb2b84820",
+  "type": "publish",
+  "status": "succeeded",
+  "url": "https://cardioresearch-aidana-2027.happyburr1.chatgpt.site",
+  "has_mcp": false,
+  "screenshot_asset_pointer": null,
+  "provider_deployment_id": "site---6aef562fe80881918d472f0b94e8ba2d",
+  "failure_message": null,
+  "env_set_revision": 1,
+  "updated_at": "2026-11-08T09:38:37.992833+00:00"
+}

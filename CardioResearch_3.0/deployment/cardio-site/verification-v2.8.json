@@ -1,0 +1,91 @@
+{
+  "release": "2.8.0",
+  "date": "2026-11-09",
+  "scope": "Research dashboard, model comparison exports and session preferences, smaller chart runtime, fullscreen artery and snapshot; no model refit or manuscript work",
+  "node_tests": {
+    "passed": 56,
+    "failed": 0,
+    "command": "node --test tests/*.test.mjs"
+  },
+  "build": {
+    "passed": true,
+    "scope": "TypeScript, Vite and Worker with Node 24"
+  },
+  "chart_bundle": {
+    "previous_bytes": 4843377,
+    "current_bytes": 1427090,
+    "previous_gzip_bytes": 1459324,
+    "current_gzip_bytes": 472235,
+    "gzip_reduction_percent": 67.64,
+    "supported_rendered_traces": [
+      "scatter",
+      "bar",
+      "pie",
+      "heatmap",
+      "asymmetric error bars"
+    ]
+  },
+  "dashboard": {
+    "brfss": {
+      "evaluation": "unweighted held-out test",
+      "n": 85748
+    },
+    "uci": {
+      "evaluation": "averaged OOF probabilities, distinct from mean of six outer CV scores",
+      "n": 303
+    },
+    "calibration_empty_bins_omitted": true,
+    "missing_values_not_zeroed": true
+  },
+  "comparison": {
+    "preferences": "sessionStorage with bounded in-memory fallback; public metric view preferences only",
+    "isolation": "dataset, experiment, evaluation, weighting and exact metrics snapshot",
+    "exports": [
+      "CSV full precision with context, n, thresholds, fold SD and signed differences",
+      "SVG with context, n, thresholds, fold SD and common 0-1 scale"
+    ],
+    "tests": "CSV parsed by Python csv, SVG parsed by XML parser"
+  },
+  "browser": {
+    "viewport_widths": [
+      1280,
+      390
+    ],
+    "languages": [
+      "ru",
+      "kk"
+    ],
+    "console_errors": 0,
+    "checks": [
+      "BRFSS and UCI dashboard counts, scopes and navigation",
+      "Dashboard mobile cards, error bars and calibration without horizontal page overflow",
+      "UCI uncertainty action opens correct laboratory",
+      "Comparison selection and sort restored after section navigation and page reload after reselecting dataset",
+      "BRFSS and UCI pair preferences are isolated",
+      "CSV and SVG export status; chart PNG export button",
+      "Scatter, bar, pie, heatmap and asymmetric error bars render with partial Plotly",
+      "Artery expanded dialog desktop and mobile, inactive background, Tab wrap, Escape focus return and state cleanup",
+      "Artery PNG export success status in RU and KK; current geometry remains independent of ML"
+    ]
+  },
+  "local_python": {
+    "tested_archive": "CardioResearch_2.7_project.zip",
+    "backend_unchanged_in_2_8": true,
+    "python": "3.12.14",
+    "pytest_passed": 43,
+    "pytest_failed": 2,
+    "failure_reason": "Observed-row model parity tests require missing optional data/processed/brfss.pkl and uci.pkl",
+    "api_smoke_requests_passed": 43,
+    "scope": "Both model predictions RU/KZ, explanation, valid embedded-font PDF, batch CSV, evaluation, transfer, library and authentication",
+    "pip_check_passed": true,
+    "frozen_model_report_files_unchanged": 68
+  },
+  "limits": [
+    "No change to frozen models, reports, prediction thresholds or scientific performance",
+    "No retraining, full training reproduction or new clinical validation",
+    "Local Python pytest is not fully green: two tests fail because source processed datasets are absent",
+    "Native OS fullscreen was unavailable in the in-app browser; expanded CSS fallback was exercised",
+    "Downloaded PNG files and PDFs were not visually inspected; browser export status and PDF structure/fonts were checked",
+    "Forced WebGL context loss was not tested"
+  ]
+}

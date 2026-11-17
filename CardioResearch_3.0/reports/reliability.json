@@ -1,0 +1,1005 @@
+{
+  "created": "2026-11-07T15:36:02.416387+00:00",
+  "method": {
+    "confidence_level": 0.95,
+    "bootstrap_repeats": 500,
+    "seed": 20261107,
+    "selection_changed": false,
+    "sources": [
+      "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats._result_classes.BinomTestResult.proportion_ci.html",
+      "https://scikit-learn.org/1.7/modules/cross_validation.html"
+    ]
+  },
+  "uci": {
+    "n": 303,
+    "repeats": 500,
+    "models": [
+      {
+        "name": "Dummy",
+        "metrics": {
+          "roc_auc": 0.4890770310580804,
+          "average_precision": 0.45242501191818163,
+          "accuracy": 0.5412541254125413,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "f1": 0.0,
+          "brier": 0.2483227797831249,
+          "confusion": [
+            [
+              164.0,
+              0.0
+            ],
+            [
+              139.0,
+              0.0
+            ]
+          ]
+        },
+        "fold_match": true,
+        "max_abs_metric_delta": 0.0,
+        "fold_checks": [
+          {
+            "fold": 0,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 1,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 2,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 3,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 4,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 5,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          }
+        ],
+        "predict_timing": {
+          "n": 101,
+          "repeats": 7,
+          "median_ms": 5.156100000021979,
+          "p95_ms": 5.924290000439213,
+          "scope": "last outer-fold estimator;101 rows; warm inference;2 native threads; not HTTP latency"
+        },
+        "ci": {
+          "roc_auc": [
+            0.4306619340782295,
+            0.5464554272013948
+          ],
+          "average_precision": [
+            0.3913754856497206,
+            0.5140208703156466
+          ],
+          "recall": [
+            0.0,
+            0.0
+          ],
+          "brier": [
+            0.2434456744922115,
+            0.2528641796790453
+          ]
+        }
+      },
+      {
+        "name": "Logistic Regression",
+        "metrics": {
+          "roc_auc": 0.9055974732409194,
+          "average_precision": 0.9006288397854245,
+          "accuracy": 0.8448844884488449,
+          "precision": 0.8333333333333334,
+          "recall": 0.8273381294964028,
+          "specificity": 0.8597560975609756,
+          "f1": 0.8303249097472925,
+          "brier": 0.12071023789292579,
+          "confusion": [
+            [
+              141.0,
+              23.0
+            ],
+            [
+              24.0,
+              115.0
+            ]
+          ]
+        },
+        "fold_match": true,
+        "max_abs_metric_delta": 0.0,
+        "fold_checks": [
+          {
+            "fold": 0,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 1,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 2,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 3,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 4,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 5,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          }
+        ],
+        "predict_timing": {
+          "n": 101,
+          "repeats": 7,
+          "median_ms": 5.380499999773747,
+          "p95_ms": 6.209459999718092,
+          "scope": "last outer-fold estimator;101 rows; warm inference;2 native threads; not HTTP latency"
+        },
+        "ci": {
+          "roc_auc": [
+            0.873805249825297,
+            0.9360748908667261
+          ],
+          "average_precision": [
+            0.8543589971078046,
+            0.938667174164955
+          ],
+          "recall": [
+            0.7662943262411348,
+            0.8852092371904003
+          ],
+          "brier": [
+            0.0956366999735731,
+            0.14266270389066701
+          ]
+        }
+      },
+      {
+        "name": "Decision Tree",
+        "metrics": {
+          "roc_auc": 0.7822205650114056,
+          "average_precision": 0.7009290429007322,
+          "accuracy": 0.7656765676567657,
+          "precision": 0.7297297297297297,
+          "recall": 0.7769784172661871,
+          "specificity": 0.7560975609756098,
+          "f1": 0.7526132404181185,
+          "brier": 0.1773971903573174,
+          "confusion": [
+            [
+              124.0,
+              40.0
+            ],
+            [
+              31.0,
+              108.0
+            ]
+          ]
+        },
+        "fold_match": true,
+        "max_abs_metric_delta": 0.0,
+        "fold_checks": [
+          {
+            "fold": 0,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 1,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 2,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 3,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 4,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 5,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          }
+        ],
+        "predict_timing": {
+          "n": 101,
+          "repeats": 7,
+          "median_ms": 5.003299999771116,
+          "p95_ms": 6.218749999970896,
+          "scope": "last outer-fold estimator;101 rows; warm inference;2 native threads; not HTTP latency"
+        },
+        "ci": {
+          "roc_auc": [
+            0.7285671214054804,
+            0.8372995414471357
+          ],
+          "average_precision": [
+            0.6237685116740131,
+            0.7870536121291437
+          ],
+          "recall": [
+            0.7100695220013401,
+            0.8434168443496802
+          ],
+          "brier": [
+            0.15407228047114382,
+            0.20166939785877336
+          ]
+        }
+      },
+      {
+        "name": "Random Forest",
+        "metrics": {
+          "roc_auc": 0.909062993507633,
+          "average_precision": 0.9031627612571037,
+          "accuracy": 0.8283828382838284,
+          "precision": 0.8270676691729323,
+          "recall": 0.7913669064748201,
+          "specificity": 0.8597560975609756,
+          "f1": 0.8088235294117647,
+          "brier": 0.15046138353533617,
+          "confusion": [
+            [
+              141.0,
+              23.0
+            ],
+            [
+              29.0,
+              110.0
+            ]
+          ]
+        },
+        "fold_match": true,
+        "max_abs_metric_delta": 2.7755575615628914e-17,
+        "fold_checks": [
+          {
+            "fold": 0,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 1,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 2,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 3,
+            "max_abs_metric_delta": 2.7755575615628914e-17,
+            "test_n": 101
+          },
+          {
+            "fold": 4,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 5,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          }
+        ],
+        "predict_timing": {
+          "n": 101,
+          "repeats": 7,
+          "median_ms": 31.365099999675294,
+          "p95_ms": 31.80891999973028,
+          "scope": "last outer-fold estimator;101 rows; warm inference;2 native threads; not HTTP latency"
+        },
+        "ci": {
+          "roc_auc": [
+            0.878081060301321,
+            0.9381716155505491
+          ],
+          "average_precision": [
+            0.8615445204770596,
+            0.9426708962762141
+          ],
+          "recall": [
+            0.7342647058823529,
+            0.8576496138996138
+          ],
+          "brier": [
+            0.13779657179588634,
+            0.16226630650269494
+          ]
+        }
+      },
+      {
+        "name": "Linear SVM",
+        "metrics": {
+          "roc_auc": 0.9041498508510266,
+          "average_precision": 0.8982624826367787,
+          "accuracy": 0.8514851485148515,
+          "precision": 0.8560606060606061,
+          "recall": 0.8129496402877698,
+          "specificity": 0.8841463414634146,
+          "f1": 0.8339483394833949,
+          "brier": 0.12126114216426799,
+          "confusion": [
+            [
+              145.0,
+              19.0
+            ],
+            [
+              26.0,
+              113.0
+            ]
+          ]
+        },
+        "fold_match": true,
+        "max_abs_metric_delta": 0.0,
+        "fold_checks": [
+          {
+            "fold": 0,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 1,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 2,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 3,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 4,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 5,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          }
+        ],
+        "predict_timing": {
+          "n": 101,
+          "repeats": 7,
+          "median_ms": 26.74959999967541,
+          "p95_ms": 31.339610000122775,
+          "scope": "last outer-fold estimator;101 rows; warm inference;2 native threads; not HTTP latency"
+        },
+        "ci": {
+          "roc_auc": [
+            0.8717669402080762,
+            0.9354749970569525
+          ],
+          "average_precision": [
+            0.8509213031603224,
+            0.9380295479678293
+          ],
+          "recall": [
+            0.7570399443561209,
+            0.8771526418786693
+          ],
+          "brier": [
+            0.0992367630521331,
+            0.13959702044211802
+          ]
+        }
+      },
+      {
+        "name": "KNN",
+        "metrics": {
+          "roc_auc": 0.8985348306720478,
+          "average_precision": 0.8876756321416406,
+          "accuracy": 0.8085808580858086,
+          "precision": 0.8347107438016529,
+          "recall": 0.7266187050359713,
+          "specificity": 0.8780487804878049,
+          "f1": 0.7769230769230769,
+          "brier": 0.13166942023888775,
+          "confusion": [
+            [
+              144.0,
+              20.0
+            ],
+            [
+              38.0,
+              101.0
+            ]
+          ]
+        },
+        "fold_match": true,
+        "max_abs_metric_delta": 0.0,
+        "fold_checks": [
+          {
+            "fold": 0,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 1,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 2,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 3,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 4,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 5,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          }
+        ],
+        "predict_timing": {
+          "n": 101,
+          "repeats": 7,
+          "median_ms": 7.747399999971094,
+          "p95_ms": 8.773760000349284,
+          "scope": "last outer-fold estimator;101 rows; warm inference;2 native threads; not HTTP latency"
+        },
+        "ci": {
+          "roc_auc": [
+            0.864873994574354,
+            0.9318932179824009
+          ],
+          "average_precision": [
+            0.8392774036254835,
+            0.9332119599842185
+          ],
+          "recall": [
+            0.6534340659340659,
+            0.808705357142857
+          ],
+          "brier": [
+            0.11052026526941404,
+            0.15124256409951156
+          ]
+        }
+      },
+      {
+        "name": "LightGBM",
+        "metrics": {
+          "roc_auc": 0.9053123354974557,
+          "average_precision": 0.9018422375062324,
+          "accuracy": 0.8316831683168316,
+          "precision": 0.8142857142857143,
+          "recall": 0.8201438848920863,
+          "specificity": 0.8414634146341463,
+          "f1": 0.8172043010752689,
+          "brier": 0.12206527304991728,
+          "confusion": [
+            [
+              138.0,
+              26.0
+            ],
+            [
+              25.0,
+              114.0
+            ]
+          ]
+        },
+        "fold_match": true,
+        "max_abs_metric_delta": 0.0,
+        "fold_checks": [
+          {
+            "fold": 0,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 1,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 2,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 3,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 4,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 5,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          }
+        ],
+        "predict_timing": {
+          "n": 101,
+          "repeats": 7,
+          "median_ms": 5.302800000208663,
+          "p95_ms": 6.115469999804191,
+          "scope": "last outer-fold estimator;101 rows; warm inference;2 native threads; not HTTP latency"
+        },
+        "ci": {
+          "roc_auc": [
+            0.871432990244305,
+            0.9367845567653942
+          ],
+          "average_precision": [
+            0.8577863889421041,
+            0.9409959750016078
+          ],
+          "recall": [
+            0.7644886363636363,
+            0.8850778038755138
+          ],
+          "brier": [
+            0.10033312869271664,
+            0.14207449605493258
+          ]
+        }
+      },
+      {
+        "name": "MLP",
+        "metrics": {
+          "roc_auc": 0.8734427092472363,
+          "average_precision": 0.8487705935357672,
+          "accuracy": 0.801980198019802,
+          "precision": 0.8495575221238938,
+          "recall": 0.6906474820143885,
+          "specificity": 0.8963414634146342,
+          "f1": 0.7619047619047619,
+          "brier": 0.16023077069586034,
+          "confusion": [
+            [
+              147.0,
+              17.0
+            ],
+            [
+              43.0,
+              96.0
+            ]
+          ]
+        },
+        "fold_match": true,
+        "max_abs_metric_delta": 0.0,
+        "fold_checks": [
+          {
+            "fold": 0,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 1,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 2,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 3,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 4,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          },
+          {
+            "fold": 5,
+            "max_abs_metric_delta": 0.0,
+            "test_n": 101
+          }
+        ],
+        "predict_timing": {
+          "n": 101,
+          "repeats": 7,
+          "median_ms": 5.153099999915867,
+          "p95_ms": 5.555439999807277,
+          "scope": "last outer-fold estimator;101 rows; warm inference;2 native threads; not HTTP latency"
+        },
+        "ci": {
+          "roc_auc": [
+            0.8351743103631046,
+            0.9145703881009566
+          ],
+          "average_precision": [
+            0.7846093336991188,
+            0.9035895672108887
+          ],
+          "recall": [
+            0.6177318295739348,
+            0.7724257536078453
+          ],
+          "brier": [
+            0.14365418140846634,
+            0.17420982898498227
+          ]
+        }
+      }
+    ],
+    "paired": [
+      {
+        "a": "Random Forest",
+        "b": "Logistic Regression",
+        "metric": "average_precision",
+        "estimate": 0.0025339214716791902,
+        "ci": [
+          -0.013251775950062746,
+          0.017537473468566923
+        ]
+      },
+      {
+        "a": "Random Forest",
+        "b": "Linear SVM",
+        "metric": "average_precision",
+        "estimate": 0.004900278620325049,
+        "ci": [
+          -0.008572842221658494,
+          0.018206340607961655
+        ]
+      }
+    ],
+    "note_ru": "Приближённые95% интервалы для фиксированных усреднённых OOF-прогнозов. Отдельная описательная оценка, не доверительные интервалы всей процедуры обучения.",
+    "note_kk": "Орташаланған тұрақты OOF-болжамдардың жуық 95% аралықтары. Бұл толық оқыту рәсімінің сенімділік аралықтары емес, бөлек сипаттамалық бағалау.",
+    "limitations": [
+      "Обучающие выборки CV пересекаются; их зависимость не учитывается повторной выборкой фиксированных прогнозов.",
+      "Модели и параметры при bootstrap не переобучаются; неопределённость настройки и выбора алгоритма не охвачена.",
+      "Метрики усреднённых OOF отличаются от среднего метрик6внешнихfold.",
+      "Финальный артефакт обучен с другим бюджетом настройки(3конфигурации вместо2); эти интервалы не являются его независимой валидацией."
+    ]
+  },
+  "brfss": {
+    "subgroups": [
+      {
+        "feature": "sex",
+        "value": 1.0,
+        "n": 40280,
+        "positive": 4230,
+        "label": "Мужской",
+        "true_positive": 2520,
+        "recall": 0.5957446808510638,
+        "recall_ci": [
+          0.5807756220946934,
+          0.6105813774187729
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.5809763483222388,
+          0.60863331963581
+        ]
+      },
+      {
+        "feature": "sex",
+        "value": 2.0,
+        "n": 45468,
+        "positive": 3032,
+        "label": "Женский",
+        "true_positive": 1164,
+        "recall": 0.3839050131926121,
+        "recall_ci": [
+          0.36654824082219895,
+          0.40148611212665763
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.3670992649648616,
+          0.3980313600746078
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 1.0,
+        "n": 5251,
+        "positive": 41,
+        "label": "18–24",
+        "true_positive": 0,
+        "recall": 0.0,
+        "recall_ci": [
+          0.0,
+          0.08604383629403338
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 2.0,
+        "n": 4217,
+        "positive": 38,
+        "label": "25–29",
+        "true_positive": 0,
+        "recall": 0.0,
+        "recall_ci": [
+          0.0,
+          0.0925127614158783
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 3.0,
+        "n": 4892,
+        "positive": 45,
+        "label": "30–34",
+        "true_positive": 0,
+        "recall": 0.0,
+        "recall_ci": [
+          0.0,
+          0.07870510040683748
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 4.0,
+        "n": 5408,
+        "positive": 68,
+        "label": "35–39",
+        "true_positive": 0,
+        "recall": 0.0,
+        "recall_ci": [
+          0.0,
+          0.052803042793639794
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 5.0,
+        "n": 5835,
+        "positive": 122,
+        "label": "40–44",
+        "true_positive": 2,
+        "recall": 0.01639344262295082,
+        "recall_ci": [
+          0.001991524525714053,
+          0.05796417797606739
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.0,
+          0.04764094488188976
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 6.0,
+        "n": 5283,
+        "positive": 164,
+        "label": "45–49",
+        "true_positive": 18,
+        "recall": 0.10975609756097561,
+        "recall_ci": [
+          0.0663595228707882,
+          0.16790796619290882
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.059058956035420225,
+          0.15516310657069882
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 7.0,
+        "n": 6215,
+        "positive": 359,
+        "label": "50–54",
+        "true_positive": 64,
+        "recall": 0.17827298050139276,
+        "recall_ci": [
+          0.14008372438981492,
+          0.22186486389542323
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.13549346795637596,
+          0.2162758368392171
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 8.0,
+        "n": 6794,
+        "positive": 477,
+        "label": "55–59",
+        "true_positive": 184,
+        "recall": 0.3857442348008386,
+        "recall_ci": [
+          0.3418395581005665,
+          0.43107466409933703
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.3481482645875251,
+          0.43047843052151413
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 9.0,
+        "n": 8311,
+        "positive": 734,
+        "label": "60–64",
+        "true_positive": 315,
+        "recall": 0.42915531335149865,
+        "recall_ci": [
+          0.39301403517765227,
+          0.46586812810273615
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.40085708213381765,
+          0.4669063926940639
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 10.0,
+        "n": 9114,
+        "positive": 979,
+        "label": "65–69",
+        "true_positive": 473,
+        "recall": 0.48314606741573035,
+        "recall_ci": [
+          0.451423754600748,
+          0.5149700219562608
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.4498756985362395,
+          0.5100964467005076
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 11.0,
+        "n": 8560,
+        "positive": 1281,
+        "label": "70–74",
+        "true_positive": 690,
+        "recall": 0.5386416861826698,
+        "recall_ci": [
+          0.510890345833752,
+          0.5662153246803815
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.5099918250365469,
+          0.5616091842036892
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 12.0,
+        "n": 6684,
+        "positive": 1193,
+        "label": "75–79",
+        "true_positive": 767,
+        "recall": 0.6429170159262364,
+        "recall_ci": [
+          0.6149830498708866,
+          0.6701443187271992
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.6206447758624577,
+          0.6653122326775022
+        ]
+      },
+      {
+        "feature": "age_group",
+        "value": 13.0,
+        "n": 7728,
+        "positive": 1672,
+        "label": "80 и старше",
+        "true_positive": 1145,
+        "recall": 0.6848086124401914,
+        "recall_ci": [
+          0.6619304916500081,
+          0.7070361530500503
+        ],
+        "method": "Clopper–Pearson",
+        "original_percentile_interval": [
+          0.6619915889223797,
+          0.704790436606588
+        ]
+      }
+    ],
+    "coverage": {
+      "sex": {
+        "accounted": 85748,
+        "missing": 0
+      },
+      "age_group": {
+        "accounted": 84292,
+        "missing": 1456
+      }
+    },
+    "confidence_level": 0.95,
+    "note_ru": "95% интервалы чувствительности по биномиальной модели; при нуле обнаруженных случаев верхняя граница остаётся положительной.",
+    "note_kk": "Сезімталдықтың биномиалдық модельдегі 95% аралықтары: анықталған жағдай саны нөл болса да, жоғарғы шек оң болып қалады.",
+    "limitations": [
+      "Описательные невзвешенные интервалы; независимость респондентов предполагается.",
+      "Сложный план BRFSS и множественные сравнения не учтены.",
+      "Интервал не является доказательством справедливости модели или переносимости на Казахстан."
+    ]
+  },
+  "reproduction": {
+    "elapsed_seconds": 15.564070800000081,
+    "peak_rss_mb": 140.4453125,
+    "original_models_preserved": true,
+    "fold_metrics_matched": true,
+    "native_threads": 2,
+    "scope": "locked outer-fold estimators refitted for reproduction; original search not rerun;deployment models unchanged"
+  }
+}

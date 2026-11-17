@@ -1,0 +1,17 @@
+[
+  {
+    "file": "LLCP2023XPT.zip",
+    "bytes": 93237818,
+    "sha256": "d1ab80e4806a1d07bd3e40ec78c971ad9ff920f3ea5f6049780aeaa41ff31f43"
+  },
+  {
+    "file": "codebook23_llcp-v2-508 (1).zip",
+    "bytes": 85594,
+    "sha256": "948cb7cd58bddde96eab61ab11a93e69ef4440ff3b62f9382895a7403407df4a"
+  },
+  {
+    "file": "heart+disease.zip",
+    "bytes": 128894,
+    "sha256": "b17cd273da9ce1caa4710fce80227ea454d4dbf9fcbc8e6a9121672751563adc"
+  }
+]

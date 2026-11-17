@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-07",
+  "status": "Auxiliary materials complete; final 100-page student-authored manuscript pending",
+  "planned_total_pages": 100,
+  "planned_intro_chapters_conclusion_pages": 50,
+  "plan_contiguity_check": "passed: pages1–100 exactly once",
+  "student_profile": "User-provided name, title and defense year2027 included; official department/code/degree spelling not independently verified",
+  "source_pdf": "55 scanned pages rendered and OCR processed; critical volume, formatting, citations and AI clauses visually checked",
+  "outputs": [
+    {"file": "output/pdf/ENU_100bet_zhospar_KZ.pdf", "pages": 8, "empty_pages": 0, "visual_review": "all pages reviewed in rendered contact sheet; full-size Kazakh text sample checked"},
+    {"file": "output/pdf/ENU_Adabietter_katalogy_KZ.pdf", "pages": 13, "empty_pages": 0, "active_links": 40, "visual_review": "all pages rendered and contact sheets reviewed; full-size Murphy page checked after bibliographic fixes"},
+    {"file": "output/pdf/ENU_Experimental_materials_KZ.pdf", "pages": 41, "empty_pages": 0, "visual_review": "all pages rendered; 3 contact sheets and full-size pages1,6,20,28,41 reviewed; no horizontal overflow reported"}
+  ],
+  "bibliography_candidates": {"total": 30, "books": 10, "papers_and_primary_data_documents": 12, "software_documentation": 8, "unique_identifier_check": "passed"},
+  "evidence": {"logical_tables": 20, "search_configurations": 21, "feature_definitions": 24, "numbers": "read from saved reports; no new model training", "student_review": "pending"},
+  "bibliographic_corrections": ["Murphy draft pagination caveat retained", "verified section and starting-page locators retained", "duplicate book URLs removed", "CDC survey year distinguished from publication year", "access limitations and student reading questions retained"],
+  "html_status": "Editable companion files generated; evidence HTML save control not separately browser-tested",
+  "missing_for_submission": ["Student-authored main text and conclusions", "Student source/code/results verification", "Department-specific instructions", "Authentic assignment, declaration and Platonus report", "Final100-page layout and normcontrol"]
+}

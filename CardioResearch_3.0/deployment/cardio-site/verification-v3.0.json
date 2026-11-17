@@ -1,0 +1,35 @@
+{
+  "release": "3.0.0",
+  "verified_at_utc": "2026-11-10T05:43:53Z",
+  "scope": "Measured ML experiments, local runner, cross-year transfer, restored research data, synchronized educational artery comparison",
+  "build": {"passed": true, "node": 24, "typescript": true, "vite": true, "worker_bytes": 7110387, "warnings": 0},
+  "node_tests": {"passed": 70, "failed": 0, "skipped": 0, "command": "node --test tests/*.test.mjs"},
+  "python": {
+    "version": "3.12.14",
+    "original_suite": {"passed": 45, "failed": 0, "skipped": 0, "command": "python deployment/cardio-site/scripts/verify-research.py --project-root . --source-dir data/source-cache --download"},
+    "experiment_lab_tests": {"passed": 9, "failed": 0},
+    "packager_tests": {"passed": 2, "failed": 0},
+    "disagreement_tests": {"passed": 3, "failed": 0},
+    "notes": "Local tests ran with loopback available. Original sample-PDF test output was redirected outside frozen reports; assertions and original models/reports were preserved. A fresh workspace temp directory was used for pytest."
+  },
+  "recovery": {"uci_rows": 303, "brfss_rows": 428738, "verified_brfss_test_predictions": 85748, "max_probability_delta": 9.974659986866641e-17, "frozen_original_files_unchanged": true},
+  "experiments": {"frozen_runs": 4, "algorithms": ["Logistic Regression", "Random Forest"], "datasets": {"uci": 303, "brfss_original_training_sample": 6000}, "folds": 3, "new_experiments_separate_from_original_benchmark": true},
+  "temporal": {"cohort_sizes": [85748, 85748, 452464], "missing_2024_predictors": ["BPHIGH6", "TOLDHI3"], "same_row_2023_masked_control": true, "refit": false, "threshold_retuned": false},
+  "browser": {
+    "local_python_application": true,
+    "desktop_and_390px_mobile": true,
+    "languages": ["ru", "kk"],
+    "completed_real_runs": ["UCI Logistic Regression seed 42", "BRFSS Random Forest seed 42"],
+    "cancelled_run_observed": true,
+    "completed_and_cancelled_job_restored_after_navigation_or_reload": true,
+    "matching_completed_result_opened": true,
+    "learning_stress_and_transfer_tables_rendered": true,
+    "temporal_missingness_has_no_NaN_percentages": true,
+    "paired_artery_50_percent_narrowing_shows_25_percent_area": true,
+    "paired_png_export_prepared": true,
+    "console_errors_or_warnings": [],
+    "limits": "Mobile screenshot capture was downscaled by the browser tool; responsive DOM bounds, controls and labels were checked. Downloaded PNG bytes were not visually inspected; crop/label composition has automated tests."
+  },
+  "delivery": {"branch": "codex/dashboard-v2.8", "main_preserved": true, "production_deployment": false, "raw_or_processed_rows_in_hosted_repository": false},
+  "limitations": ["Educational research; no clinical validation or future-event prediction horizon.", "New experiments do not replace frozen production models or original scores.", "The original manuscript drafts are retained and have not been rewritten."]
+}

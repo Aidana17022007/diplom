@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "id": "USER-2026-120745",
+      "title": "Atherosclerosis and dementia - causal aspects and preventive potential",
+      "authors": ["Ida Juul Rasmussen", "Jiao Luo", "Katrine Laura Rasmussen", "Emilie Westerlin Kjeldsen", "Lucia Sanchez Schneider", "Nicolai Sandau", "Jesper Qvist Thomassen", "Ruth Frikke-Schmidt"],
+      "year": 2026,
+      "journal": "Atherosclerosis",
+      "volume": "417",
+      "article_number": "120745",
+      "publication_date": "2026-06",
+      "epub_date": "2026-05-24",
+      "citation": "Rasmussen IJ, Luo J, Rasmussen KL, et al. Atherosclerosis and dementia - causal aspects and preventive potential. Atherosclerosis. 2026;417:120745. doi:10.1016/j.atherosclerosis.2026.120745.",
+      "doi": "10.1016/j.atherosclerosis.2026.120745",
+      "url": "https://www.atherosclerosis-journal.com/article/S0021-9150(26)00111-5/fulltext",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/42177119/",
+      "pmid": "42177119",
+      "type": "review",
+      "summary_ru": "Обзор обсуждает общие сосудистые факторы риска и деменцию, различая причинные факторы и статистические связи. Рассматриваются менделевская рандомизация и перспективы оценки риска.",
+      "summary_kk": "Шолу ортақ тамырлық қауіп факторлары мен деменцияны талқылап, себептік факторларды статистикалық байланыстардан ажыратады. Мендельдік рандомизация және қауіпті бағалау мүмкіндіктері қарастырылады.",
+      "project_use_ru": "Применение в дипломе: теоретический контекст факторов риска и обсуждение того, почему предсказательная связь или объяснение SHAP не доказывают причинность. Это интерпретация для нашего проекта.",
+      "project_use_kk": "Дипломда қолдану: қауіп факторларының теориялық контексті және болжамдық байланыс не SHAP түсіндірмесі себептілікті дәлелдемейтінін талқылау. Бұл — біздің жобаға арналған түсіндіру.",
+      "limitations_ru": "Статья посвящена также деменции и не оценивает модели CardioResearch. Она не является обучающим набором, ML-бенчмарком или клинической проверкой нашего приложения.",
+      "limitations_kk": "Мақала деменцияны да қамтиды және CardioResearch модельдерін бағаламайды. Бұл оқыту деректері, ML-бенчмарк немесе біздің қосымшаның клиникалық тексеруі емес.",
+      "verification_scope": "abstract",
+      "verification_ru": "Через PubMed проверены библиографические сведения и аннотация. Полный текст издателя прочитать не удалось (403); выводы по полному тексту не заявляются.",
+      "verification_kk": "PubMed арқылы библиографиялық деректер мен аннотация тексерілді. Баспагердің толық мәтінін оқу мүмкін болмады (403); толық мәтін бойынша қорытынды жасалмаған.",
+      "source_checked_at": "2026-11-09",
+      "suggested_section": "Теоретическая основа и ограничения интерпретации / Теориялық негіз және түсіндіру шектеулері"
+    }
+  ]
+}

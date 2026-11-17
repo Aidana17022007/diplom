@@ -1,0 +1,51 @@
+import {useEffect,useId,useState} from 'react';
+import {ArrowDown,ArrowUp,ArrowUpDown,Check,Columns3,Download,RotateCcw,X} from 'lucide-react';
+import type {T} from './ui';
+import {compareModels,ComparisonContext,finiteMetric,metricLabels,ModelRow,sortedModels} from './modelMetrics';
+import {comparisonCsv,comparisonSvg,modelViewKey,readModelView,saveModelView} from './comparisonExports';
+import {formatSignedDelta} from './thresholdComparison';
+import './model-metrics.css';
+
+const format=(v:unknown,d=3)=>finiteMetric(v)?v.toFixed(d):'—';
+const sets:Record<string,string[]>={core:['average_precision','roc_auc','recall','brier'],classification:['precision','recall','specificity','f1','accuracy'],all:Object.keys(metricLabels)};
+
+type ExplorerProps={rows:ModelRow[];selected?:string;t:T;sd?:boolean;context?:ComparisonContext};
+export default function MetricsExplorer(props:ExplorerProps){
+  const viewKey=modelViewKey(props.rows,props.context);
+  return <MetricsExplorerView key={viewKey} {...props} viewKey={viewKey}/>;
+}
+function MetricsExplorerView({rows,selected,t,sd=true,context,viewKey}:ExplorerProps&{viewKey:string}) {
+  const [initial]=useState(()=>readModelView(viewKey,rows));
+  const [sort,setSort]=useState(initial.sort),[direction,setDirection]=useState<'asc'|'desc'>(initial.direction),[query,setQuery]=useState(initial.query);
+  const [set,setSet]=useState(initial.set),[showSD,setShowSD]=useState(initial.showSD),[chosen,setChosen]=useState<string[]>(initial.chosen);
+  const [exportStatus,setExportStatus]=useState('');
+  const id=useId();
+  useEffect(()=>{saveModelView(viewKey,{sort,direction,query,set,showSD,chosen});},[viewKey,sort,direction,query,set,showSD,chosen]);
+  const columns=sets[set],hasSD=sd&&rows.some(r=>r.std),hasThreshold=rows.some(r=>finiteMetric(r.threshold));
+  const visible=sortedModels(rows.filter(r=>r.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())),sort,direction);
+  const selectedRows=chosen.map(name=>rows.find(r=>r.name===name)).filter((r):r is ModelRow=>!!r);
+  const select=(name:string)=>setChosen(prev=>prev.includes(name)?prev.filter(n=>n!==name):prev.length<2?[...prev,name]:prev);
+  const order=(key:string)=>{setDirection(sort===key?(direction==='asc'?'desc':'asc'):key==='brier'?'asc':'desc');setSort(key);};
+  const sortLabel=(key:string)=>t(`Сортировать: ${metricLabels[key]}`,`Реттеу: ${metricLabels[key]}`);
+  const compare=selectedRows.length===2?compareModels(selectedRows[0],selectedRows[1],Object.keys(metricLabels)):[];
+  const exportComparison=(type:'csv'|'svg')=>{
+    if(selectedRows.length!==2)return;
+    try{
+      const content=type==='csv'?'\uFEFF'+comparisonCsv(selectedRows[0],selectedRows[1],context):comparisonSvg(selectedRows[0],selectedRows[1],context,t('ru','kk') as 'ru'|'kk');
+      const url=URL.createObjectURL(new Blob([content],{type:type==='csv'?'text/csv;charset=utf-8':'image/svg+xml;charset=utf-8'}));
+      const link=document.createElement('a');link.href=url;link.download=`cardioresearch-${(context?.dataset||'models').replace(/[^a-z0-9-]/gi,'-')}-comparison.${type}`;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+      setExportStatus(t(`${type.toUpperCase()} подготовлен к скачиванию.`,`${type.toUpperCase()} жүктеуге дайын.`));
+    }catch{setExportStatus(t('Не удалось подготовить файл. Повторите попытку.','Файлды дайындау мүмкін болмады. Қайталап көріңіз.'));}
+  };
+  return <div className="model-explorer">
+    <div className="model-toolbar">
+      <label className="model-search">{t('Найти модель','Модельді табу')}<input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder={t('Название алгоритма','Алгоритм атауы')}/></label>
+      <div className="model-column-set" role="group" aria-label={t('Набор метрик','Метрикалар жиыны')}><span><Columns3 size={15}/>{t('Показатели','Көрсеткіштер')}</span><div>{[['core',t('Основные','Негізгі')],['classification',t('Классификация','Жіктеу')],['all',t('Все 8','Барлық 8')]].map(([key,label])=><button type="button" key={key} aria-pressed={set===key} onClick={()=>{setSet(key);if(!sets[key].includes(sort))setSort('');}}>{label}</button>)}</div></div>
+      {hasSD&&<label className="model-sd"><input type="checkbox" checked={showSD} onChange={e=>setShowSD(e.target.checked)}/>{t('Показать SD','SD көрсету')}</label>}
+    </div>
+    <div className="model-table-summary" id={id+'-hint'}><span aria-live="polite">{t('Показано','Көрсетілген')}: {visible.length} / {rows.length}</span><span>{t('Выберите две модели для сравнения. Заголовки сортируют таблицу.','Салыстыру үшін екі модель таңдаңыз. Баған атаулары кестені реттейді.')}</span>{(query||sort||chosen.length>0)&&<button className="text-btn" onClick={()=>{setQuery('');setSort('');setChosen([]);}}><RotateCcw size={14}/>{t('Сбросить','Қалпына келтіру')}</button>}</div>
+    <div className="table-scroll model-table-wrap" tabIndex={0} aria-label={t('Метрики моделей; таблица прокручивается горизонтально','Модель метрикалары; кесте көлденең айналдырылады')} aria-describedby={id+'-hint'}><table className="model-metrics-table"><thead><tr><th scope="col" className="model-name-cell">{t('Алгоритм','Алгоритм')}</th>{hasThreshold&&set!=='core'&&<th scope="col">{t('Порог','Шек')}</th>}{columns.map(key=><th scope="col" key={key} aria-sort={sort===key?(direction==='asc'?'ascending':'descending'):'none'}><button onClick={()=>order(key)} aria-label={sortLabel(key)}>{metricLabels[key]}{sort===key?(direction==='asc'?<ArrowUp size={14}/>:<ArrowDown size={14}/>):<ArrowUpDown size={13}/>}</button>{key==='brier'&&<small>{t('меньше — лучше','азырақ — жақсырақ')}</small>}</th>)}</tr></thead><tbody>{visible.map(row=><tr key={row.name} className={`${row.name===selected?'protocol-model ':''}${chosen.includes(row.name)?'compared-model':''}`}><th scope="row" className="model-name-cell"><label><input type="checkbox" checked={chosen.includes(row.name)} disabled={!chosen.includes(row.name)&&chosen.length>=2} onChange={()=>select(row.name)} aria-label={t(`Сравнить ${row.name}`,`${row.name} салыстыру`)}/><span>{row.name}{row.name===selected&&<small><Check size={12}/>{t('выбрана по протоколу','хаттама бойынша таңдалған')}</small>}</span></label></th>{hasThreshold&&set!=='core'&&<td>{format(row.threshold,4)}</td>}{columns.map(key=><td key={key}>{format(row.metrics?.[key])}{hasSD&&showSD&&row.std&&<small>± {format(row.std[key])} SD</small>}</td>)}</tr>)}</tbody></table>{!visible.length&&<div className="model-no-results" role="status"><p>{t('Моделей с таким названием нет.','Мұндай атауы бар модель жоқ.')}</p><button className="secondary compact" onClick={()=>setQuery('')}>{t('Очистить поиск','Іздеуді тазалау')}</button></div>}</div>
+    <p className="model-context-note">{t('Сортировка и сравнение не меняют модель, выбранную по протоколу. Разность оценок сама по себе не доказывает статистическое превосходство.','Реттеу мен салыстыру хаттама бойынша таңдалған модельді өзгертпейді. Бағалар айырмасы өздігінен статистикалық басымдықты дәлелдемейді.')}{hasSD&&showSD&&' '+t('SD — разброс по фолдам, не доверительный интервал.','SD — бөліктер бойынша шашырау, сенімділік аралығы емес.')}</p>
+    {selectedRows.length>0&&<section className="model-comparison" aria-label={t('Сравнение выбранных моделей','Таңдалған модельдерді салыстыру')}><div className="model-comparison-heading"><div><span className="eyebrow">{t('СРАВНЕНИЕ','САЛЫСТЫРУ')}</span><h3>{selectedRows.length===2?t('Две модели, одна схема оценки','Екі модель, бір бағалау сызбасы'):t('Выберите вторую модель','Екінші модельді таңдаңыз')}</h3></div><button className="text-btn" onClick={()=>setChosen([])}><X size={16}/>{t('Закрыть','Жабу')}</button></div><div className="model-comparison-names">{selectedRows.map((row,i)=><span key={row.name}><b>{i===0?'A':'B'}</b>{row.name}</span>)}</div>{compare.length>0&&<><div className="model-export-tools"><button className="secondary compact" onClick={()=>exportComparison('csv')}><Download size={15}/>{t('Таблица CSV','Кесте CSV')}</button><button className="secondary compact" onClick={()=>exportComparison('svg')}><Download size={15}/>{t('График SVG','График SVG')}</button><span>{t('Пара и настройки сохранены в этой вкладке.','Жұп пен баптаулар осы қойындыда сақталды.')}</span></div>{exportStatus&&<p className="model-export-status" role="status">{exportStatus}</p>}<div className="model-comparison-grid">{compare.map(row=><article key={row.key}><span>{metricLabels[row.key]}{row.key==='brier'?' ↓':''}</span><div><span><small>A</small>{format(row.first)}</span><span><small>B</small>{format(row.second)}</span></div><p>Δ B − A <strong>{formatSignedDelta(row.delta,4,'en-US')}</strong></p><div className="model-comparison-bars" aria-hidden="true">{[row.first,row.second].map((v,i)=><i key={i} className={i?'model-bar-b':'model-bar-a'} style={{width:`${Math.min(100,Math.max(0,(v??0)*100))}%`}}/>)}</div></article>)}</div><p className="model-context-note">{t('Полосы используют общую шкалу 0–1. Для Brier меньше — лучше; для остальных показателей больше — лучше. Δ — разность долей, не процентное улучшение.','Жолақтар ортақ 0–1 шкаласын қолданады. Brier үшін төмен, қалған көрсеткіштер үшін жоғары мән жақсы. Δ — үлестер айырмасы, пайыздық жақсару емес.')}</p></>}</section>}
+  </div>;
+}

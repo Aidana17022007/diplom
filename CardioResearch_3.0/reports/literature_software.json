@@ -1,0 +1,14 @@
+{
+  "checked_on":"2026-11-07",
+  "status":"Official pages opened and bibliographic identity verified. Student should read relevant sections before citation. These are candidate references, not a claim that all have already been cited in an authored thesis.",
+  "sources":[
+    {"id":"D01","title":"Cross-validation: evaluating estimator performance","publisher":"scikit-learn developers","version":"1.7.2","url":"https://scikit-learn.org/1.7/modules/cross_validation.html","use_kz":"Train/test және кросс-валидация сызбаларын іске асыру анықтамасы. Жобаға қатысты нақты разбиение reports/protocol.json ішінде сақталған."},
+    {"id":"D02","title":"Metrics and scoring: quantifying the quality of predictions","publisher":"scikit-learn developers","version":"1.7.2","url":"https://scikit-learn.org/1.7/modules/model_evaluation.html","use_kz":"AP, ROC-AUC, Brier, precision және recall анықтамалары; формула мен пайдаланылған функцияның сәйкестігін тексеру."},
+    {"id":"D03","title":"Probability calibration","publisher":"scikit-learn developers","version":"1.7.2","url":"https://scikit-learn.org/1.7/modules/calibration.html","use_kz":"Калибрлеу мен жіктеу сапасының айырмасы; бөлек деректермен sigmoid калибрлеу тәртібін түсіндіруге арналған анықтама."},
+    {"id":"D04","title":"Common pitfalls and recommended practices","publisher":"scikit-learn developers","version":"1.7.2","url":"https://scikit-learn.org/1.7/common_pitfalls.html","use_kz":"Preprocessing операциялары мен дерек ағып кетуін ажырату; Pipeline қолданылуын тексеру."},
+    {"id":"D05","title":"Python API","publisher":"LightGBM developers","version":"4.7.0","url":"https://lightgbm.readthedocs.io/en/stable/Python-API.html","use_kz":"Жобадағы LGBMClassifier интерфейсі мен параметрлерін ресми анықтамамен салыстыру."},
+    {"id":"D06","title":"FastAPI documentation","publisher":"FastAPI project","version":"Веб-құжат; қаралған күні көрсетіледі","url":"https://fastapi.tiangolo.com/","use_kz":"API бағыты, сұрау схемасы және жауап тексеру құралдарын құжаттау. Жоба пакеттерінің нақты нұсқалары requirements-tested.txt ішінде."},
+    {"id":"D07","title":"Quick Start","publisher":"React documentation","version":"Қаралған бет 19.3 деп белгіленген; жоба нұсқасы package-lock.json бойынша","url":"https://react.dev/learn","use_kz":"Компоненттер, күй және оқиғалар ұғымдарын оқу. Құжат нұсқасын жобадағы орнатылған нұсқамен шатастырмау."},
+    {"id":"D08","title":"Appropriate Uses For SQLite","publisher":"SQLite project","version":"Веб-құжат; қаралған күні көрсетіледі","url":"https://www.sqlite.org/whentouse.html","use_kz":"Жергілікті дерекқор қолданылуының шекарасы. Жобада SQLite ағымдағы эксперимент метадеректерін сақтайды; пайдаланушының медициналық жауаптары сақталмайды."}
+  ]
+}

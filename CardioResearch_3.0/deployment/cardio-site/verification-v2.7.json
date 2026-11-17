@@ -1,0 +1,70 @@
+{
+  "release": "2.7.0",
+  "date": "2026-11-09",
+  "scope": "Application UI/UX, pairwise model metrics, exact-reference BRFSS threshold exploration and interactive artery profile; no manuscript work or model refit",
+  "node_tests": {
+    "passed": 45,
+    "failed": 0,
+    "command": "node --test tests/*.test.mjs"
+  },
+  "build": {
+    "passed": true,
+    "scope": "TypeScript, Vite and Worker with Node 24"
+  },
+  "threshold_lab": {
+    "evaluation": "unweighted BRFSS validation",
+    "n": 51449,
+    "grid_points": 35,
+    "working_threshold": 0.19042448230963954,
+    "working_confusion": [
+      [
+        42328,
+        4763
+      ],
+      [
+        2203,
+        2155
+      ]
+    ],
+    "comparison_points": 36,
+    "working_threshold_changed": false,
+    "csv_preserves_raw_counts_and_exact_thresholds": true,
+    "nearest_grid_delta": {
+      "fp": -1,
+      "fn": 5
+    }
+  },
+  "browser": {
+    "viewport_widths": [
+      1280,
+      390
+    ],
+    "languages": [
+      "ru",
+      "kk"
+    ],
+    "console_errors": 0,
+    "checks": [
+      "Pair selection limited to two models; signed metric differences",
+      "Brier sorting; UCI fold SD remains distinct from confidence intervals",
+      "Back and Forward restore sections and focus their headings",
+      "Validation threshold change, exact reset, per-1000 counts and small nonzero deltas",
+      "Research tab keyboard End",
+      "Mobile menu main inert, tab wrap, Escape and focus return",
+      "Command search with combobox/listbox and Enter navigation",
+      "Artery profile Home/End synchronize cross-section",
+      "Layer highlight and top camera",
+      "Mobile table, threshold and artery views have no horizontal page overflow",
+      "Mobile topic/profile labels remain readable",
+      "Overview research actions"
+    ]
+  },
+  "limits": [
+    "Original model artifacts, frozen reports and deployment thresholds are unchanged",
+    "Model performance improvement is not claimed",
+    "Full legacy Python ML suite was not rerun for this frontend release",
+    "CSV formatting and contents tested automatically; native browser download dialog not exercised",
+    "WebGL fallback code retained; forced context-loss testing was not performed in this release",
+    "No new clinical validation; schematic artery is independent of ML probabilities"
+  ]
+}

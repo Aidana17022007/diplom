@@ -1,0 +1,665 @@
+{
+  "purpose": "Студенттің өздігінен оқуына арналған тексерілген кітаптар тізілімі және зерттеу сұрақтары. Бұл файл дипломға дайын кіріспе, негізгі бөлім, қорытынды немесе аннотация бермейді.",
+  "checked_on": "2026-11-07",
+  "policy_notes": [
+    "Тек автордың, баспаның немесе автор ұсынған ресми ресурстың мәліметтері пайдаланылды.",
+    "Бөлімнің басталу беті мен тараудың толық бет аралығы ажыратылды. Тарауға сілтеме барлық беттер толық оқылды дегенді білдірмейді.",
+    "Кітап мәтінін сөзбе-сөз аударып, авторлық мәтін ретінде беруге болмайды. Парафразға да дереккөз қажет.",
+    "Бұл жинақ антиплагиат немесе ЖИ детекторын айналып өтуге арналмаған.",
+    "Кітаптар әдістерді түсіндіреді; BRFSS кодтары, UCI нысаналы айнымалысы және жобаның нақты метрикалары тиісті ресми деректер мен сақталған эксперимент нәтижелерінен алынуы керек.",
+    "ENU ережесінің 11.23 тармағы туралы негізгі агенттің тексеруіне сәйкес материал оқу құралы ретінде беріледі. Студент түпнұсқаны өзі оқып, өз талдауы мен мәтінін жазуы қажет.",
+    "Тікелей дәйексөздер берілмеді. Әр кітапқа арналған оқу ескертпесі қысқа; ашылған веб-беттердің мазмұны көлемді түрде қайта жарияланбайды. Ашық оқу мүмкіндігі авторлық құқықтың жойылғанын білдірмейді."
+  ],
+  "books": [
+    {
+      "id": "james2023islp",
+      "citation": "James G., Witten D., Hastie T., Tibshirani R., Taylor J. An Introduction to Statistical Learning: with Applications in Python. 1st ed. Cham: Springer, 2023. XV, 607 p. DOI: 10.1007/978-3-031-38747-0.",
+      "authors": [
+        "Gareth James",
+        "Daniela Witten",
+        "Trevor Hastie",
+        "Robert Tibshirani",
+        "Jonathan Taylor"
+      ],
+      "title": "An Introduction to Statistical Learning: with Applications in Python",
+      "edition": 1,
+      "year": 2023,
+      "publisher": "Springer, Cham",
+      "isbn_print": "978-3-031-38746-3",
+      "doi": "10.1007/978-3-031-38747-0",
+      "official_url": "https://www.statlearning.com/",
+      "publisher_url": "https://link.springer.com/book/10.1007/978-3-031-38747-0",
+      "legal_access": "Авторлардың сайты толық PDF-ті тегін жүктеуге сілтеме береді. Бұл тексерісте Hastie серверіндегі толық PDF жүктелмеді; баспа метадеректері, тарау беттері және SVM тарауының ресми екі беттік үзіндісі ашылды.",
+      "download_landing_url": "https://hastie.su.domains/ISLP/ISLP_website.pdf.download.html",
+      "verified_sections": [
+        {
+          "chapter": "4",
+          "title": "Classification",
+          "printed_pages": "135–199",
+          "evidence_url": "https://link.springer.com/chapter/10.1007/978-3-031-38747-0_4",
+          "verified": "chapter title and page range"
+        },
+        {
+          "chapter": "5",
+          "title": "Resampling Methods",
+          "printed_pages": "201–228",
+          "evidence_url": "https://link.springer.com/chapter/10.1007/978-3-031-38747-0_5",
+          "verified": "chapter title and page range"
+        },
+        {
+          "chapter": "8",
+          "title": "Tree-Based Methods",
+          "printed_pages": "331–366",
+          "evidence_url": "https://link.springer.com/chapter/10.1007/978-3-031-38747-0_8",
+          "verified": "chapter title and page range"
+        },
+        {
+          "chapter": "9",
+          "title": "Support Vector Machines",
+          "printed_pages": "367–398",
+          "content_read_pages": "367–368",
+          "evidence_url": "https://page-one.springer.com/pdf/preview/10.1007/978-3-031-38747-0_9",
+          "verified": "chapter range and two-page preview content"
+        },
+        {
+          "chapter": "10",
+          "title": "Deep Learning",
+          "printed_pages": "399–467",
+          "evidence_url": "https://link.springer.com/book/10.1007/978-3-031-38747-0",
+          "verified": "chapter title and page range"
+        }
+      ],
+      "project_use": "Классификация, қайта іріктеу, ағаштар, SVM және шағын MLP туралы теорияны Python жобасымен байланыстыру.",
+      "limitations": "2023 жылғы Python басылымын 2021 жылғы R басылымының беттерімен араластырмау. Жобадағы нақты Linear SVM іске асырылымының ресурстық таңдауы — кітап қорытындысы емес, авторлық инженерлік шешім.",
+      "student_reading_questions": [
+        "Классификация, регрессия және survival analysis мақсаттарының айырмашылығы қандай?",
+        "5-тараудағы қайта іріктеу әдістерін жоба бөліністерімен салыстырыңыз.",
+        "Сызықтық SVM мен ядролық SVM арасында есептеу тұрғысынан қандай айырма бар?"
+      ]
+    },
+    {
+      "id": "hastie2009esl",
+      "citation": "Hastie T., Tibshirani R., Friedman J. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. 2nd ed. New York: Springer, 2009. XXII, 745 p. DOI: 10.1007/978-0-387-84858-7.",
+      "authors": [
+        "Trevor Hastie",
+        "Robert Tibshirani",
+        "Jerome Friedman"
+      ],
+      "title": "The Elements of Statistical Learning: Data Mining, Inference, and Prediction",
+      "edition": 2,
+      "year": 2009,
+      "publisher": "Springer, New York",
+      "isbn_print": "978-0-387-84857-0",
+      "doi": "10.1007/978-0-387-84858-7",
+      "official_url": "https://hastie.su.domains/ElemStatLearn/",
+      "publisher_url": "https://link.springer.com/book/10.1007/978-0-387-84858-7",
+      "legal_access": "Баспа беті және ресми екі беттік тарау үзінділері ашылды. Автор сайтына қосылу уақыт шегінен асты; осы сессияда оның толық PDF қолжетімділігі расталмады.",
+      "verified_sections": [
+        {
+          "chapter": "4",
+          "title": "Linear Methods for Classification",
+          "printed_pages": "101–137",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "7",
+          "title": "Model Assessment and Selection",
+          "printed_pages": "219–259",
+          "content_read_pages": "219–220",
+          "evidence_url": "https://page-one.springer.com/pdf/preview/10.1007/978-0-387-84858-7_7",
+          "verified": "publisher range and preview"
+        },
+        {
+          "chapter": "8",
+          "title": "Model Inference and Averaging",
+          "printed_pages": "261–294",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "9",
+          "title": "Additive Models, Trees, and Related Methods",
+          "printed_pages": "295–336",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "10",
+          "title": "Boosting and Additive Trees",
+          "printed_pages": "337–387",
+          "content_read_pages": "337–338",
+          "evidence_url": "https://page-one.springer.com/pdf/preview/10.1007/978-0-387-84858-7_10",
+          "verified": "publisher range and preview"
+        },
+        {
+          "chapter": "12",
+          "title": "Support Vector Machines and Flexible Discriminants",
+          "printed_pages": "417–458",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "15",
+          "title": "Random Forests",
+          "printed_pages": "587–604",
+          "content_read_pages": "587–588",
+          "evidence_url": "https://page-one.springer.com/pdf/preview/10.1007/978-0-387-84858-7_15",
+          "verified": "publisher range and preview"
+        }
+      ],
+      "project_use": "Салыстырудың бірдей шарттарын, күрделіліктің шектеулерін және Random Forest пен boosting айырмашылығын түсіндіру.",
+      "limitations": "337–338-беттердегі нақты мысал — AdaBoost; оны LightGBM-нің дәл алгоритмі деп жазуға болмайды. LightGBM іске асырылымы үшін оның ресми мақаласы/құжаттамасы жеке қажет.",
+      "student_reading_questions": [
+        "219–220-беттердегі оқыту қатесі мен жалпылау қатесінің айырмасын өз мысалыңызбен түсіндіріңіз.",
+        "337–338 және 587–588-беттердегі boosting пен random forest құрылысын салыстырыңыз.",
+        "LightGBM-ді AdaBoost деп атау неліктен дұрыс емес?"
+      ]
+    },
+    {
+      "id": "bishop2006prml",
+      "citation": "Bishop C. M. Pattern Recognition and Machine Learning. 1st ed. New York: Springer, 2006. ISBN 978-0-387-31073-2.",
+      "authors": [
+        "Christopher M. Bishop"
+      ],
+      "title": "Pattern Recognition and Machine Learning",
+      "edition": 1,
+      "year": 2006,
+      "publisher": "Springer, New York",
+      "isbn_print": "978-0-387-31073-2",
+      "official_url": "https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/",
+      "publisher_url": "https://link.springer.com/book/9780387310732",
+      "legal_access": "Автордың Microsoft Research парағында мазмұн мен 8-тараудың ресми үлгісі ашық. Толық PDF 18 MB файлға жауап берді, бірақ веб құрал көлеміне байланысты оқымады; жергілікті жүктеу DNS қатесімен аяқталды. Толық мәтін оқылды деп белгіленбейді.",
+      "sample_url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/05/Bishop-PRML-sample.pdf",
+      "full_pdf_url": "https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf",
+      "verified_sections": [
+        {
+          "section": "1.3",
+          "title": "Model Selection",
+          "printed_start_page": 32,
+          "verified": "official sample contents"
+        },
+        {
+          "section": "1.5",
+          "title": "Decision Theory",
+          "printed_start_page": 38,
+          "verified": "official sample contents"
+        },
+        {
+          "section": "4.3.2",
+          "title": "Logistic regression",
+          "printed_start_page": 205,
+          "verified": "official sample contents"
+        },
+        {
+          "section": "4.3.3",
+          "title": "Iterative reweighted least squares",
+          "printed_start_page": 207,
+          "verified": "official sample contents"
+        },
+        {
+          "section": "5.3",
+          "title": "Error Backpropagation",
+          "printed_start_page": 241,
+          "verified": "official sample contents"
+        },
+        {
+          "section": "5.5.2",
+          "title": "Early stopping",
+          "printed_start_page": 259,
+          "verified": "official sample contents"
+        },
+        {
+          "section": "7.1",
+          "title": "Maximum Margin Classifiers",
+          "printed_start_page": 326,
+          "verified": "official sample contents"
+        }
+      ],
+      "project_use": "Логистикалық модельдің математикалық негізі, MLP оқытуы, ерте тоқтату және SVM геометриясы.",
+      "limitations": "Бөлімдердің басталу беттері расталды; осы тармақтардың толық мазмұны бұл тексерісте оқылған жоқ. Тікелей дәйексөз не формула нөмірін енгізер алдында толық мәтінді тексеру қажет. Кітаптың жалпы бет саны автор/баспа беттерінде әртүрлі берілгендіктен библиографиялық жазбада көрсетілмеді.",
+      "student_reading_questions": [
+        "1.5 бөлімдегі шешім теориясын 4.3.2 бөлімдегі логистикалық регрессиямен байланыстырып оқыңыз.",
+        "Логит пен ықтималдықтың айырмасын шағын сандық мысалмен шығарыңыз.",
+        "5.5.2 бөлімдегі ерте тоқтату қандай деректерге сүйенуі тиіс?"
+      ]
+    },
+    {
+      "id": "murphy2022pml",
+      "citation": "Murphy K. P. Probabilistic Machine Learning: An Introduction. MIT Press, 2022.",
+      "authors": [
+        "Kevin Patrick Murphy"
+      ],
+      "title": "Probabilistic Machine Learning: An Introduction",
+      "year": 2022,
+      "publisher": "MIT Press",
+      "official_url": "https://probml.github.io/pml-book/book1.html",
+      "toc_url": "https://probml.github.io/pml-book/toc1.pdf",
+      "draft_download_url": "https://github.com/probml/pml-book/releases/latest/download/book1.pdf",
+      "legal_access": "Автор CC-BY-NC-ND лицензиясындағы тегін авторлық PDF ұсынады (сайтта 2025-04-18 нұсқасы көрсетілген). Мазмұн PDF ашылды; толық файлдың redirect сілтемесін құрал аша алмады.",
+      "verified_sections": [
+        {
+          "section": "4.5.5",
+          "title": "Cross-validation",
+          "draft_start_page": 121
+        },
+        {
+          "section": "4.7.3",
+          "title": "Bootstrap approximation of the sampling distribution of any estimator",
+          "draft_start_page": 151
+        },
+        {
+          "section": "4.7.4",
+          "title": "Confidence intervals",
+          "draft_start_page": 153
+        },
+        {
+          "section": "4.7.5",
+          "title": "Caution: Confidence intervals are not credible",
+          "draft_start_page": 154
+        },
+        {
+          "section": "5.1.3",
+          "title": "ROC curves",
+          "draft_start_page": 167
+        },
+        {
+          "section": "5.1.4",
+          "title": "Precision-recall curves",
+          "draft_start_page": 170
+        },
+        {
+          "chapter": "10",
+          "title": "Logistic Regression",
+          "draft_start_page": 333
+        },
+        {
+          "section": "10.2.8",
+          "title": "Standardization",
+          "draft_start_page": 343
+        },
+        {
+          "section": "13.2",
+          "title": "Multilayer perceptrons (MLPs)",
+          "draft_start_page": 420
+        },
+        {
+          "section": "17.3.5",
+          "title": "Converting SVM outputs into probabilities",
+          "draft_start_page": 585
+        },
+        {
+          "chapter": "18",
+          "title": "Trees, Forests, Bagging, and Boosting",
+          "draft_start_page": 597
+        }
+      ],
+      "pagination_warning": "Көрсетілген беттер — ресми сайттағы 2021-08-27 draft мазмұнының беттері. Оларды 2022 жылғы баспа кітабының немесе 2025 PDF-тің тексерілген беттері ретінде беруге болмайды. Дипломда әзірге тарау/бөлім нөмірімен сілтеме жасау дұрыс.",
+      "project_use": "Қайта іріктеу, сенімділік интервалдары, ROC/PR, логистикалық модель және SVM шығысын ықтималдыққа айналдыру үшін оқу картасы.",
+      "limitations": "Мазмұн мен библиография ғана расталды. Қазақша тұжырым — жобаға арналған әдістемелік ұсыныс; кітаптың нақты бетінің аудармасы емес. Толық мәтінмен салыстырмай дәл беттік дәйексөз қолданбау.",
+      "student_reading_questions": [
+        "4.7.3–4.7.5 бөлімдерде бағалаушының үлестірімі мен сенімділік аралығы қалай ажыратылады?",
+        "5.1.3–5.1.4 бөлімдердегі ROC және precision–recall графиктері қандай сұраққа жауап береді?",
+        "17.3.5 бөлімді оқып, SVM бағасын неге бірден ықтималдық деп санауға болмайтынын түсіндіріңіз."
+      ]
+    },
+    {
+      "id": "steyerberg2019cpm",
+      "citation": "Steyerberg E. W. Clinical Prediction Models: A Practical Approach to Development, Validation, and Updating. 2nd ed. Cham: Springer, 2019. XXXIII, 558 p. DOI: 10.1007/978-3-030-16399-0.",
+      "authors": [
+        "Ewout W. Steyerberg"
+      ],
+      "title": "Clinical Prediction Models: A Practical Approach to Development, Validation, and Updating",
+      "edition": 2,
+      "year": 2019,
+      "publisher": "Springer, Cham",
+      "isbn_print": "978-3-030-16398-3",
+      "doi": "10.1007/978-3-030-16399-0",
+      "official_url": "https://link.springer.com/book/10.1007/978-3-030-16399-0",
+      "legal_access": "Баспаның библиографиясы, мазмұны және тарау аннотациялары ашық. Толық кітап жазылым/кітапхана арқылы қолжетімді; тегін толық мәтін расталмады.",
+      "verified_sections": [
+        {
+          "chapter": "3",
+          "title": "Study Design for Prediction Modeling",
+          "printed_pages": "37–58",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "4",
+          "title": "Statistical Models for Prediction",
+          "printed_pages": "59–93",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "5",
+          "title": "Overfitting and Optimism in Prediction Models",
+          "printed_pages": "95–112",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "7",
+          "title": "Missing Values",
+          "printed_pages": "127–155",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "9",
+          "title": "Coding of Categorical and Continuous Predictors",
+          "printed_pages": "175–190",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "15",
+          "title": "Evaluation of Performance",
+          "printed_pages": "277–308",
+          "evidence_url": "https://link.springer.com/chapter/10.1007/978-3-030-16399-0_15",
+          "verified": "publisher contents and chapter abstract"
+        },
+        {
+          "chapter": "16",
+          "title": "Evaluation of Clinical Usefulness",
+          "printed_pages": "309–328",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "17",
+          "title": "Validation of Prediction Models",
+          "printed_pages": "329–344",
+          "evidence_url": "https://link.springer.com/chapter/10.1007/978-3-030-16399-0_17",
+          "verified": "publisher contents and chapter abstract"
+        }
+      ],
+      "project_use": "Калибрлеу, дискриминация, ішкі/сыртқы валидация, клиникалық қолдану шектеулері.",
+      "limitations": "Толық тарау мәтіні оқылған жоқ; аннотациядан кең клиникалық ұсыным шығармау. Кітап әдістемесі қосымшаның клиникалық апробациядан өткенін дәлелдемейді.",
+      "student_reading_questions": [
+        "15-тарауда дискриминация мен калибрлеудің бағалау мақсаттары қалай ажыратылады?",
+        "17-тарау бойынша ішкі және сыртқы валидацияға қандай деректер қажет?",
+        "BRFSS пен UCI тәжірибелері осы анықтамаларға сәйкес қалай сипатталуы тиіс?"
+      ]
+    },
+    {
+      "id": "molnar2025iml",
+      "citation": "Molnar C. Interpretable Machine Learning: A Guide for Making Black Box Models Explainable. 3rd ed. 2025. ISBN 978-3-911578-03-5. URL: https://christophm.github.io/interpretable-ml-book/.",
+      "authors": [
+        "Christoph Molnar"
+      ],
+      "title": "Interpretable Machine Learning: A Guide for Making Black Box Models Explainable",
+      "edition": 3,
+      "year": 2025,
+      "publisher": "Автордың ашық веб-басылымы",
+      "isbn_print": "978-3-911578-03-5",
+      "official_url": "https://christophm.github.io/interpretable-ml-book/",
+      "citation_url": "https://christophm.github.io/interpretable-ml-book/cite.html",
+      "legal_access": "Толық веб-кітап CC BY-NC-SA 4.0 лицензиясымен ашық.",
+      "verified_sections": [
+        {
+          "chapter": "7",
+          "title": "Logistic Regression",
+          "printed_pages": null,
+          "evidence_url": "https://christophm.github.io/interpretable-ml-book/logistic.html",
+          "verified": "chapter opened; logistic function and coefficient interpretation inspected"
+        },
+        {
+          "chapter": "17",
+          "title": "Shapley Values",
+          "printed_pages": null,
+          "evidence_url": "https://christophm.github.io/interpretable-ml-book/shapley.html",
+          "verified": "definition, efficiency and Monte Carlo approximation content inspected"
+        },
+        {
+          "chapter": "18",
+          "title": "SHAP",
+          "printed_pages": null,
+          "evidence_url": "https://christophm.github.io/interpretable-ml-book/shap.html",
+          "verified": "chapter opened"
+        },
+        {
+          "chapter": "23",
+          "title": "Permutation Feature Importance",
+          "printed_pages": null,
+          "evidence_url": "https://christophm.github.io/interpretable-ml-book/feature-importance.html",
+          "verified": "algorithm, unseen-data recommendation and dependence caveat inspected"
+        }
+      ],
+      "project_use": "Жобадағы permutation importance және permutation Shapley түсіндірмелерін, олардың жуықтау сипатын негіздеу.",
+      "limitations": "Веб-басылымда тұрақты баспа беттері жоқ: тарау атауы мен URL беріледі. Шепли түсіндірмесін себептік әсер деп жазуға болмайды. Қолданылған авторлық permutation Shapley есептеуін тексермей TreeSHAP не сыртқы shap пакетінің орындалуы деп атауға болмайды.",
+      "student_reading_questions": [
+        "23-тарау бойынша permutation importance үшін неге оқытуға кірмеген деректер қажет?",
+        "Өзара байланысты белгілерді араластыру қандай жасанды комбинациялар тудыруы мүмкін?",
+        "17-тараудағы Монте-Карло жуықтауын жобадағы 48 реттеу мен 30 фондық бақылау параметрлерімен салыстырып тексеріңіз."
+      ]
+    },
+    {
+      "id": "breiman1984cart",
+      "citation": "Breiman L., Friedman J., Stone C. J., Olshen R. A. Classification and Regression Trees. 1st ed. Chapman & Hall, 1984. 368 p. ISBN 978-0-412-04841-8.",
+      "authors": [
+        "Leo Breiman",
+        "Jerome Friedman",
+        "Charles J. Stone",
+        "R. A. Olshen"
+      ],
+      "title": "Classification and Regression Trees",
+      "edition": 1,
+      "year": 1984,
+      "publisher": "Chapman & Hall",
+      "isbn_print": "978-0-412-04841-8",
+      "official_url": "https://www.routledge.com/Classification-and-Regression-Trees/Breiman-Friedman-Olshen-Stone/p/book/9780412048418",
+      "legal_access": "Баспаның іздеу жүйесінде индекстелген ресми карточкасы мен мазмұны тексерілді. Тікелей ашу 403 қатесін берді. Толық мәтін/тегін толық PDF расталған жоқ.",
+      "verified_sections": [
+        {
+          "chapter": "2",
+          "title": "Introduction to Tree Classification",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        },
+        {
+          "chapter": "3",
+          "title": "Right Sized Trees and Honest Estimates",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        },
+        {
+          "chapter": "4",
+          "title": "Splitting Rules",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        },
+        {
+          "chapter": "6",
+          "title": "Medical Diagnosis and Prognosis",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        },
+        {
+          "chapter": "10",
+          "title": "Optimal Pruning",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        }
+      ],
+      "student_reading_questions": [
+        "Ағаштың бөліну ережесі түсіндіруге қаншалық қолайлы?",
+        "Ағаш өлшемін таңдауды соңғы тест нәтижесімен жасау неліктен қате болар еді?",
+        "Жобада жапырақтағы ең аз бақылау саны қандай мәселені шектейді?"
+      ],
+      "project_use": "Decision Tree әдісінің түпкі еңбегі; бөліну, ағаш өлшемі және pruning туралы оқу.",
+      "limitations": "Тараулардың бет нөмірлері расталмады, сондықтан ойдан берілмеді. Авторлар реті қазіргі баспа карточкасында осылай берілген; пайдаланылатын баспа данасының титул парағымен соңғы библиографияны салыстыру қажет."
+    },
+    {
+      "id": "harrell2015rms",
+      "citation": "Harrell F. E., Jr. Regression Modeling Strategies: With Applications to Linear Models, Logistic and Ordinal Regression, and Survival Analysis. 2nd ed. Cham: Springer, 2015. XXV, 582 p. DOI: 10.1007/978-3-319-19425-7.",
+      "authors": [
+        "Frank E. Harrell, Jr."
+      ],
+      "title": "Regression Modeling Strategies: With Applications to Linear Models, Logistic and Ordinal Regression, and Survival Analysis",
+      "edition": 2,
+      "year": 2015,
+      "publisher": "Springer, Cham",
+      "isbn_print": "978-3-319-19424-0",
+      "doi": "10.1007/978-3-319-19425-7",
+      "official_url": "https://link.springer.com/book/10.1007/978-3-319-19425-7",
+      "legal_access": "Баспаның библиографиясы, мазмұны, 5 және 10-тараулардың аннотациялары ашық; толық мәтін жазылымға тәуелді.",
+      "verified_sections": [
+        {
+          "chapter": "2",
+          "title": "General Aspects of Fitting Regression Models",
+          "printed_pages": "13–44",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "3",
+          "title": "Missing Data",
+          "printed_pages": "45–61",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "4",
+          "title": "Multivariable Modeling Strategies",
+          "printed_pages": "63–102",
+          "verified": "publisher contents"
+        },
+        {
+          "chapter": "5",
+          "title": "Describing, Resampling, Validating, and Simplifying the Model",
+          "printed_pages": "103–126",
+          "evidence_url": "https://link.springer.com/chapter/10.1007/978-3-319-19425-7_5",
+          "verified": "range, abstract and accessible notes"
+        },
+        {
+          "chapter": "10",
+          "title": "Binary Logistic Regression",
+          "printed_pages": "219–274",
+          "evidence_url": "https://link.springer.com/chapter/10.1007/978-3-319-19425-7_10",
+          "verified": "range and abstract"
+        }
+      ],
+      "student_reading_questions": [
+        "Регрессиялық байланыс пен себептік қорытындының айырмасы қандай?",
+        "Қандай өлшеу қатесі немесе ескерілмеген белгі тұжырымды өзгертуі мүмкін?",
+        "Логистикалық коэффициентті ықтималдыққа қосылатын тұрақты сан деп түсіндіруге бола ма?"
+      ],
+      "project_use": "Бинарлы логистикалық модель, жетіспейтін деректер, валидация және себептік интерпретация шектеулері.",
+      "limitations": "Кітап толық оқылған жоқ; ашық аннотациялар мен ескертпелер тексерілді. R rms пакетіндегі мүмкіндік жоба Python кодында іске асырылған деп көрсетілмеуі тиіс."
+    },
+    {
+      "id": "goodfellow2016dl",
+      "citation": "Goodfellow I., Bengio Y., Courville A. Deep Learning. MIT Press, 2016. URL: https://www.deeplearningbook.org/.",
+      "authors": [
+        "Ian Goodfellow",
+        "Yoshua Bengio",
+        "Aaron Courville"
+      ],
+      "title": "Deep Learning",
+      "year": 2016,
+      "publisher": "MIT Press",
+      "official_url": "https://www.deeplearningbook.org/",
+      "toc_url": "https://www.deeplearningbook.org/contents/TOC.html",
+      "legal_access": "Авторлар толық HTML-нұсқаны тегін ұсынады. Авторлардың FAQ бөлімінде баспамен шартқа байланысты PDF таратуға рұқсат жоқ екені жазылған; рұқсатсыз PDF ұсынылмайды.",
+      "verified_sections": [
+        {
+          "chapter": "6",
+          "title": "Deep Feedforward Networks",
+          "printed_start_page": 164,
+          "evidence_url": "https://www.deeplearningbook.org/contents/mlp.html",
+          "verified": "TOC and chapter opened"
+        },
+        {
+          "section": "6.5",
+          "title": "Back-Propagation and Other Differentiation Algorithms",
+          "printed_start_page": 200,
+          "verified": "official TOC"
+        },
+        {
+          "section": "7.8",
+          "title": "Early Stopping",
+          "printed_start_page": 241,
+          "evidence_url": "https://www.deeplearningbook.org/contents/regularization.html",
+          "verified": "official TOC and content around 245–246"
+        },
+        {
+          "section": "11.2",
+          "title": "Default Baseline Models",
+          "printed_start_page": 420,
+          "evidence_url": "https://www.deeplearningbook.org/contents/guidelines.html",
+          "verified": "official TOC and section content"
+        },
+        {
+          "section": "11.4",
+          "title": "Selecting Hyperparameters",
+          "printed_start_page": 422,
+          "verified": "official TOC"
+        }
+      ],
+      "student_reading_questions": [
+        "MLP-дегі жасырын қабат неліктен сызықтық емес түрлендіруді қажет етеді?",
+        "Ерте тоқтату үшін қолданылған validation бөлігі соңғы тесттен қалай ажыратылды?",
+        "Модельді күрделендірмес бұрын бастапқы толық жұмыс жолын тексерудің қандай пайдасы бар?"
+      ],
+      "project_use": "Шағын MLP, ерте тоқтату және алғашқы жұмыс істейтін жүйені құру әдістемесі.",
+      "limitations": "Бұл жобаға CNN, RNN немесе генеративті модельдер қоспайды. HTML-дегі көрсетілген баспа беттері тексерілді; толық кітап аударылмайды немесе қайта жарияланбайды."
+    },
+    {
+      "id": "efron1994bootstrap",
+      "citation": "Efron B., Tibshirani R. J. An Introduction to the Bootstrap. 1st ed. Chapman & Hall, 1994 [баспаның ағымдағы карточкасындағы жыл]. URL: https://www.routledge.com/An-Introduction-to-the-Bootstrap/Efron-Tibshirani/p/book/9780429246593.",
+      "authors": [
+        "Bradley Efron",
+        "Robert J. Tibshirani"
+      ],
+      "title": "An Introduction to the Bootstrap",
+      "edition": 1,
+      "year": 1994,
+      "publisher": "Chapman & Hall",
+      "isbn_ebook": "978-0-429-24659-3",
+      "official_url": "https://www.routledge.com/An-Introduction-to-the-Bootstrap/Efron-Tibshirani/p/book/9780429246593",
+      "legal_access": "Ресми баспа карточкасының индекстелген мәтіні мен толық мазмұн тізімі тексерілді. Тікелей ашу 403 қатесін берді. Толық мәтін мен тегін заңды PDF расталған жоқ.",
+      "verified_sections": [
+        {
+          "chapter": "6",
+          "title": "The Bootstrap Estimate of Standard Error",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        },
+        {
+          "chapter": "8",
+          "title": "More Complicated Data Structures",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        },
+        {
+          "chapter": "13",
+          "title": "Confidence Intervals Based on Bootstrap Percentiles",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        },
+        {
+          "chapter": "14",
+          "title": "Better Bootstrap Confidence Intervals",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        },
+        {
+          "chapter": "17",
+          "title": "Cross-Validation and Other Estimates of Prediction Error",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        },
+        {
+          "chapter": "19",
+          "title": "Assessing the Error in Bootstrap Estimates",
+          "printed_pages": null,
+          "verified": "publisher contents order"
+        }
+      ],
+      "student_reading_questions": [
+        "Қайта іріктеу бірлігі жобада жол ма, әлде кластер ме?",
+        "Екі модельді салыстырғанда неге бірдей қайта іріктеу индекстерін пайдаланған дұрыс?",
+        "Қарапайым percentile аралығы қандай белгісіздік көздерін қамтымайды?"
+      ],
+      "project_use": "Bootstrap, сенімділік аралығы және болжам қатесін бағалау үшін арнайы монография.",
+      "limitations": "1993 жылғы алғашқы басылым мен баспаның қазіргі 1994 карточкасы араластырылмасын. Пайдаланылған нақты кітап титулын алғаннан кейін соңғы библиографиялық жыл нақтыланады. Қазір 1993 деп расталмаған беттік сілтеме берілмейді."
+    }
+  ],
+  "recommended_use_order": [
+    "Теориялық негіз: james2023islp және hastie2009esl.",
+    "Клиникалық бағалау әдістемесі: steyerberg2019cpm.",
+    "Түсіндірмелілік: molnar2025iml.",
+    "Математикалық толықтыру және оқу картасы: bishop2006prml, murphy2022pml; толық мәтінді тексеру деңгейі шектеулі екені сақталсын.",
+    "Нақты әдістерді терең оқу: breiman1984cart, harrell2015rms, goodfellow2016dl, efron1994bootstrap."
+  ]
+}

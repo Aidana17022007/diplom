@@ -1,0 +1,31 @@
+{
+  "status": "verified in browser on http://127.0.0.1:8000",
+  "created": "2026-11-07T16:05:56.007505+00:00",
+  "checks": [
+    "Desktop 1440x900 and mobile 390x844 layouts; no body overflow in tested mobile pages",
+    "BRFSS synthetic example: real model 0.026823487279290383; threshold 0.19042448230963954; version b40179c28ed8",
+    "UCI synthetic example: real Random Forest result displayed as 16.2%; dataset form reset and result invalidation on input edit",
+    "Predict controls disabled during computation; keyboard skip-link retains active page",
+    "Kazakh PDF downloaded through browser; 11 labels, model version and limitations independently verified; glyphs and layout readable",
+    "Validation threshold slider changes descriptive metrics only; reset control restores nearest recorded point",
+    "BRFSS subgroup table: non-degenerate zero-TP binomial intervals and 1456 unknown ages displayed",
+    "UCI fixed-OOF descriptive intervals and paired differences shown with dependency limitations",
+    "Scientific library: 42 records; 12 Atherosclerosis PDFs; Murphy search and edition/page caveat expanded",
+    "Experiment history: two actual snapshots; numeric capture dates and provenance visible",
+    "CSV preflight: valid demo 1/1; invalid demo 1 valid and 1 invalid, line 3 reported and inference blocked",
+    "CSV prediction downloaded and verified: probability, threshold, dataset, model name and model version",
+    "Metric CSV downloaded with eight model records, split sizes, threshold, weighting and timing meanings",
+    "BRFSS benchmark and full-scale tables separated; thresholds, saved curves, ablations and timing table displayed",
+    "Data counts, missingness and feature dictionaries displayed; quality page shows 34 passed tests",
+    "No browser console errors or warnings observed during final QA"
+  ],
+  "screenshots": [
+    "reports/figures/app_v2_overview.jpg",
+    "reports/figures/app_v2_mobile.jpg"
+  ],
+  "limitations": [
+    "Backend validation messages remain Russian in Kazakh UI",
+    "Docker Engine unavailable; Docker execution unverified",
+    "Browser checks are recorded manual scenarios, not an exhaustive automated UI suite"
+  ]
+}

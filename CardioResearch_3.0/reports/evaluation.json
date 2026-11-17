@@ -1,0 +1,748 @@
+{
+  "schema_version": 1,
+  "created": "2026-11-09T15:00:49+00:00",
+  "sources": {
+    "archive": "CardioResearch_project.zip",
+    "archive_sha256": "6bfc3f3f440bc5c4db7ee37d7ad0059e279829677d64e9bd4db04d70b1623661",
+    "reports": "data/reports.json",
+    "reports_sha256": "33a2f1575516cdf4df6958780f490c1fc468c09636bcef73c7e2e0b206901e5b",
+    "prediction_sha256": {
+      "CardioResearch/reports/brfss_test_predictions.csv": "18c8ddc03e8b1451884e925975e8935047507e0e804741deab32ed7d8211c489",
+      "CardioResearch/reports/uci_oof_predictions.csv": "94d53eaadf64ad41cfb98da5b2f86cfbd09312012161453dc8a0c121fbfd6f72"
+    }
+  },
+  "methods": {
+    "fitting": "None; only frozen saved probabilities are evaluated.",
+    "classification_rule": "probability >= threshold",
+    "auc": "Positive-negative pair ordering with half credit for tied scores.",
+    "average_precision": "Non-interpolated precision weighted by recall increments at each distinct score.",
+    "confidence_level": 0.95,
+    "interval_method": "Wilson score; iid descriptive intervals conditional on fixed predictions",
+    "calibration_bins": 10,
+    "distribution_bins": 20,
+    "binning": "Equal width [lower, upper), last bin includes 1.",
+    "log_loss_probability_clip": 1e-15,
+    "undefined_values": "null"
+  },
+  "datasets": {
+    "brfss": {
+      "threshold": 0.19042448230963954,
+      "n": 85748,
+      "positive": 7262,
+      "negative": 78486,
+      "metrics": {
+        "accuracy": 0.8627373233194944,
+        "precision": 0.3102054563826204,
+        "recall": 0.5072982649407877,
+        "specificity": 0.8956246973982621,
+        "f1": 0.3849932072316857,
+        "balanced_accuracy": 0.7014614811695249,
+        "mcc": 0.3247664929461239,
+        "npv": 0.9515648689625298,
+        "fpr": 0.10437530260173788,
+        "fnr": 0.49270173505921233,
+        "positive_rate": 0.13849885711620097,
+        "prevalence": 0.08469002192470962,
+        "roc_auc": 0.8388685147257342,
+        "average_precision": 0.32087306860285136,
+        "brier": 0.06595875512181058,
+        "ap_lift": 3.788794255929124,
+        "brier_skill": 0.14911276525903405,
+        "log_loss": 0.2269668155891451,
+        "ece": 0.006327410730143888
+      },
+      "confusion": [
+        [
+          70294,
+          8192
+        ],
+        [
+          3578,
+          3684
+        ]
+      ],
+      "intervals": {
+        "precision": [
+          0.301948440068409,
+          0.3185852164095701
+        ],
+        "recall": [
+          0.49579887919887466,
+          0.5187899334803941
+        ],
+        "specificity": [
+          0.89346628406511,
+          0.8977443853128058
+        ],
+        "npv": [
+          0.9499931196705754,
+          0.9530896565464416
+        ]
+      },
+      "baselines": {
+        "majority_accuracy": 0.9153099780752904,
+        "prevalence": 0.08469002192470962,
+        "brier": 0.07751762211110182,
+        "definition": "Descriptive constant probability equal to the prevalence of this evaluation sample; not a fitted or independently validated baseline."
+      },
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 61537,
+          "mean_probability": 0.03087083642857255,
+          "observed_rate": 0.027804410354745925,
+          "ci": [
+            0.026534578285987764,
+            0.029133192540854995
+          ]
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 13260,
+          "mean_probability": 0.14280399806636923,
+          "observed_rate": 0.15520361990950227,
+          "ci": [
+            0.1491404053241761,
+            0.16146655357315948
+          ]
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 5844,
+          "mean_probability": 0.24400259602202584,
+          "observed_rate": 0.25598904859685145,
+          "ci": [
+            0.2449628137285691,
+            0.26733586603503223
+          ]
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 2838,
+          "mean_probability": 0.34643332435855306,
+          "observed_rate": 0.34319943622269206,
+          "ci": [
+            0.3259543668004464,
+            0.3608684159281399
+          ]
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 1343,
+          "mean_probability": 0.4456446849222817,
+          "observed_rate": 0.40804169769173493,
+          "ci": [
+            0.3820551863284981,
+            0.4345527756685469
+          ]
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 634,
+          "mean_probability": 0.5401548298191718,
+          "observed_rate": 0.4921135646687697,
+          "ci": [
+            0.45336317932490816,
+            0.5309589435761508
+          ]
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 242,
+          "mean_probability": 0.6419161128933804,
+          "observed_rate": 0.5495867768595041,
+          "ci": [
+            0.48661372918330814,
+            0.6110101627148623
+          ]
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 50,
+          "mean_probability": 0.7383178338066656,
+          "observed_rate": 0.6,
+          "ci": [
+            0.4618143774758936,
+            0.7239161026974346
+          ]
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null,
+          "ci": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null,
+          "ci": null
+        }
+      ],
+      "distribution": [
+        {
+          "lower": 0.0,
+          "upper": 0.05,
+          "negative": 46514,
+          "positive": 684
+        },
+        {
+          "lower": 0.05,
+          "upper": 0.1,
+          "negative": 13312,
+          "positive": 1027
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.15,
+          "negative": 6907,
+          "positive": 1077
+        },
+        {
+          "lower": 0.15,
+          "upper": 0.2,
+          "negative": 4295,
+          "positive": 981
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.25,
+          "negative": 2569,
+          "positive": 785
+        },
+        {
+          "lower": 0.25,
+          "upper": 0.3,
+          "negative": 1779,
+          "positive": 711
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.35,
+          "negative": 1082,
+          "positive": 496
+        },
+        {
+          "lower": 0.35,
+          "upper": 0.4,
+          "negative": 782,
+          "positive": 478
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.45,
+          "negative": 450,
+          "positive": 304
+        },
+        {
+          "lower": 0.45,
+          "upper": 0.5,
+          "negative": 345,
+          "positive": 244
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.55,
+          "negative": 223,
+          "positive": 189
+        },
+        {
+          "lower": 0.55,
+          "upper": 0.6,
+          "negative": 99,
+          "positive": 123
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.65,
+          "negative": 70,
+          "positive": 82
+        },
+        {
+          "lower": 0.65,
+          "upper": 0.7,
+          "negative": 39,
+          "positive": 51
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.75,
+          "negative": 13,
+          "positive": 18
+        },
+        {
+          "lower": 0.75,
+          "upper": 0.8,
+          "negative": 7,
+          "positive": 12
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.85,
+          "negative": 0,
+          "positive": 0
+        },
+        {
+          "lower": 0.85,
+          "upper": 0.9,
+          "negative": 0,
+          "positive": 0
+        },
+        {
+          "lower": 0.9,
+          "upper": 0.95,
+          "negative": 0,
+          "positive": 0
+        },
+        {
+          "lower": 0.95,
+          "upper": 1.0,
+          "negative": 0,
+          "positive": 0
+        }
+      ],
+      "dataset": "brfss",
+      "model": "Logistic Regression",
+      "evaluation": "locked_independent_test",
+      "reference_metrics": {
+        "roc_auc": 0.8388685147257342,
+        "average_precision": 0.32087306860285136,
+        "accuracy": 0.8627373233194944,
+        "precision": 0.3102054563826204,
+        "recall": 0.5072982649407877,
+        "specificity": 0.8956246973982621,
+        "f1": 0.3849932072316857,
+        "brier": 0.06595875512181058,
+        "confusion": [
+          [
+            70294.0,
+            8192.0
+          ],
+          [
+            3578.0,
+            3684.0
+          ]
+        ]
+      },
+      "provenance": {
+        "prediction_member": "CardioResearch/reports/brfss_test_predictions.csv",
+        "prediction_sha256": "18c8ddc03e8b1451884e925975e8935047507e0e804741deab32ed7d8211c489",
+        "probability_column": "probability",
+        "weighting": "unweighted respondent-level",
+        "threshold_source": "Frozen pre-test validation maximum F1",
+        "retrained": false,
+        "selection_changed": false,
+        "row_identifiers_exported": false,
+        "reconciliation": {
+          "passed": true,
+          "absolute_tolerance": 1e-10,
+          "max_absolute_metric_delta": 0.0,
+          "metric_deltas": {
+            "roc_auc": 0.0,
+            "average_precision": 0.0,
+            "brier": 0.0,
+            "accuracy": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.0,
+            "f1": 0.0
+          }
+        },
+        "limitations": [
+          "Post-hoc descriptive diagnostics; no model, calibration, or threshold is fitted to these predictions.",
+          "Wilson intervals assume iid observations and exclude model fitting and selection uncertainty; they are not simultaneous intervals.",
+          "Calibration uses ten equal-width bins [lower, upper), with probability 1 included in the final bin. Empty bins are null. ECE depends on these bins and is exploratory.",
+          "The constant-probability Brier baseline uses this evaluation sample's prevalence and is descriptive, not a deployable fitted comparator.",
+          "BRFSS survey weights, strata and clusters are not used in these diagnostics."
+        ]
+      },
+      "validation": {
+        "n": 51449,
+        "metrics": {
+          "roc_auc": 0.8328832658948471,
+          "average_precision": 0.31991987341203476,
+          "accuracy": 0.864603782386441,
+          "precision": 0.31150621566926856,
+          "recall": 0.4944928866452501,
+          "specificity": 0.8988554076150432,
+          "f1": 0.3822277403334516,
+          "brier": 0.06627817731553808,
+          "balanced_accuracy": 0.6966741471301466,
+          "mcc": 0.32104679437714806,
+          "npv": 0.950528845074218,
+          "fpr": 0.10114459238495678,
+          "fnr": 0.5055071133547498,
+          "positive_rate": 0.1344632548737585,
+          "prevalence": 0.08470524208439426
+        },
+        "confusion": [
+          [
+            42328,
+            4763
+          ],
+          [
+            2203,
+            2155
+          ]
+        ],
+        "source": "Saved validation aggregates at the frozen selected threshold; no row-level validation probabilities were available for additional probability diagnostics."
+      }
+    },
+    "uci": {
+      "threshold": 0.5,
+      "n": 303,
+      "positive": 139,
+      "negative": 164,
+      "metrics": {
+        "accuracy": 0.8283828382838284,
+        "precision": 0.8270676691729323,
+        "recall": 0.7913669064748201,
+        "specificity": 0.8597560975609756,
+        "f1": 0.8088235294117647,
+        "balanced_accuracy": 0.8255615020178979,
+        "mcc": 0.6537957334480643,
+        "npv": 0.8294117647058824,
+        "fpr": 0.1402439024390244,
+        "fnr": 0.20863309352517986,
+        "positive_rate": 0.4389438943894389,
+        "prevalence": 0.45874587458745875,
+        "roc_auc": 0.9090629935076329,
+        "average_precision": 0.903162761257104,
+        "brier": 0.15046138353533614,
+        "ap_lift": 1.968764868064047,
+        "brier_skill": 0.394029252456761,
+        "log_loss": 0.4788604877299806,
+        "ece": 0.15991281974671784
+      },
+      "confusion": [
+        [
+          141,
+          23
+        ],
+        [
+          29,
+          110
+        ]
+      ],
+      "intervals": {
+        "precision": [
+          0.753859599305477,
+          0.8819126348534535
+        ],
+        "recall": [
+          0.7164371340827176,
+          0.8506251226930102
+        ],
+        "specificity": [
+          0.7983483332060332,
+          0.9046960804275493
+        ],
+        "npv": [
+          0.7657454259342207,
+          0.8785197612069005
+        ]
+      },
+      "baselines": {
+        "majority_accuracy": 0.5412541254125413,
+        "prevalence": 0.45874587458745875,
+        "brier": 0.24829809713644632,
+        "definition": "Descriptive constant probability equal to the prevalence of this evaluation sample; not a fitted or independently validated baseline."
+      },
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null,
+          "ci": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 21,
+          "mean_probability": 0.17503451143227244,
+          "observed_rate": 0.047619047619047616,
+          "ci": [
+            0.008455987809826399,
+            0.22669360074122563
+          ]
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "n": 60,
+          "mean_probability": 0.24597916636332087,
+          "observed_rate": 0.05,
+          "ci": [
+            0.01714950216439568,
+            0.1370051647634852
+          ]
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "n": 56,
+          "mean_probability": 0.35560563378219484,
+          "observed_rate": 0.23214285714285715,
+          "ci": [
+            0.1409937910920862,
+            0.35768153215010856
+          ]
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 33,
+          "mean_probability": 0.4465792081425151,
+          "observed_rate": 0.36363636363636365,
+          "ci": [
+            0.2218717823524236,
+            0.5338382169773361
+          ]
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "n": 51,
+          "mean_probability": 0.5454249987427253,
+          "observed_rate": 0.6078431372549019,
+          "ci": [
+            0.4708515898394834,
+            0.7297265901824019
+          ]
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "n": 44,
+          "mean_probability": 0.6540473999834894,
+          "observed_rate": 0.9545454545454546,
+          "ci": [
+            0.8486500156237035,
+            0.987444890050405
+          ]
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "n": 30,
+          "mean_probability": 0.7510773991305835,
+          "observed_rate": 0.9666666666666667,
+          "ci": [
+            0.8332960900859082,
+            0.9940914096183874
+          ]
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 8,
+          "mean_probability": 0.8131046487571686,
+          "observed_rate": 1.0,
+          "ci": [
+            0.6755924351161198,
+            1.0
+          ]
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 0,
+          "mean_probability": null,
+          "observed_rate": null,
+          "ci": null
+        }
+      ],
+      "distribution": [
+        {
+          "lower": 0.0,
+          "upper": 0.05,
+          "negative": 0,
+          "positive": 0
+        },
+        {
+          "lower": 0.05,
+          "upper": 0.1,
+          "negative": 0,
+          "positive": 0
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.15,
+          "negative": 2,
+          "positive": 0
+        },
+        {
+          "lower": 0.15,
+          "upper": 0.2,
+          "negative": 18,
+          "positive": 1
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.25,
+          "negative": 36,
+          "positive": 1
+        },
+        {
+          "lower": 0.25,
+          "upper": 0.3,
+          "negative": 21,
+          "positive": 2
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.35,
+          "negative": 17,
+          "positive": 4
+        },
+        {
+          "lower": 0.35,
+          "upper": 0.4,
+          "negative": 26,
+          "positive": 9
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.45,
+          "negative": 13,
+          "positive": 5
+        },
+        {
+          "lower": 0.45,
+          "upper": 0.5,
+          "negative": 8,
+          "positive": 7
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.55,
+          "negative": 11,
+          "positive": 14
+        },
+        {
+          "lower": 0.55,
+          "upper": 0.6,
+          "negative": 9,
+          "positive": 17
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.65,
+          "negative": 1,
+          "positive": 19
+        },
+        {
+          "lower": 0.65,
+          "upper": 0.7,
+          "negative": 1,
+          "positive": 23
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.75,
+          "negative": 0,
+          "positive": 16
+        },
+        {
+          "lower": 0.75,
+          "upper": 0.8,
+          "negative": 1,
+          "positive": 13
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.85,
+          "negative": 0,
+          "positive": 8
+        },
+        {
+          "lower": 0.85,
+          "upper": 0.9,
+          "negative": 0,
+          "positive": 0
+        },
+        {
+          "lower": 0.9,
+          "upper": 0.95,
+          "negative": 0,
+          "positive": 0
+        },
+        {
+          "lower": 0.95,
+          "upper": 1.0,
+          "negative": 0,
+          "positive": 0
+        }
+      ],
+      "dataset": "uci",
+      "model": "Random Forest",
+      "evaluation": "averaged_patient_oof",
+      "reference_metrics": {
+        "roc_auc": 0.909062993507633,
+        "average_precision": 0.9031627612571037,
+        "accuracy": 0.8283828382838284,
+        "precision": 0.8270676691729323,
+        "recall": 0.7913669064748201,
+        "specificity": 0.8597560975609756,
+        "f1": 0.8088235294117647,
+        "brier": 0.15046138353533617,
+        "confusion": [
+          [
+            141.0,
+            23.0
+          ],
+          [
+            29.0,
+            110.0
+          ]
+        ]
+      },
+      "provenance": {
+        "prediction_member": "CardioResearch/reports/uci_oof_predictions.csv",
+        "prediction_sha256": "94d53eaadf64ad41cfb98da5b2f86cfbd09312012161453dc8a0c121fbfd6f72",
+        "probability_column": "Random Forest",
+        "weighting": "unweighted patient-level",
+        "threshold_source": "Fixed 0.5; averaged OOF probabilities",
+        "retrained": false,
+        "selection_changed": false,
+        "row_identifiers_exported": false,
+        "reconciliation": {
+          "passed": true,
+          "absolute_tolerance": 1e-10,
+          "max_absolute_metric_delta": 3.3306690738754696e-16,
+          "metric_deltas": {
+            "roc_auc": 1.1102230246251565e-16,
+            "average_precision": 3.3306690738754696e-16,
+            "brier": 2.7755575615628914e-17,
+            "accuracy": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.0,
+            "f1": 0.0
+          }
+        },
+        "limitations": [
+          "Post-hoc descriptive diagnostics; no model, calibration, or threshold is fitted to these predictions.",
+          "Wilson intervals assume iid observations and exclude model fitting and selection uncertainty; they are not simultaneous intervals.",
+          "Calibration uses ten equal-width bins [lower, upper), with probability 1 included in the final bin. Empty bins are null. ECE depends on these bins and is exploratory.",
+          "The constant-probability Brier baseline uses this evaluation sample's prevalence and is descriptive, not a deployable fitted comparator.",
+          "OOF probabilities are averaged across two repeats per patient; overlapping CV training sets induce dependence not covered by Wilson intervals. These metrics differ from mean outer-fold scores and do not independently validate the final artifact."
+        ]
+      }
+    }
+  }
+}

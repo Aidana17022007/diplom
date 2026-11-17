@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "seed": 20261107,
+  "datasets": {
+    "uci": {
+      "n": 303,
+      "positive": 139,
+      "source": "Original archived uci_centers_audit.csv; Cleveland rows only",
+      "source_sha256": "ba254f22ba45d9a372bdf6b9dbe970dd5ac10c41326b1485214b9789222d9f24",
+      "oof_row_ids_and_targets_match": true,
+      "processed_sha256": "3085cf6a71969925089c404881ff3b26e1988d31502e84cb750da8289aac1258"
+    },
+    "brfss": {
+      "n": 428738,
+      "positive": 36311,
+      "train_n": 342990,
+      "test_n": 85748,
+      "source_url": "https://www.cdc.gov/brfss/annual_data/2023/files/LLCP2023XPT.zip",
+      "source_sha256": "d1ab80e4806a1d07bd3e40ec78c971ad9ff920f3ea5f6049780aeaa41ff31f43",
+      "source_matches_archived_fingerprint": true,
+      "split_row_ids_match": true,
+      "test_targets_and_weights_match": true,
+      "max_frozen_probability_delta": 9.974659986866641e-17,
+      "processed_sha256": "9cbb18fb26f324a363994e8f80254806def15d1cc0058cf8f3a96e79440998e7"
+    }
+  },
+  "frozen_files_unchanged": true,
+  "frozen_file_count": 71
+}

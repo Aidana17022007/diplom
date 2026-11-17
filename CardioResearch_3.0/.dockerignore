@@ -1,0 +1,10 @@
+.venv
+data
+frontend/node_modules
+frontend/dist
+.git
+output
+tmp
+*.log
+reports/brfss_test_predictions.csv
+reports/brfss_splits.json

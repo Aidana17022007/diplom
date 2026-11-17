@@ -1,0 +1,3406 @@
+{
+  "title": "Студент тексеруіне арналған техникалық дәлелдер кестелері",
+  "status": "ЖИ көмегімен алынған қосалқы материал. Диплом тарауы немесе студенттің дайын түсіндірмесі емес.",
+  "regulation_note": "11.23-тармаққа сәйкес қосалқы қолдануға арналған. Студент сандар мен дереккөздерді тексеріп, ғылыми түсіндіру мен қорытындыларды өзі жазуы керек.",
+  "generated_date": "2026-11-07",
+  "table_count": 20,
+  "tables": [
+    {
+      "id": "sources",
+      "title": "Бастапқы архивтердің бақылау сомалары",
+      "sources": [
+        "reports/sources.json"
+      ],
+      "conditions": {
+        "scope": "Жергілікті архивтер; түпнұсқалар өзгертілмеген"
+      },
+      "rows": [
+        {
+          "file": "LLCP2023XPT.zip",
+          "bytes": 93237818,
+          "sha256": "d1ab80e4806a1d07bd3e40ec78c971ad9ff920f3ea5f6049780aeaa41ff31f43"
+        },
+        {
+          "file": "codebook23_llcp-v2-508 (1).zip",
+          "bytes": 85594,
+          "sha256": "948cb7cd58bddde96eab61ab11a93e69ef4440ff3b62f9382895a7403407df4a"
+        },
+        {
+          "file": "heart+disease.zip",
+          "bytes": 128894,
+          "sha256": "b17cd273da9ce1caa4710fce80227ea454d4dbf9fcbc8e6a9121672751563adc"
+        }
+      ],
+      "notes": [],
+      "render_hint": "compact_table"
+    },
+    {
+      "id": "data_flow",
+      "title": "Деректерді дайындау кезеңдері",
+      "sources": [
+        "reports/brfss_data.json",
+        "reports/uci_data.json"
+      ],
+      "conditions": {},
+      "rows": [
+        {
+          "dataset": "BRFSS",
+          "raw_rows": 433323,
+          "raw_columns": 350,
+          "unknown_target_removed": 4585,
+          "retained": 428738,
+          "MICHD_mismatches": 0,
+          "duplicate_state_PSU": 0,
+          "identical_predictor_rows_retained": 51121
+        },
+        {
+          "dataset": "Cleveland",
+          "raw_rows": 303,
+          "retained": 303,
+          "predictors": 13
+        }
+      ],
+      "notes": [
+        "Жергілікті XPT файлының құрылымы тікелей тексерілді: 350 баған. Бастапқы 433 323 жол саны дайындау есебінен алынды."
+      ],
+      "render_hint": "compact_table"
+    },
+    {
+      "id": "splits",
+      "title": "BRFSS бөліктеріндегі класс құрамы",
+      "sources": [
+        "reports/brfss_splits.json",
+        "data/processed/brfss.pkl"
+      ],
+      "conditions": {
+        "seed": 20261107,
+        "weighted": false
+      },
+      "rows": [
+        {
+          "part": "Негізгі оқыту",
+          "n": 240093,
+          "positive": 20334,
+          "negative": 219759,
+          "positive_fraction": 0.08469218177956042
+        },
+        {
+          "part": "Калибрлеу",
+          "n": 51448,
+          "positive": 4357,
+          "negative": 47091,
+          "positive_fraction": 0.08468745140724615
+        },
+        {
+          "part": "Валидация",
+          "n": 51449,
+          "positive": 4358,
+          "negative": 47091,
+          "positive_fraction": 0.08470524208439426
+        },
+        {
+          "part": "Тест",
+          "n": 85748,
+          "positive": 7262,
+          "negative": 78486,
+          "positive_fraction": 0.08469002192470962
+        },
+        {
+          "part": "Салыстыруға арналған оқыту ішкі жиыны",
+          "n": 12000,
+          "positive": 1016,
+          "negative": 10984,
+          "positive_fraction": 0.08466666666666667
+        },
+        {
+          "part": "Салыстыруға арналған тест ішкі жиыны",
+          "n": 12000,
+          "positive": 1016,
+          "negative": 10984,
+          "positive_fraction": 0.08466666666666667
+        }
+      ],
+      "notes": [
+        "benchmark_train — fit жиынының, benchmark_test — test жиынының ішкі бөлігі. Барлық алты жолдың көлемдерін қосуға болмайды."
+      ],
+      "render_hint": "compact_table"
+    },
+    {
+      "id": "brfss_schema",
+      "title": "BRFSS кіріс белгілерінің сөздігі",
+      "sources": [
+        "reports/schema.json",
+        "reports/brfss_data.json",
+        "reports/codebook_excerpts.json"
+      ],
+      "conditions": {
+        "missingness_scope": "Әзірлеу жиыны: 342 990 бақылау"
+      },
+      "rows": [
+        {
+          "name": "age_group",
+          "label": "Жас тобы",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "18–24"
+            },
+            {
+              "value": 2,
+              "label": "25–29"
+            },
+            {
+              "value": 3,
+              "label": "30–34"
+            },
+            {
+              "value": 4,
+              "label": "35–39"
+            },
+            {
+              "value": 5,
+              "label": "40–44"
+            },
+            {
+              "value": 6,
+              "label": "45–49"
+            },
+            {
+              "value": 7,
+              "label": "50–54"
+            },
+            {
+              "value": 8,
+              "label": "55–59"
+            },
+            {
+              "value": 9,
+              "label": "60–64"
+            },
+            {
+              "value": 10,
+              "label": "65–69"
+            },
+            {
+              "value": 11,
+              "label": "70–74"
+            },
+            {
+              "value": 12,
+              "label": "75–79"
+            },
+            {
+              "value": 13,
+              "label": "80 және одан жоғары"
+            }
+          ],
+          "source": "_AGEG5YR",
+          "group": "Жеке көрсеткіштер",
+          "missing_dev": 6041
+        },
+        {
+          "name": "sex",
+          "label": "Жыныс",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "Ер"
+            },
+            {
+              "value": 2,
+              "label": "Әйел"
+            }
+          ],
+          "source": "SEXVAR",
+          "group": "Жеке көрсеткіштер",
+          "missing_dev": 0
+        },
+        {
+          "name": "bmi",
+          "label": "Дене салмағы индексі",
+          "kind": "Сандық",
+          "min": 1,
+          "max": 99.99,
+          "step": 0.1,
+          "source": "_BMI5 / 100",
+          "group": "Жеке көрсеткіштер",
+          "missing_dev": 31875
+        },
+        {
+          "name": "smoking",
+          "label": "Темекі шегу мәртебесі",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "Күн сайын"
+            },
+            {
+              "value": 2,
+              "label": "Кейде"
+            },
+            {
+              "value": 3,
+              "label": "Бұрын шеккен"
+            },
+            {
+              "value": 4,
+              "label": "Тұрақты темекі шекпеген"
+            }
+          ],
+          "source": "_SMOKER3",
+          "group": "Өмір салты",
+          "missing_dev": 18073
+        },
+        {
+          "name": "activity",
+          "label": "Соңғы айдағы физикалық белсенділік",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "Иә"
+            },
+            {
+              "value": 2,
+              "label": "Жоқ"
+            }
+          ],
+          "source": "EXERANY2",
+          "group": "Өмір салты",
+          "missing_dev": 914
+        },
+        {
+          "name": "diabetes",
+          "label": "Диабет туралы жауап",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "Иә"
+            },
+            {
+              "value": 2,
+              "label": "Тек жүктілік кезінде"
+            },
+            {
+              "value": 3,
+              "label": "Жоқ"
+            },
+            {
+              "value": 4,
+              "label": "Предиабет"
+            }
+          ],
+          "source": "DIABETE4",
+          "group": "Денсаулық жағдайы",
+          "missing_dev": 569
+        },
+        {
+          "name": "hypertension",
+          "label": "Жоғары қан қысымы туралы жауап",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "Иә"
+            },
+            {
+              "value": 2,
+              "label": "Тек жүктілік кезінде"
+            },
+            {
+              "value": 3,
+              "label": "Жоқ"
+            },
+            {
+              "value": 4,
+              "label": "Шекаралық жоғарылау"
+            }
+          ],
+          "source": "BPHIGH6",
+          "group": "Денсаулық жағдайы",
+          "missing_dev": 1346
+        },
+        {
+          "name": "cholesterol",
+          "label": "Жоғары холестерин туралы жауап",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "Иә"
+            },
+            {
+              "value": 2,
+              "label": "Жоқ"
+            }
+          ],
+          "source": "TOLDHI3",
+          "group": "Денсаулық жағдайы",
+          "missing_dev": 43190
+        },
+        {
+          "name": "general_health",
+          "label": "Жалпы денсаулық бағасы",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "Өте жақсы"
+            },
+            {
+              "value": 2,
+              "label": "Жақсыдан жоғары"
+            },
+            {
+              "value": 3,
+              "label": "Жақсы"
+            },
+            {
+              "value": 4,
+              "label": "Қанағаттанарлық"
+            },
+            {
+              "value": 5,
+              "label": "Нашар"
+            }
+          ],
+          "source": "GENHLTH",
+          "group": "Өзіндік денсаулық бағасы",
+          "missing_dev": 939
+        },
+        {
+          "name": "physical_days",
+          "label": "30 күндегі физикалық жайсыздық күндері",
+          "kind": "Сандық",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "source": "PHYSHLTH",
+          "group": "Өзіндік денсаулық бағасы",
+          "missing_dev": 8284
+        },
+        {
+          "name": "mental_days",
+          "label": "30 күндегі эмоциялық жайсыздық күндері",
+          "kind": "Сандық",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "source": "MENTHLTH",
+          "group": "Өзіндік денсаулық бағасы",
+          "missing_dev": 6201
+        }
+      ],
+      "notes": [],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "uci_schema",
+      "title": "Cleveland кіріс белгілерінің сөздігі",
+      "sources": [
+        "reports/schema.json",
+        "reports/uci_data.json"
+      ],
+      "conditions": {
+        "missingness_scope": "Cleveland толық жиыны: 303 бақылау"
+      },
+      "rows": [
+        {
+          "name": "age",
+          "label": "Жас",
+          "kind": "Сандық",
+          "min": 18,
+          "max": 100,
+          "step": 1,
+          "source": "age",
+          "group": "Негізгі көрсеткіштер",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "sex",
+          "label": "Жыныс",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 0,
+              "label": "Әйел"
+            },
+            {
+              "value": 1,
+              "label": "Ер"
+            }
+          ],
+          "source": "sex",
+          "group": "Негізгі көрсеткіштер",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "cp",
+          "label": "Кеуде ауыруының түрі",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "Типтік стенокардия"
+            },
+            {
+              "value": 2,
+              "label": "Атиптік стенокардия"
+            },
+            {
+              "value": 3,
+              "label": "Ангиналық емес ауырсыну"
+            },
+            {
+              "value": 4,
+              "label": "Симптомсыз"
+            }
+          ],
+          "source": "cp",
+          "group": "Клиникалық көрсеткіштер",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "trestbps",
+          "label": "Тыныштықтағы қысым, мм сын. бағ.",
+          "kind": "Сандық",
+          "min": 60,
+          "max": 260,
+          "step": 1,
+          "source": "trestbps",
+          "group": "Негізгі көрсеткіштер",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "chol",
+          "label": "Холестерин, мг/дл",
+          "kind": "Сандық",
+          "min": 50,
+          "max": 700,
+          "step": 1,
+          "source": "chol",
+          "group": "Негізгі көрсеткіштер",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "fbs",
+          "label": "Ашқарындағы глюкоза 120 мг/дл-ден жоғары",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 0,
+              "label": "Жоқ"
+            },
+            {
+              "value": 1,
+              "label": "Иә"
+            }
+          ],
+          "source": "fbs",
+          "group": "Клиникалық көрсеткіштер",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "restecg",
+          "label": "Тыныштықтағы ЭКГ",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 0,
+              "label": "Қалыпты"
+            },
+            {
+              "value": 1,
+              "label": "ST–T өзгерістері"
+            },
+            {
+              "value": 2,
+              "label": "Сол жақ қарынша гипертрофиясы"
+            }
+          ],
+          "source": "restecg",
+          "group": "Клиникалық көрсеткіштер",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "thalach",
+          "label": "Жүктемедегі максималды жүрек соғу жиілігі",
+          "kind": "Сандық",
+          "min": 50,
+          "max": 230,
+          "step": 1,
+          "source": "thalach",
+          "group": "Жүктемелік сынақ",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "exang",
+          "label": "Жүктемелік стенокардия",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 0,
+              "label": "Жоқ"
+            },
+            {
+              "value": 1,
+              "label": "Иә"
+            }
+          ],
+          "source": "exang",
+          "group": "Жүктемелік сынақ",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "oldpeak",
+          "label": "Жүктемедегі ST депрессиясы",
+          "kind": "Сандық",
+          "min": 0,
+          "max": 10,
+          "step": 0.1,
+          "source": "oldpeak",
+          "group": "Жүктемелік сынақ",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "slope",
+          "label": "ST сегментінің еңісі",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 1,
+              "label": "Жоғары бағытталған"
+            },
+            {
+              "value": 2,
+              "label": "Көлденең"
+            },
+            {
+              "value": 3,
+              "label": "Төмен бағытталған"
+            }
+          ],
+          "source": "slope",
+          "group": "Жүктемелік сынақ",
+          "missing_cleveland": 0
+        },
+        {
+          "name": "ca",
+          "label": "Флюороскопиядағы ірі тамыр саны",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 0,
+              "label": "0"
+            },
+            {
+              "value": 1,
+              "label": "1"
+            },
+            {
+              "value": 2,
+              "label": "2"
+            },
+            {
+              "value": 3,
+              "label": "3"
+            }
+          ],
+          "source": "ca",
+          "group": "Клиникалық көрсеткіштер",
+          "missing_cleveland": 4
+        },
+        {
+          "name": "thal",
+          "label": "Таллий сынағының нәтижесі",
+          "kind": "Категориялық",
+          "options": [
+            {
+              "value": 3,
+              "label": "Қалыпты"
+            },
+            {
+              "value": 6,
+              "label": "Тұрақты ақау"
+            },
+            {
+              "value": 7,
+              "label": "Қайтымды ақау"
+            }
+          ],
+          "source": "thal",
+          "group": "Клиникалық көрсеткіштер",
+          "missing_cleveland": 2
+        }
+      ],
+      "notes": [],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "center_audit",
+      "title": "UCI орталықтары деректерінің толықтығы",
+      "sources": [
+        "reports/uci_data.json"
+      ],
+      "conditions": {
+        "feature_count": 13,
+        "training_center": "Cleveland"
+      },
+      "rows": [
+        {
+          "center": "Cleveland",
+          "n": 303,
+          "missing_fraction": 0.0015232292460015233
+        },
+        {
+          "center": "Hungary",
+          "n": 294,
+          "missing_fraction": 0.20460491889063318
+        },
+        {
+          "center": "Switzerland",
+          "n": 123,
+          "missing_fraction": 0.17073170731707318
+        },
+        {
+          "center": "VA",
+          "n": 200,
+          "missing_fraction": 0.2684615384615385
+        }
+      ],
+      "notes": [
+        "Кесте белгілердің толтырылуын сипаттайды. Басқа орталықтарда модель сапасы бағаланған жоқ."
+      ],
+      "render_hint": "compact_table"
+    },
+    {
+      "id": "benchmark_search",
+      "title": "BRFSS модельдерінің баптау қорытындысы",
+      "sources": [
+        "reports/brfss_results.json",
+        "cardio/learning.py"
+      ],
+      "conditions": {
+        "n": 12000,
+        "folds": 3,
+        "trials_per_non_dummy": 3,
+        "primary_metric": "average_precision"
+      },
+      "rows": [
+        {
+          "name": "Dummy",
+          "base_ap": [
+            0.0845,
+            0.08475,
+            0.08475
+          ],
+          "tuned_ap": 0.08466666666666667,
+          "best_params": {}
+        },
+        {
+          "name": "Logistic Regression",
+          "base_ap": [
+            0.29110039824744305,
+            0.31150867240962227,
+            0.2902330820619681
+          ],
+          "tuned_ap": 0.29710150893502724,
+          "best_params": {
+            "model__class_weight": null,
+            "model__C": 10
+          }
+        },
+        {
+          "name": "Decision Tree",
+          "base_ap": [
+            0.2348075915673387,
+            0.2001793472288363,
+            0.20869245030632166
+          ],
+          "tuned_ap": 0.22845594814157336,
+          "best_params": {
+            "model__min_samples_leaf": 50,
+            "model__max_depth": 8
+          }
+        },
+        {
+          "name": "Random Forest",
+          "base_ap": [
+            0.2810675317948456,
+            0.2773124453205634,
+            0.2774224415615901
+          ],
+          "tuned_ap": 0.28073012839365846,
+          "best_params": {
+            "model__min_samples_leaf": 25,
+            "model__max_depth": null
+          }
+        },
+        {
+          "name": "Linear SVM",
+          "base_ap": [
+            0.28909494748075454,
+            0.3035148679569784,
+            0.2921253616927792
+          ],
+          "tuned_ap": 0.2966912377161541,
+          "best_params": {
+            "model__estimator__svm__class_weight": "balanced",
+            "model__estimator__svm__C": 0.1
+          }
+        },
+        {
+          "name": "KNN",
+          "base_ap": [
+            0.26727764036147544,
+            0.25321389125583654,
+            0.2445949629748098
+          ],
+          "tuned_ap": 0.26229131052643645,
+          "best_params": {
+            "model__weights": "uniform",
+            "model__n_neighbors": 61
+          }
+        },
+        {
+          "name": "LightGBM",
+          "base_ap": [
+            0.2805668642534525,
+            0.2742997992861953,
+            0.28242866982209525
+          ],
+          "tuned_ap": 0.2822660043057354,
+          "best_params": {
+            "model__reg_lambda": 2,
+            "model__num_leaves": 15,
+            "model__min_child_samples": 20
+          }
+        },
+        {
+          "name": "MLP",
+          "base_ap": [
+            0.06967894811314773,
+            0.07658007567325983,
+            0.25521834389150483
+          ],
+          "tuned_ap": 0.24125155957973046,
+          "best_params": {
+            "model__hidden_layer_sizes": [
+              24
+            ],
+            "model__alpha": 0.5
+          }
+        }
+      ],
+      "notes": [
+        "tuned_ap — таңдауға пайдаланылған ішкі CV нәтижесі; оны тәуелсіз тест бағасы деп түсіндіруге болмайды."
+      ],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "search_trials",
+      "title": "BRFSS іздеуінде нақты бағаланған конфигурациялар",
+      "sources": [
+        "reports/brfss_results.json"
+      ],
+      "conditions": {
+        "folds": 3,
+        "primary_metric": "average_precision"
+      },
+      "rows": [
+        {
+          "model": "Logistic Regression",
+          "trial_number": 1,
+          "params": {
+            "model__class_weight": "balanced",
+            "model__C": 10
+          },
+          "mean_test_score": 0.29637532970308356,
+          "std_test_score": 0.007817235383818578,
+          "mean_fit_time": 0.05635611216227213,
+          "mean_train_score": 0.3072888902154174
+        },
+        {
+          "model": "Logistic Regression",
+          "trial_number": 2,
+          "params": {
+            "model__class_weight": "balanced",
+            "model__C": 1
+          },
+          "mean_test_score": 0.2966197548663066,
+          "std_test_score": 0.008124950002309568,
+          "mean_fit_time": 0.05499164263407389,
+          "mean_train_score": 0.3073969010182187
+        },
+        {
+          "model": "Logistic Regression",
+          "trial_number": 3,
+          "params": {
+            "model__class_weight": null,
+            "model__C": 10
+          },
+          "mean_test_score": 0.29710150893502724,
+          "std_test_score": 0.009817425542763323,
+          "mean_fit_time": 0.04190961519877116,
+          "mean_train_score": 0.31387017162626235
+        },
+        {
+          "model": "Decision Tree",
+          "trial_number": 1,
+          "params": {
+            "model__min_samples_leaf": 50,
+            "model__max_depth": 8
+          },
+          "mean_test_score": 0.22845594814157336,
+          "std_test_score": 0.005990077512024708,
+          "mean_fit_time": 0.037009874979654946,
+          "mean_train_score": 0.3040458628847658
+        },
+        {
+          "model": "Decision Tree",
+          "trial_number": 2,
+          "params": {
+            "model__min_samples_leaf": 50,
+            "model__max_depth": 3
+          },
+          "mean_test_score": 0.19005179126634728,
+          "std_test_score": 0.010846922221239244,
+          "mean_fit_time": 0.030432701110839844,
+          "mean_train_score": 0.20746467865519605
+        },
+        {
+          "model": "Decision Tree",
+          "trial_number": 3,
+          "params": {
+            "model__min_samples_leaf": 5,
+            "model__max_depth": 5
+          },
+          "mean_test_score": 0.21568509938162908,
+          "std_test_score": 0.011879031294836322,
+          "mean_fit_time": 0.03017274538675944,
+          "mean_train_score": 0.2887743054306655
+        },
+        {
+          "model": "Random Forest",
+          "trial_number": 1,
+          "params": {
+            "model__min_samples_leaf": 25,
+            "model__max_depth": null
+          },
+          "mean_test_score": 0.28073012839365846,
+          "std_test_score": 0.0077092639219501925,
+          "mean_fit_time": 0.29010701179504395,
+          "mean_train_score": 0.3642051290672799
+        },
+        {
+          "model": "Random Forest",
+          "trial_number": 2,
+          "params": {
+            "model__min_samples_leaf": 25,
+            "model__max_depth": 5
+          },
+          "mean_test_score": 0.27601366729687804,
+          "std_test_score": 0.0014506230841393388,
+          "mean_fit_time": 0.21699031194051108,
+          "mean_train_score": 0.3218971318839336
+        },
+        {
+          "model": "Random Forest",
+          "trial_number": 3,
+          "params": {
+            "model__min_samples_leaf": 3,
+            "model__max_depth": 10
+          },
+          "mean_test_score": 0.27725363491819105,
+          "std_test_score": 0.0020757772164169746,
+          "mean_fit_time": 0.26888203620910645,
+          "mean_train_score": 0.5860076535693297
+        },
+        {
+          "model": "Linear SVM",
+          "trial_number": 1,
+          "params": {
+            "model__estimator__svm__class_weight": "balanced",
+            "model__estimator__svm__C": 1
+          },
+          "mean_test_score": 0.2963089930014497,
+          "std_test_score": 0.009863369748462443,
+          "mean_fit_time": 0.14475043614705405,
+          "mean_train_score": 0.307289347608068
+        },
+        {
+          "model": "Linear SVM",
+          "trial_number": 2,
+          "params": {
+            "model__estimator__svm__class_weight": "balanced",
+            "model__estimator__svm__C": 0.1
+          },
+          "mean_test_score": 0.2966912377161541,
+          "std_test_score": 0.010125778923019288,
+          "mean_fit_time": 0.12786157925923666,
+          "mean_train_score": 0.3073453220466011
+        },
+        {
+          "model": "Linear SVM",
+          "trial_number": 3,
+          "params": {
+            "model__estimator__svm__class_weight": null,
+            "model__estimator__svm__C": 1
+          },
+          "mean_test_score": 0.29438647208273555,
+          "std_test_score": 0.005550855735743829,
+          "mean_fit_time": 0.1225590705871582,
+          "mean_train_score": 0.3106356709073128
+        },
+        {
+          "model": "KNN",
+          "trial_number": 1,
+          "params": {
+            "model__weights": "distance",
+            "model__n_neighbors": 61
+          },
+          "mean_test_score": 0.24615713859644128,
+          "std_test_score": 0.004795187495973802,
+          "mean_fit_time": 0.026570796966552734,
+          "mean_train_score": 0.9999891368051353
+        },
+        {
+          "model": "KNN",
+          "trial_number": 2,
+          "params": {
+            "model__weights": "distance",
+            "model__n_neighbors": 31
+          },
+          "mean_test_score": 0.23743730616953237,
+          "std_test_score": 0.006258703951017925,
+          "mean_fit_time": 0.022346337636311848,
+          "mean_train_score": 0.9999891368051353
+        },
+        {
+          "model": "KNN",
+          "trial_number": 3,
+          "params": {
+            "model__weights": "uniform",
+            "model__n_neighbors": 61
+          },
+          "mean_test_score": 0.26229131052643645,
+          "std_test_score": 0.010346069349973959,
+          "mean_fit_time": 0.020229498545328777,
+          "mean_train_score": 0.2993561317939193
+        },
+        {
+          "model": "LightGBM",
+          "trial_number": 1,
+          "params": {
+            "model__reg_lambda": 2,
+            "model__num_leaves": 31,
+            "model__min_child_samples": 60
+          },
+          "mean_test_score": 0.26925360462338327,
+          "std_test_score": 0.0068783756488228496,
+          "mean_fit_time": 0.13805087407430014,
+          "mean_train_score": 0.6068318832543732
+        },
+        {
+          "model": "LightGBM",
+          "trial_number": 2,
+          "params": {
+            "model__reg_lambda": 2,
+            "model__num_leaves": 15,
+            "model__min_child_samples": 60
+          },
+          "mean_test_score": 0.2822562010050436,
+          "std_test_score": 0.002730101254382275,
+          "mean_fit_time": 0.09571297963460286,
+          "mean_train_score": 0.46935278972291555
+        },
+        {
+          "model": "LightGBM",
+          "trial_number": 3,
+          "params": {
+            "model__reg_lambda": 2,
+            "model__num_leaves": 15,
+            "model__min_child_samples": 20
+          },
+          "mean_test_score": 0.2822660043057354,
+          "std_test_score": 0.0025540429108584627,
+          "mean_fit_time": 0.11452134450276692,
+          "mean_train_score": 0.4852297685410032
+        },
+        {
+          "model": "MLP",
+          "trial_number": 1,
+          "params": {
+            "model__hidden_layer_sizes": [
+              48,
+              24
+            ],
+            "model__alpha": 0.5
+          },
+          "mean_test_score": 0.15463697548210584,
+          "std_test_score": 0.09416202171798488,
+          "mean_fit_time": 0.5146025816599528,
+          "mean_train_score": 0.1630927421171485
+        },
+        {
+          "model": "MLP",
+          "trial_number": 2,
+          "params": {
+            "model__hidden_layer_sizes": [
+              48,
+              24
+            ],
+            "model__alpha": 0.1
+          },
+          "mean_test_score": 0.1575552775573281,
+          "std_test_score": 0.09923144744849095,
+          "mean_fit_time": 0.7793053785959879,
+          "mean_train_score": 0.1791267987890047
+        },
+        {
+          "model": "MLP",
+          "trial_number": 3,
+          "params": {
+            "model__hidden_layer_sizes": [
+              24
+            ],
+            "model__alpha": 0.5
+          },
+          "mean_test_score": 0.24125155957973046,
+          "std_test_score": 0.0707384383109379,
+          "mean_fit_time": 0.40144578615824383,
+          "mean_train_score": 0.252748771992311
+        }
+      ],
+      "notes": [],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "benchmark_test",
+      "title": "Бірдей көлемдегі BRFSS модельдерін салыстыру",
+      "sources": [
+        "reports/brfss_results.json"
+      ],
+      "conditions": {
+        "train_n": 12000,
+        "test_n": 12000,
+        "threshold": 0.5,
+        "weighted": false
+      },
+      "rows": [
+        {
+          "model": "Dummy",
+          "roc_auc": 0.5,
+          "average_precision": 0.08466666666666667,
+          "accuracy": 0.9153333333333333,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "f1": 0.0,
+          "brier": 0.0774982222222222,
+          "confusion": [
+            [
+              10984.0,
+              0.0
+            ],
+            [
+              1016.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "model": "Logistic Regression",
+          "roc_auc": 0.8372906224372173,
+          "average_precision": 0.32121822996439325,
+          "accuracy": 0.9158333333333334,
+          "precision": 0.5319148936170213,
+          "recall": 0.04921259842519685,
+          "specificity": 0.9959941733430444,
+          "f1": 0.09009009009009009,
+          "brier": 0.06611092502222797,
+          "confusion": [
+            [
+              10940.0,
+              44.0
+            ],
+            [
+              966.0,
+              50.0
+            ]
+          ]
+        },
+        {
+          "model": "Decision Tree",
+          "roc_auc": 0.7776057855807444,
+          "average_precision": 0.23276496180343917,
+          "accuracy": 0.9150833333333334,
+          "precision": 0.46808510638297873,
+          "recall": 0.021653543307086614,
+          "specificity": 0.9977239621267298,
+          "f1": 0.041392285983066796,
+          "brier": 0.07119256956351329,
+          "confusion": [
+            [
+              10959.0,
+              25.0
+            ],
+            [
+              994.0,
+              22.0
+            ]
+          ]
+        },
+        {
+          "model": "Random Forest",
+          "roc_auc": 0.8156279839394165,
+          "average_precision": 0.2799703064404724,
+          "accuracy": 0.9153333333333333,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "f1": 0.0,
+          "brier": 0.06874286059690173,
+          "confusion": [
+            [
+              10984.0,
+              0.0
+            ],
+            [
+              1016.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "model": "Linear SVM",
+          "roc_auc": 0.8372863212632835,
+          "average_precision": 0.3202452687916361,
+          "accuracy": 0.9161666666666667,
+          "precision": 0.5609756097560976,
+          "recall": 0.045275590551181105,
+          "specificity": 0.9967225054624909,
+          "f1": 0.08378870673952642,
+          "brier": 0.06618645077250074,
+          "confusion": [
+            [
+              10948.0,
+              36.0
+            ],
+            [
+              970.0,
+              46.0
+            ]
+          ]
+        },
+        {
+          "model": "KNN",
+          "roc_auc": 0.7952678394773214,
+          "average_precision": 0.2517262127301245,
+          "accuracy": 0.9151666666666667,
+          "precision": 0.375,
+          "recall": 0.002952755905511811,
+          "specificity": 0.999544792425346,
+          "f1": 0.005859375,
+          "brier": 0.06943545641852548,
+          "confusion": [
+            [
+              10979.0,
+              5.0
+            ],
+            [
+              1013.0,
+              3.0
+            ]
+          ]
+        },
+        {
+          "model": "LightGBM",
+          "roc_auc": 0.8248590200635427,
+          "average_precision": 0.2917267199841789,
+          "accuracy": 0.9156666666666666,
+          "precision": 0.5277777777777778,
+          "recall": 0.03740157480314961,
+          "specificity": 0.9969045884923525,
+          "f1": 0.06985294117647059,
+          "brier": 0.06761139915313921,
+          "confusion": [
+            [
+              10950.0,
+              34.0
+            ],
+            [
+              978.0,
+              38.0
+            ]
+          ]
+        },
+        {
+          "model": "MLP",
+          "roc_auc": 0.6063457190415837,
+          "average_precision": 0.1324101232186764,
+          "accuracy": 0.9153333333333333,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "f1": 0.0,
+          "brier": 0.0836719713005924,
+          "confusion": [
+            [
+              10984.0,
+              0.0
+            ],
+            [
+              1016.0,
+              0.0
+            ]
+          ]
+        }
+      ],
+      "notes": [],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "calibration_validation",
+      "title": "Валидацияда ықтималдықтарды калибрлеуді салыстыру",
+      "sources": [
+        "reports/brfss_results.json"
+      ],
+      "conditions": {
+        "fit_n": 240093,
+        "calibration_n": 51448,
+        "validation_n": 51449,
+        "threshold": 0.5,
+        "weighted": false
+      },
+      "rows": [
+        {
+          "model": "Logistic Regression",
+          "probability_version": "Бастапқы ықтималдық",
+          "extra_sigmoid_selected": true,
+          "roc_auc": 0.8328832658948471,
+          "average_precision": 0.31991987341203476,
+          "accuracy": 0.9158778596279811,
+          "precision": 0.5245901639344263,
+          "recall": 0.07342817806333181,
+          "specificity": 0.9938417107302882,
+          "f1": 0.1288244766505636,
+          "brier": 0.06629483191020655
+        },
+        {
+          "model": "Logistic Regression",
+          "probability_version": "Қосымша sigmoid калибрлеуі",
+          "extra_sigmoid_selected": true,
+          "roc_auc": 0.8328832658948471,
+          "average_precision": 0.31991987341203476,
+          "accuracy": 0.9158389861804894,
+          "precision": 0.523972602739726,
+          "recall": 0.07021569527306104,
+          "specificity": 0.9940965364931728,
+          "f1": 0.12383650343990288,
+          "brier": 0.06627817731553808
+        },
+        {
+          "model": "LightGBM",
+          "probability_version": "Бастапқы ықтималдық",
+          "extra_sigmoid_selected": false,
+          "roc_auc": 0.833608176386908,
+          "average_precision": 0.31888857645481733,
+          "accuracy": 0.9159556065229645,
+          "precision": 0.5607142857142857,
+          "recall": 0.036025699862322166,
+          "specificity": 0.9973880359304326,
+          "f1": 0.06770159551530833,
+          "brier": 0.0661951774620486
+        },
+        {
+          "model": "LightGBM",
+          "probability_version": "Қосымша sigmoid калибрлеуі",
+          "extra_sigmoid_selected": false,
+          "roc_auc": 0.833608176386908,
+          "average_precision": 0.31888857645481733,
+          "accuracy": 0.9160139166942021,
+          "precision": 0.5562310030395137,
+          "recall": 0.04199173932996787,
+          "specificity": 0.9968996198849037,
+          "f1": 0.07808832942180499,
+          "brier": 0.06620126597318901
+        }
+      ],
+      "notes": [
+        "Калибрлеу валидациялық Brier score бойынша таңдалды. Бұл кестеде финалдық тест нәтижелері берілмеген.",
+        "Логистикалық регрессияның Brier өзгерісі өте шағын; статистикалық мәнділік тексерілмеді. AP өзгерген жоқ."
+      ],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "full_test",
+      "title": "BRFSS толық тестіндегі бағалау шарттары мен метрикалар",
+      "sources": [
+        "reports/brfss_results.json",
+        "reports/selection_lock.json"
+      ],
+      "conditions": {
+        "fit_n": 240093,
+        "test_n": 85748,
+        "deployed_model": "Logistic Regression"
+      },
+      "rows": [
+        {
+          "model": "Logistic Regression",
+          "variant": "Таңдалған шек",
+          "threshold": 0.19042448230963954,
+          "extra_calibration": true,
+          "survey_weighted": false,
+          "roc_auc": 0.8388685147257342,
+          "average_precision": 0.32087306860285136,
+          "accuracy": 0.8627373233194944,
+          "precision": 0.3102054563826204,
+          "recall": 0.5072982649407877,
+          "specificity": 0.8956246973982621,
+          "f1": 0.3849932072316857,
+          "brier": 0.06595875512181058,
+          "confusion": [
+            [
+              70294.0,
+              8192.0
+            ],
+            [
+              3578.0,
+              3684.0
+            ]
+          ]
+        },
+        {
+          "model": "Logistic Regression",
+          "variant": "0,5 шегі",
+          "threshold": 0.5,
+          "extra_calibration": true,
+          "survey_weighted": false,
+          "roc_auc": 0.8388685147257342,
+          "average_precision": 0.32087306860285136,
+          "accuracy": 0.9155898679852591,
+          "precision": 0.5129589632829373,
+          "recall": 0.06540897824290828,
+          "specificity": 0.9942537522615499,
+          "f1": 0.11602344894968246,
+          "brier": 0.06595875512181058,
+          "confusion": [
+            [
+              78035.0,
+              451.0
+            ],
+            [
+              6787.0,
+              475.0
+            ]
+          ]
+        },
+        {
+          "model": "Logistic Regression",
+          "variant": "Сауалнама салмақтарымен бағалау",
+          "threshold": 0.19042448230963954,
+          "extra_calibration": true,
+          "survey_weighted": true,
+          "roc_auc": 0.852574666871531,
+          "average_precision": 0.30684601812223194,
+          "accuracy": 0.8961340540992792,
+          "precision": 0.2990122674013713,
+          "recall": 0.4642863828615992,
+          "specificity": 0.9256377170663752,
+          "f1": 0.3637562414533273,
+          "brier": 0.05086578817969289,
+          "confusion": [
+            [
+              43559969.95647687,
+              3499445.572237254
+            ],
+            [
+              1722362.5385439838,
+              1492718.212518959
+            ]
+          ]
+        },
+        {
+          "model": "LightGBM",
+          "variant": "Таңдалған шек",
+          "threshold": 0.20197606990917152,
+          "extra_calibration": false,
+          "survey_weighted": false,
+          "roc_auc": 0.840985868944043,
+          "average_precision": 0.3245732751662886,
+          "accuracy": 0.863367075616924,
+          "precision": 0.31203578663065495,
+          "recall": 0.509088405397962,
+          "specificity": 0.896147083556303,
+          "f1": 0.3869178440607012,
+          "brier": 0.06568938323467986,
+          "confusion": [
+            [
+              70335.0,
+              8151.0
+            ],
+            [
+              3565.0,
+              3697.0
+            ]
+          ]
+        },
+        {
+          "model": "LightGBM",
+          "variant": "0,5 шегі",
+          "threshold": 0.5,
+          "extra_calibration": false,
+          "survey_weighted": false,
+          "roc_auc": 0.840985868944043,
+          "average_precision": 0.3245732751662886,
+          "accuracy": 0.9160330270093763,
+          "precision": 0.5771144278606966,
+          "recall": 0.031947122004957314,
+          "specificity": 0.9978340086130011,
+          "f1": 0.060542797494780795,
+          "brier": 0.06568938323467986,
+          "confusion": [
+            [
+              78316.0,
+              170.0
+            ],
+            [
+              7030.0,
+              232.0
+            ]
+          ]
+        },
+        {
+          "model": "LightGBM",
+          "variant": "Сауалнама салмақтарымен бағалау",
+          "threshold": 0.20197606990917152,
+          "extra_calibration": false,
+          "survey_weighted": true,
+          "roc_auc": 0.8555478064042877,
+          "average_precision": 0.31720373410953195,
+          "accuracy": 0.896983623582829,
+          "precision": 0.3037166338983013,
+          "recall": 0.47261570697849303,
+          "specificity": 0.9259762726566555,
+          "f1": 0.3697933065337906,
+          "brier": 0.050522280282336025,
+          "confusion": [
+            [
+              43575902.184679404,
+              3483513.34403469
+            ],
+            [
+              1695583.0889063932,
+              1519497.6621565486
+            ]
+          ]
+        }
+      ],
+      "notes": [
+        "Салмақталған қателер матрицасының элементтері — сауалнама салмақтарының қосындысы. Олар нақты пациенттер саны емес."
+      ],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "ablations",
+      "title": "Логистикалық регрессияның қосымша тәжірибелері",
+      "sources": [
+        "reports/ablations.json",
+        "cardio/train.py"
+      ],
+      "conditions": {
+        "fit_n": 240093,
+        "validation_n": 51449,
+        "threshold": 0.5,
+        "C": 1,
+        "extra_sigmoid": false,
+        "evaluation_weighted": false
+      },
+      "rows": [
+        {
+          "name": "Logistic standard",
+          "features": 11,
+          "training_n": 240093,
+          "roc_auc": 0.8328880996709824,
+          "average_precision": 0.3199201681182105,
+          "accuracy": 0.9158584229042352,
+          "precision": 0.5238095238095238,
+          "recall": 0.0731987150068839,
+          "specificity": 0.9938417107302882,
+          "f1": 0.12844775518421583,
+          "brier": 0.06629455547353205,
+          "confusion": [
+            [
+              46801.0,
+              290.0
+            ],
+            [
+              4039.0,
+              319.0
+            ]
+          ]
+        },
+        {
+          "name": "Logistic balanced",
+          "features": 11,
+          "training_n": 240093,
+          "roc_auc": 0.8329715748917256,
+          "average_precision": 0.31944873129695495,
+          "accuracy": 0.737487609088612,
+          "precision": 0.21330073962642598,
+          "recall": 0.7808627810922442,
+          "specificity": 0.7334734875029199,
+          "f1": 0.33507286333202047,
+          "brier": 0.1708344663234869,
+          "confusion": [
+            [
+              34540.0,
+              12551.0
+            ],
+            [
+              955.0,
+              3403.0
+            ]
+          ]
+        },
+        {
+          "name": "Logistic survey weighted",
+          "features": 11,
+          "training_n": 240093,
+          "roc_auc": 0.8316533524883407,
+          "average_precision": 0.3183652980130329,
+          "accuracy": 0.9159361697992187,
+          "precision": 0.5303867403314917,
+          "recall": 0.06608536025699863,
+          "specificity": 0.9945849525387017,
+          "f1": 0.11752703529891859,
+          "brier": 0.06639435899345071,
+          "confusion": [
+            [
+              46836.0,
+              255.0
+            ],
+            [
+              4070.0,
+              288.0
+            ]
+          ]
+        },
+        {
+          "name": "Logistic without scaling",
+          "features": 11,
+          "training_n": 240093,
+          "roc_auc": 0.83291546508104,
+          "average_precision": 0.3199165435910843,
+          "accuracy": 0.9159167330754728,
+          "precision": 0.5260586319218241,
+          "recall": 0.07411656723267554,
+          "specificity": 0.9938204752500478,
+          "f1": 0.12992759452936445,
+          "brier": 0.06629767334713405,
+          "confusion": [
+            [
+              46800.0,
+              291.0
+            ],
+            [
+              4035.0,
+              323.0
+            ]
+          ]
+        },
+        {
+          "name": "Logistic reduced features",
+          "features": 7,
+          "training_n": 240093,
+          "roc_auc": 0.8035115195755896,
+          "average_precision": 0.2647444522971624,
+          "accuracy": 0.915255884468114,
+          "precision": 0.4931506849315068,
+          "recall": 0.016521340064249657,
+          "specificity": 0.9984285744622114,
+          "f1": 0.03197158081705151,
+          "brier": 0.06909408558007672,
+          "confusion": [
+            [
+              47017.0,
+              74.0
+            ],
+            [
+              4286.0,
+              72.0
+            ]
+          ]
+        }
+      ],
+      "notes": [
+        "Қолданбаға таңдалған толық логистикалық модельде C=10; осы бақылаулы тәжірибелерде C=1. Сауалнама салмақтарымен оқытылған нұсқа да салмақсыз валидациялық метрикалармен бағаланды."
+      ],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "bootstrap",
+      "title": "BRFSS үшін шартты bootstrap интервалдары",
+      "sources": [
+        "reports/brfss_results.json"
+      ],
+      "conditions": {
+        "resamples": 200,
+        "unit": "Респондент",
+        "fixed_model": true,
+        "complex_survey_design": false,
+        "type": "2,5 және 97,5 процентильдер"
+      },
+      "rows": [
+        {
+          "metric": "roc_auc",
+          "lower": 0.8348353584346001,
+          "upper": 0.8433234868739732
+        },
+        {
+          "metric": "average_precision",
+          "lower": 0.31081623883744597,
+          "upper": 0.3316476277622521
+        },
+        {
+          "metric": "recall",
+          "lower": 0.4958490461917914,
+          "upper": 0.5183664738859134
+        },
+        {
+          "metric": "brier",
+          "lower": 0.06460839283317522,
+          "upper": 0.06728463542700486
+        },
+        {
+          "metric": "paired_ap_difference",
+          "lower": -0.0064540424079270586,
+          "upper": -0.0007199529320525407
+        }
+      ],
+      "notes": [
+        "Жұпталған AP айырмасы: таңдалған Logistic Regression минус LightGBM. Екі модельге бірдей қайта іріктелген жолдар қолданылды.",
+        "Интервалдар бекітілген модель мен тест респонденттерінің өзгеруін ғана қамтиды; қайта оқыту, модель таңдау және күрделі сауалнама дизайны толық есепке алынбаған."
+      ],
+      "render_hint": "compact_table"
+    },
+    {
+      "id": "subgroups",
+      "title": "BRFSS ішкі топтарының сипаттамалық нәтижелері",
+      "sources": [
+        "reports/brfss_results.json"
+      ],
+      "conditions": {
+        "test_n": 85748,
+        "threshold": 0.19042448230963954,
+        "weighted": false,
+        "bootstrap_resamples_per_group": 100
+      },
+      "rows": [
+        {
+          "feature": "sex",
+          "value": 1.0,
+          "label": "Ер",
+          "n": 40280,
+          "positive": 4230,
+          "roc_auc": 0.8381637828993748,
+          "average_precision": 0.35868258481063797,
+          "accuracy": 0.8253475670307845,
+          "precision": 0.32122370936902483,
+          "recall": 0.5957446808510638,
+          "specificity": 0.8522884882108183,
+          "f1": 0.41739130434782606,
+          "brier": 0.07843951876728732,
+          "ci": {
+            "roc_auc": [
+              0.831648061297964,
+              0.8419636707630638
+            ],
+            "average_precision": [
+              0.344762531419354,
+              0.3736421132585072
+            ],
+            "recall": [
+              0.5809763483222388,
+              0.60863331963581
+            ],
+            "brier": [
+              0.07675562431367972,
+              0.08048903199334158
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "sex",
+          "value": 2.0,
+          "label": "Әйел",
+          "n": 45468,
+          "positive": 3032,
+          "roc_auc": 0.8299395942758812,
+          "average_precision": 0.2594239589311708,
+          "accuracy": 0.8958608251957421,
+          "precision": 0.28876209377325723,
+          "recall": 0.3839050131926121,
+          "specificity": 0.9324394382128381,
+          "f1": 0.32960498371796687,
+          "brier": 0.05490207438723238,
+          "ci": {
+            "roc_auc": [
+              0.8224976081862155,
+              0.8365409271079952
+            ],
+            "average_precision": [
+              0.24732942989537654,
+              0.27504053768409387
+            ],
+            "recall": [
+              0.3670992649648616,
+              0.3980313600746078
+            ],
+            "brier": [
+              0.05342862919567866,
+              0.056458128888649754
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "age_group",
+          "value": 1.0,
+          "label": "18–24",
+          "n": 5251,
+          "positive": 41,
+          "roc_auc": 0.6395299845512851,
+          "average_precision": 0.031193568950962234,
+          "accuracy": 0.9921919634355361,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "f1": 0.0,
+          "brier": 0.0077010596326512895,
+          "ci": {
+            "roc_auc": [
+              0.5637828537425812,
+              0.71802489936791
+            ],
+            "average_precision": [
+              0.011951239600309197,
+              0.0926952421775236
+            ],
+            "recall": [
+              0.0,
+              0.0
+            ],
+            "brier": [
+              0.005472233335738531,
+              0.010226434860390179
+            ]
+          },
+          "recall_interval_degenerate": true
+        },
+        {
+          "feature": "age_group",
+          "value": 2.0,
+          "label": "25–29",
+          "n": 4217,
+          "positive": 38,
+          "roc_auc": 0.7465995390486266,
+          "average_precision": 0.13404095187426343,
+          "accuracy": 0.9909888546359972,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "f1": 0.0,
+          "brier": 0.008624241869972018,
+          "ci": {
+            "roc_auc": [
+              0.6689616742097065,
+              0.8233604106394926
+            ],
+            "average_precision": [
+              0.04624027741266422,
+              0.2809665392968973
+            ],
+            "recall": [
+              0.0,
+              0.0
+            ],
+            "brier": [
+              0.005688793106442301,
+              0.010911863239727381
+            ]
+          },
+          "recall_interval_degenerate": true
+        },
+        {
+          "feature": "age_group",
+          "value": 3.0,
+          "label": "30–34",
+          "n": 4892,
+          "positive": 45,
+          "roc_auc": 0.7470531600302592,
+          "average_precision": 0.03814053007470168,
+          "accuracy": 0.990596892886345,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 0.9997936868165875,
+          "f1": 0.0,
+          "brier": 0.00902574483213791,
+          "ci": {
+            "roc_auc": [
+              0.6809891128161548,
+              0.809308864980178
+            ],
+            "average_precision": [
+              0.018213775524350086,
+              0.08422782229324477
+            ],
+            "recall": [
+              0.0,
+              0.0
+            ],
+            "brier": [
+              0.006153343559632932,
+              0.010702053243655824
+            ]
+          },
+          "recall_interval_degenerate": true
+        },
+        {
+          "feature": "age_group",
+          "value": 4.0,
+          "label": "35–39",
+          "n": 5408,
+          "positive": 68,
+          "roc_auc": 0.740499008592201,
+          "average_precision": 0.056651573736855414,
+          "accuracy": 0.9868713017751479,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 0.999438202247191,
+          "f1": 0.0,
+          "brier": 0.012197641013788148,
+          "ci": {
+            "roc_auc": [
+              0.6998466247563939,
+              0.7893574149404984
+            ],
+            "average_precision": [
+              0.0332157311413586,
+              0.09714555395850669
+            ],
+            "recall": [
+              0.0,
+              0.0
+            ],
+            "brier": [
+              0.009291090772746027,
+              0.015418387251044203
+            ]
+          },
+          "recall_interval_degenerate": true
+        },
+        {
+          "feature": "age_group",
+          "value": 5.0,
+          "label": "40–44",
+          "n": 5835,
+          "positive": 122,
+          "roc_auc": 0.7804963083906994,
+          "average_precision": 0.08789268693446525,
+          "accuracy": 0.9768637532133676,
+          "precision": 0.11764705882352941,
+          "recall": 0.01639344262295082,
+          "specificity": 0.9973744092420794,
+          "f1": 0.02877697841726619,
+          "brier": 0.019838361427602254,
+          "ci": {
+            "roc_auc": [
+              0.7304209162209095,
+              0.8190693899345428
+            ],
+            "average_precision": [
+              0.056133473403856854,
+              0.14402729865225983
+            ],
+            "recall": [
+              0.0,
+              0.04764094488188976
+            ],
+            "brier": [
+              0.01654389497312977,
+              0.022956371228521216
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "age_group",
+          "value": 6.0,
+          "label": "45–49",
+          "n": 5283,
+          "positive": 164,
+          "roc_auc": 0.8034957046679276,
+          "average_precision": 0.14114877878427828,
+          "accuracy": 0.9627105811092183,
+          "precision": 0.2608695652173913,
+          "recall": 0.10975609756097561,
+          "specificity": 0.9900371166243407,
+          "f1": 0.15450643776824036,
+          "brier": 0.0283205693381755,
+          "ci": {
+            "roc_auc": [
+              0.7731552262087067,
+              0.8383504144410024
+            ],
+            "average_precision": [
+              0.11069769497175598,
+              0.1925504717767228
+            ],
+            "recall": [
+              0.059058956035420225,
+              0.15516310657069882
+            ],
+            "brier": [
+              0.024141226643611763,
+              0.03162523833703949
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "age_group",
+          "value": 7.0,
+          "label": "50–54",
+          "n": 6215,
+          "positive": 359,
+          "roc_auc": 0.8111959545336926,
+          "average_precision": 0.21231905008679203,
+          "accuracy": 0.9259855189058729,
+          "precision": 0.2794759825327511,
+          "recall": 0.17827298050139276,
+          "specificity": 0.9718237704918032,
+          "f1": 0.21768707482993196,
+          "brier": 0.04987597022488513,
+          "ci": {
+            "roc_auc": [
+              0.7873664629448778,
+              0.8264321429480619
+            ],
+            "average_precision": [
+              0.1774955773140111,
+              0.24130872626528194
+            ],
+            "recall": [
+              0.13549346795637596,
+              0.2162758368392171
+            ],
+            "brier": [
+              0.04507136399636197,
+              0.055077968264990354
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "age_group",
+          "value": 8.0,
+          "label": "55–59",
+          "n": 6794,
+          "positive": 477,
+          "roc_auc": 0.8153754021045336,
+          "average_precision": 0.2645657166633577,
+          "accuracy": 0.894024138946129,
+          "precision": 0.3011456628477905,
+          "recall": 0.3857442348008386,
+          "specificity": 0.9324046224473642,
+          "f1": 0.3382352941176471,
+          "brier": 0.05777912779634676,
+          "ci": {
+            "roc_auc": [
+              0.7967373387623538,
+              0.8327557462377102
+            ],
+            "average_precision": [
+              0.23464071752704063,
+              0.2984420148987737
+            ],
+            "recall": [
+              0.3481482645875251,
+              0.43047843052151413
+            ],
+            "brier": [
+              0.052279275757711956,
+              0.061822183742116656
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "age_group",
+          "value": 9.0,
+          "label": "60–64",
+          "n": 8311,
+          "positive": 734,
+          "roc_auc": 0.7989823102253737,
+          "average_precision": 0.2907346175321699,
+          "accuracy": 0.8576585248465889,
+          "precision": 0.2919369786839666,
+          "recall": 0.42915531335149865,
+          "specificity": 0.8991685363600369,
+          "f1": 0.3474903474903475,
+          "brier": 0.07120575799779484,
+          "ci": {
+            "roc_auc": [
+              0.78659101173341,
+              0.8118570873247883
+            ],
+            "average_precision": [
+              0.26655792528052075,
+              0.31646347356503013
+            ],
+            "recall": [
+              0.40085708213381765,
+              0.4669063926940639
+            ],
+            "brier": [
+              0.06786978855304966,
+              0.07578976375716273
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "age_group",
+          "value": 10.0,
+          "label": "65–69",
+          "n": 9114,
+          "positive": 979,
+          "roc_auc": 0.7690104361223054,
+          "average_precision": 0.29811150408492965,
+          "accuracy": 0.8199473337722185,
+          "precision": 0.2941542288557214,
+          "recall": 0.48314606741573035,
+          "specificity": 0.860479409956976,
+          "f1": 0.3656745264785466,
+          "brier": 0.08567348943066784,
+          "ci": {
+            "roc_auc": [
+              0.7563787439323714,
+              0.7818974216829528
+            ],
+            "average_precision": [
+              0.2742050627915918,
+              0.3279106003595238
+            ],
+            "recall": [
+              0.4498756985362395,
+              0.5100964467005076
+            ],
+            "brier": [
+              0.08182579700147473,
+              0.09027695939561058
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "age_group",
+          "value": 11.0,
+          "label": "70–74",
+          "n": 8560,
+          "positive": 1281,
+          "roc_auc": 0.7468922125704831,
+          "average_precision": 0.3416158965542392,
+          "accuracy": 0.7533878504672897,
+          "precision": 0.31221719457013575,
+          "recall": 0.5386416861826698,
+          "specificity": 0.7911801071575766,
+          "f1": 0.3953022056717273,
+          "brier": 0.11353523301555575,
+          "ci": {
+            "roc_auc": [
+              0.7345069139632145,
+              0.7618920087973958
+            ],
+            "average_precision": [
+              0.32177535629114173,
+              0.37091184584270537
+            ],
+            "recall": [
+              0.5099918250365469,
+              0.5616091842036892
+            ],
+            "brier": [
+              0.1094996701162876,
+              0.11750651539238395
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "age_group",
+          "value": 12.0,
+          "label": "75–79",
+          "n": 6684,
+          "positive": 1193,
+          "roc_auc": 0.7307725069583497,
+          "average_precision": 0.37200375403231645,
+          "accuracy": 0.6799820466786356,
+          "precision": 0.3092741935483871,
+          "recall": 0.6429170159262364,
+          "specificity": 0.6880349663085048,
+          "f1": 0.4176422542880479,
+          "brier": 0.1311408596279162,
+          "ci": {
+            "roc_auc": [
+              0.7161581983623851,
+              0.7433426807958853
+            ],
+            "average_precision": [
+              0.34362426502680626,
+              0.39989975587183374
+            ],
+            "recall": [
+              0.6206447758624577,
+              0.6653122326775022
+            ],
+            "brier": [
+              0.12594659136856748,
+              0.13612596858956652
+            ]
+          },
+          "recall_interval_degenerate": false
+        },
+        {
+          "feature": "age_group",
+          "value": 13.0,
+          "label": "80 және одан жоғары",
+          "n": 7728,
+          "positive": 1672,
+          "roc_auc": 0.7045086173386511,
+          "average_precision": 0.3783617586921415,
+          "accuracy": 0.6296583850931677,
+          "precision": 0.3290229885057471,
+          "recall": 0.6848086124401914,
+          "specificity": 0.6144319682959049,
+          "f1": 0.44448757763975155,
+          "brier": 0.15581654150994567,
+          "ci": {
+            "roc_auc": [
+              0.6890760022099159,
+              0.7170101792314556
+            ],
+            "average_precision": [
+              0.3492779983051324,
+              0.4055126498759422
+            ],
+            "recall": [
+              0.6619915889223797,
+              0.704790436606588
+            ],
+            "brier": [
+              0.15044491395852327,
+              0.16036603556007326
+            ]
+          },
+          "recall_interval_degenerate": false
+        }
+      ],
+      "notes": [
+        "Шынайы оң болжамы жоқ топтардағы Recall үшін [0;0] bootstrap интервалы әдістің шекарада азғындауын көрсетеді. Бұл популяциялық белгісіздіктің жоқтығын дәлелдемейді.",
+        "Жас мәні белгісіз бақылаулар жас бойынша топтастыруға кірмейді. Көптік салыстыруға түзету және күрделі сауалнама дизайнын толық есептеу орындалмаған."
+      ],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "importance",
+      "title": "BRFSS белгілерін алмастыруға негізделген маңыздылық",
+      "sources": [
+        "reports/brfss_results.json"
+      ],
+      "conditions": {
+        "scope": "Валидациядан алынған стратификацияланған ішкі таңдама",
+        "n": 2000,
+        "permutations_per_feature": 5,
+        "score": "average_precision",
+        "model": "Қолданбаға енгізілген калибрленген логистикалық регрессия"
+      },
+      "rows": [
+        {
+          "feature": "age_group",
+          "mean": 0.08325923317613959,
+          "std": 0.010029340443362417
+        },
+        {
+          "feature": "general_health",
+          "mean": 0.05976151917809917,
+          "std": 0.009197636607686981
+        },
+        {
+          "feature": "sex",
+          "mean": 0.024749020777803322,
+          "std": 0.010840286101752427
+        },
+        {
+          "feature": "hypertension",
+          "mean": 0.023515540010640414,
+          "std": 0.0024888273221062235
+        },
+        {
+          "feature": "cholesterol",
+          "mean": 0.013022623314603254,
+          "std": 0.006089151124363216
+        },
+        {
+          "feature": "diabetes",
+          "mean": 0.012147223169184328,
+          "std": 0.004324190577217835
+        },
+        {
+          "feature": "smoking",
+          "mean": 0.008033312970867023,
+          "std": 0.004868822144533428
+        },
+        {
+          "feature": "physical_days",
+          "mean": 0.0007069931079988101,
+          "std": 0.004905931628768222
+        },
+        {
+          "feature": "bmi",
+          "mean": -0.0012165047788865845,
+          "std": 0.000850065963956674
+        },
+        {
+          "feature": "activity",
+          "mean": -0.002543634026376951,
+          "std": 0.0010533935267086538
+        },
+        {
+          "feature": "mental_days",
+          "mean": -0.0030048869941024293,
+          "std": 0.0018332871529581148
+        }
+      ],
+      "notes": [
+        "Стандартты ауытқу бес алмастыру бойынша есептелді; ол сенімділік интервалы емес. Теріс орташа өзгеріс белгінің зиянын немесе себепті әсерін дәлелдемейді."
+      ],
+      "render_hint": "compact_table"
+    },
+    {
+      "id": "uci_nested_cv",
+      "title": "Cleveland қайталанған ішкі және сыртқы CV нәтижелері",
+      "sources": [
+        "reports/uci_results.json"
+      ],
+      "conditions": {
+        "outer": "3 бөлік × 2 қайталау",
+        "inner": "3 бөлік × 2 кандидат конфигурация",
+        "outer_train_n": 202,
+        "outer_test_n": 101,
+        "threshold": 0.5
+      },
+      "rows": [
+        {
+          "model": "Dummy",
+          "mean": {
+            "roc_auc": 0.5,
+            "average_precision": 0.4587458745874588,
+            "accuracy": 0.5412541254125413,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "f1": 0.0,
+            "brier": 0.24832532758226314
+          },
+          "sample_sd": {
+            "roc_auc": 0.0,
+            "average_precision": 0.005112849301923988,
+            "accuracy": 0.005112849301923988,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.0,
+            "f1": 0.0,
+            "brier": 0.000442944865265678
+          },
+          "outer_best_params": []
+        },
+        {
+          "model": "Logistic Regression",
+          "mean": {
+            "roc_auc": 0.9069364629956674,
+            "average_precision": 0.9017604387248407,
+            "accuracy": 0.83003300330033,
+            "precision": 0.8181603967519786,
+            "recall": 0.8126734505087883,
+            "specificity": 0.8447250280583614,
+            "f1": 0.8137656094695459,
+            "brier": 0.12349279919590804
+          },
+          "sample_sd": {
+            "roc_auc": 0.020353823774683692,
+            "average_precision": 0.025842642580482696,
+            "accuracy": 0.02964791377092501,
+            "precision": 0.04495363218520723,
+            "recall": 0.058619771492325105,
+            "specificity": 0.050501645975785825,
+            "f1": 0.035637111891896237,
+            "brier": 0.015908370250330407
+          },
+          "outer_best_params": [
+            {
+              "model__class_weight": "balanced",
+              "model__C": 1
+            },
+            {
+              "model__class_weight": "balanced",
+              "model__C": 1
+            },
+            {
+              "model__class_weight": "balanced",
+              "model__C": 1
+            },
+            {
+              "model__class_weight": "balanced",
+              "model__C": 1
+            },
+            {
+              "model__class_weight": "balanced",
+              "model__C": 1
+            },
+            {
+              "model__class_weight": "balanced",
+              "model__C": 1
+            }
+          ]
+        },
+        {
+          "model": "Decision Tree",
+          "mean": {
+            "roc_auc": 0.7731551043376514,
+            "average_precision": 0.6717817839852307,
+            "accuracy": 0.7392739273927392,
+            "precision": 0.712849242261007,
+            "recall": 0.7339654640764725,
+            "specificity": 0.7443883277216611,
+            "f1": 0.7217663276488234,
+            "brier": 0.18813577033190984
+          },
+          "sample_sd": {
+            "roc_auc": 0.04528232638941389,
+            "average_precision": 0.05531148659212565,
+            "accuracy": 0.042316357557292725,
+            "precision": 0.06640617965898866,
+            "recall": 0.02763839908371001,
+            "specificity": 0.07586103423179084,
+            "f1": 0.03652543124605265,
+            "brier": 0.023634852703615216
+          },
+          "outer_best_params": [
+            {
+              "model__min_samples_leaf": 50,
+              "model__max_depth": 8
+            },
+            {
+              "model__min_samples_leaf": 50,
+              "model__max_depth": 8
+            },
+            {
+              "model__min_samples_leaf": 50,
+              "model__max_depth": 8
+            },
+            {
+              "model__min_samples_leaf": 50,
+              "model__max_depth": 8
+            },
+            {
+              "model__min_samples_leaf": 50,
+              "model__max_depth": 8
+            },
+            {
+              "model__min_samples_leaf": 50,
+              "model__max_depth": 8
+            }
+          ]
+        },
+        {
+          "model": "Random Forest",
+          "mean": {
+            "roc_auc": 0.9109580230301786,
+            "average_precision": 0.9066114232109709,
+            "accuracy": 0.8201320132013201,
+            "precision": 0.8381063428320094,
+            "recall": 0.7698119025593586,
+            "specificity": 0.8630751964085297,
+            "f1": 0.797689710923255,
+            "brier": 0.15086873422545388
+          },
+          "sample_sd": {
+            "roc_auc": 0.015804850383200095,
+            "average_precision": 0.020941379641432955,
+            "accuracy": 0.03509850949477336,
+            "precision": 0.08211742535274563,
+            "recall": 0.06072195623760662,
+            "specificity": 0.09847104376279296,
+            "f1": 0.02761549090258905,
+            "brier": 0.004751511209781859
+          },
+          "outer_best_params": [
+            {
+              "model__min_samples_leaf": 25,
+              "model__max_depth": null
+            },
+            {
+              "model__min_samples_leaf": 25,
+              "model__max_depth": null
+            },
+            {
+              "model__min_samples_leaf": 25,
+              "model__max_depth": null
+            },
+            {
+              "model__min_samples_leaf": 25,
+              "model__max_depth": null
+            },
+            {
+              "model__min_samples_leaf": 25,
+              "model__max_depth": null
+            },
+            {
+              "model__min_samples_leaf": 25,
+              "model__max_depth": null
+            }
+          ]
+        },
+        {
+          "model": "Linear SVM",
+          "mean": {
+            "roc_auc": 0.907461811038746,
+            "average_precision": 0.9058967982381748,
+            "accuracy": 0.8333333333333334,
+            "precision": 0.8407933834713082,
+            "recall": 0.7911655874190564,
+            "specificity": 0.869191919191919,
+            "f1": 0.8126709509429294,
+            "brier": 0.12331896674101338
+          },
+          "sample_sd": {
+            "roc_auc": 0.02044473271020106,
+            "average_precision": 0.021206474560674194,
+            "accuracy": 0.036198467546392755,
+            "precision": 0.059189865408905154,
+            "recall": 0.0673783032340562,
+            "specificity": 0.06503521928999906,
+            "f1": 0.042914856160135496,
+            "brier": 0.011792119043383037
+          },
+          "outer_best_params": [
+            {
+              "model__estimator__svm__class_weight": "balanced",
+              "model__estimator__svm__C": 0.1
+            },
+            {
+              "model__estimator__svm__class_weight": "balanced",
+              "model__estimator__svm__C": 0.1
+            },
+            {
+              "model__estimator__svm__class_weight": "balanced",
+              "model__estimator__svm__C": 0.1
+            },
+            {
+              "model__estimator__svm__class_weight": "balanced",
+              "model__estimator__svm__C": 0.1
+            },
+            {
+              "model__estimator__svm__class_weight": "balanced",
+              "model__estimator__svm__C": 0.1
+            },
+            {
+              "model__estimator__svm__class_weight": "balanced",
+              "model__estimator__svm__C": 0.1
+            }
+          ]
+        },
+        {
+          "model": "KNN",
+          "mean": {
+            "roc_auc": 0.9014205161907904,
+            "average_precision": 0.8948933561481279,
+            "accuracy": 0.8102310231023102,
+            "precision": 0.8486017997296192,
+            "recall": 0.719549799568301,
+            "specificity": 0.8872615039281707,
+            "f1": 0.7753788683301343,
+            "brier": 0.13265650153953548
+          },
+          "sample_sd": {
+            "roc_auc": 0.014493894799350728,
+            "average_precision": 0.026610804108800106,
+            "accuracy": 0.038303738989977944,
+            "precision": 0.06051799255638143,
+            "recall": 0.08181644681027528,
+            "specificity": 0.05896868484782218,
+            "f1": 0.051304455081481494,
+            "brier": 0.012009003847767909
+          },
+          "outer_best_params": [
+            {
+              "model__weights": "distance",
+              "model__n_neighbors": 31
+            },
+            {
+              "model__weights": "distance",
+              "model__n_neighbors": 31
+            },
+            {
+              "model__weights": "distance",
+              "model__n_neighbors": 31
+            },
+            {
+              "model__weights": "distance",
+              "model__n_neighbors": 31
+            },
+            {
+              "model__weights": "distance",
+              "model__n_neighbors": 31
+            },
+            {
+              "model__weights": "distance",
+              "model__n_neighbors": 31
+            }
+          ]
+        },
+        {
+          "model": "LightGBM",
+          "mean": {
+            "roc_auc": 0.9017345310438126,
+            "average_precision": 0.8980805303770989,
+            "accuracy": 0.83003300330033,
+            "precision": 0.8212531165748573,
+            "recall": 0.8094357076780759,
+            "specificity": 0.8478675645342312,
+            "f1": 0.8129020051710554,
+            "brier": 0.12385861317112751
+          },
+          "sample_sd": {
+            "roc_auc": 0.02200870013664357,
+            "average_precision": 0.03177141993645751,
+            "accuracy": 0.026133112732447703,
+            "precision": 0.04574967473904305,
+            "recall": 0.06897011086094755,
+            "specificity": 0.0528284509278223,
+            "f1": 0.034281921427777085,
+            "brier": 0.013129526304697917
+          },
+          "outer_best_params": [
+            {
+              "model__reg_lambda": 2,
+              "model__num_leaves": 31,
+              "model__min_child_samples": 60
+            },
+            {
+              "model__reg_lambda": 2,
+              "model__num_leaves": 31,
+              "model__min_child_samples": 60
+            },
+            {
+              "model__reg_lambda": 2,
+              "model__num_leaves": 31,
+              "model__min_child_samples": 60
+            },
+            {
+              "model__reg_lambda": 2,
+              "model__num_leaves": 31,
+              "model__min_child_samples": 60
+            },
+            {
+              "model__reg_lambda": 2,
+              "model__num_leaves": 31,
+              "model__min_child_samples": 60
+            },
+            {
+              "model__reg_lambda": 2,
+              "model__num_leaves": 31,
+              "model__min_child_samples": 60
+            }
+          ]
+        },
+        {
+          "model": "MLP",
+          "mean": {
+            "roc_auc": 0.8620319237186336,
+            "average_precision": 0.8456848900578565,
+            "accuracy": 0.764026402640264,
+            "precision": 0.8137828575328575,
+            "recall": 0.6406876349059513,
+            "specificity": 0.8689113355780022,
+            "f1": 0.6939010687864613,
+            "brier": 0.16573747228677974
+          },
+          "sample_sd": {
+            "roc_auc": 0.052133574067652066,
+            "average_precision": 0.07231783796761168,
+            "accuracy": 0.07393770555131257,
+            "precision": 0.05567693019324854,
+            "recall": 0.22711412560055927,
+            "specificity": 0.07410885827510043,
+            "f1": 0.14847106489787393,
+            "brier": 0.03670577314543238
+          },
+          "outer_best_params": [
+            {
+              "model__hidden_layer_sizes": [
+                48,
+                24
+              ],
+              "model__alpha": 0.5
+            },
+            {
+              "model__hidden_layer_sizes": [
+                48,
+                24
+              ],
+              "model__alpha": 0.1
+            },
+            {
+              "model__hidden_layer_sizes": [
+                48,
+                24
+              ],
+              "model__alpha": 0.1
+            },
+            {
+              "model__hidden_layer_sizes": [
+                48,
+                24
+              ],
+              "model__alpha": 0.5
+            },
+            {
+              "model__hidden_layer_sizes": [
+                48,
+                24
+              ],
+              "model__alpha": 0.1
+            },
+            {
+              "model__hidden_layer_sizes": [
+                48,
+                24
+              ],
+              "model__alpha": 0.5
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Алты сыртқы бағалау өзара тәуелді. SD — 95%-дық сенімділік интервалы емес. Бірнеше алгоритм арасынан жеңімпаз таңдау қосымша белгісіздік туғызады.",
+        "UCI финалдық моделі үшін 95%-дық сенімділік интервалы және тәуелсіз сыртқы клиникалық тексеру орындалмаған."
+      ],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "uci_rf_detail",
+      "title": "Cleveland Random Forest: сыртқы бөліктер және финалдық оқыту",
+      "sources": [
+        "reports/uci_results.json"
+      ],
+      "conditions": {
+        "outer_search_trials": 2,
+        "final_search_trials": 3,
+        "final_training_n": 303
+      },
+      "rows": [
+        {
+          "fold": 1,
+          "metrics": {
+            "roc_auc": 0.9055335968379448,
+            "average_precision": 0.8712200054338984,
+            "accuracy": 0.8118811881188119,
+            "precision": 0.8461538461538461,
+            "recall": 0.717391304347826,
+            "specificity": 0.8909090909090909,
+            "f1": 0.7764705882352941,
+            "brier": 0.15375931455399322,
+            "confusion": [
+              [
+                49.0,
+                6.0
+              ],
+              [
+                13.0,
+                33.0
+              ]
+            ]
+          },
+          "chosen_params": {
+            "model__min_samples_leaf": 25,
+            "model__max_depth": null
+          }
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "roc_auc": 0.9296442687747035,
+            "average_precision": 0.9231622737353181,
+            "accuracy": 0.8415841584158416,
+            "precision": 0.8260869565217391,
+            "recall": 0.8260869565217391,
+            "specificity": 0.8545454545454545,
+            "f1": 0.8260869565217391,
+            "brier": 0.14601356394097753,
+            "confusion": [
+              [
+                47.0,
+                8.0
+              ],
+              [
+                8.0,
+                38.0
+              ]
+            ]
+          },
+          "chosen_params": {
+            "model__min_samples_leaf": 25,
+            "model__max_depth": null
+          }
+        },
+        {
+          "fold": 3,
+          "metrics": {
+            "roc_auc": 0.8999211977935383,
+            "average_precision": 0.9211501461506689,
+            "accuracy": 0.8415841584158416,
+            "precision": 0.8604651162790697,
+            "recall": 0.7872340425531915,
+            "specificity": 0.8888888888888888,
+            "f1": 0.8222222222222222,
+            "brier": 0.14561836031163092,
+            "confusion": [
+              [
+                48.0,
+                6.0
+              ],
+              [
+                10.0,
+                37.0
+              ]
+            ]
+          },
+          "chosen_params": {
+            "model__min_samples_leaf": 25,
+            "model__max_depth": null
+          }
+        },
+        {
+          "fold": 4,
+          "metrics": {
+            "roc_auc": 0.9023715415019763,
+            "average_precision": 0.9129167793479487,
+            "accuracy": 0.8316831683168316,
+            "precision": 0.9142857142857143,
+            "recall": 0.6956521739130435,
+            "specificity": 0.9454545454545454,
+            "f1": 0.7901234567901234,
+            "brier": 0.15159890086799294,
+            "confusion": [
+              [
+                52.0,
+                3.0
+              ],
+              [
+                14.0,
+                32.0
+              ]
+            ]
+          },
+          "chosen_params": {
+            "model__min_samples_leaf": 25,
+            "model__max_depth": null
+          }
+        },
+        {
+          "fold": 5,
+          "metrics": {
+            "roc_auc": 0.8960474308300396,
+            "average_precision": 0.8912380843914521,
+            "accuracy": 0.7524752475247525,
+            "precision": 0.6842105263157895,
+            "recall": 0.8478260869565217,
+            "specificity": 0.6727272727272727,
+            "f1": 0.7572815533980582,
+            "brier": 0.15810051209256337,
+            "confusion": [
+              [
+                37.0,
+                18.0
+              ],
+              [
+                7.0,
+                39.0
+              ]
+            ]
+          },
+          "chosen_params": {
+            "model__min_samples_leaf": 25,
+            "model__max_depth": null
+          }
+        },
+        {
+          "fold": 6,
+          "metrics": {
+            "roc_auc": 0.9322301024428685,
+            "average_precision": 0.9199812502065382,
+            "accuracy": 0.8415841584158416,
+            "precision": 0.8974358974358975,
+            "recall": 0.7446808510638298,
+            "specificity": 0.9259259259259259,
+            "f1": 0.813953488372093,
+            "brier": 0.15012175358556523,
+            "confusion": [
+              [
+                50.0,
+                4.0
+              ],
+              [
+                12.0,
+                35.0
+              ]
+            ]
+          },
+          "chosen_params": {
+            "model__min_samples_leaf": 25,
+            "model__max_depth": null
+          }
+        },
+        {
+          "summary_kind": "Бір пациенттің екі OOF болжамының орташа мәні",
+          "metrics": {
+            "roc_auc": 0.909062993507633,
+            "average_precision": 0.9031627612571037,
+            "accuracy": 0.8283828382838284,
+            "precision": 0.8270676691729323,
+            "recall": 0.7913669064748201,
+            "specificity": 0.8597560975609756,
+            "f1": 0.8088235294117647,
+            "brier": 0.15046138353533617,
+            "confusion": [
+              [
+                141.0,
+                23.0
+              ],
+              [
+                29.0,
+                110.0
+              ]
+            ]
+          }
+        },
+        {
+          "summary_kind": "Финалдық оқытудағы параметр іздеуі",
+          "details": {
+            "base_ap": [
+              0.8800910916707686,
+              0.9310739043711717,
+              0.9219644937524035
+            ],
+            "tuned_ap": 0.9086904857823616,
+            "best_params": {
+              "model__min_samples_leaf": 3,
+              "model__max_depth": 10
+            },
+            "trials": [
+              {
+                "params": {
+                  "model__min_samples_leaf": 25,
+                  "model__max_depth": null
+                },
+                "mean_test_score": 0.9051774751066285,
+                "std_test_score": 0.024025604040759138,
+                "mean_fit_time": 0.13321932156880698,
+                "mean_train_score": 0.9252397358062917
+              },
+              {
+                "params": {
+                  "model__min_samples_leaf": 25,
+                  "model__max_depth": 5
+                },
+                "mean_test_score": 0.9051774751066285,
+                "std_test_score": 0.024025604040759138,
+                "mean_fit_time": 0.12350686391194661,
+                "mean_train_score": 0.9252397358062917
+              },
+              {
+                "params": {
+                  "model__min_samples_leaf": 3,
+                  "model__max_depth": 10
+                },
+                "mean_test_score": 0.9086904857823616,
+                "std_test_score": 0.02474615145543208,
+                "mean_fit_time": 0.12796568870544434,
+                "mean_train_score": 0.9853252354323784
+              }
+            ]
+          }
+        }
+      ],
+      "notes": [
+        "Екі сыртқы болжамның орташа мәнінен алынған OOF метрикалары алты бөлік метрикаларының орташа мәнінен ерекшеленеді.",
+        "Финалдық орманның параметрлері барлық сыртқы бөліктердегі параметрлерден өзгеше. Финалдық артефакт жеке тәуелсіз тестпен бағаланбаған."
+      ],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "timings",
+      "title": "Есептеу рәсімдерінің өлшенген уақыты",
+      "sources": [
+        "reports/brfss_results.json",
+        "reports/uci_results.json"
+      ],
+      "conditions": {
+        "hardware": "Бір жергілікті компьютердегі орындалу",
+        "timing_repetitions": 1
+      },
+      "rows": [
+        {
+          "dataset": "BRFSS",
+          "experiment": "Бірдей таңдамадағы салыстыру",
+          "model": "Dummy",
+          "train_n": 12000,
+          "test_n": 12000,
+          "procedure_seconds": 0.11002370000005612,
+          "procedure": "Бастапқы CV + CV арқылы іздеу + қайта оқыту",
+          "test_predict_seconds": 0.01563080000005357
+        },
+        {
+          "dataset": "BRFSS",
+          "experiment": "Бірдей таңдамадағы салыстыру",
+          "model": "Logistic Regression",
+          "train_n": 12000,
+          "test_n": 12000,
+          "procedure_seconds": 0.9172429000000193,
+          "procedure": "Бастапқы CV + CV арқылы іздеу + қайта оқыту",
+          "test_predict_seconds": 0.019369900000128837
+        },
+        {
+          "dataset": "BRFSS",
+          "experiment": "Бірдей таңдамадағы салыстыру",
+          "model": "Decision Tree",
+          "train_n": 12000,
+          "test_n": 12000,
+          "procedure_seconds": 0.6999814999999217,
+          "procedure": "Бастапқы CV + CV арқылы іздеу + қайта оқыту",
+          "test_predict_seconds": 0.01931140000033338
+        },
+        {
+          "dataset": "BRFSS",
+          "experiment": "Бірдей таңдамадағы салыстыру",
+          "model": "Random Forest",
+          "train_n": 12000,
+          "test_n": 12000,
+          "procedure_seconds": 4.329472000000351,
+          "procedure": "Бастапқы CV + CV арқылы іздеу + қайта оқыту",
+          "test_predict_seconds": 0.07074969999985115
+        },
+        {
+          "dataset": "BRFSS",
+          "experiment": "Бірдей таңдамадағы салыстыру",
+          "model": "Linear SVM",
+          "train_n": 12000,
+          "test_n": 12000,
+          "procedure_seconds": 2.502249699999993,
+          "procedure": "Бастапқы CV + CV арқылы іздеу + қайта оқыту",
+          "test_predict_seconds": 0.054961700000148994
+        },
+        {
+          "dataset": "BRFSS",
+          "experiment": "Бірдей таңдамадағы салыстыру",
+          "model": "KNN",
+          "train_n": 12000,
+          "test_n": 12000,
+          "procedure_seconds": 4.109769300000153,
+          "procedure": "Бастапқы CV + CV арқылы іздеу + қайта оқыту",
+          "test_predict_seconds": 0.5499092000000019
+        },
+        {
+          "dataset": "BRFSS",
+          "experiment": "Бірдей таңдамадағы салыстыру",
+          "model": "LightGBM",
+          "train_n": 12000,
+          "test_n": 12000,
+          "procedure_seconds": 2.3785116999997626,
+          "procedure": "Бастапқы CV + CV арқылы іздеу + қайта оқыту",
+          "test_predict_seconds": 0.04814029999988634
+        },
+        {
+          "dataset": "BRFSS",
+          "experiment": "Бірдей таңдамадағы салыстыру",
+          "model": "MLP",
+          "train_n": 12000,
+          "test_n": 12000,
+          "procedure_seconds": 7.144240999999965,
+          "procedure": "Бастапқы CV + CV арқылы іздеу + қайта оқыту",
+          "test_predict_seconds": 0.016205199999603792
+        },
+        {
+          "dataset": "BRFSS",
+          "experiment": "Толық көлемдегі тәжірибе",
+          "model": "Logistic Regression",
+          "train_n": 240093,
+          "test_n": 85748,
+          "procedure_seconds": 1.5135512000001654,
+          "procedure": "Оқыту + калибрлеу + валидациялық болжам, метрика және шек",
+          "test_predict_seconds": 0.08287629999995261
+        },
+        {
+          "dataset": "BRFSS",
+          "experiment": "Толық көлемдегі тәжірибе",
+          "model": "LightGBM",
+          "train_n": 240093,
+          "test_n": 85748,
+          "procedure_seconds": 2.8532970999999634,
+          "procedure": "Оқыту + калибрлеу + валидациялық болжам, метрика және шек",
+          "test_predict_seconds": 0.36511319999999614
+        },
+        {
+          "dataset": "Cleveland",
+          "experiment": "Ішкі және сыртқы CV",
+          "model": "Dummy",
+          "procedure_seconds": 0.14990120000038587,
+          "procedure": "Іздеу, болжам және метрикаларды қамтитын алты сыртқы бөлік",
+          "test_predict_seconds": null
+        },
+        {
+          "dataset": "Cleveland",
+          "experiment": "Ішкі және сыртқы CV",
+          "model": "Logistic Regression",
+          "procedure_seconds": 0.9247131999995872,
+          "procedure": "Іздеу, болжам және метрикаларды қамтитын алты сыртқы бөлік",
+          "test_predict_seconds": null
+        },
+        {
+          "dataset": "Cleveland",
+          "experiment": "Ішкі және сыртқы CV",
+          "model": "Decision Tree",
+          "procedure_seconds": 0.726757199999156,
+          "procedure": "Іздеу, болжам және метрикаларды қамтитын алты сыртқы бөлік",
+          "test_predict_seconds": null
+        },
+        {
+          "dataset": "Cleveland",
+          "experiment": "Ішкі және сыртқы CV",
+          "model": "Random Forest",
+          "procedure_seconds": 6.812586300000021,
+          "procedure": "Іздеу, болжам және метрикаларды қамтитын алты сыртқы бөлік",
+          "test_predict_seconds": null
+        },
+        {
+          "dataset": "Cleveland",
+          "experiment": "Ішкі және сыртқы CV",
+          "model": "Linear SVM",
+          "procedure_seconds": 2.8970618000003014,
+          "procedure": "Іздеу, болжам және метрикаларды қамтитын алты сыртқы бөлік",
+          "test_predict_seconds": null
+        },
+        {
+          "dataset": "Cleveland",
+          "experiment": "Ішкі және сыртқы CV",
+          "model": "KNN",
+          "procedure_seconds": 0.8482893999998851,
+          "procedure": "Іздеу, болжам және метрикаларды қамтитын алты сыртқы бөлік",
+          "test_predict_seconds": null
+        },
+        {
+          "dataset": "Cleveland",
+          "experiment": "Ішкі және сыртқы CV",
+          "model": "LightGBM",
+          "procedure_seconds": 1.0795424000007188,
+          "procedure": "Іздеу, болжам және метрикаларды қамтитын алты сыртқы бөлік",
+          "test_predict_seconds": null
+        },
+        {
+          "dataset": "Cleveland",
+          "experiment": "Ішкі және сыртқы CV",
+          "model": "MLP",
+          "procedure_seconds": 1.729961000000003,
+          "procedure": "Іздеу, болжам және метрикаларды қамтитын алты сыртқы бөлік",
+          "test_predict_seconds": null
+        }
+      ],
+      "notes": [
+        "Бұл сандар бір модельді таза оқыту уақытын бірдей шартта салыстырмайды. Бос мән — бөлек өлшем жасалмағанын білдіреді.",
+        "Жадтың ең жоғары шығыны, серверге жүктеме сынағы және болжам кідірісінің қайталама өлшемдері жоқ."
+      ],
+      "render_hint": "vertical_records"
+    },
+    {
+      "id": "errors",
+      "title": "BRFSS қателерінің жиынтық саны",
+      "sources": [
+        "reports/brfss_results.json"
+      ],
+      "conditions": {
+        "scope": "Толық тест жиыны",
+        "threshold": 0.19042448230963954,
+        "weighted": false
+      },
+      "rows": [
+        {
+          "kind": "Жалған оң нәтиже",
+          "n": 8192,
+          "mean_probability": 0.29951896497668684,
+          "note": "Жиынтық қате талдауы; жеке респондент жазбалары көрсетілмейді"
+        },
+        {
+          "kind": "Жалған теріс нәтиже",
+          "n": 3578,
+          "mean_probability": 0.10156843943248857,
+          "note": "Жиынтық қате талдауы; жеке респондент жазбалары көрсетілмейді"
+        }
+      ],
+      "notes": [
+        "Жеке респонденттердің клиникалық тарихы немесе қателердің жеке клиникалық талдауы жүргізілмеді."
+      ],
+      "render_hint": "compact_table"
+    },
+    {
+      "id": "verification",
+      "title": "Тіркелген бағдарламалық тексерулер",
+      "sources": [
+        "reports/verification.json",
+        "reports/tests.xml",
+        "tests/test_project.py"
+      ],
+      "conditions": {
+        "automated_test_count": 14
+      },
+      "rows": [
+        {
+          "category": "automated_tests",
+          "record": {
+            "tests": 14,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "category": "frontend_build",
+          "record": "TypeScript тексеруі және Vite жинақтауы сәтті өтті"
+        },
+        {
+          "category": "local_server",
+          "record": "127.0.0.1:8000 мекенжайында браузер арқылы тексерілді"
+        },
+        {
+          "category": "docker",
+          "record": "Іске қосылмады: Docker Engine қолжетімсіз"
+        },
+        {
+          "category": "data_sources",
+          "record": "SHA-256 бақылау сомалары сақталған"
+        },
+        {
+          "category": "independent_test_selection",
+          "record": true
+        },
+        {
+          "category": "documents_language",
+          "record": "Қазақша"
+        },
+        {
+          "category": "interface_language",
+          "record": "Орысша"
+        },
+        {
+          "category": "shap_implementation",
+          "record": "Интервенциялық Шепли үлестерінің өзіндік бағалауы: 48 рет және 30 фондық жол"
+        },
+        {
+          "category": "known_limits",
+          "record": [
+            "Сыртқы клиникалық тексеру жоқ",
+            "Қазақстан деректерінде тексеру жоқ",
+            "Bootstrap күрделі сауалнама дизайнын толық есепке алмайды",
+            "Параметр іздеу бюджеті шектеулі; MLP нәтижесі тұрақсыз",
+            "Университеттің титул парағы мен рәсімдеу талаптарын бөлек тексеру қажет"
+          ]
+        },
+        {
+          "category": "browser_checks",
+          "record": [
+            "BRFSS демомысалының болжамы мен түсіндірмесі тексерілді",
+            "UCI демомысалының болжамы мен түсіндірмесі тексерілді",
+            "CSV жүктеу және нәтижені алу тексерілді",
+            "Браузерден PDF алу тексерілді",
+            "1440 пиксельдік және тар экрандағы орналасу қаралды",
+            "Қарау кезінде браузер консолінде қате байқалмады"
+          ]
+        },
+        {
+          "category": "pdf_visual_review",
+          "record": "Бұрынғы 25 беттік мәтін, 8 беттік қорғау материалы және бір беттік мысал бейнеленіп қаралды; кирилл және қазақ әріптері тексерілді. Бұл жаңа финалдық дипломның тексеруі емес."
+        }
+      ],
+      "notes": [
+        "Кесте бұрын тіркелген тексеру дәлелдерін көрсетеді. Ол жаңа іске қосу, клиникалық валидация, қауіпсіздік аудиті немесе жүктеме сынағы емес.",
+        "Docker конфигурациясы дайындалған, бірақ Docker Engine болмағандықтан контейнер нақты іске қосылмаған."
+      ],
+      "render_hint": "vertical_records"
+    }
+  ],
+  "language": "kk",
+  "column_display_labels": {
+    "file": "Файл",
+    "bytes": "Байт саны",
+    "sha256": "SHA-256",
+    "dataset": "Деректер жиыны",
+    "raw_rows": "Бастапқы жолдар",
+    "raw_columns": "Бастапқы бағандар",
+    "unknown_target_removed": "Мақсаты белгісіз болғандықтан шығарылған",
+    "retained": "Сақталған бақылаулар",
+    "MICHD_mismatches": "_MICHD сәйкессіздігі",
+    "duplicate_state_PSU": "Штат–PSU қайталануы",
+    "identical_predictor_rows_retained": "Жауаптары бірдей, сақталған анкеталар",
+    "predictors": "Белгілер саны",
+    "part": "Деректер бөлігі",
+    "n": "Бақылау саны",
+    "positive": "Оң класс саны",
+    "negative": "Теріс класс саны",
+    "positive_fraction": "Оң класс үлесі",
+    "name": "Техникалық атау",
+    "label": "Түсінікті атау",
+    "kind": "Типі",
+    "options": "Рұқсат етілген категориялар",
+    "source": "Бастапқы айнымалы",
+    "group": "Форма бөлімі",
+    "value": "Мән",
+    "min": "Ең аз мән",
+    "max": "Ең үлкен мән",
+    "step": "Қадам",
+    "missing_dev": "Әзірлеу жиынындағы пропуск саны",
+    "missing_cleveland": "Cleveland пропуск саны",
+    "center": "Орталық",
+    "missing_fraction": "Орташа пропуск үлесі",
+    "base_ap": "Бастапқы үш CV нәтижесі, AP",
+    "tuned_ap": "Таңдалған ішкі CV нәтижесі, AP",
+    "best_params": "Таңдалған параметрлер",
+    "model": "Модель",
+    "trial_number": "Конфигурация нөмірі",
+    "params": "Параметрлер",
+    "mean_test_score": "CV бағасының орташа мәні",
+    "std_test_score": "CV бағасының SD",
+    "mean_fit_time": "Бір CV оқытуының орташа уақыты, с",
+    "mean_train_score": "Оқыту AP орташа мәні",
+    "roc_auc": "ROC-AUC",
+    "average_precision": "Average Precision",
+    "accuracy": "Accuracy",
+    "precision": "Оң болжам дәлдігі",
+    "recall": "Сезімталдық",
+    "specificity": "Ерекшелік",
+    "f1": "F1",
+    "brier": "Brier score",
+    "confusion": "Қателер матрицасы: [[TN, FP], [FN, TP]]",
+    "probability_version": "Ықтималдық нұсқасы",
+    "extra_sigmoid_selected": "Қосымша sigmoid таңдалды",
+    "variant": "Нұсқа",
+    "threshold": "Шек",
+    "extra_calibration": "Қосымша калибрлеу",
+    "survey_weighted": "Сауалнама салмақтары қолданылды",
+    "features": "Белгілер саны",
+    "training_n": "Оқыту көлемі",
+    "metric": "Метрика",
+    "lower": "Төменгі шек",
+    "upper": "Жоғарғы шек",
+    "feature": "Белгі",
+    "ci": "Жуық интервалдар",
+    "recall_interval_degenerate": "Recall интервалы азғындаған",
+    "mean": "Орташа мән",
+    "std": "Стандартты ауытқу",
+    "sample_sd": "Алты сыртқы бағалаудың SD",
+    "outer_best_params": "Сыртқы бөліктерде таңдалған параметрлер",
+    "fold": "Сыртқы бөлік нөмірі",
+    "metrics": "Метрикалар",
+    "chosen_params": "Осы бөліктегі параметрлер",
+    "summary_kind": "Қорытындылау тәсілі",
+    "details": "Қосымша дерек",
+    "experiment": "Тәжірибе",
+    "train_n": "Оқыту көлемі",
+    "test_n": "Бағалау көлемі",
+    "procedure_seconds": "Рәсімнің толық уақыты, с",
+    "procedure": "Өлшенген рәсім",
+    "test_predict_seconds": "Тест болжамының уақыты, с",
+    "mean_probability": "Орташа модель ықтималдығы",
+    "note": "Ескерту",
+    "category": "Тексеру санаты",
+    "record": "Тіркелген нәтиже",
+    "scope": "Қамту аймағы",
+    "seed": "Кездейсоқтық тұқымы",
+    "weighted": "Салмақталған бағалау",
+    "missingness_scope": "Пропуск санауының жиыны",
+    "feature_count": "Белгілер саны",
+    "training_center": "Оқыту орталығы",
+    "folds": "Бөліктер саны",
+    "trials_per_non_dummy": "Әр негізгі модель конфигурациялары",
+    "primary_metric": "Негізгі метрика",
+    "fit_n": "Негізгі оқыту көлемі",
+    "calibration_n": "Калибрлеу көлемі",
+    "validation_n": "Валидация көлемі",
+    "deployed_model": "Қолданба моделі",
+    "C": "C параметрі",
+    "extra_sigmoid": "Қосымша sigmoid",
+    "evaluation_weighted": "Бағалауда салмақ қолданылды",
+    "resamples": "Қайта іріктеу саны",
+    "unit": "Қайта іріктеу бірлігі",
+    "fixed_model": "Модель бекітілген",
+    "complex_survey_design": "Күрделі жоспар толық ескерілген",
+    "type": "Есептеу түрі",
+    "bootstrap_resamples_per_group": "Әр топтағы bootstrap саны",
+    "permutations_per_feature": "Әр белгіні алмастыру саны",
+    "score": "Бағалау метрикасы",
+    "outer": "Сыртқы CV",
+    "inner": "Ішкі CV",
+    "outer_train_n": "Сыртқы оқыту көлемі",
+    "outer_test_n": "Сыртқы тест көлемі",
+    "outer_search_trials": "Сыртқы рәсімдегі іздеу конфигурациялары",
+    "final_search_trials": "Финалдық іздеу конфигурациялары",
+    "final_training_n": "Финалдық оқыту көлемі",
+    "hardware": "Есептеу ортасы",
+    "timing_repetitions": "Уақыт өлшеу саны",
+    "automated_test_count": "Автоматты тесттер саны",
+    "paired_ap_difference": "Жұпталған AP айырмасы",
+    "trials": "Іздеу конфигурациялары"
+  },
+  "field_display_labels": {
+    "age_group": "Жас тобы",
+    "age": "Жас",
+    "sex": "Жыныс",
+    "bmi": "Дене салмағы индексі",
+    "smoking": "Темекі шегу мәртебесі",
+    "activity": "Соңғы айдағы физикалық белсенділік",
+    "diabetes": "Диабет туралы жауап",
+    "hypertension": "Жоғары қан қысымы туралы жауап",
+    "cholesterol": "Жоғары холестерин туралы жауап",
+    "general_health": "Жалпы денсаулық бағасы",
+    "physical_days": "30 күндегі физикалық жайсыздық күндері",
+    "mental_days": "30 күндегі эмоциялық жайсыздық күндері",
+    "cp": "Кеуде ауыруының түрі",
+    "trestbps": "Тыныштықтағы қысым, мм сын. бағ.",
+    "chol": "Холестерин, мг/дл",
+    "fbs": "Ашқарындағы глюкоза 120 мг/дл-ден жоғары",
+    "restecg": "Тыныштықтағы ЭКГ",
+    "thalach": "Жүктемедегі максималды жүрек соғу жиілігі",
+    "exang": "Жүктемелік стенокардия",
+    "oldpeak": "Жүктемедегі ST депрессиясы",
+    "slope": "ST сегментінің еңісі",
+    "ca": "Флюороскопиядағы ірі тамыр саны",
+    "thal": "Таллий сынағының нәтижесі"
+  }
+}

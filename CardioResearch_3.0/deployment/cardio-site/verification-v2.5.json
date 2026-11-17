@@ -1,0 +1,12 @@
+{
+  "release": "2.5.0",
+  "date": "2026-11-09",
+  "scope": "Expanded frozen-prediction diagnostics and exploratory UCI transfer; no refit or model selection",
+  "node_tests": {"passed": 29, "failed": 0, "command": "node --test tests/*.test.mjs"},
+  "python_metric_tests": {"passed": 14, "failed": 0, "command": "python -m unittest discover -s tests -p test_evaluation.py"},
+  "python_aggregate_api_tests": {"passed": 3, "failed": 0, "command": "python -m unittest discover -s python/tests", "scope": "Isolated new routes in FastAPI, no legacy ML imports"},
+  "evaluation_reproduction": {"passed": true, "brfss_n": 85748, "uci_oof_n": 303, "max_absolute_reconciliation_delta": 3.3306690738754696e-16},
+  "new_transfer": {"n": 617, "centers": 3, "threshold": 0.5, "refit": false, "independent_numpy_scipy_max_metric_delta": 4.440892098500626e-16},
+  "browser": {"widths": [1280, 390], "languages": ["ru", "kk"], "console_errors": 0, "checks": ["BRFSS and UCI diagnostic values", "calibration curves and empty bins", "histogram class normalization", "keyboard tab End", "transfer center selection", "Swiss zero-cholesterol notice", "completeness subset", "no horizontal page overflow at 390 px"]},
+  "limits": ["Full legacy Python training/API suite was not rerun", "Models and thresholds are unchanged", "Old manuscript PDFs remain drafts", "Browser downloads checked at HTTP route level rather than through native download dialogs", "No clinical or Kazakhstan population validation"]
+}

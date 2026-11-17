@@ -1,0 +1,20 @@
+{
+  "seed": 20261107,
+  "primary_metric": "average_precision",
+  "benchmark_train": 12000,
+  "benchmark_test": 12000,
+  "fit": 240093,
+  "calibration": 51448,
+  "validation": 51449,
+  "test": 85748,
+  "cv": "3-fold stratified",
+  "search_trials": 3,
+  "full_candidates": [
+    "Logistic Regression",
+    "LightGBM"
+  ],
+  "selection": "benchmark: mean inner CV AP; full: validation AP; sigmoid selected by validation Brier; threshold max validation F1",
+  "weighting": "primary training and selection unweighted respondent-level; weighted test metrics and separate weighted logistic sensitivity",
+  "ci": "200 iid respondent bootstrap, fixed fitted model, not survey-design based",
+  "feature_policy": "11 fixed codebook-defined predictors; reduced set excludes subjective health measures and cholesterol"
+}

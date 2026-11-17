@@ -1,0 +1,19 @@
+{
+  "status": "Verified local full workflow and published public UI",
+  "checked_at": "2026-11-08T09:36:24.451349+00:00",
+  "checks": [
+    "Real BRFSS scenario demo plus custom sweep23/27/35 computed in local browser",
+    "Two comparisons pinned in memory; Kazakh language toggle retained result",
+    "Scenario CSV downloaded through browser",
+    "Quick search selected guide by Kazakh keyword and Enter",
+    "Feature dictionary search bmi returned one matching field",
+    "Defense answer revealed, practice checkbox marked, next card displayed",
+    "BMI70kg/175cm gave22.9 and populated form",
+    "Model table Brier sort and Logistic search returned one model",
+    "Published guest scenario CSV and editable feature controls disabled",
+    "Published guide answer and preparation checklist displayed",
+    "375px content width matched375px viewport on guide and scenarios",
+    "Mobile menu opened and navigated to scenarios; state cleared on page change",
+    "No browser console errors observed"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "benchmark_winner": "Logistic Regression",
+  "deployed_model": "Logistic Regression",
+  "threshold": 0.19042448230963954,
+  "calibration": true,
+  "locked_before_test": true,
+  "locked_at": "2026-11-07T13:41:00.672115+00:00"
+}

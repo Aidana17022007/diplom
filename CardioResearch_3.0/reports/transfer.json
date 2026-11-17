@@ -1,0 +1,550 @@
+{
+  "schema_version": 1,
+  "created": "2026-11-09T15:01:08.957Z",
+  "stage": "exploratory_retrospective_cross_center_transfer",
+  "protocol": {
+    "frozen_before_evaluation": true,
+    "fit_performed": false,
+    "selection_changed": false,
+    "threshold": 0.5,
+    "task": "Historical UCI heart-disease severity > 0; not prediction of future cardiovascular events.",
+    "training_center": "Cleveland",
+    "evaluation_centers": [
+      "Hungary",
+      "Switzerland",
+      "VA"
+    ],
+    "all_external_records": true,
+    "preprocessing": "Exactly the fitted Cleveland preprocessing in the exported model. Empty CSV fields become null; numeric medians, category handling and scales are frozen.",
+    "source_value_policy": "All recorded numeric values, including zeros and values outside interactive form ranges, are preserved and separately counted. No silent recoding or test-driven cleaning.",
+    "inference_path": "Low-level predictProbability, intentionally bypassing interactive form validation; all source rows are included.",
+    "weighting": "Unweighted records, reported separately by center. No pooled headline score.",
+    "intervals": "Not calculated. Small center samples and repeated or unidentified records limit precision.",
+    "metric_definitions": {
+      "roc_auc": "Mann–Whitney pair concordance, half-credit for ties",
+      "average_precision": "Non-interpolated precision weighted by positive-recall increments, grouping tied scores",
+      "balanced_accuracy": "Mean sensitivity and specificity",
+      "undefined_metric": "null when a required class or denominator is absent",
+      "confusion": "[[true negative,false positive],[false negative,true positive]]"
+    }
+  },
+  "provenance": {
+    "source_archive": "CardioResearch_project.zip",
+    "source_archive_sha256": "6bfc3f3f440bc5c4db7ee37d7ad0059e279829677d64e9bd4db04d70b1623661",
+    "source_member": "CardioResearch/data/processed/uci_centers_audit.csv",
+    "source_csv_sha256": "ba254f22ba45d9a372bdf6b9dbe970dd5ac10c41326b1485214b9789222d9f24",
+    "model_file": "data/models.json",
+    "model_file_sha256": "06923f7cbb888102c8c501fc76f9a6306dc8ead26cd1e284d5726d961052852c",
+    "model_version": "e31f6af32e30",
+    "reproduction_command": "node scripts/evaluate-transfer.mjs --archive \"../../CardioResearch_project.zip\"",
+    "original_training_source": "cardio/train.py:uci reads data/processed/uci.pkl; cardio/prepare.py creates that file from Cleveland only. Other centers were retained for an earlier missingness audit.",
+    "runtime": {
+      "node": "v24.17.0",
+      "platform": "win32",
+      "arch": "x64"
+    }
+  },
+  "model": {
+    "dataset": "uci",
+    "name": "Random Forest",
+    "version": "e31f6af32e30",
+    "threshold": 0.5,
+    "features": [
+      "age",
+      "sex",
+      "cp",
+      "trestbps",
+      "chol",
+      "fbs",
+      "restecg",
+      "thalach",
+      "exang",
+      "oldpeak",
+      "slope",
+      "ca",
+      "thal"
+    ]
+  },
+  "cohorts": [
+    {
+      "center": "Hungary",
+      "n": 294,
+      "positive": 106,
+      "prevalence": 0.36054421768707484,
+      "missing_fraction": 0.20460491889063318,
+      "missingness": {
+        "age": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "sex": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "cp": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "trestbps": {
+          "missing": 1,
+          "fraction": 0.003401360544217687
+        },
+        "chol": {
+          "missing": 23,
+          "fraction": 0.0782312925170068
+        },
+        "fbs": {
+          "missing": 8,
+          "fraction": 0.027210884353741496
+        },
+        "restecg": {
+          "missing": 1,
+          "fraction": 0.003401360544217687
+        },
+        "thalach": {
+          "missing": 1,
+          "fraction": 0.003401360544217687
+        },
+        "exang": {
+          "missing": 1,
+          "fraction": 0.003401360544217687
+        },
+        "oldpeak": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "slope": {
+          "missing": 190,
+          "fraction": 0.6462585034013606
+        },
+        "ca": {
+          "missing": 291,
+          "fraction": 0.9897959183673469
+        },
+        "thal": {
+          "missing": 266,
+          "fraction": 0.9047619047619048
+        }
+      },
+      "quality": {
+        "all_features_missing": 0,
+        "fewer_than_three_observed": 0,
+        "complete_records": 1,
+        "observed_features_min": 8,
+        "observed_features_max": 13,
+        "outside_interactive_form_ranges": {
+          "age": 0,
+          "trestbps": 0,
+          "chol": 0,
+          "thalach": 0,
+          "oldpeak": 0
+        },
+        "unknown_categories": {
+          "sex": 0,
+          "cp": 0,
+          "fbs": 0,
+          "restecg": 0,
+          "exang": 0,
+          "slope": 0,
+          "ca": 0,
+          "thal": 0
+        },
+        "zero_values": {
+          "chol": 0,
+          "trestbps": 0
+        },
+        "duplicate_feature_target_rows": 1,
+        "exact_matches_to_cleveland": 0
+      },
+      "metrics": {
+        "n": 294,
+        "positive": 106,
+        "negative": 188,
+        "threshold": 0.5,
+        "prevalence": 0.36054421768707484,
+        "roc_auc": 0.9034022480931353,
+        "average_precision": 0.8444777308782159,
+        "brier": 0.18303604500476892,
+        "mean_probability": 0.5776393413288904,
+        "accuracy": 0.7789115646258503,
+        "precision": 0.6357615894039735,
+        "recall": 0.9056603773584906,
+        "specificity": 0.7074468085106383,
+        "f1": 0.7470817120622568,
+        "balanced_accuracy": 0.8065535929345644,
+        "mcc": 0.5889952211866394,
+        "confusion": [
+          [
+            133,
+            55
+          ],
+          [
+            10,
+            96
+          ]
+        ]
+      },
+      "eligible_subset": {
+        "definition": "At least 10 of 13 source features observed; zeros remain observed. Descriptive subset, not a new validation sample.",
+        "minimum_observed_features": 10,
+        "n": 272,
+        "excluded": 22,
+        "metrics": {
+          "n": 272,
+          "positive": 103,
+          "negative": 169,
+          "threshold": 0.5,
+          "prevalence": 0.3786764705882353,
+          "roc_auc": 0.898776354340208,
+          "average_precision": 0.8466884771820633,
+          "brier": 0.18267840224735504,
+          "mean_probability": 0.5866238609516683,
+          "accuracy": 0.7647058823529411,
+          "precision": 0.6326530612244898,
+          "recall": 0.9029126213592233,
+          "specificity": 0.6804733727810651,
+          "f1": 0.744,
+          "balanced_accuracy": 0.7916929970701443,
+          "mcc": 0.5678116373738061,
+          "confusion": [
+            [
+              115,
+              54
+            ],
+            [
+              10,
+              93
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "center": "Switzerland",
+      "n": 123,
+      "positive": 115,
+      "prevalence": 0.9349593495934959,
+      "missing_fraction": 0.17073170731707318,
+      "missingness": {
+        "age": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "sex": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "cp": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "trestbps": {
+          "missing": 2,
+          "fraction": 0.016260162601626018
+        },
+        "chol": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "fbs": {
+          "missing": 75,
+          "fraction": 0.6097560975609756
+        },
+        "restecg": {
+          "missing": 1,
+          "fraction": 0.008130081300813009
+        },
+        "thalach": {
+          "missing": 1,
+          "fraction": 0.008130081300813009
+        },
+        "exang": {
+          "missing": 1,
+          "fraction": 0.008130081300813009
+        },
+        "oldpeak": {
+          "missing": 6,
+          "fraction": 0.04878048780487805
+        },
+        "slope": {
+          "missing": 17,
+          "fraction": 0.13821138211382114
+        },
+        "ca": {
+          "missing": 118,
+          "fraction": 0.959349593495935
+        },
+        "thal": {
+          "missing": 52,
+          "fraction": 0.42276422764227645
+        }
+      },
+      "quality": {
+        "all_features_missing": 0,
+        "fewer_than_three_observed": 0,
+        "complete_records": 0,
+        "observed_features_min": 7,
+        "observed_features_max": 12,
+        "outside_interactive_form_ranges": {
+          "age": 0,
+          "trestbps": 0,
+          "chol": 123,
+          "thalach": 0,
+          "oldpeak": 11
+        },
+        "unknown_categories": {
+          "sex": 0,
+          "cp": 0,
+          "fbs": 0,
+          "restecg": 0,
+          "exang": 0,
+          "slope": 0,
+          "ca": 0,
+          "thal": 0
+        },
+        "zero_values": {
+          "chol": 123,
+          "trestbps": 0
+        },
+        "duplicate_feature_target_rows": 0,
+        "exact_matches_to_cleveland": 0
+      },
+      "metrics": {
+        "n": 123,
+        "positive": 115,
+        "negative": 8,
+        "threshold": 0.5,
+        "prevalence": 0.9349593495934959,
+        "roc_auc": 0.7456521739130435,
+        "average_precision": 0.9731950763344156,
+        "brier": 0.13998908046595757,
+        "mean_probability": 0.6676734613920176,
+        "accuracy": 0.8536585365853658,
+        "precision": 0.9619047619047619,
+        "recall": 0.8782608695652174,
+        "specificity": 0.5,
+        "f1": 0.9181818181818182,
+        "balanced_accuracy": 0.6891304347826087,
+        "mcc": 0.26390913801210825,
+        "confusion": [
+          [
+            4,
+            4
+          ],
+          [
+            14,
+            101
+          ]
+        ]
+      },
+      "eligible_subset": {
+        "definition": "At least 10 of 13 source features observed; zeros remain observed. Descriptive subset, not a new validation sample.",
+        "minimum_observed_features": 10,
+        "n": 117,
+        "excluded": 6,
+        "metrics": {
+          "n": 117,
+          "positive": 109,
+          "negative": 8,
+          "threshold": 0.5,
+          "prevalence": 0.9316239316239316,
+          "roc_auc": 0.7419724770642202,
+          "average_precision": 0.9714929579206636,
+          "brier": 0.1426795368182469,
+          "mean_probability": 0.6650316170755599,
+          "accuracy": 0.8461538461538461,
+          "precision": 0.9595959595959596,
+          "recall": 0.8715596330275229,
+          "specificity": 0.5,
+          "f1": 0.9134615384615384,
+          "balanced_accuracy": 0.6857798165137614,
+          "mcc": 0.2599159420160585,
+          "confusion": [
+            [
+              4,
+              4
+            ],
+            [
+              14,
+              95
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "center": "VA",
+      "n": 200,
+      "positive": 149,
+      "prevalence": 0.745,
+      "missing_fraction": 0.2684615384615385,
+      "missingness": {
+        "age": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "sex": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "cp": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "trestbps": {
+          "missing": 56,
+          "fraction": 0.28
+        },
+        "chol": {
+          "missing": 7,
+          "fraction": 0.035
+        },
+        "fbs": {
+          "missing": 7,
+          "fraction": 0.035
+        },
+        "restecg": {
+          "missing": 0,
+          "fraction": 0
+        },
+        "thalach": {
+          "missing": 53,
+          "fraction": 0.265
+        },
+        "exang": {
+          "missing": 53,
+          "fraction": 0.265
+        },
+        "oldpeak": {
+          "missing": 56,
+          "fraction": 0.28
+        },
+        "slope": {
+          "missing": 102,
+          "fraction": 0.51
+        },
+        "ca": {
+          "missing": 198,
+          "fraction": 0.99
+        },
+        "thal": {
+          "missing": 166,
+          "fraction": 0.83
+        }
+      },
+      "quality": {
+        "all_features_missing": 0,
+        "fewer_than_three_observed": 0,
+        "complete_records": 1,
+        "observed_features_min": 5,
+        "observed_features_max": 13,
+        "outside_interactive_form_ranges": {
+          "age": 0,
+          "trestbps": 1,
+          "chol": 49,
+          "thalach": 0,
+          "oldpeak": 1
+        },
+        "unknown_categories": {
+          "sex": 0,
+          "cp": 0,
+          "fbs": 0,
+          "restecg": 0,
+          "exang": 0,
+          "slope": 0,
+          "ca": 0,
+          "thal": 0
+        },
+        "zero_values": {
+          "chol": 49,
+          "trestbps": 1
+        },
+        "duplicate_feature_target_rows": 1,
+        "exact_matches_to_cleveland": 0
+      },
+      "metrics": {
+        "n": 200,
+        "positive": 149,
+        "negative": 51,
+        "threshold": 0.5,
+        "prevalence": 0.745,
+        "roc_auc": 0.7332543755757337,
+        "average_precision": 0.8776597471192691,
+        "brier": 0.16775381922798058,
+        "mean_probability": 0.6952334858222418,
+        "accuracy": 0.74,
+        "precision": 0.7869822485207101,
+        "recall": 0.8926174496644296,
+        "specificity": 0.29411764705882354,
+        "f1": 0.8364779874213837,
+        "balanced_accuracy": 0.5933675483616265,
+        "mcc": 0.22489509006781203,
+        "confusion": [
+          [
+            15,
+            36
+          ],
+          [
+            16,
+            133
+          ]
+        ]
+      },
+      "eligible_subset": {
+        "definition": "At least 10 of 13 source features observed; zeros remain observed. Descriptive subset, not a new validation sample.",
+        "minimum_observed_features": 10,
+        "n": 142,
+        "excluded": 58,
+        "metrics": {
+          "n": 142,
+          "positive": 112,
+          "negative": 30,
+          "threshold": 0.5,
+          "prevalence": 0.7887323943661971,
+          "roc_auc": 0.7110119047619048,
+          "average_precision": 0.8907346993603281,
+          "brier": 0.15187784727519524,
+          "mean_probability": 0.7336281243779564,
+          "accuracy": 0.795774647887324,
+          "precision": 0.816793893129771,
+          "recall": 0.9553571428571429,
+          "specificity": 0.2,
+          "f1": 0.8806584362139918,
+          "balanced_accuracy": 0.5776785714285715,
+          "mcc": 0.23722959853888512,
+          "confusion": [
+            [
+              6,
+              24
+            ],
+            [
+              5,
+              107
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "training_reference": {
+    "center": "Cleveland",
+    "n": 303,
+    "positive": 139,
+    "role": "Training only; no in-sample quality score is presented"
+  },
+  "limitations": [
+    "Exploratory retrospective transfer audit of historical public datasets, not independent clinical validation, deployment approval, or evidence for Kazakhstan.",
+    "Other centers were already inspected for missingness before this analysis; this is not a preregistered external evaluation.",
+    "Severe feature missingness, recorded zero cholesterol and differences in case mix may invalidate interpretation of individual probabilities.",
+    "No center-specific fitting, imputation, calibration, threshold adjustment or model selection was performed.",
+    "The source has no stable cross-center patient identifiers. Exact duplicate checks cannot establish independent patients; duplicate records are retained and counted.",
+    "The completeness subset can change case mix and is descriptive only. Apparent performance differences are not evidence of model improvement.",
+    "Cleveland nested-CV and BRFSS results remain separate experiments and must not be pooled with these center estimates."
+  ],
+  "sources": [
+    {
+      "title": "UCI Heart Disease dataset",
+      "url": "https://archive.ics.uci.edu/dataset/45/heart+disease"
+    }
+  ]
+}

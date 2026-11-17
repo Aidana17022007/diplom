@@ -1,0 +1,16 @@
+{
+  "release": "2.3.0",
+  "verified_on": "2026-11-09",
+  "typecheck_and_production_build": "passed",
+  "automated_tests": {"passed": 23, "failed": 0},
+  "browser_qa": {
+    "desktop_viewport": "1440x1000",
+    "mobile_viewport": "390x844",
+    "languages": ["ru", "kk"],
+    "verified": ["WebGL artery rendering", "cutaway toggle", "end view", "50 percent diameter / 25 percent area", "80 percent diameter / 4 percent area", "particle playback toggle", "reset", "mobile navigation", "personal checklist", "rehearsal timer start and pause", "UTF-8 checklist download"],
+    "console_errors_observed": 0,
+    "no_horizontal_document_overflow_mobile": true,
+    "webgl_fallback": "implemented; not forced in browser QA"
+  },
+  "scope": "Educational geometry and presentation preparation. No model retraining, change of clinical purpose, or confirmation of customers, sales, pilot outcomes or competition eligibility."
+}

@@ -1,0 +1,209 @@
+{
+  "audit_created_utc": "2026-11-07T16:57:47.497823+00:00",
+  "audit_scope": "Local read-only provenance verification; only this evidence report was written. No upload, publication, model refit, or change to model/archives.",
+  "automated_review_status": "Previous transfer request rejected; this evidence does not override approval review or authorize transfer.",
+  "export": {
+    "relative_file": "deployment/cardio-site/data/models.json",
+    "bytes": 218141,
+    "sha256": "06923f7cbb888102c8c501fc76f9a6306dc8ead26cd1e284d5726d961052852c",
+    "top_level_keys": [
+      "format_version",
+      "source",
+      "sklearn_version",
+      "datasets",
+      "localization"
+    ]
+  },
+  "original_archives": [
+    {
+      "file": "LLCP2023XPT.zip",
+      "bytes": 93237818,
+      "sha256": "d1ab80e4806a1d07bd3e40ec78c971ad9ff920f3ea5f6049780aeaa41ff31f43",
+      "matches_original_manifest": true
+    },
+    {
+      "file": "codebook23_llcp-v2-508 (1).zip",
+      "bytes": 85594,
+      "sha256": "948cb7cd58bddde96eab61ab11a93e69ef4440ff3b62f9382895a7403407df4a",
+      "matches_original_manifest": true
+    },
+    {
+      "file": "heart+disease.zip",
+      "bytes": 128894,
+      "sha256": "b17cd273da9ce1caa4710fce80227ea454d4dbf9fcbc8e6a9121672751563adc",
+      "matches_original_manifest": true
+    }
+  ],
+  "datasets": {
+    "brfss": {
+      "model_name": "Logistic Regression",
+      "features": [
+        "age_group",
+        "sex",
+        "bmi",
+        "smoking",
+        "activity",
+        "diabetes",
+        "hypertension",
+        "cholesterol",
+        "general_health",
+        "physical_days",
+        "mental_days"
+      ],
+      "feature_count": 11,
+      "background_rows": 30,
+      "background_cells": 330,
+      "background_null_count": 9,
+      "background_numeric_cells_only": true,
+      "exported_background_sha256": "faed7bfd08d4ec7d2becf1539826faef492363034633312b7f202b8734c44a88",
+      "original_background_sha256": "faed7bfd08d4ec7d2becf1539826faef492363034633312b7f202b8734c44a88",
+      "exact_export_original_background_match": true,
+      "exact_original_background_processed_match": true,
+      "source_record_matches": 30,
+      "source_record_count": 30,
+      "source_record_check": "Original XPT records selected by internal row lineage; transformations from codebook applied with clean_brfss; no source IDs included here.",
+      "source_file": "data/raw/LLCP2023.xpt",
+      "all_background_records_in_training": true,
+      "training_membership_definition": "fit subset only: 240093 rows, excluding calibration, validation and test",
+      "direct_identifier_target_or_weight_fields_in_export": [],
+      "original_model_sha256": "b40179c28ed81d3d0363f314c167d649eae7dc83065b48637871ff079e6cc2b2",
+      "export_declared_model_sha256": "b40179c28ed81d3d0363f314c167d649eae7dc83065b48637871ff079e6cc2b2",
+      "export_declared_model_hash_matches": true,
+      "original_background_joblib_sha256": "d9a0c031f3d4dcfcbe2d3a0b71916afe34ac2c7a4e083862a2788fcfb7a2cbd5",
+      "processed_training_file_sha256": "9cbb18fb26f324a363994e8f80254806def15d1cc0058cf8f3a96e79440998e7",
+      "included_fitted_components": [
+        "numeric imputation/scaling parameters",
+        "documented categorical encodings",
+        "fitted classifier parameters",
+        "calibrator if selected",
+        "decision threshold",
+        "feature schema",
+        "30 background predictor rows",
+        "48 fixed permutation orders"
+      ],
+      "not_included": [
+        "respondent IDs",
+        "names",
+        "addresses",
+        "birth or survey dates",
+        "contact fields",
+        "target labels",
+        "survey weights/design IDs",
+        "user-submitted form answers",
+        "raw source archive",
+        "whole training dataframe"
+      ]
+    },
+    "uci": {
+      "model_name": "Random Forest",
+      "features": [
+        "age",
+        "sex",
+        "cp",
+        "trestbps",
+        "chol",
+        "fbs",
+        "restecg",
+        "thalach",
+        "exang",
+        "oldpeak",
+        "slope",
+        "ca",
+        "thal"
+      ],
+      "feature_count": 13,
+      "background_rows": 30,
+      "background_cells": 390,
+      "background_null_count": 0,
+      "background_numeric_cells_only": true,
+      "exported_background_sha256": "82e54e15f9a1ab1fee82e84ea03442535e75b405ab3ba11d047a23bcaa22713b",
+      "original_background_sha256": "82e54e15f9a1ab1fee82e84ea03442535e75b405ab3ba11d047a23bcaa22713b",
+      "exact_export_original_background_match": true,
+      "exact_original_background_processed_match": true,
+      "source_record_matches": 30,
+      "source_record_count": 30,
+      "source_record_check": "Original processed.cleveland.data inside supplied UCI archive, question-mark missing values parsed; only the thirteen predictor columns.",
+      "source_file": "heart+disease.zip::processed.cleveland.data",
+      "all_background_records_in_training": true,
+      "training_membership_definition": "All303 Cleveland rows used to fit the deployed final model; this is not an outer-CV training-only claim.",
+      "direct_identifier_target_or_weight_fields_in_export": [],
+      "original_model_sha256": "e31f6af32e30b748a6da3d1ed3f5e892897ea9919aa49d0266bcbd73f255acf9",
+      "export_declared_model_sha256": "e31f6af32e30b748a6da3d1ed3f5e892897ea9919aa49d0266bcbd73f255acf9",
+      "export_declared_model_hash_matches": true,
+      "original_background_joblib_sha256": "0474d8b37c4d3abd3bd33d60c676b5527748109278dbbcd8be1f349284179cd1",
+      "processed_training_file_sha256": "3085cf6a71969925089c404881ff3b26e1988d31502e84cb750da8289aac1258",
+      "included_fitted_components": [
+        "numeric imputation/scaling parameters",
+        "documented categorical encodings",
+        "fitted classifier parameters",
+        "calibrator if selected",
+        "decision threshold",
+        "feature schema",
+        "30 background predictor rows",
+        "48 fixed permutation orders"
+      ],
+      "not_included": [
+        "respondent IDs",
+        "names",
+        "addresses",
+        "birth or survey dates",
+        "contact fields",
+        "target labels",
+        "survey weights/design IDs",
+        "user-submitted form answers",
+        "raw source archive",
+        "whole training dataframe"
+      ]
+    }
+  },
+  "public_source_and_license_review": {
+    "brfss": {
+      "official_url": "https://www.cdc.gov/brfss/annual_data/annual_2023.html",
+      "local_evidence": "Original CDC archive and codebook fingerprints are recorded and rechecked. Public-use documentation review is being performed by parent agent.",
+      "license_verified_in_this_audit": false
+    },
+    "uci": {
+      "official_url": "https://archive.ics.uci.edu/dataset/45/heart+disease",
+      "doi": "10.24432/C52P4X",
+      "local_catalog_evidence": "reports/literature_papers.json identifies CC BY 4.0 for Heart Disease; current official license confirmation is being performed by parent agent.",
+      "license_verified_in_this_audit": false
+    }
+  },
+  "limitations": [
+    "These are real row-level health-feature combinations from the specified research datasets, not synthetic background examples.",
+    "No direct identifier fields are present, but age/age-group, sex and clinical features remain. Linkability and anonymisation have not been independently assessed.",
+    "The audit does not establish absence of membership/attribute-inference risk in fitted model parameters.",
+    "Dataset provenance and public availability are distinct from approval to transfer a complete deployment package."
+  ],
+  "local_deployment_separation": {
+    "public_files": [
+      "index.html",
+      "assets/index-BPocWhht.js",
+      "assets/index-CDlPN5XB.css",
+      "assets/plotly.min-BALmDFuk.js"
+    ],
+    "model_file_under_public": false,
+    "worker_private_model_import": true,
+    "static_asset_allowlist_lookup_present": true,
+    "no_filesystem_fallback_comment_present": true,
+    "raw_background_rows_transferred_if_worker_bundle_uploaded": true,
+    "public_URL_access_not_deployed_or_tested_in_this_audit": true,
+    "exporter_reads": [
+      "models/brfss.joblib",
+      "models/uci.joblib",
+      "models/brfss_background.joblib",
+      "models/uci_background.joblib",
+      "cardio/config.py schema",
+      "cardio/i18n.py vocabulary"
+    ],
+    "exporter_reads_student_profile": false
+  },
+  "checks_passed": true,
+  "brfss_extracted_source_integrity": {
+    "archive_member": "LLCP2023.XPT ",
+    "uncompressed_bytes": 1205554400,
+    "sha256_archive_member": "3d3bf8ef5195bde227828ddc4c90745b76e8b304f8f5b9a043b6d99895fd1615",
+    "sha256_extracted_xpt": "3d3bf8ef5195bde227828ddc4c90745b76e8b304f8f5b9a043b6d99895fd1615",
+    "exact_archive_member_matches_extracted_xpt": true
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "release": "2.6.0",
+  "date": "2026-11-09",
+  "scope": "Movable educational artery cross-section, three-chapter diploma plan and verified-abstract library addition; no model refit or reselection",
+  "node_tests": {
+    "passed": 36,
+    "failed": 0,
+    "command": "node --test tests/*.test.mjs"
+  },
+  "python_isolated_tests": {
+    "passed": 6,
+    "failed": 0,
+    "command": "python -m unittest discover -s python/tests",
+    "scope": "Isolated aggregate API and library behavior; not the full legacy Python ML suite"
+  },
+  "build": {
+    "passed": true,
+    "scope": "TypeScript type-check, Vite frontend and Worker bundle"
+  },
+  "evaluation_reproduction": {
+    "passed": true,
+    "command": "python scripts/build-evaluation.py --check",
+    "scope": "Frozen prediction metrics and source hashes; no training"
+  },
+  "library": {
+    "catalog_entries": 43,
+    "added_record_verification_scope": "abstract",
+    "full_text_read": false,
+    "full_text_access": "Publisher returned HTTP 403; bibliographic metadata and abstract checked through PubMed",
+    "languages_verified": [
+      "ru",
+      "kk"
+    ]
+  },
+  "browser": {
+    "desktop": {
+      "status": "passed",
+      "checks": [
+        "At 50% maximum narrowing, the central slice shows 25% remaining area",
+        "At the unchanged artery end, the slice shows 100% remaining area",
+        "RU/KZ library addition and abstract-verification badge"
+      ]
+    },
+    "mobile": {
+      "status": "passed",
+      "viewport_width": 390,
+      "document_client_width": 375,
+      "checks": [
+        "No horizontal page overflow in artery and thesis views",
+        "Movable slice keyboard End gives 100% local lumen area",
+        "Three thesis chapters and sequential titles in KK/RU/EN",
+        "Corrected inherited two-column definition list layout"
+      ]
+    },
+    "console_errors": 0
+  },
+  "limits": [
+    "Full legacy Python training/API tests were not rerun",
+    "Models, thresholds and prior experiment results are unchanged",
+    "The three-chapter plan is not a completed or approved manuscript",
+    "Original manuscript PDF/HTML files remain drafts",
+    "The new article was checked at abstract level; publisher full-text reading is not claimed",
+    "The 3D artery is educational geometry independent of ML outputs",
+    "No clinical or Kazakhstan population validation"
+  ]
+}

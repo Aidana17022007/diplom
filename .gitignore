@@ -1,0 +1,13 @@
+# Local worktrees and disposable dependency/download/test caches.
+/cardio-site/
+/cardio-site-worktree/
+/tmp/
+**/.venv/
+**/node_modules/
+**/__pycache__/
+**/.pytest_cache/
+**/*.pyc
+**/*.log
+**/.env
+**/.env.local
+**/.env.*.local

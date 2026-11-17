@@ -1,0 +1,53 @@
+.threshold-lab { --threshold-ink: #294f59; --threshold-muted: #627d86; }
+.threshold-context { display: flex; align-items: center; flex-wrap: wrap; gap: 9px 20px; font-size: 12px; color: var(--threshold-muted); margin: 12px 0 4px; }
+.threshold-context span { display: inline-flex; align-items: center; gap: 7px; }
+.threshold-context span:first-child { color: #167568; font-weight: 650; }
+.threshold-lab .card-heading p { color: var(--threshold-muted); font-size: 12px; }
+.threshold-lab .lab-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: stretch; }
+.threshold-lab .threshold-number { flex-wrap: wrap; gap: 8px 15px; }
+.threshold-lab .threshold-number strong { font-variant-numeric: tabular-nums; font-size: clamp(27px, 3vw, 37px); letter-spacing: -.9px; }
+.threshold-lab .threshold-point-label { background: #edf5f3; color: #3a746b; border-radius: 20px; padding: 5px 10px; font-size: 11px; }
+.threshold-lab .range { min-height: 32px; }
+.threshold-lab .range-labels { color: var(--threshold-muted); font-size: 10px; }
+.threshold-reference { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin: 20px 0 8px; font-size: 12px; color: var(--threshold-muted); }
+.threshold-reference > span { display: inline-flex; gap: 6px; align-items: center; }
+.threshold-reference strong { color: var(--threshold-ink); font-variant-numeric: tabular-nums; }
+.threshold-lab button { min-height: 36px; }
+.threshold-lab button:focus-visible, .threshold-lab input:focus-visible, .threshold-lab .table-scroll:focus-visible { outline: 3px solid #78b9ad; outline-offset: 3px; }
+.threshold-lab button:disabled { opacity: .5; cursor: default; }
+.threshold-chart-key { display: flex; flex-wrap: wrap; gap: 9px 20px; color: var(--threshold-muted); font-size: 11px; }
+.threshold-chart-key span { display: inline-flex; align-items: center; gap: 8px; }
+.threshold-chart-key i { display: inline-block; width: 18px; border-top: 2px solid #138f81; }
+.threshold-chart-key i.dotted { border-top: 2px dotted #213d4b; }
+.threshold-units { width: fit-content; max-width: 100%; }
+.threshold-units button { font-size: 12px; color: #52717a; }
+.threshold-confusion { margin-top: 18px; }
+.threshold-confusion > div { min-width: 0; padding: 16px 14px; }
+.threshold-confusion span { font-size: 11px; line-height: 1.6; color: #52776b; min-height: 35px; }
+.threshold-confusion .mistake span { color: #876c3e; }
+.threshold-confusion strong { font-size: 29px; color: var(--threshold-ink); font-variant-numeric: tabular-nums; margin: 5px 0 8px; }
+.threshold-confusion small { color: #5d7c7d; font-size: 11px; }
+.threshold-count-delta { display: inline-block; border-top: 1px solid #cddfda; padding-top: 8px; margin-top: 10px; color: var(--threshold-ink); font-size: 12px; font-variant-numeric: tabular-nums; font-weight: 600; }
+.threshold-confusion .mistake .threshold-count-delta { border-color: #e5dccb; }
+.threshold-lab .threshold-count-note, .threshold-lab .threshold-live-summary { font-size: 12px; line-height: 1.75; color: var(--threshold-muted); }
+.threshold-lab .threshold-live-summary { background: #f2f6f6; border-radius: 8px; padding: 12px 14px; margin-bottom: 0; color: var(--threshold-ink); }
+.threshold-metric-table table { font-size: 13px; }
+.threshold-metric-table th { color: #516f79; font-size: 11px; }
+.threshold-metric-table th small { display: block; font-size: 11px; font-weight: 400; margin-top: 6px; }
+.threshold-metric-table td small { font-size: 11px; color: var(--threshold-muted); line-height: 1.6; }
+.threshold-metric-table td:not(:first-child), .threshold-metric-table th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.threshold-metric-table td:nth-child(3), .threshold-metric-table th:nth-child(3) { background: #f0f8f5; color: #24665a; }
+.threshold-metric-table td:first-child { min-width: 210px; }
+.threshold-lab details { color: #52727b; }
+@media (max-width: 1150px) and (min-width: 761px) {
+  .threshold-lab .lab-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .threshold-confusion > div { padding: 12px 10px; }
+  .threshold-confusion strong { font-size: 25px; }
+}
+@media (max-width: 760px) {
+  .threshold-lab .lab-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .threshold-lab .threshold-number strong { font-size: 34px; }
+  .threshold-context { gap: 8px 14px; font-size: 11px; }
+  .threshold-lab .card-heading { flex-wrap: wrap; }
+  .threshold-metric-table td:first-child { min-width: 160px; max-width: 220px; }
+}

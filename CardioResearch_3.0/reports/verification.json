@@ -1,0 +1,34 @@
+{
+  "automated_tests": {
+    "tests": 45,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frontend_build": "passed TypeScript and Vite production build",
+  "local_server": "Version2.2 local browser scenarios verified on127.0.0.1:8031",
+  "browser_checks": [
+    "Real BRFSS scenario demo plus custom sweep23/27/35 computed in local browser",
+    "Two comparisons pinned in memory; Kazakh language toggle retained result",
+    "Scenario CSV downloaded through browser",
+    "Quick search selected guide by Kazakh keyword and Enter",
+    "Feature dictionary search bmi returned one matching field",
+    "Defense answer revealed, practice checkbox marked, next card displayed",
+    "BMI70kg/175cm gave22.9 and populated form"
+  ],
+  "docker": "not run: Docker Engine unavailable",
+  "data_sources": "SHA-256 fingerprints retained",
+  "independent_test_selection": true,
+  "documents_language": "Kazakh auxiliary drafts; independent student writing pending",
+  "interface_language": "Russian and Kazakh",
+  "shap_implementation": "own interventional permutation Shapley estimator; 48 orders, 30 background rows",
+  "known_limits": [
+    "No external clinical validation",
+    "No Kazakhstan validation",
+    "Survey design not fully accounted for in intervals",
+    "UCI fixed-OOF bootstrap is descriptive; overlapping training sets and model selection uncertainty excluded",
+    "UCI final artifact search budget differs from outer CV; retained without retrospective model replacement",
+    "Finite hyperparameter budget; MLP performance unstable",
+    "University requirements read; final student-authored 100-page manuscript pending"
+  ]
+}

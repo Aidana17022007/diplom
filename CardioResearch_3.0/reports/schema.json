@@ -1,0 +1,466 @@
+{
+  "brfss": [
+    {
+      "name": "age_group",
+      "label": "Возрастная группа",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "18–24"
+        },
+        {
+          "value": 2,
+          "label": "25–29"
+        },
+        {
+          "value": 3,
+          "label": "30–34"
+        },
+        {
+          "value": 4,
+          "label": "35–39"
+        },
+        {
+          "value": 5,
+          "label": "40–44"
+        },
+        {
+          "value": 6,
+          "label": "45–49"
+        },
+        {
+          "value": 7,
+          "label": "50–54"
+        },
+        {
+          "value": 8,
+          "label": "55–59"
+        },
+        {
+          "value": 9,
+          "label": "60–64"
+        },
+        {
+          "value": 10,
+          "label": "65–69"
+        },
+        {
+          "value": 11,
+          "label": "70–74"
+        },
+        {
+          "value": 12,
+          "label": "75–79"
+        },
+        {
+          "value": 13,
+          "label": "80 и старше"
+        }
+      ],
+      "source": "_AGEG5YR",
+      "group": "О себе"
+    },
+    {
+      "name": "sex",
+      "label": "Пол",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "Мужской"
+        },
+        {
+          "value": 2,
+          "label": "Женский"
+        }
+      ],
+      "source": "SEXVAR",
+      "group": "О себе"
+    },
+    {
+      "name": "bmi",
+      "label": "Индекс массы тела",
+      "kind": "number",
+      "min": 1,
+      "max": 99.99,
+      "step": 0.1,
+      "source": "_BMI5 / 100",
+      "group": "О себе"
+    },
+    {
+      "name": "smoking",
+      "label": "Курение",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "Каждый день"
+        },
+        {
+          "value": 2,
+          "label": "Иногда"
+        },
+        {
+          "value": 3,
+          "label": "Курил(а) раньше"
+        },
+        {
+          "value": 4,
+          "label": "Никогда регулярно не курил(а)"
+        }
+      ],
+      "source": "_SMOKER3",
+      "group": "Образ жизни"
+    },
+    {
+      "name": "activity",
+      "label": "Физическая активность за последний месяц",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "Да"
+        },
+        {
+          "value": 2,
+          "label": "Нет"
+        }
+      ],
+      "source": "EXERANY2",
+      "group": "Образ жизни"
+    },
+    {
+      "name": "diabetes",
+      "label": "Сообщали ли вам о диабете?",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "Да"
+        },
+        {
+          "value": 2,
+          "label": "Только при беременности"
+        },
+        {
+          "value": 3,
+          "label": "Нет"
+        },
+        {
+          "value": 4,
+          "label": "Преддиабет"
+        }
+      ],
+      "source": "DIABETE4",
+      "group": "Состояние здоровья"
+    },
+    {
+      "name": "hypertension",
+      "label": "Сообщали ли вам о повышенном давлении?",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "Да"
+        },
+        {
+          "value": 2,
+          "label": "Только при беременности"
+        },
+        {
+          "value": 3,
+          "label": "Нет"
+        },
+        {
+          "value": 4,
+          "label": "Пограничное повышение"
+        }
+      ],
+      "source": "BPHIGH6",
+      "group": "Состояние здоровья"
+    },
+    {
+      "name": "cholesterol",
+      "label": "Сообщали ли вам о высоком холестерине?",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "Да"
+        },
+        {
+          "value": 2,
+          "label": "Нет"
+        }
+      ],
+      "source": "TOLDHI3",
+      "group": "Состояние здоровья"
+    },
+    {
+      "name": "general_health",
+      "label": "Общая оценка здоровья",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "Отличное"
+        },
+        {
+          "value": 2,
+          "label": "Очень хорошее"
+        },
+        {
+          "value": 3,
+          "label": "Хорошее"
+        },
+        {
+          "value": 4,
+          "label": "Удовлетворительное"
+        },
+        {
+          "value": 5,
+          "label": "Плохое"
+        }
+      ],
+      "source": "GENHLTH",
+      "group": "Самочувствие"
+    },
+    {
+      "name": "physical_days",
+      "label": "Дней плохого физического самочувствия за 30 дней",
+      "kind": "number",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "source": "PHYSHLTH",
+      "group": "Самочувствие"
+    },
+    {
+      "name": "mental_days",
+      "label": "Дней плохого эмоционального самочувствия за 30 дней",
+      "kind": "number",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "source": "MENTHLTH",
+      "group": "Самочувствие"
+    }
+  ],
+  "uci": [
+    {
+      "name": "age",
+      "label": "Возраст",
+      "kind": "number",
+      "min": 18,
+      "max": 100,
+      "step": 1,
+      "source": "age",
+      "group": "Основные показатели"
+    },
+    {
+      "name": "sex",
+      "label": "Пол",
+      "kind": "category",
+      "options": [
+        {
+          "value": 0,
+          "label": "Женский"
+        },
+        {
+          "value": 1,
+          "label": "Мужской"
+        }
+      ],
+      "source": "sex",
+      "group": "Основные показатели"
+    },
+    {
+      "name": "cp",
+      "label": "Тип боли в груди",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "Типичная стенокардия"
+        },
+        {
+          "value": 2,
+          "label": "Атипичная стенокардия"
+        },
+        {
+          "value": 3,
+          "label": "Неангинальная боль"
+        },
+        {
+          "value": 4,
+          "label": "Бессимптомное течение"
+        }
+      ],
+      "source": "cp",
+      "group": "Клинические показатели"
+    },
+    {
+      "name": "trestbps",
+      "label": "Давление в покое, мм рт. ст.",
+      "kind": "number",
+      "min": 60,
+      "max": 260,
+      "step": 1,
+      "source": "trestbps",
+      "group": "Основные показатели"
+    },
+    {
+      "name": "chol",
+      "label": "Холестерин, мг/дл",
+      "kind": "number",
+      "min": 50,
+      "max": 700,
+      "step": 1,
+      "source": "chol",
+      "group": "Основные показатели"
+    },
+    {
+      "name": "fbs",
+      "label": "Глюкоза натощак выше 120 мг/дл",
+      "kind": "category",
+      "options": [
+        {
+          "value": 0,
+          "label": "Нет"
+        },
+        {
+          "value": 1,
+          "label": "Да"
+        }
+      ],
+      "source": "fbs",
+      "group": "Клинические показатели"
+    },
+    {
+      "name": "restecg",
+      "label": "ЭКГ в покое",
+      "kind": "category",
+      "options": [
+        {
+          "value": 0,
+          "label": "Норма"
+        },
+        {
+          "value": 1,
+          "label": "Изменения ST–T"
+        },
+        {
+          "value": 2,
+          "label": "Гипертрофия левого желудочка"
+        }
+      ],
+      "source": "restecg",
+      "group": "Клинические показатели"
+    },
+    {
+      "name": "thalach",
+      "label": "Максимальная ЧСС при нагрузке",
+      "kind": "number",
+      "min": 50,
+      "max": 230,
+      "step": 1,
+      "source": "thalach",
+      "group": "Нагрузочная проба"
+    },
+    {
+      "name": "exang",
+      "label": "Стенокардия при нагрузке",
+      "kind": "category",
+      "options": [
+        {
+          "value": 0,
+          "label": "Нет"
+        },
+        {
+          "value": 1,
+          "label": "Да"
+        }
+      ],
+      "source": "exang",
+      "group": "Нагрузочная проба"
+    },
+    {
+      "name": "oldpeak",
+      "label": "Депрессия ST при нагрузке",
+      "kind": "number",
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "source": "oldpeak",
+      "group": "Нагрузочная проба"
+    },
+    {
+      "name": "slope",
+      "label": "Наклон сегмента ST",
+      "kind": "category",
+      "options": [
+        {
+          "value": 1,
+          "label": "Восходящий"
+        },
+        {
+          "value": 2,
+          "label": "Горизонтальный"
+        },
+        {
+          "value": 3,
+          "label": "Нисходящий"
+        }
+      ],
+      "source": "slope",
+      "group": "Нагрузочная проба"
+    },
+    {
+      "name": "ca",
+      "label": "Число сосудов на флюороскопии",
+      "kind": "category",
+      "options": [
+        {
+          "value": 0,
+          "label": "0"
+        },
+        {
+          "value": 1,
+          "label": "1"
+        },
+        {
+          "value": 2,
+          "label": "2"
+        },
+        {
+          "value": 3,
+          "label": "3"
+        }
+      ],
+      "source": "ca",
+      "group": "Клинические показатели"
+    },
+    {
+      "name": "thal",
+      "label": "Результат таллиевого теста",
+      "kind": "category",
+      "options": [
+        {
+          "value": 3,
+          "label": "Норма"
+        },
+        {
+          "value": 6,
+          "label": "Фиксированный дефект"
+        },
+        {
+          "value": 7,
+          "label": "Обратимый дефект"
+        }
+      ],
+      "source": "thal",
+      "group": "Клинические показатели"
+    }
+  ]
+}

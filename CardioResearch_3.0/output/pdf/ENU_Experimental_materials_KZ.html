@@ -1,0 +1,793 @@
+<!doctype html><html lang="kk"><meta charset="utf-8"><title>Тәжірибелік материалдар</title><style>@page{size:A4;margin:20mm 10mm 25mm 30mm}*{box-sizing:border-box}body{font-family:'Times New Roman',serif;font-size:14pt;line-height:1.3;max-width:170mm;margin:25px auto;color:#161b22}h1{font-size:18pt}h2,h3{font-size:14pt}p{margin:0 0 9pt}table{border-collapse:collapse;width:100%;table-layout:auto;margin:5pt 0 12pt;font-size:10.5pt}th,td{border:0.4pt solid #b8c1c9;text-align:left;vertical-align:top;padding:5pt;overflow-wrap:anywhere}th{background:#e7edf3}tbody tr:nth-child(even){background:#f6f8fa}thead{display:table-header-group}tr{break-inside:avoid}.meta,.note{font-size:14pt}.note{font-style:italic}.pagebreak{break-before:page;margin-top:30pt}h2,h3{break-after:avoid}header{padding:10px;background:#e7edf3;margin-bottom:20pt;font-size:11pt}@media print{body{margin:0;max-width:none}header{display:none}}p{line-height:1.1572}</style><body><header>Өңдеуге болатын нұсқа: мәтінді басып өзгертуге болады. Өзгертілген көшірмені сақтау: <button onclick="saveCopy()">HTML көшірмесін сақтау</button></header><main contenteditable="true"><h1 class="title">ТӘЖІРИБЕЛІК МАТЕРИАЛДАР</h1>
+<h2 class="heading">Сақталған нәтижелердің тексеруге арналған техникалық жинағы</h2>
+<p class="body">Бұл құжат Codex жасанды интеллект құралының көмегімен бастапқы есептерден техникалық түрде құрастырылды. Студенттің тексеруі күтіледі. Бұл аяқталған диплом, студенттің авторлық тарауы немесе ғылыми қорытынды емес.</p>
+<p class="body">ЖИ көмегімен алынған қосалқы материал. Диплом тарауы немесе студенттің дайын түсіндірмесі емес.</p>
+<p class="body">11.23-тармаққа сәйкес қосалқы қолдануға арналған. Студент сандар мен дереккөздерді тексеріп, ғылыми түсіндіру мен қорытындыларды өзі жазуы керек.</p>
+<p class="meta">Дерек күні: 2026-11-07. Негіз: reports/technical_evidence_tables.json.</p>
+<p class="meta">Бастапқы JSON SHA-256: bf7c9e99c676f541ceb703020ad5623c0ede62568eddef2e177280e53e6c66ad</p>
+<p class="body">Қамту: 20 логикалық кесте; BRFSS іздеуінің 21 конфигурациясы; екі схеманың барлық 24 белгісі. Кең кестелер жол нөмірі сақталған бірнеше блокқа бөлінді.</p>
+<h2 class="heading">Оқу белгілеулері</h2>
+<p class="body">AP - Average Precision; SD - стандартты ауытқу; CV - кросс-валидация; OOF - бақылау оқытуға кірмеген бөлікте алынған болжам. TN/FP/FN/TP - қате матрицасының ұяшықтары. Ықтималдықтар мен үлестер пайызға айналдырылмаған.</p>
+<p class="body">Сандар ең көбі 6 ондық таңбаға дөңгелектелді; бастапқы толық дәлдік JSON-да сақталады. null - бастапқы файлдағы null мәні; сандық нөл емес. '-' - осы жолда өріс жоқ. Параметр ішіндегі null мәнінің мағынасы алгоритмге тәуелді.</p>
+<p class="body">Бұл жинақ жаңа оқыту, қосымша тест, клиникалық валидация немесе студенттің интерпретациясын жүргізбейді. Әр кестеде оның есеп файлы, шарттары және ескертпелері берілген.</p>
+<div class="pagebreak"></div>
+<h1 class="title">Кестелер тізімі</h1>
+<table><thead><tr><th>№</th><th>Атауы</th><th>Жол</th></tr></thead><tbody>
+<tr><td>1</td><td>Бастапқы архивтердің бақылау сомалары</td><td>3</td></tr>
+<tr><td>2</td><td>Деректерді дайындау кезеңдері</td><td>2</td></tr>
+<tr><td>3</td><td>BRFSS бөліктеріндегі класс құрамы</td><td>6</td></tr>
+<tr><td>4</td><td>BRFSS кіріс белгілерінің сөздігі</td><td>11</td></tr>
+<tr><td>5</td><td>Cleveland кіріс белгілерінің сөздігі</td><td>13</td></tr>
+<tr><td>6</td><td>UCI орталықтары деректерінің толықтығы</td><td>4</td></tr>
+<tr><td>7</td><td>BRFSS модельдерінің баптау қорытындысы</td><td>8</td></tr>
+<tr><td>8</td><td>BRFSS іздеуінде нақты бағаланған конфигурациялар</td><td>21</td></tr>
+<tr><td>9</td><td>Бірдей көлемдегі BRFSS модельдерін салыстыру</td><td>8</td></tr>
+<tr><td>10</td><td>Валидацияда ықтималдықтарды калибрлеуді салыстыру</td><td>4</td></tr>
+<tr><td>11</td><td>BRFSS толық тестіндегі бағалау шарттары мен метрикалар</td><td>6</td></tr>
+<tr><td>12</td><td>Логистикалық регрессияның қосымша тәжірибелері</td><td>5</td></tr>
+<tr><td>13</td><td>BRFSS үшін шартты bootstrap интервалдары</td><td>5</td></tr>
+<tr><td>14</td><td>BRFSS ішкі топтарының сипаттамалық нәтижелері</td><td>15</td></tr>
+<tr><td>15</td><td>BRFSS белгілерін алмастыруға негізделген маңыздылық</td><td>11</td></tr>
+<tr><td>16</td><td>Cleveland қайталанған ішкі және сыртқы CV нәтижелері</td><td>8</td></tr>
+<tr><td>17</td><td>Cleveland Random Forest: сыртқы бөліктер және финалдық оқыту</td><td>8</td></tr>
+<tr><td>18</td><td>Есептеу рәсімдерінің өлшенген уақыты</td><td>18</td></tr>
+<tr><td>19</td><td>BRFSS қателерінің жиынтық саны</td><td>2</td></tr>
+<tr><td>20</td><td>Тіркелген бағдарламалық тексерулер</td><td>12</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">1-кесте. Бастапқы архивтердің бақылау сомалары</h2>
+<p class="meta">Дереккөз: reports/sources.json</p>
+<p class="meta">Сақталған жолдар: 3. Кесте идентификаторы: sources.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Қамту</td><td>Жергілікті архивтер; түпнұсқалар өзгертілмеген</td></tr>
+</tbody></table>
+<table><thead><tr><th>Файл</th><th>Көлемі, байт</th><th>SHA-256</th></tr></thead><tbody>
+<tr><td>LLCP2023XPT.zip</td><td>93 237 818</td><td>d1ab80e4806a1d07bd3e40ec78c971ad9ff920f3ea5f6049780aeaa41ff31f43</td></tr>
+<tr><td>codebook23_llcp-v2-508 (1).zip</td><td>85 594</td><td>948cb7cd58bddde96eab61ab11a93e69ef4440ff3b62f9382895a7403407df4a</td></tr>
+<tr><td>heart+disease.zip</td><td>128 894</td><td>b17cd273da9ce1caa4710fce80227ea454d4dbf9fcbc8e6a9121672751563adc</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">2-кесте. Деректерді дайындау кезеңдері</h2>
+<p class="meta">Дереккөз: reports/brfss_data.json; reports/uci_data.json</p>
+<p class="meta">Сақталған жолдар: 2. Кесте идентификаторы: data_flow.</p>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Жергілікті XPT файлының құрылымы тікелей тексерілді: 350 баған. Бастапқы 433 323 жол саны дайындау есебінен алынды.</p>
+<table><thead><tr><th>Көрсеткіш</th><th>BRFSS</th><th>Cleveland</th></tr></thead><tbody>
+<tr><td>Бастапқы жолдар</td><td>433 323</td><td>303</td></tr>
+<tr><td>Бастапқы бағандар</td><td>350</td><td>Жазылмаған</td></tr>
+<tr><td>Нысанасы белгісіз: шығарылған</td><td>4 585</td><td>Жазылмаған</td></tr>
+<tr><td>Сақталған жолдар</td><td>428 738</td><td>303</td></tr>
+<tr><td>_MICHD сәйкессіздігі</td><td>0</td><td>Жазылмаған</td></tr>
+<tr><td>Штат + PSU қайталануы</td><td>0</td><td>Жазылмаған</td></tr>
+<tr><td>Белгілері бірдей сақталған жолдар</td><td>51 121</td><td>Жазылмаған</td></tr>
+<tr><td>Белгілер саны</td><td>Жазылмаған</td><td>13</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">3-кесте. BRFSS бөліктеріндегі класс құрамы</h2>
+<p class="meta">Дереккөз: reports/brfss_splits.json; data/processed/brfss.pkl</p>
+<p class="meta">Сақталған жолдар: 6. Кесте идентификаторы: splits.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Seed</td><td>20 261 107</td></tr>
+<tr><td>Салмақталған</td><td>Жоқ</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">benchmark_train - fit жиынының, benchmark_test - test жиынының ішкі бөлігі. Барлық алты жолдың көлемдерін қосуға болмайды.</p>
+<table><thead><tr><th>Бөлік</th><th>n</th><th>Оң сынып</th><th>Теріс сынып</th><th>Оң сынып үлесі</th></tr></thead><tbody>
+<tr><td>Негізгі оқыту</td><td>240 093</td><td>20 334</td><td>219 759</td><td>0.084692</td></tr>
+<tr><td>Калибрлеу</td><td>51 448</td><td>4 357</td><td>47 091</td><td>0.084687</td></tr>
+<tr><td>Валидация</td><td>51 449</td><td>4 358</td><td>47 091</td><td>0.084705</td></tr>
+<tr><td>Тест</td><td>85 748</td><td>7 262</td><td>78 486</td><td>0.08469</td></tr>
+<tr><td>Салыстыруға арналған оқыту ішкі жиыны</td><td>12 000</td><td>1 016</td><td>10 984</td><td>0.084667</td></tr>
+<tr><td>Салыстыруға арналған тест ішкі жиыны</td><td>12 000</td><td>1 016</td><td>10 984</td><td>0.084667</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">4-кесте. BRFSS кіріс белгілерінің сөздігі</h2>
+<p class="meta">Дереккөз: reports/schema.json; reports/brfss_data.json; reports/codebook_excerpts.json</p>
+<p class="meta">Сақталған жолдар: 11. Кесте идентификаторы: brfss_schema.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Бос мәндерді есептеу бөлігі</td><td>Әзірлеу жиыны: 342 990 бақылау</td></tr>
+</tbody></table>
+<table><thead><tr><th>Белгі және атауы</th><th>Дерек, түрі, тобы</th><th>Барлық санаттар / шектер</th><th>Бос<br/>мән</th></tr></thead><tbody>
+<tr><td>age_group<br/>Жас тобы</td><td>_AGEG5YR<br/>Түрі: Категориялық<br/>Тобы: Жеке көрсеткіштер</td><td>1: 18-24<br/>2: 25-29<br/>3: 30-34<br/>4: 35-39<br/>5: 40-44<br/>6: 45-49<br/>7: 50-54<br/>8: 55-59<br/>9: 60-64<br/>10: 65-69<br/>11: 70-74<br/>12: 75-79<br/>13: 80 және одан жоғары</td><td>6 041</td></tr>
+<tr><td>sex<br/>Жыныс</td><td>SEXVAR<br/>Түрі: Категориялық<br/>Тобы: Жеке көрсеткіштер</td><td>1: Ер<br/>2: Әйел</td><td>0</td></tr>
+<tr><td>bmi<br/>Дене салмағы индексі</td><td>_BMI5 / 100<br/>Түрі: Сандық<br/>Тобы: Жеке көрсеткіштер</td><td>min: 1<br/>max: 99.99<br/>step: 0.1</td><td>31 875</td></tr>
+<tr><td>smoking<br/>Темекі шегу мәртебесі</td><td>_SMOKER3<br/>Түрі: Категориялық<br/>Тобы: Өмір салты</td><td>1: Күн сайын<br/>2: Кейде<br/>3: Бұрын шеккен<br/>4: Тұрақты темекі шекпеген</td><td>18 073</td></tr>
+<tr><td>activity<br/>Соңғы айдағы физикалық белсенділік</td><td>EXERANY2<br/>Түрі: Категориялық<br/>Тобы: Өмір салты</td><td>1: Иә<br/>2: Жоқ</td><td>914</td></tr>
+<tr><td>diabetes<br/>Диабет туралы жауап</td><td>DIABETE4<br/>Түрі: Категориялық<br/>Тобы: Денсаулық жағдайы</td><td>1: Иә<br/>2: Тек жүктілік кезінде<br/>3: Жоқ<br/>4: Предиабет</td><td>569</td></tr>
+<tr><td>hypertension<br/>Жоғары қан қысымы туралы жауап</td><td>BPHIGH6<br/>Түрі: Категориялық<br/>Тобы: Денсаулық жағдайы</td><td>1: Иә<br/>2: Тек жүктілік кезінде<br/>3: Жоқ<br/>4: Шекаралық жоғарылау</td><td>1 346</td></tr>
+<tr><td>cholesterol<br/>Жоғары холестерин туралы жауап</td><td>TOLDHI3<br/>Түрі: Категориялық<br/>Тобы: Денсаулық жағдайы</td><td>1: Иә<br/>2: Жоқ</td><td>43 190</td></tr>
+<tr><td>general_health<br/>Жалпы денсаулық бағасы</td><td>GENHLTH<br/>Түрі: Категориялық<br/>Тобы: Өзіндік денсаулық бағасы</td><td>1: Өте жақсы<br/>2: Жақсыдан жоғары<br/>3: Жақсы<br/>4: Қанағаттанарлық<br/>5: Нашар</td><td>939</td></tr>
+<tr><td>physical_days<br/>30 күндегі физикалық жайсыздық күндері</td><td>PHYSHLTH<br/>Түрі: Сандық<br/>Тобы: Өзіндік денсаулық бағасы</td><td>min: 0<br/>max: 30<br/>step: 1</td><td>8 284</td></tr>
+<tr><td>mental_days<br/>30 күндегі эмоциялық жайсыздық күндері</td><td>MENTHLTH<br/>Түрі: Сандық<br/>Тобы: Өзіндік денсаулық бағасы</td><td>min: 0<br/>max: 30<br/>step: 1</td><td>6 201</td></tr>
+</tbody></table>
+<p class="note">Кодтар мен диапазондар - сақталған схема мәндері. Интерфейс мәтіні орысша болған жағдайда түпнұсқа белгі атауы сақталды; бұл медициналық қалып диапазоны емес.</p>
+<div class="pagebreak"></div>
+<h2 class="heading">5-кесте. Cleveland кіріс белгілерінің сөздігі</h2>
+<p class="meta">Дереккөз: reports/schema.json; reports/uci_data.json</p>
+<p class="meta">Сақталған жолдар: 13. Кесте идентификаторы: uci_schema.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Бос мәндерді есептеу бөлігі</td><td>Cleveland толық жиыны: 303 бақылау</td></tr>
+</tbody></table>
+<table><thead><tr><th>Белгі және атауы</th><th>Дерек, түрі, тобы</th><th>Барлық санаттар / шектер</th><th>Бос<br/>мән</th></tr></thead><tbody>
+<tr><td>age<br/>Жас</td><td>age<br/>Түрі: Сандық<br/>Тобы: Негізгі көрсеткіштер</td><td>min: 18<br/>max: 100<br/>step: 1</td><td>0</td></tr>
+<tr><td>sex<br/>Жыныс</td><td>sex<br/>Түрі: Категориялық<br/>Тобы: Негізгі көрсеткіштер</td><td>0: Әйел<br/>1: Ер</td><td>0</td></tr>
+<tr><td>cp<br/>Кеуде ауыруының түрі</td><td>cp<br/>Түрі: Категориялық<br/>Тобы: Клиникалық көрсеткіштер</td><td>1: Типтік стенокардия<br/>2: Атиптік стенокардия<br/>3: Ангиналық емес ауырсыну<br/>4: Симптомсыз</td><td>0</td></tr>
+<tr><td>trestbps<br/>Тыныштықтағы қысым, мм сын. бағ.</td><td>trestbps<br/>Түрі: Сандық<br/>Тобы: Негізгі көрсеткіштер</td><td>min: 60<br/>max: 260<br/>step: 1</td><td>0</td></tr>
+<tr><td>chol<br/>Холестерин, мг/дл</td><td>chol<br/>Түрі: Сандық<br/>Тобы: Негізгі көрсеткіштер</td><td>min: 50<br/>max: 700<br/>step: 1</td><td>0</td></tr>
+<tr><td>fbs<br/>Ашқарындағы глюкоза 120 мг/дл-ден жоғары</td><td>fbs<br/>Түрі: Категориялық<br/>Тобы: Клиникалық көрсеткіштер</td><td>0: Жоқ<br/>1: Иә</td><td>0</td></tr>
+<tr><td>restecg<br/>Тыныштықтағы ЭКГ</td><td>restecg<br/>Түрі: Категориялық<br/>Тобы: Клиникалық көрсеткіштер</td><td>0: Қалыпты<br/>1: ST-T өзгерістері<br/>2: Сол жақ қарынша гипертрофиясы</td><td>0</td></tr>
+<tr><td>thalach<br/>Жүктемедегі максималды жүрек соғу жиілігі</td><td>thalach<br/>Түрі: Сандық<br/>Тобы: Жүктемелік сынақ</td><td>min: 50<br/>max: 230<br/>step: 1</td><td>0</td></tr>
+<tr><td>exang<br/>Жүктемелік стенокардия</td><td>exang<br/>Түрі: Категориялық<br/>Тобы: Жүктемелік сынақ</td><td>0: Жоқ<br/>1: Иә</td><td>0</td></tr>
+<tr><td>oldpeak<br/>Жүктемедегі ST депрессиясы</td><td>oldpeak<br/>Түрі: Сандық<br/>Тобы: Жүктемелік сынақ</td><td>min: 0<br/>max: 10<br/>step: 0.1</td><td>0</td></tr>
+<tr><td>slope<br/>ST сегментінің еңісі</td><td>slope<br/>Түрі: Категориялық<br/>Тобы: Жүктемелік сынақ</td><td>1: Жоғары бағытталған<br/>2: Көлденең<br/>3: Төмен бағытталған</td><td>0</td></tr>
+<tr><td>ca<br/>Флюороскопиядағы ірі тамыр саны</td><td>ca<br/>Түрі: Категориялық<br/>Тобы: Клиникалық көрсеткіштер</td><td>0: 0<br/>1: 1<br/>2: 2<br/>3: 3</td><td>4</td></tr>
+<tr><td>thal<br/>Таллий сынағының нәтижесі</td><td>thal<br/>Түрі: Категориялық<br/>Тобы: Клиникалық көрсеткіштер</td><td>3: Қалыпты<br/>6: Тұрақты ақау<br/>7: Қайтымды ақау</td><td>2</td></tr>
+</tbody></table>
+<p class="note">Кодтар мен диапазондар - сақталған схема мәндері. Интерфейс мәтіні орысша болған жағдайда түпнұсқа белгі атауы сақталды; бұл медициналық қалып диапазоны емес.</p>
+<div class="pagebreak"></div>
+<h2 class="heading">6-кесте. UCI орталықтары деректерінің толықтығы</h2>
+<p class="meta">Дереккөз: reports/uci_data.json</p>
+<p class="meta">Сақталған жолдар: 4. Кесте идентификаторы: center_audit.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Белгілер саны</td><td>13</td></tr>
+<tr><td>Оқыту орталығы</td><td>Cleveland</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Кесте белгілердің толтырылуын сипаттайды. Басқа орталықтарда модель сапасы бағаланған жоқ.</p>
+<table><thead><tr><th>Орталық</th><th>n</th><th>Бос ұяшықтар үлесі</th></tr></thead><tbody>
+<tr><td>Cleveland</td><td>303</td><td>0.001523</td></tr>
+<tr><td>Hungary</td><td>294</td><td>0.204605</td></tr>
+<tr><td>Switzerland</td><td>123</td><td>0.170732</td></tr>
+<tr><td>VA</td><td>200</td><td>0.268462</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">7-кесте. BRFSS модельдерінің баптау қорытындысы</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json; cardio/learning.py</p>
+<p class="meta">Сақталған жолдар: 8. Кесте идентификаторы: benchmark_search.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>n</td><td>12 000</td></tr>
+<tr><td>Fold саны</td><td>3</td></tr>
+<tr><td>Әр негізгі модельге сынақ</td><td>3</td></tr>
+<tr><td>Негізгі метрика</td><td>average_precision</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">tuned_ap - таңдауға пайдаланылған ішкі CV нәтижесі; оны тәуелсіз тест бағасы деп түсіндіруге болмайды.</p>
+<table><thead><tr><th>Атауы</th><th>Базалық CV AP</th><th>Таңдалған CV AP</th><th>Таңдалған параметрлер</th></tr></thead><tbody>
+<tr><td>Dummy</td><td>0.0845; 0.08475; 0.08475</td><td>0.084667</td><td>{} (параметр жоқ)</td></tr>
+<tr><td>Logistic Regression</td><td>0.2911; 0.311509; 0.290233</td><td>0.297102</td><td>model__class_weight: null<br/>model__C: 10</td></tr>
+<tr><td>Decision Tree</td><td>0.234808; 0.200179; 0.208692</td><td>0.228456</td><td>model__min_samples_leaf: 50<br/>model__max_depth: 8</td></tr>
+<tr><td>Random Forest</td><td>0.281068; 0.277312; 0.277422</td><td>0.28073</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td></tr>
+<tr><td>Linear SVM</td><td>0.289095; 0.303515; 0.292125</td><td>0.296691</td><td>model__estimator__svm__class_weight: balanced<br/>model__estimator__svm__C: 0.1</td></tr>
+<tr><td>KNN</td><td>0.267278; 0.253214; 0.244595</td><td>0.262291</td><td>model__weights: uniform<br/>model__n_neighbors: 61</td></tr>
+<tr><td>LightGBM</td><td>0.280567; 0.2743; 0.282429</td><td>0.282266</td><td>model__reg_lambda: 2<br/>model__num_leaves: 15<br/>model__min_child_samples: 20</td></tr>
+<tr><td>MLP</td><td>0.069679; 0.07658; 0.255218</td><td>0.241252</td><td>model__hidden_layer_sizes: 24<br/>model__alpha: 0.5</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">8-кесте. BRFSS іздеуінде нақты бағаланған конфигурациялар</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json</p>
+<p class="meta">Сақталған жолдар: 21. Кесте идентификаторы: search_trials.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Fold саны</td><td>3</td></tr>
+<tr><td>Негізгі метрика</td><td>average_precision</td></tr>
+</tbody></table>
+<h3 class="sub">Logistic Regression</h3>
+<table><thead><tr><th>№</th><th>Параметрлер</th><th>Ішкі CV AP, орташа</th><th>Ішкі CV AP, SD</th><th>Train AP, орташа</th><th>Fit, орташа с</th></tr></thead><tbody>
+<tr><td>1</td><td>model__class_weight: balanced<br/>model__C: 10</td><td>0.296375</td><td>0.007817</td><td>0.307289</td><td>0.056356</td></tr>
+<tr><td>2</td><td>model__class_weight: balanced<br/>model__C: 1</td><td>0.29662</td><td>0.008125</td><td>0.307397</td><td>0.054992</td></tr>
+<tr><td>3</td><td>model__class_weight: null<br/>model__C: 10</td><td>0.297102</td><td>0.009817</td><td>0.31387</td><td>0.04191</td></tr>
+</tbody></table>
+<h3 class="sub">Decision Tree</h3>
+<table><thead><tr><th>№</th><th>Параметрлер</th><th>Ішкі CV AP, орташа</th><th>Ішкі CV AP, SD</th><th>Train AP, орташа</th><th>Fit, орташа с</th></tr></thead><tbody>
+<tr><td>1</td><td>model__min_samples_leaf: 50<br/>model__max_depth: 8</td><td>0.228456</td><td>0.00599</td><td>0.304046</td><td>0.03701</td></tr>
+<tr><td>2</td><td>model__min_samples_leaf: 50<br/>model__max_depth: 3</td><td>0.190052</td><td>0.010847</td><td>0.207465</td><td>0.030433</td></tr>
+<tr><td>3</td><td>model__min_samples_leaf: 5<br/>model__max_depth: 5</td><td>0.215685</td><td>0.011879</td><td>0.288774</td><td>0.030173</td></tr>
+</tbody></table>
+<h3 class="sub">Random Forest</h3>
+<table><thead><tr><th>№</th><th>Параметрлер</th><th>Ішкі CV AP, орташа</th><th>Ішкі CV AP, SD</th><th>Train AP, орташа</th><th>Fit, орташа с</th></tr></thead><tbody>
+<tr><td>1</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td><td>0.28073</td><td>0.007709</td><td>0.364205</td><td>0.290107</td></tr>
+<tr><td>2</td><td>model__min_samples_leaf: 25<br/>model__max_depth: 5</td><td>0.276014</td><td>0.001451</td><td>0.321897</td><td>0.21699</td></tr>
+<tr><td>3</td><td>model__min_samples_leaf: 3<br/>model__max_depth: 10</td><td>0.277254</td><td>0.002076</td><td>0.586008</td><td>0.268882</td></tr>
+</tbody></table>
+<h3 class="sub">Linear SVM</h3>
+<table><thead><tr><th>№</th><th>Параметрлер</th><th>Ішкі CV AP, орташа</th><th>Ішкі CV AP, SD</th><th>Train AP, орташа</th><th>Fit, орташа с</th></tr></thead><tbody>
+<tr><td>1</td><td>model__estimator__svm__class_weight: balanced<br/>model__estimator__svm__C: 1</td><td>0.296309</td><td>0.009863</td><td>0.307289</td><td>0.14475</td></tr>
+<tr><td>2</td><td>model__estimator__svm__class_weight: balanced<br/>model__estimator__svm__C: 0.1</td><td>0.296691</td><td>0.010126</td><td>0.307345</td><td>0.127862</td></tr>
+<tr><td>3</td><td>model__estimator__svm__class_weight: null<br/>model__estimator__svm__C: 1</td><td>0.294386</td><td>0.005551</td><td>0.310636</td><td>0.122559</td></tr>
+</tbody></table>
+<h3 class="sub">KNN</h3>
+<table><thead><tr><th>№</th><th>Параметрлер</th><th>Ішкі CV AP, орташа</th><th>Ішкі CV AP, SD</th><th>Train AP, орташа</th><th>Fit, орташа с</th></tr></thead><tbody>
+<tr><td>1</td><td>model__weights: distance<br/>model__n_neighbors: 61</td><td>0.246157</td><td>0.004795</td><td>0.999989</td><td>0.026571</td></tr>
+<tr><td>2</td><td>model__weights: distance<br/>model__n_neighbors: 31</td><td>0.237437</td><td>0.006259</td><td>0.999989</td><td>0.022346</td></tr>
+<tr><td>3</td><td>model__weights: uniform<br/>model__n_neighbors: 61</td><td>0.262291</td><td>0.010346</td><td>0.299356</td><td>0.020229</td></tr>
+</tbody></table>
+<h3 class="sub">LightGBM</h3>
+<table><thead><tr><th>№</th><th>Параметрлер</th><th>Ішкі CV AP, орташа</th><th>Ішкі CV AP, SD</th><th>Train AP, орташа</th><th>Fit, орташа с</th></tr></thead><tbody>
+<tr><td>1</td><td>model__reg_lambda: 2<br/>model__num_leaves: 31<br/>model__min_child_samples: 60</td><td>0.269254</td><td>0.006878</td><td>0.606832</td><td>0.138051</td></tr>
+<tr><td>2</td><td>model__reg_lambda: 2<br/>model__num_leaves: 15<br/>model__min_child_samples: 60</td><td>0.282256</td><td>0.00273</td><td>0.469353</td><td>0.095713</td></tr>
+<tr><td>3</td><td>model__reg_lambda: 2<br/>model__num_leaves: 15<br/>model__min_child_samples: 20</td><td>0.282266</td><td>0.002554</td><td>0.48523</td><td>0.114521</td></tr>
+</tbody></table>
+<h3 class="sub">MLP</h3>
+<table><thead><tr><th>№</th><th>Параметрлер</th><th>Ішкі CV AP, орташа</th><th>Ішкі CV AP, SD</th><th>Train AP, орташа</th><th>Fit, орташа с</th></tr></thead><tbody>
+<tr><td>1</td><td>model__hidden_layer_sizes: 48; 24<br/>model__alpha: 0.5</td><td>0.154637</td><td>0.094162</td><td>0.163093</td><td>0.514603</td></tr>
+<tr><td>2</td><td>model__hidden_layer_sizes: 48; 24<br/>model__alpha: 0.1</td><td>0.157555</td><td>0.099231</td><td>0.179127</td><td>0.779305</td></tr>
+<tr><td>3</td><td>model__hidden_layer_sizes: 24<br/>model__alpha: 0.5</td><td>0.241252</td><td>0.070738</td><td>0.252749</td><td>0.401446</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">9-кесте. Бірдей көлемдегі BRFSS модельдерін салыстыру</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json</p>
+<p class="meta">Сақталған жолдар: 8. Кесте идентификаторы: benchmark_test.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Оқыту n</td><td>12 000</td></tr>
+<tr><td>Бағалау n</td><td>12 000</td></tr>
+<tr><td>Шек</td><td>0.5</td></tr>
+<tr><td>Салмақталған</td><td>Жоқ</td></tr>
+</tbody></table>
+<h3 class="sub">Жолдардың сәйкестендіруі мен шарттары</h3>
+<table><thead><tr><th>№</th><th>Модель</th></tr></thead><tbody>
+<tr><td>1</td><td>Dummy</td></tr>
+<tr><td>2</td><td>Logistic Regression</td></tr>
+<tr><td>3</td><td>Decision Tree</td></tr>
+<tr><td>4</td><td>Random Forest</td></tr>
+<tr><td>5</td><td>Linear SVM</td></tr>
+<tr><td>6</td><td>KNN</td></tr>
+<tr><td>7</td><td>LightGBM</td></tr>
+<tr><td>8</td><td>MLP</td></tr>
+</tbody></table>
+<h3 class="sub">Ықтималдық сапасы</h3>
+<table><thead><tr><th>№</th><th>ROC-AUC</th><th>Average Precision</th><th>Brier score</th></tr></thead><tbody>
+<tr><td>1</td><td>0.5</td><td>0.084667</td><td>0.077498</td></tr>
+<tr><td>2</td><td>0.837291</td><td>0.321218</td><td>0.066111</td></tr>
+<tr><td>3</td><td>0.777606</td><td>0.232765</td><td>0.071193</td></tr>
+<tr><td>4</td><td>0.815628</td><td>0.27997</td><td>0.068743</td></tr>
+<tr><td>5</td><td>0.837286</td><td>0.320245</td><td>0.066186</td></tr>
+<tr><td>6</td><td>0.795268</td><td>0.251726</td><td>0.069435</td></tr>
+<tr><td>7</td><td>0.824859</td><td>0.291727</td><td>0.067611</td></tr>
+<tr><td>8</td><td>0.606346</td><td>0.13241</td><td>0.083672</td></tr>
+</tbody></table>
+<h3 class="sub">Белгіленген шектегі жіктеу</h3>
+<table><thead><tr><th>№</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th></tr></thead><tbody>
+<tr><td>1</td><td>0.915333</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>2</td><td>0.915833</td><td>0.531915</td><td>0.049213</td><td>0.995994</td><td>0.09009</td></tr>
+<tr><td>3</td><td>0.915083</td><td>0.468085</td><td>0.021654</td><td>0.997724</td><td>0.041392</td></tr>
+<tr><td>4</td><td>0.915333</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>5</td><td>0.916167</td><td>0.560976</td><td>0.045276</td><td>0.996723</td><td>0.083789</td></tr>
+<tr><td>6</td><td>0.915167</td><td>0.375</td><td>0.002953</td><td>0.999545</td><td>0.005859</td></tr>
+<tr><td>7</td><td>0.915667</td><td>0.527778</td><td>0.037402</td><td>0.996905</td><td>0.069853</td></tr>
+<tr><td>8</td><td>0.915333</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+</tbody></table>
+<h3 class="sub">Қате матрицалары: жол = нақты сынып; баған = болжанған сынып</h3>
+<table><thead><tr><th>№</th><th>TN</th><th>FP</th><th>FN</th><th>TP</th></tr></thead><tbody>
+<tr><td>1</td><td>10 984</td><td>0</td><td>1 016</td><td>0</td></tr>
+<tr><td>2</td><td>10 940</td><td>44</td><td>966</td><td>50</td></tr>
+<tr><td>3</td><td>10 959</td><td>25</td><td>994</td><td>22</td></tr>
+<tr><td>4</td><td>10 984</td><td>0</td><td>1 016</td><td>0</td></tr>
+<tr><td>5</td><td>10 948</td><td>36</td><td>970</td><td>46</td></tr>
+<tr><td>6</td><td>10 979</td><td>5</td><td>1 013</td><td>3</td></tr>
+<tr><td>7</td><td>10 950</td><td>34</td><td>978</td><td>38</td></tr>
+<tr><td>8</td><td>10 984</td><td>0</td><td>1 016</td><td>0</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">10-кесте. Валидацияда ықтималдықтарды калибрлеуді салыстыру</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json</p>
+<p class="meta">Сақталған жолдар: 4. Кесте идентификаторы: calibration_validation.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Fit n</td><td>240 093</td></tr>
+<tr><td>Калибрлеу n</td><td>51 448</td></tr>
+<tr><td>Валидация n</td><td>51 449</td></tr>
+<tr><td>Шек</td><td>0.5</td></tr>
+<tr><td>Салмақталған</td><td>Жоқ</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Калибрлеу валидациялық Brier score бойынша таңдалды. Бұл кестеде финалдық тест нәтижелері берілмеген.</p>
+<p class="note">Логистикалық регрессияның Brier өзгерісі өте шағын; статистикалық мәнділік тексерілмеді. AP өзгерген жоқ.</p>
+<h3 class="sub">Жолдардың сәйкестендіруі мен шарттары</h3>
+<table><thead><tr><th>№</th><th>Модель</th><th>Ықтималдық нұсқасы</th><th>Қосымша сигмоида таңдалған</th></tr></thead><tbody>
+<tr><td>1</td><td>Logistic Regression</td><td>Бастапқы ықтималдық</td><td>Иә</td></tr>
+<tr><td>2</td><td>Logistic Regression</td><td>Қосымша sigmoid калибрлеуі</td><td>Иә</td></tr>
+<tr><td>3</td><td>LightGBM</td><td>Бастапқы ықтималдық</td><td>Жоқ</td></tr>
+<tr><td>4</td><td>LightGBM</td><td>Қосымша sigmoid калибрлеуі</td><td>Жоқ</td></tr>
+</tbody></table>
+<h3 class="sub">Ықтималдық сапасы</h3>
+<table><thead><tr><th>№</th><th>ROC-AUC</th><th>Average Precision</th><th>Brier score</th></tr></thead><tbody>
+<tr><td>1</td><td>0.832883</td><td>0.31992</td><td>0.066295</td></tr>
+<tr><td>2</td><td>0.832883</td><td>0.31992</td><td>0.066278</td></tr>
+<tr><td>3</td><td>0.833608</td><td>0.318889</td><td>0.066195</td></tr>
+<tr><td>4</td><td>0.833608</td><td>0.318889</td><td>0.066201</td></tr>
+</tbody></table>
+<h3 class="sub">Белгіленген шектегі жіктеу</h3>
+<table><thead><tr><th>№</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th></tr></thead><tbody>
+<tr><td>1</td><td>0.915878</td><td>0.52459</td><td>0.073428</td><td>0.993842</td><td>0.128824</td></tr>
+<tr><td>2</td><td>0.915839</td><td>0.523973</td><td>0.070216</td><td>0.994097</td><td>0.123837</td></tr>
+<tr><td>3</td><td>0.915956</td><td>0.560714</td><td>0.036026</td><td>0.997388</td><td>0.067702</td></tr>
+<tr><td>4</td><td>0.916014</td><td>0.556231</td><td>0.041992</td><td>0.9969</td><td>0.078088</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">11-кесте. BRFSS толық тестіндегі бағалау шарттары мен метрикалар</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json; reports/selection_lock.json</p>
+<p class="meta">Сақталған жолдар: 6. Кесте идентификаторы: full_test.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Fit n</td><td>240 093</td></tr>
+<tr><td>Бағалау n</td><td>85 748</td></tr>
+<tr><td>Қосымша моделі</td><td>Logistic Regression</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Салмақталған қателер матрицасының элементтері - сауалнама салмақтарының қосындысы. Олар нақты пациенттер саны емес.</p>
+<h3 class="sub">Жолдардың сәйкестендіруі мен шарттары</h3>
+<table><thead><tr><th>№</th><th>Модель / нұсқа</th><th>Шек</th><th>Қосымша калибрлеу</th><th>Сауалнама салмағы</th></tr></thead><tbody>
+<tr><td>1</td><td>Logistic Regression<br/>Таңдалған шек</td><td>0.190424</td><td>Иә</td><td>Жоқ</td></tr>
+<tr><td>2</td><td>Logistic Regression<br/>0,5 шегі</td><td>0.5</td><td>Иә</td><td>Жоқ</td></tr>
+<tr><td>3</td><td>Logistic Regression<br/>Сауалнама салмақтарымен бағалау</td><td>0.190424</td><td>Иә</td><td>Иә</td></tr>
+<tr><td>4</td><td>LightGBM<br/>Таңдалған шек</td><td>0.201976</td><td>Жоқ</td><td>Жоқ</td></tr>
+<tr><td>5</td><td>LightGBM<br/>0,5 шегі</td><td>0.5</td><td>Жоқ</td><td>Жоқ</td></tr>
+<tr><td>6</td><td>LightGBM<br/>Сауалнама салмақтарымен бағалау</td><td>0.201976</td><td>Жоқ</td><td>Иә</td></tr>
+</tbody></table>
+<h3 class="sub">Ықтималдық сапасы</h3>
+<table><thead><tr><th>№</th><th>ROC-AUC</th><th>Average Precision</th><th>Brier score</th></tr></thead><tbody>
+<tr><td>1</td><td>0.838869</td><td>0.320873</td><td>0.065959</td></tr>
+<tr><td>2</td><td>0.838869</td><td>0.320873</td><td>0.065959</td></tr>
+<tr><td>3</td><td>0.852575</td><td>0.306846</td><td>0.050866</td></tr>
+<tr><td>4</td><td>0.840986</td><td>0.324573</td><td>0.065689</td></tr>
+<tr><td>5</td><td>0.840986</td><td>0.324573</td><td>0.065689</td></tr>
+<tr><td>6</td><td>0.855548</td><td>0.317204</td><td>0.050522</td></tr>
+</tbody></table>
+<h3 class="sub">Белгіленген шектегі жіктеу</h3>
+<table><thead><tr><th>№</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th></tr></thead><tbody>
+<tr><td>1</td><td>0.862737</td><td>0.310205</td><td>0.507298</td><td>0.895625</td><td>0.384993</td></tr>
+<tr><td>2</td><td>0.91559</td><td>0.512959</td><td>0.065409</td><td>0.994254</td><td>0.116023</td></tr>
+<tr><td>3</td><td>0.896134</td><td>0.299012</td><td>0.464286</td><td>0.925638</td><td>0.363756</td></tr>
+<tr><td>4</td><td>0.863367</td><td>0.312036</td><td>0.509088</td><td>0.896147</td><td>0.386918</td></tr>
+<tr><td>5</td><td>0.916033</td><td>0.577114</td><td>0.031947</td><td>0.997834</td><td>0.060543</td></tr>
+<tr><td>6</td><td>0.896984</td><td>0.303717</td><td>0.472616</td><td>0.925976</td><td>0.369793</td></tr>
+</tbody></table>
+<h3 class="sub">Қате матрицалары: жол = нақты сынып; баған = болжанған сынып</h3>
+<table><thead><tr><th>№</th><th>TN</th><th>FP</th><th>FN</th><th>TP</th></tr></thead><tbody>
+<tr><td>1</td><td>70 294</td><td>8 192</td><td>3 578</td><td>3 684</td></tr>
+<tr><td>2</td><td>78 035</td><td>451</td><td>6 787</td><td>475</td></tr>
+<tr><td>3</td><td>43559969.956477</td><td>3499445.572237</td><td>1722362.538544</td><td>1492718.212519</td></tr>
+<tr><td>4</td><td>70 335</td><td>8 151</td><td>3 565</td><td>3 697</td></tr>
+<tr><td>5</td><td>78 316</td><td>170</td><td>7 030</td><td>232</td></tr>
+<tr><td>6</td><td>43575902.184679</td><td>3483513.344035</td><td>1695583.088906</td><td>1519497.662157</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">12-кесте. Логистикалық регрессияның қосымша тәжірибелері</h2>
+<p class="meta">Дереккөз: reports/ablations.json; cardio/train.py</p>
+<p class="meta">Сақталған жолдар: 5. Кесте идентификаторы: ablations.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Fit n</td><td>240 093</td></tr>
+<tr><td>Валидация n</td><td>51 449</td></tr>
+<tr><td>Шек</td><td>0.5</td></tr>
+<tr><td>C</td><td>1</td></tr>
+<tr><td>Қосымша сигмоида</td><td>Жоқ</td></tr>
+<tr><td>Бағалау салмақталған</td><td>Жоқ</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Қолданбаға таңдалған толық логистикалық модельде C=10; осы бақылаулы тәжірибелерде C=1. Сауалнама салмақтарымен оқытылған нұсқа да салмақсыз валидациялық метрикалармен бағаланды.</p>
+<h3 class="sub">Жолдардың сәйкестендіруі мен шарттары</h3>
+<table><thead><tr><th>№</th><th>Атауы</th><th>Белгілер</th><th>Оқыту n</th></tr></thead><tbody>
+<tr><td>1</td><td>Logistic standard</td><td>11</td><td>240 093</td></tr>
+<tr><td>2</td><td>Logistic balanced</td><td>11</td><td>240 093</td></tr>
+<tr><td>3</td><td>Logistic survey weighted</td><td>11</td><td>240 093</td></tr>
+<tr><td>4</td><td>Logistic without scaling</td><td>11</td><td>240 093</td></tr>
+<tr><td>5</td><td>Logistic reduced features</td><td>7</td><td>240 093</td></tr>
+</tbody></table>
+<h3 class="sub">Ықтималдық сапасы</h3>
+<table><thead><tr><th>№</th><th>ROC-AUC</th><th>Average Precision</th><th>Brier score</th></tr></thead><tbody>
+<tr><td>1</td><td>0.832888</td><td>0.31992</td><td>0.066295</td></tr>
+<tr><td>2</td><td>0.832972</td><td>0.319449</td><td>0.170834</td></tr>
+<tr><td>3</td><td>0.831653</td><td>0.318365</td><td>0.066394</td></tr>
+<tr><td>4</td><td>0.832915</td><td>0.319917</td><td>0.066298</td></tr>
+<tr><td>5</td><td>0.803512</td><td>0.264744</td><td>0.069094</td></tr>
+</tbody></table>
+<h3 class="sub">Белгіленген шектегі жіктеу</h3>
+<table><thead><tr><th>№</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th></tr></thead><tbody>
+<tr><td>1</td><td>0.915858</td><td>0.52381</td><td>0.073199</td><td>0.993842</td><td>0.128448</td></tr>
+<tr><td>2</td><td>0.737488</td><td>0.213301</td><td>0.780863</td><td>0.733473</td><td>0.335073</td></tr>
+<tr><td>3</td><td>0.915936</td><td>0.530387</td><td>0.066085</td><td>0.994585</td><td>0.117527</td></tr>
+<tr><td>4</td><td>0.915917</td><td>0.526059</td><td>0.074117</td><td>0.99382</td><td>0.129928</td></tr>
+<tr><td>5</td><td>0.915256</td><td>0.493151</td><td>0.016521</td><td>0.998429</td><td>0.031972</td></tr>
+</tbody></table>
+<h3 class="sub">Қате матрицалары: жол = нақты сынып; баған = болжанған сынып</h3>
+<table><thead><tr><th>№</th><th>TN</th><th>FP</th><th>FN</th><th>TP</th></tr></thead><tbody>
+<tr><td>1</td><td>46 801</td><td>290</td><td>4 039</td><td>319</td></tr>
+<tr><td>2</td><td>34 540</td><td>12 551</td><td>955</td><td>3 403</td></tr>
+<tr><td>3</td><td>46 836</td><td>255</td><td>4 070</td><td>288</td></tr>
+<tr><td>4</td><td>46 800</td><td>291</td><td>4 035</td><td>323</td></tr>
+<tr><td>5</td><td>47 017</td><td>74</td><td>4 286</td><td>72</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">13-кесте. BRFSS үшін шартты bootstrap интервалдары</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json</p>
+<p class="meta">Сақталған жолдар: 5. Кесте идентификаторы: bootstrap.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Қайта іріктеу саны</td><td>200</td></tr>
+<tr><td>Бірлік</td><td>Респондент</td></tr>
+<tr><td>Бекітілген модель</td><td>Иә</td></tr>
+<tr><td>Күрделі сауалнама дизайны</td><td>Жоқ</td></tr>
+<tr><td>Түрі</td><td>2,5 және 97,5 процентильдер</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Жұпталған AP айырмасы: таңдалған Logistic Regression минус LightGBM. Екі модельге бірдей қайта іріктелген жолдар қолданылды.</p>
+<p class="note">Интервалдар бекітілген модель мен тест респонденттерінің өзгеруін ғана қамтиды; қайта оқыту, модель таңдау және күрделі сауалнама дизайны толық есепке алынбаған.</p>
+<table><thead><tr><th>Метрика</th><th>Төменгі шек</th><th>Жоғарғы шек</th></tr></thead><tbody>
+<tr><td>roc_auc</td><td>0.834835</td><td>0.843323</td></tr>
+<tr><td>average_precision</td><td>0.310816</td><td>0.331648</td></tr>
+<tr><td>recall</td><td>0.495849</td><td>0.518366</td></tr>
+<tr><td>brier</td><td>0.064608</td><td>0.067285</td></tr>
+<tr><td>paired_ap_difference</td><td>-0.006454</td><td>-0.00072</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">14-кесте. BRFSS ішкі топтарының сипаттамалық нәтижелері</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json</p>
+<p class="meta">Сақталған жолдар: 15. Кесте идентификаторы: subgroups.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Бағалау n</td><td>85 748</td></tr>
+<tr><td>Шек</td><td>0.190424</td></tr>
+<tr><td>Салмақталған</td><td>Жоқ</td></tr>
+<tr><td>Топқа bootstrap саны</td><td>100</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Шынайы оң болжамы жоқ топтардағы Recall үшін [0;0] bootstrap интервалы әдістің шекарада азғындауын көрсетеді. Бұл популяциялық белгісіздіктің жоқтығын дәлелдемейді.</p>
+<p class="note">Жас мәні белгісіз бақылаулар жас бойынша топтастыруға кірмейді. Көптік салыстыруға түзету және күрделі сауалнама дизайнын толық есептеу орындалмаған.</p>
+<h3 class="sub">Жолдардың сәйкестендіруі мен шарттары</h3>
+<table><thead><tr><th>№</th><th>Топ / бастапқы код</th><th>n</th><th>Оң сынып</th><th>Recall интервалы нөлге қысқарған</th></tr></thead><tbody>
+<tr><td>1</td><td>sex = 1<br/>Ер</td><td>40 280</td><td>4 230</td><td>Жоқ</td></tr>
+<tr><td>2</td><td>sex = 2<br/>Әйел</td><td>45 468</td><td>3 032</td><td>Жоқ</td></tr>
+<tr><td>3</td><td>age_group = 1<br/>18-24</td><td>5 251</td><td>41</td><td>Иә</td></tr>
+<tr><td>4</td><td>age_group = 2<br/>25-29</td><td>4 217</td><td>38</td><td>Иә</td></tr>
+<tr><td>5</td><td>age_group = 3<br/>30-34</td><td>4 892</td><td>45</td><td>Иә</td></tr>
+<tr><td>6</td><td>age_group = 4<br/>35-39</td><td>5 408</td><td>68</td><td>Иә</td></tr>
+<tr><td>7</td><td>age_group = 5<br/>40-44</td><td>5 835</td><td>122</td><td>Жоқ</td></tr>
+<tr><td>8</td><td>age_group = 6<br/>45-49</td><td>5 283</td><td>164</td><td>Жоқ</td></tr>
+<tr><td>9</td><td>age_group = 7<br/>50-54</td><td>6 215</td><td>359</td><td>Жоқ</td></tr>
+<tr><td>10</td><td>age_group = 8<br/>55-59</td><td>6 794</td><td>477</td><td>Жоқ</td></tr>
+<tr><td>11</td><td>age_group = 9<br/>60-64</td><td>8 311</td><td>734</td><td>Жоқ</td></tr>
+<tr><td>12</td><td>age_group = 10<br/>65-69</td><td>9 114</td><td>979</td><td>Жоқ</td></tr>
+<tr><td>13</td><td>age_group = 11<br/>70-74</td><td>8 560</td><td>1 281</td><td>Жоқ</td></tr>
+<tr><td>14</td><td>age_group = 12<br/>75-79</td><td>6 684</td><td>1 193</td><td>Жоқ</td></tr>
+<tr><td>15</td><td>age_group = 13<br/>80 және одан жоғары</td><td>7 728</td><td>1 672</td><td>Жоқ</td></tr>
+</tbody></table>
+<h3 class="sub">Ықтималдық сапасы</h3>
+<table><thead><tr><th>№</th><th>ROC-AUC</th><th>Average Precision</th><th>Brier score</th></tr></thead><tbody>
+<tr><td>1</td><td>0.838164</td><td>0.358683</td><td>0.07844</td></tr>
+<tr><td>2</td><td>0.82994</td><td>0.259424</td><td>0.054902</td></tr>
+<tr><td>3</td><td>0.63953</td><td>0.031194</td><td>0.007701</td></tr>
+<tr><td>4</td><td>0.7466</td><td>0.134041</td><td>0.008624</td></tr>
+<tr><td>5</td><td>0.747053</td><td>0.038141</td><td>0.009026</td></tr>
+<tr><td>6</td><td>0.740499</td><td>0.056652</td><td>0.012198</td></tr>
+<tr><td>7</td><td>0.780496</td><td>0.087893</td><td>0.019838</td></tr>
+<tr><td>8</td><td>0.803496</td><td>0.141149</td><td>0.028321</td></tr>
+<tr><td>9</td><td>0.811196</td><td>0.212319</td><td>0.049876</td></tr>
+<tr><td>10</td><td>0.815375</td><td>0.264566</td><td>0.057779</td></tr>
+<tr><td>11</td><td>0.798982</td><td>0.290735</td><td>0.071206</td></tr>
+<tr><td>12</td><td>0.76901</td><td>0.298112</td><td>0.085673</td></tr>
+<tr><td>13</td><td>0.746892</td><td>0.341616</td><td>0.113535</td></tr>
+<tr><td>14</td><td>0.730773</td><td>0.372004</td><td>0.131141</td></tr>
+<tr><td>15</td><td>0.704509</td><td>0.378362</td><td>0.155817</td></tr>
+</tbody></table>
+<h3 class="sub">Белгіленген шектегі жіктеу</h3>
+<table><thead><tr><th>№</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th></tr></thead><tbody>
+<tr><td>1</td><td>0.825348</td><td>0.321224</td><td>0.595745</td><td>0.852288</td><td>0.417391</td></tr>
+<tr><td>2</td><td>0.895861</td><td>0.288762</td><td>0.383905</td><td>0.932439</td><td>0.329605</td></tr>
+<tr><td>3</td><td>0.992192</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>4</td><td>0.990989</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>5</td><td>0.990597</td><td>0</td><td>0</td><td>0.999794</td><td>0</td></tr>
+<tr><td>6</td><td>0.986871</td><td>0</td><td>0</td><td>0.999438</td><td>0</td></tr>
+<tr><td>7</td><td>0.976864</td><td>0.117647</td><td>0.016393</td><td>0.997374</td><td>0.028777</td></tr>
+<tr><td>8</td><td>0.962711</td><td>0.26087</td><td>0.109756</td><td>0.990037</td><td>0.154506</td></tr>
+<tr><td>9</td><td>0.925986</td><td>0.279476</td><td>0.178273</td><td>0.971824</td><td>0.217687</td></tr>
+<tr><td>10</td><td>0.894024</td><td>0.301146</td><td>0.385744</td><td>0.932405</td><td>0.338235</td></tr>
+<tr><td>11</td><td>0.857659</td><td>0.291937</td><td>0.429155</td><td>0.899169</td><td>0.34749</td></tr>
+<tr><td>12</td><td>0.819947</td><td>0.294154</td><td>0.483146</td><td>0.860479</td><td>0.365675</td></tr>
+<tr><td>13</td><td>0.753388</td><td>0.312217</td><td>0.538642</td><td>0.79118</td><td>0.395302</td></tr>
+<tr><td>14</td><td>0.679982</td><td>0.309274</td><td>0.642917</td><td>0.688035</td><td>0.417642</td></tr>
+<tr><td>15</td><td>0.629658</td><td>0.329023</td><td>0.684809</td><td>0.614432</td><td>0.444488</td></tr>
+</tbody></table>
+<h3 class="sub">Сақталған bootstrap интервалдары: төменгі; жоғарғы шек</h3>
+<table><thead><tr><th>№</th><th>ROC-AUC</th><th>AP</th><th>Recall</th><th>Brier</th></tr></thead><tbody>
+<tr><td>1</td><td>0.831648; 0.841964</td><td>0.344763; 0.373642</td><td>0.580976; 0.608633</td><td>0.076756; 0.080489</td></tr>
+<tr><td>2</td><td>0.822498; 0.836541</td><td>0.247329; 0.275041</td><td>0.367099; 0.398031</td><td>0.053429; 0.056458</td></tr>
+<tr><td>3</td><td>0.563783; 0.718025</td><td>0.011951; 0.092695</td><td>0; 0</td><td>0.005472; 0.010226</td></tr>
+<tr><td>4</td><td>0.668962; 0.82336</td><td>0.04624; 0.280967</td><td>0; 0</td><td>0.005689; 0.010912</td></tr>
+<tr><td>5</td><td>0.680989; 0.809309</td><td>0.018214; 0.084228</td><td>0; 0</td><td>0.006153; 0.010702</td></tr>
+<tr><td>6</td><td>0.699847; 0.789357</td><td>0.033216; 0.097146</td><td>0; 0</td><td>0.009291; 0.015418</td></tr>
+<tr><td>7</td><td>0.730421; 0.819069</td><td>0.056133; 0.144027</td><td>0; 0.047641</td><td>0.016544; 0.022956</td></tr>
+<tr><td>8</td><td>0.773155; 0.83835</td><td>0.110698; 0.19255</td><td>0.059059; 0.155163</td><td>0.024141; 0.031625</td></tr>
+<tr><td>9</td><td>0.787366; 0.826432</td><td>0.177496; 0.241309</td><td>0.135493; 0.216276</td><td>0.045071; 0.055078</td></tr>
+<tr><td>10</td><td>0.796737; 0.832756</td><td>0.234641; 0.298442</td><td>0.348148; 0.430478</td><td>0.052279; 0.061822</td></tr>
+<tr><td>11</td><td>0.786591; 0.811857</td><td>0.266558; 0.316463</td><td>0.400857; 0.466906</td><td>0.06787; 0.07579</td></tr>
+<tr><td>12</td><td>0.756379; 0.781897</td><td>0.274205; 0.327911</td><td>0.449876; 0.510096</td><td>0.081826; 0.090277</td></tr>
+<tr><td>13</td><td>0.734507; 0.761892</td><td>0.321775; 0.370912</td><td>0.509992; 0.561609</td><td>0.1095; 0.117507</td></tr>
+<tr><td>14</td><td>0.716158; 0.743343</td><td>0.343624; 0.3999</td><td>0.620645; 0.665312</td><td>0.125947; 0.136126</td></tr>
+<tr><td>15</td><td>0.689076; 0.71701</td><td>0.349278; 0.405513</td><td>0.661992; 0.70479</td><td>0.150445; 0.160366</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">15-кесте. BRFSS белгілерін алмастыруға негізделген маңыздылық</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json</p>
+<p class="meta">Сақталған жолдар: 11. Кесте идентификаторы: importance.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Қамту</td><td>Валидациядан алынған стратификацияланған ішкі таңдама</td></tr>
+<tr><td>n</td><td>2 000</td></tr>
+<tr><td>Белгіге алмастыру саны</td><td>5</td></tr>
+<tr><td>Бағалау көрсеткіші</td><td>average_precision</td></tr>
+<tr><td>Модель</td><td>Қолданбаға енгізілген калибрленген логистикалық регрессия</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Стандартты ауытқу бес алмастыру бойынша есептелді; ол сенімділік интервалы емес. Теріс орташа өзгеріс белгінің зиянын немесе себепті әсерін дәлелдемейді.</p>
+<table><thead><tr><th>Белгі</th><th>Орташа</th><th>SD</th></tr></thead><tbody>
+<tr><td>age_group</td><td>0.083259</td><td>0.010029</td></tr>
+<tr><td>general_health</td><td>0.059762</td><td>0.009198</td></tr>
+<tr><td>sex</td><td>0.024749</td><td>0.01084</td></tr>
+<tr><td>hypertension</td><td>0.023516</td><td>0.002489</td></tr>
+<tr><td>cholesterol</td><td>0.013023</td><td>0.006089</td></tr>
+<tr><td>diabetes</td><td>0.012147</td><td>0.004324</td></tr>
+<tr><td>smoking</td><td>0.008033</td><td>0.004869</td></tr>
+<tr><td>physical_days</td><td>0.000707</td><td>0.004906</td></tr>
+<tr><td>bmi</td><td>-0.001217</td><td>0.00085</td></tr>
+<tr><td>activity</td><td>-0.002544</td><td>0.001053</td></tr>
+<tr><td>mental_days</td><td>-0.003005</td><td>0.001833</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">16-кесте. Cleveland қайталанған ішкі және сыртқы CV нәтижелері</h2>
+<p class="meta">Дереккөз: reports/uci_results.json</p>
+<p class="meta">Сақталған жолдар: 8. Кесте идентификаторы: uci_nested_cv.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Сыртқы цикл</td><td>3 бөлік × 2 қайталау</td></tr>
+<tr><td>Ішкі цикл</td><td>3 бөлік × 2 кандидат конфигурация</td></tr>
+<tr><td>Сыртқы оқыту n</td><td>202</td></tr>
+<tr><td>Сыртқы бағалау n</td><td>101</td></tr>
+<tr><td>Шек</td><td>0.5</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Алты сыртқы бағалау өзара тәуелді. SD - 95%-дық сенімділік интервалы емес. Бірнеше алгоритм арасынан жеңімпаз таңдау қосымша белгісіздік туғызады.</p>
+<p class="note">UCI финалдық моделі үшін 95%-дық сенімділік интервалы және тәуелсіз сыртқы клиникалық тексеру орындалмаған.</p>
+<h3 class="sub">Ықтималдық көрсеткіштері: орташа; іріктемелік SD</h3>
+<table><thead><tr><th>Модель</th><th>ROC-AUC</th><th>AP</th><th>Brier</th></tr></thead><tbody>
+<tr><td>Dummy</td><td>0.5; 0</td><td>0.458746; 0.005113</td><td>0.248325; 0.000443</td></tr>
+<tr><td>Logistic Regression</td><td>0.906936; 0.020354</td><td>0.90176; 0.025843</td><td>0.123493; 0.015908</td></tr>
+<tr><td>Decision Tree</td><td>0.773155; 0.045282</td><td>0.671782; 0.055311</td><td>0.188136; 0.023635</td></tr>
+<tr><td>Random Forest</td><td>0.910958; 0.015805</td><td>0.906611; 0.020941</td><td>0.150869; 0.004752</td></tr>
+<tr><td>Linear SVM</td><td>0.907462; 0.020445</td><td>0.905897; 0.021206</td><td>0.123319; 0.011792</td></tr>
+<tr><td>KNN</td><td>0.901421; 0.014494</td><td>0.894893; 0.026611</td><td>0.132657; 0.012009</td></tr>
+<tr><td>LightGBM</td><td>0.901735; 0.022009</td><td>0.898081; 0.031771</td><td>0.123859; 0.01313</td></tr>
+<tr><td>MLP</td><td>0.862032; 0.052134</td><td>0.845685; 0.072318</td><td>0.165737; 0.036706</td></tr>
+</tbody></table>
+<h3 class="sub">Шектегі жіктеу: орташа; іріктемелік SD</h3>
+<table><thead><tr><th>Модель</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th></tr></thead><tbody>
+<tr><td>Dummy</td><td>0.541254; 0.005113</td><td>0; 0</td><td>0; 0</td><td>1; 0</td><td>0; 0</td></tr>
+<tr><td>Logistic Regression</td><td>0.830033; 0.029648</td><td>0.81816; 0.044954</td><td>0.812673; 0.05862</td><td>0.844725; 0.050502</td><td>0.813766; 0.035637</td></tr>
+<tr><td>Decision Tree</td><td>0.739274; 0.042316</td><td>0.712849; 0.066406</td><td>0.733965; 0.027638</td><td>0.744388; 0.075861</td><td>0.721766; 0.036525</td></tr>
+<tr><td>Random Forest</td><td>0.820132; 0.035099</td><td>0.838106; 0.082117</td><td>0.769812; 0.060722</td><td>0.863075; 0.098471</td><td>0.79769; 0.027615</td></tr>
+<tr><td>Linear SVM</td><td>0.833333; 0.036198</td><td>0.840793; 0.05919</td><td>0.791166; 0.067378</td><td>0.869192; 0.065035</td><td>0.812671; 0.042915</td></tr>
+<tr><td>KNN</td><td>0.810231; 0.038304</td><td>0.848602; 0.060518</td><td>0.71955; 0.081816</td><td>0.887262; 0.058969</td><td>0.775379; 0.051304</td></tr>
+<tr><td>LightGBM</td><td>0.830033; 0.026133</td><td>0.821253; 0.04575</td><td>0.809436; 0.06897</td><td>0.847868; 0.052828</td><td>0.812902; 0.034282</td></tr>
+<tr><td>MLP</td><td>0.764026; 0.073938</td><td>0.813783; 0.055677</td><td>0.640688; 0.227114</td><td>0.868911; 0.074109</td><td>0.693901; 0.148471</td></tr>
+</tbody></table>
+<h3 class="sub">Әр сыртқы fold ішінде таңдалған параметрлер</h3>
+<p class="meta">Dummy: outer_best_params = [] (сақталған параметр жазбасы жоқ).</p>
+<h3 class="sub">Logistic Regression</h3>
+<table><thead><tr><th>Fold</th><th>Таңдалған параметрлер</th></tr></thead><tbody>
+<tr><td>1</td><td>model__class_weight: balanced<br/>model__C: 1</td></tr>
+<tr><td>2</td><td>model__class_weight: balanced<br/>model__C: 1</td></tr>
+<tr><td>3</td><td>model__class_weight: balanced<br/>model__C: 1</td></tr>
+<tr><td>4</td><td>model__class_weight: balanced<br/>model__C: 1</td></tr>
+<tr><td>5</td><td>model__class_weight: balanced<br/>model__C: 1</td></tr>
+<tr><td>6</td><td>model__class_weight: balanced<br/>model__C: 1</td></tr>
+</tbody></table>
+<h3 class="sub">Decision Tree</h3>
+<table><thead><tr><th>Fold</th><th>Таңдалған параметрлер</th></tr></thead><tbody>
+<tr><td>1</td><td>model__min_samples_leaf: 50<br/>model__max_depth: 8</td></tr>
+<tr><td>2</td><td>model__min_samples_leaf: 50<br/>model__max_depth: 8</td></tr>
+<tr><td>3</td><td>model__min_samples_leaf: 50<br/>model__max_depth: 8</td></tr>
+<tr><td>4</td><td>model__min_samples_leaf: 50<br/>model__max_depth: 8</td></tr>
+<tr><td>5</td><td>model__min_samples_leaf: 50<br/>model__max_depth: 8</td></tr>
+<tr><td>6</td><td>model__min_samples_leaf: 50<br/>model__max_depth: 8</td></tr>
+</tbody></table>
+<h3 class="sub">Random Forest</h3>
+<table><thead><tr><th>Fold</th><th>Таңдалған параметрлер</th></tr></thead><tbody>
+<tr><td>1</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td></tr>
+<tr><td>2</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td></tr>
+<tr><td>3</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td></tr>
+<tr><td>4</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td></tr>
+<tr><td>5</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td></tr>
+<tr><td>6</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td></tr>
+</tbody></table>
+<h3 class="sub">Linear SVM</h3>
+<table><thead><tr><th>Fold</th><th>Таңдалған параметрлер</th></tr></thead><tbody>
+<tr><td>1</td><td>model__estimator__svm__class_weight: balanced<br/>model__estimator__svm__C: 0.1</td></tr>
+<tr><td>2</td><td>model__estimator__svm__class_weight: balanced<br/>model__estimator__svm__C: 0.1</td></tr>
+<tr><td>3</td><td>model__estimator__svm__class_weight: balanced<br/>model__estimator__svm__C: 0.1</td></tr>
+<tr><td>4</td><td>model__estimator__svm__class_weight: balanced<br/>model__estimator__svm__C: 0.1</td></tr>
+<tr><td>5</td><td>model__estimator__svm__class_weight: balanced<br/>model__estimator__svm__C: 0.1</td></tr>
+<tr><td>6</td><td>model__estimator__svm__class_weight: balanced<br/>model__estimator__svm__C: 0.1</td></tr>
+</tbody></table>
+<h3 class="sub">KNN</h3>
+<table><thead><tr><th>Fold</th><th>Таңдалған параметрлер</th></tr></thead><tbody>
+<tr><td>1</td><td>model__weights: distance<br/>model__n_neighbors: 31</td></tr>
+<tr><td>2</td><td>model__weights: distance<br/>model__n_neighbors: 31</td></tr>
+<tr><td>3</td><td>model__weights: distance<br/>model__n_neighbors: 31</td></tr>
+<tr><td>4</td><td>model__weights: distance<br/>model__n_neighbors: 31</td></tr>
+<tr><td>5</td><td>model__weights: distance<br/>model__n_neighbors: 31</td></tr>
+<tr><td>6</td><td>model__weights: distance<br/>model__n_neighbors: 31</td></tr>
+</tbody></table>
+<h3 class="sub">LightGBM</h3>
+<table><thead><tr><th>Fold</th><th>Таңдалған параметрлер</th></tr></thead><tbody>
+<tr><td>1</td><td>model__reg_lambda: 2<br/>model__num_leaves: 31<br/>model__min_child_samples: 60</td></tr>
+<tr><td>2</td><td>model__reg_lambda: 2<br/>model__num_leaves: 31<br/>model__min_child_samples: 60</td></tr>
+<tr><td>3</td><td>model__reg_lambda: 2<br/>model__num_leaves: 31<br/>model__min_child_samples: 60</td></tr>
+<tr><td>4</td><td>model__reg_lambda: 2<br/>model__num_leaves: 31<br/>model__min_child_samples: 60</td></tr>
+<tr><td>5</td><td>model__reg_lambda: 2<br/>model__num_leaves: 31<br/>model__min_child_samples: 60</td></tr>
+<tr><td>6</td><td>model__reg_lambda: 2<br/>model__num_leaves: 31<br/>model__min_child_samples: 60</td></tr>
+</tbody></table>
+<h3 class="sub">MLP</h3>
+<table><thead><tr><th>Fold</th><th>Таңдалған параметрлер</th></tr></thead><tbody>
+<tr><td>1</td><td>model__hidden_layer_sizes: 48; 24<br/>model__alpha: 0.5</td></tr>
+<tr><td>2</td><td>model__hidden_layer_sizes: 48; 24<br/>model__alpha: 0.1</td></tr>
+<tr><td>3</td><td>model__hidden_layer_sizes: 48; 24<br/>model__alpha: 0.1</td></tr>
+<tr><td>4</td><td>model__hidden_layer_sizes: 48; 24<br/>model__alpha: 0.5</td></tr>
+<tr><td>5</td><td>model__hidden_layer_sizes: 48; 24<br/>model__alpha: 0.1</td></tr>
+<tr><td>6</td><td>model__hidden_layer_sizes: 48; 24<br/>model__alpha: 0.5</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">17-кесте. Cleveland Random Forest: сыртқы бөліктер және финалдық оқыту</h2>
+<p class="meta">Дереккөз: reports/uci_results.json</p>
+<p class="meta">Сақталған жолдар: 8. Кесте идентификаторы: uci_rf_detail.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Сыртқы fold ішіндегі сынақ</td><td>2</td></tr>
+<tr><td>Соңғы іздеу сынағы</td><td>3</td></tr>
+<tr><td>Соңғы оқыту n</td><td>303</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Екі сыртқы болжамның орташа мәнінен алынған OOF метрикалары алты бөлік метрикаларының орташа мәнінен ерекшеленеді.</p>
+<p class="note">Финалдық орманның параметрлері барлық сыртқы бөліктердегі параметрлерден өзгеше. Финалдық артефакт жеке тәуелсіз тестпен бағаланбаған.</p>
+<h3 class="sub">Жолдардың сәйкестендіруі мен шарттары</h3>
+<table><thead><tr><th>№</th><th>Fold</th><th>Таңдалған параметрлер</th><th>Жинақтау түрі</th></tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td><td>-</td></tr>
+<tr><td>2</td><td>2</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td><td>-</td></tr>
+<tr><td>3</td><td>3</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td><td>-</td></tr>
+<tr><td>4</td><td>4</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td><td>-</td></tr>
+<tr><td>5</td><td>5</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td><td>-</td></tr>
+<tr><td>6</td><td>6</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td><td>-</td></tr>
+<tr><td>7</td><td>-</td><td>-</td><td>Бір пациенттің екі OOF болжамының орташа мәні</td></tr>
+</tbody></table>
+<h3 class="sub">Ықтималдық сапасы</h3>
+<table><thead><tr><th>№</th><th>ROC-AUC</th><th>Average Precision</th><th>Brier score</th></tr></thead><tbody>
+<tr><td>1</td><td>0.905534</td><td>0.87122</td><td>0.153759</td></tr>
+<tr><td>2</td><td>0.929644</td><td>0.923162</td><td>0.146014</td></tr>
+<tr><td>3</td><td>0.899921</td><td>0.92115</td><td>0.145618</td></tr>
+<tr><td>4</td><td>0.902372</td><td>0.912917</td><td>0.151599</td></tr>
+<tr><td>5</td><td>0.896047</td><td>0.891238</td><td>0.158101</td></tr>
+<tr><td>6</td><td>0.93223</td><td>0.919981</td><td>0.150122</td></tr>
+<tr><td>7</td><td>0.909063</td><td>0.903163</td><td>0.150461</td></tr>
+</tbody></table>
+<h3 class="sub">Белгіленген шектегі жіктеу</h3>
+<table><thead><tr><th>№</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>Specificity</th><th>F1</th></tr></thead><tbody>
+<tr><td>1</td><td>0.811881</td><td>0.846154</td><td>0.717391</td><td>0.890909</td><td>0.776471</td></tr>
+<tr><td>2</td><td>0.841584</td><td>0.826087</td><td>0.826087</td><td>0.854545</td><td>0.826087</td></tr>
+<tr><td>3</td><td>0.841584</td><td>0.860465</td><td>0.787234</td><td>0.888889</td><td>0.822222</td></tr>
+<tr><td>4</td><td>0.831683</td><td>0.914286</td><td>0.695652</td><td>0.945455</td><td>0.790123</td></tr>
+<tr><td>5</td><td>0.752475</td><td>0.684211</td><td>0.847826</td><td>0.672727</td><td>0.757282</td></tr>
+<tr><td>6</td><td>0.841584</td><td>0.897436</td><td>0.744681</td><td>0.925926</td><td>0.813953</td></tr>
+<tr><td>7</td><td>0.828383</td><td>0.827068</td><td>0.791367</td><td>0.859756</td><td>0.808824</td></tr>
+</tbody></table>
+<h3 class="sub">Қате матрицалары: жол = нақты сынып; баған = болжанған сынып</h3>
+<table><thead><tr><th>№</th><th>TN</th><th>FP</th><th>FN</th><th>TP</th></tr></thead><tbody>
+<tr><td>1</td><td>49</td><td>6</td><td>13</td><td>33</td></tr>
+<tr><td>2</td><td>47</td><td>8</td><td>8</td><td>38</td></tr>
+<tr><td>3</td><td>48</td><td>6</td><td>10</td><td>37</td></tr>
+<tr><td>4</td><td>52</td><td>3</td><td>14</td><td>32</td></tr>
+<tr><td>5</td><td>37</td><td>18</td><td>7</td><td>39</td></tr>
+<tr><td>6</td><td>50</td><td>4</td><td>12</td><td>35</td></tr>
+<tr><td>7</td><td>141</td><td>23</td><td>29</td><td>110</td></tr>
+</tbody></table>
+<h3 class="sub">Финалдық оқытудағы параметр іздеуі</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Базалық CV AP</td><td>0.880091; 0.931074; 0.921964</td></tr>
+<tr><td>Таңдалған CV AP</td><td>0.90869</td></tr>
+<tr><td>Таңдалған параметрлер</td><td>model__min_samples_leaf: 3<br/>model__max_depth: 10</td></tr>
+</tbody></table>
+<table><thead><tr><th>№</th><th>Параметрлер</th><th>Ішкі CV AP, орташа</th><th>Ішкі CV AP, SD</th><th>Train AP, орташа</th><th>Fit, орташа с</th></tr></thead><tbody>
+<tr><td>1</td><td>model__min_samples_leaf: 25<br/>model__max_depth: null</td><td>0.905177</td><td>0.024026</td><td>0.92524</td><td>0.133219</td></tr>
+<tr><td>2</td><td>model__min_samples_leaf: 25<br/>model__max_depth: 5</td><td>0.905177</td><td>0.024026</td><td>0.92524</td><td>0.123507</td></tr>
+<tr><td>3</td><td>model__min_samples_leaf: 3<br/>model__max_depth: 10</td><td>0.90869</td><td>0.024746</td><td>0.985325</td><td>0.127966</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">18-кесте. Есептеу рәсімдерінің өлшенген уақыты</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json; reports/uci_results.json</p>
+<p class="meta">Сақталған жолдар: 18. Кесте идентификаторы: timings.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Орындау ортасы</td><td>Бір жергілікті компьютердегі орындалу</td></tr>
+<tr><td>Уақыт өлшеу қайталануы</td><td>1</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Бұл сандар бір модельді таза оқыту уақытын бірдей шартта салыстырмайды. Бос мән - бөлек өлшем жасалмағанын білдіреді.</p>
+<p class="note">Жадтың ең жоғары шығыны, серверге жүктеме сынағы және болжам кідірісінің қайталама өлшемдері жоқ.</p>
+<h3 class="sub">BRFSS: Бірдей таңдамадағы салыстыру</h3>
+<p class="meta">Өлшенген рәсім: Бастапқы CV + CV арқылы іздеу + қайта оқыту</p>
+<table><thead><tr><th>Модель</th><th>Оқыту n</th><th>Бағалау n</th><th>Рәсім уақыты, с</th><th>Болжау уақыты, с</th></tr></thead><tbody>
+<tr><td>Dummy</td><td>12 000</td><td>12 000</td><td>0.110024</td><td>0.015631</td></tr>
+<tr><td>Logistic Regression</td><td>12 000</td><td>12 000</td><td>0.917243</td><td>0.01937</td></tr>
+<tr><td>Decision Tree</td><td>12 000</td><td>12 000</td><td>0.699981</td><td>0.019311</td></tr>
+<tr><td>Random Forest</td><td>12 000</td><td>12 000</td><td>4.329472</td><td>0.07075</td></tr>
+<tr><td>Linear SVM</td><td>12 000</td><td>12 000</td><td>2.50225</td><td>0.054962</td></tr>
+<tr><td>KNN</td><td>12 000</td><td>12 000</td><td>4.109769</td><td>0.549909</td></tr>
+<tr><td>LightGBM</td><td>12 000</td><td>12 000</td><td>2.378512</td><td>0.04814</td></tr>
+<tr><td>MLP</td><td>12 000</td><td>12 000</td><td>7.144241</td><td>0.016205</td></tr>
+</tbody></table>
+<h3 class="sub">BRFSS: Толық көлемдегі тәжірибе</h3>
+<p class="meta">Өлшенген рәсім: Оқыту + калибрлеу + валидациялық болжам, метрика және шек</p>
+<table><thead><tr><th>Модель</th><th>Оқыту n</th><th>Бағалау n</th><th>Рәсім уақыты, с</th><th>Болжау уақыты, с</th></tr></thead><tbody>
+<tr><td>Logistic Regression</td><td>240 093</td><td>85 748</td><td>1.513551</td><td>0.082876</td></tr>
+<tr><td>LightGBM</td><td>240 093</td><td>85 748</td><td>2.853297</td><td>0.365113</td></tr>
+</tbody></table>
+<h3 class="sub">Cleveland: Ішкі және сыртқы CV</h3>
+<p class="meta">Өлшенген рәсім: Іздеу, болжам және метрикаларды қамтитын алты сыртқы бөлік</p>
+<table><thead><tr><th>Модель</th><th>Оқыту n</th><th>Бағалау n</th><th>Рәсім уақыты, с</th><th>Болжау уақыты, с</th></tr></thead><tbody>
+<tr><td>Dummy</td><td>-</td><td>-</td><td>0.149901</td><td>null</td></tr>
+<tr><td>Logistic Regression</td><td>-</td><td>-</td><td>0.924713</td><td>null</td></tr>
+<tr><td>Decision Tree</td><td>-</td><td>-</td><td>0.726757</td><td>null</td></tr>
+<tr><td>Random Forest</td><td>-</td><td>-</td><td>6.812586</td><td>null</td></tr>
+<tr><td>Linear SVM</td><td>-</td><td>-</td><td>2.897062</td><td>null</td></tr>
+<tr><td>KNN</td><td>-</td><td>-</td><td>0.848289</td><td>null</td></tr>
+<tr><td>LightGBM</td><td>-</td><td>-</td><td>1.079542</td><td>null</td></tr>
+<tr><td>MLP</td><td>-</td><td>-</td><td>1.729961</td><td>null</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2 class="heading">19-кесте. BRFSS қателерінің жиынтық саны</h2>
+<p class="meta">Дереккөз: reports/brfss_results.json</p>
+<p class="meta">Сақталған жолдар: 2. Кесте идентификаторы: errors.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Қамту</td><td>Толық тест жиыны</td></tr>
+<tr><td>Шек</td><td>0.190424</td></tr>
+<tr><td>Салмақталған</td><td>Жоқ</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Жеке респонденттердің клиникалық тарихы немесе қателердің жеке клиникалық талдауы жүргізілмеді.</p>
+<table><thead><tr><th>Түрі</th><th>n</th><th>Орташа ықтималдық</th></tr></thead><tbody>
+<tr><td>Жалған оң нәтиже</td><td>8 192</td><td>0.299519</td></tr>
+<tr><td>Жалған теріс нәтиже</td><td>3 578</td><td>0.101568</td></tr>
+</tbody></table>
+<p class="note">1-жол ескертпесі: Жиынтық қате талдауы; жеке респондент жазбалары көрсетілмейді</p>
+<p class="note">2-жол ескертпесі: Жиынтық қате талдауы; жеке респондент жазбалары көрсетілмейді</p>
+<div class="pagebreak"></div>
+<h2 class="heading">20-кесте. Тіркелген бағдарламалық тексерулер</h2>
+<p class="meta">Дереккөз: reports/verification.json; reports/tests.xml; tests/test_project.py</p>
+<p class="meta">Сақталған жолдар: 12. Кесте идентификаторы: verification.</p>
+<h3 class="sub">Бағалау / құрастыру шарттары</h3>
+<table><thead><tr><th>Өріс</th><th>Сақталған мән</th></tr></thead><tbody>
+<tr><td>Автотест саны</td><td>14</td></tr>
+</tbody></table>
+<h3 class="sub">Міндетті ескертпелер</h3>
+<p class="note">Кесте бұрын тіркелген тексеру дәлелдерін көрсетеді. Ол жаңа іске қосу, клиникалық валидация, қауіпсіздік аудиті немесе жүктеме сынағы емес.</p>
+<p class="note">Docker конфигурациясы дайындалған, бірақ Docker Engine болмағандықтан контейнер нақты іске қосылмаған.</p>
+<table><thead><tr><th>Тексеру</th><th>Сақталған жазба</th></tr></thead><tbody>
+<tr><td>automated_tests</td><td>Тесттер: 14<br/>Сәтсіздіктер: 0<br/>Қателер: 0<br/>Өткізілген: 0</td></tr>
+<tr><td>frontend_build</td><td>TypeScript тексеруі және Vite жинақтауы сәтті өтті</td></tr>
+<tr><td>local_server</td><td>127.0.0.1:8000 мекенжайында браузер арқылы тексерілді</td></tr>
+<tr><td>docker</td><td>Іске қосылмады: Docker Engine қолжетімсіз</td></tr>
+<tr><td>data_sources</td><td>SHA-256 бақылау сомалары сақталған</td></tr>
+<tr><td>independent_test_selection</td><td>Иә</td></tr>
+<tr><td>documents_language</td><td>Қазақша</td></tr>
+<tr><td>interface_language</td><td>Орысша</td></tr>
+<tr><td>shap_implementation</td><td>Интервенциялық Шепли үлестерінің өзіндік бағалауы: 48 рет және 30 фондық жол</td></tr>
+<tr><td>known_limits</td><td>Сыртқы клиникалық тексеру жоқ; Қазақстан деректерінде тексеру жоқ; Bootstrap күрделі сауалнама дизайнын толық есепке алмайды; Параметр іздеу бюджеті шектеулі; MLP нәтижесі тұрақсыз; Университеттің титул парағы мен рәсімдеу талаптарын бөлек тексеру қажет</td></tr>
+<tr><td>browser_checks</td><td>BRFSS демомысалының болжамы мен түсіндірмесі тексерілді; UCI демомысалының болжамы мен түсіндірмесі тексерілді; CSV жүктеу және нәтижені алу тексерілді; Браузерден PDF алу тексерілді; 1440 пиксельдік және тар экрандағы орналасу қаралды; Қарау кезінде браузер консолінде қате байқалмады</td></tr>
+<tr><td>pdf_visual_review</td><td>Бұрынғы 25 беттік мәтін, 8 беттік қорғау материалы және бір беттік мысал бейнеленіп қаралды; кирилл және қазақ әріптері тексерілді. Бұл жаңа финалдық дипломның тексеруі емес.</td></tr>
+</tbody></table></main><script>function saveCopy(){const b=new Blob(['<!doctype html>'+document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='ENU_Experimental_materials_KZ_edited.html';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}</script></body></html>

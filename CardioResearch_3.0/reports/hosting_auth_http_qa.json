@@ -1,0 +1,107 @@
+{
+  "url": "https://cardioresearch-aidana-2027.happyburr1.chatgpt.site",
+  "checked_at": "2026-11-08T09:39:17.972Z",
+  "checks": [
+    {
+      "name": "anonymous session is JSON",
+      "passed": true
+    },
+    {
+      "name": "anonymous visitor is a demo guest",
+      "passed": true
+    },
+    {
+      "name": "guest denied /api/predict",
+      "passed": true
+    },
+    {
+      "name": "guest denied /api/report",
+      "passed": true
+    },
+    {
+      "name": "guest denied /api/batch/brfss",
+      "passed": true
+    },
+    {
+      "name": "guest denied /api/batch/validate/brfss",
+      "passed": true
+    },
+    {
+      "name": "guest denied /api/scenarios",
+      "passed": true
+    },
+    {
+      "name": "fixed real-model demonstration",
+      "passed": true
+    },
+    {
+      "name": "brfss public scenario demo",
+      "passed": true
+    },
+    {
+      "name": "brfss baseline scenario delta is zero",
+      "passed": true
+    },
+    {
+      "name": "brfss reproducibility metadata",
+      "passed": true
+    },
+    {
+      "name": "uci public scenario demo",
+      "passed": true
+    },
+    {
+      "name": "uci baseline scenario delta is zero",
+      "passed": true
+    },
+    {
+      "name": "uci reproducibility metadata",
+      "passed": true
+    },
+    {
+      "name": "owner login succeeds",
+      "passed": true
+    },
+    {
+      "name": "secure session cookie",
+      "passed": true
+    },
+    {
+      "name": "owner session is full",
+      "passed": true
+    },
+    {
+      "name": "custom owner prediction",
+      "passed": true
+    },
+    {
+      "name": "loaded model version",
+      "passed": true
+    },
+    {
+      "name": "owner custom scenarios",
+      "passed": true
+    },
+    {
+      "name": "scenarios preserve original pipeline probability",
+      "passed": true
+    },
+    {
+      "name": "scenario point budget enforced",
+      "passed": true
+    },
+    {
+      "name": "owner PDF export",
+      "passed": true
+    },
+    {
+      "name": "owner CSV export",
+      "passed": true
+    },
+    {
+      "name": "logout clears cookie",
+      "passed": true
+    }
+  ],
+  "passed": true
+}
