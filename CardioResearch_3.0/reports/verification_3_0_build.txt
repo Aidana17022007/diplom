@@ -1,0 +1,16 @@
+
+> cardioresearch-hosted@3.0.0 build
+> node scripts/build.mjs
+
+vite v6.4.5 building for production...
+transforming...
+✓ 1624 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                   0.66 kB │ gzip:   0.46 kB
+dist/assets/index-DFWX3xWM.css                  132.98 kB │ gzip:  26.45 kB
+dist/assets/ArteryScene-D21hM3Ss.js             509.35 kB │ gzip: 129.02 kB
+dist/assets/index-D2eczSTi.js                   614.82 kB │ gzip: 182.10 kB
+dist/assets/plotly-cartesian.min-DrygJVeh.js  1,427.09 kB │ gzip: 475.83 kB
+✓ built in 11.99s
+Built Worker: 7110387 bytes; 5 public frontend files. Models and backgrounds remain server-side.

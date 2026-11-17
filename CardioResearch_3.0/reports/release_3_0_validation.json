@@ -1,0 +1,48 @@
+{
+  "release": "3.0.0",
+  "checked_date": "2026-11-17",
+  "source_commit": "b78d6f8415f128a740e3ac191d42ef4a6dd37971",
+  "python": {
+    "version": "3.12.15",
+    "passed": 62,
+    "failed": 0,
+    "warnings": 1,
+    "warning": "anyio BlockingPortal deprecation in Starlette; no failed tests"
+  },
+  "worker": {
+    "passed": 70,
+    "failed": 0
+  },
+  "build": {
+    "passed": true,
+    "worker_bytes": 7110387
+  },
+  "browser": {
+    "local_url": "http://127.0.0.1:8003",
+    "dashboard": true,
+    "kazakh": true,
+    "learning_curves": true,
+    "temporal_report": true,
+    "narrow_viewport": true
+  },
+  "design": {
+    "source_styles_changed": false,
+    "source_components_changed": false
+  },
+  "docker": {
+    "python": "3.12",
+    "dependencies": "requirements-tested.txt",
+    "runtime_verified": false,
+    "reason": "Docker Engine not running"
+  },
+  "hosting": {
+    "production_updated": false,
+    "last_observed_version": "2.7.0",
+    "reason": "Existing public Site can be read but connected account has no source write credential: Sites project not found. Existing site is absent from editable site list.",
+    "project_id": "appgprj_6aef562fe80881918d472f0b94e8ba2d"
+  },
+  "data": {
+    "models_retrained": false,
+    "frozen_results_changed": false
+  }
+}

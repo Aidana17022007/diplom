@@ -1,0 +1,430 @@
+TAP version 13
+# Subtest: comparison panes cover both edges with equal scale, a small gutter and no overlap
+ok 1 - comparison panes cover both edges with equal scale, a small gutter and no overlap
+  ---
+  duration_ms: 3.5314
+  type: 'test'
+  ...
+# Subtest: single mode and collapsed canvases have one bounded altered view
+ok 2 - single mode and collapsed canvases have one bounded altered view
+  ---
+  duration_ms: 2.0891
+  type: 'test'
+  ...
+# Subtest: PNG uses both fresh source crops at identical scale on desktop and high-DPI mobile
+ok 3 - PNG uses both fresh source crops at identical scale on desktop and high-DPI mobile
+  ---
+  duration_ms: 4.1519
+  type: 'test'
+  ...
+# Subtest: PNG distinguishes reference area from local altered area in both interface languages
+ok 4 - PNG distinguishes reference area from local altered area in both interface languages
+  ---
+  duration_ms: 3.7317
+  type: 'test'
+  ...
+# Subtest: single-view export uses the entire current frame and never labels a second vessel
+ok 5 - single-view export uses the entire current frame and never labels a second vessel
+  ---
+  duration_ms: 1.6671
+  type: 'test'
+  ...
+# Subtest: diameter narrowing is distinct from area loss
+ok 6 - diameter narrowing is distinct from area loss
+  ---
+  duration_ms: 2.7169
+  type: 'test'
+  ...
+# Subtest: the central radius matches the displayed diameter; ends remain open
+ok 7 - the central radius matches the displayed diameter; ends remain open
+  ---
+  duration_ms: 2.0243
+  type: 'test'
+  ...
+# Subtest: invalid and out-of-range geometry inputs cannot collapse the lumen
+ok 8 - invalid and out-of-range geometry inputs cannot collapse the lumen
+  ---
+  duration_ms: 0.4645
+  type: 'test'
+  ...
+# Subtest: movable section reports local diameter and area rather than maximum narrowing
+ok 9 - movable section reports local diameter and area rather than maximum narrowing
+  ---
+  duration_ms: 2.0106
+  type: 'test'
+  ...
+# Subtest: normal geometry and bounded section positions are stable at every location
+ok 10 - normal geometry and bounded section positions are stable at every location
+  ---
+  duration_ms: 1.9846
+  type: 'test'
+  ...
+# Subtest: guest status, valid owner login, secure cookie, session and logout
+ok 11 - guest status, valid owner login, secure cookie, session and logout
+  ---
+  duration_ms: 277.0916
+  type: 'test'
+  ...
+# Subtest: password and username failures are generic; values are never reflected
+ok 12 - password and username failures are generic; values are never reflected
+  ---
+  duration_ms: 286.2909
+  type: 'test'
+  ...
+# Subtest: expired, future, foreign-audience, wrong-version and tampered sessions fail
+ok 13 - expired, future, foreign-audience, wrong-version and tampered sessions fail
+  ---
+  duration_ms: 164.8135
+  type: 'test'
+  ...
+# Subtest: malformed/duplicate/oversized cookies and arbitrary signatures fail closed
+ok 14 - malformed/duplicate/oversized cookies and arbitrary signatures fail closed
+  ---
+  duration_ms: 143.6642
+  type: 'test'
+  ...
+# Subtest: missing or malformed environment returns503 and never authenticates
+ok 15 - missing or malformed environment returns503 and never authenticates
+  ---
+  duration_ms: 12.6986
+  type: 'test'
+  ...
+# Subtest: credential and signing-secret rotation invalidate existing sessions
+ok 16 - credential and signing-secret rotation invalidate existing sessions
+  ---
+  duration_ms: 163.9085
+  type: 'test'
+  ...
+# Subtest: best-effort rate limit isolates CF-IP, expires and bounds retained entries
+ok 17 - best-effort rate limit isolates CF-IP, expires and bounds retained entries
+  ---
+  duration_ms: 1937.7242
+  type: 'test'
+  ...
+# Subtest: concurrent charts share one import and can retry a rejected import
+ok 18 - concurrent charts share one import and can retry a rejected import
+  ---
+  duration_ms: 3.5953
+  type: 'test'
+  ...
+# Subtest: PNG filenames preserve readable Cyrillic context and remove path syntax
+ok 19 - PNG filenames preserve readable Cyrillic context and remove path syntax
+  ---
+  duration_ms: 9.0646
+  type: 'test'
+  ...
+# Subtest: every actual chart trace remains supported by the pinned cartesian distribution
+ok 20 - every actual chart trace remains supported by the pinned cartesian distribution
+  ---
+  duration_ms: 682.5985
+  type: 'test'
+  ...
+# Subtest: saved views are isolated by dataset, protocol and exact metric snapshot
+ok 21 - saved views are isolated by dataset, protocol and exact metric snapshot
+  ---
+  duration_ms: 3.3449
+  type: 'test'
+  ...
+# Subtest: malformed or stale saved controls cannot choose missing or more than two models
+ok 22 - malformed or stale saved controls cannot choose missing or more than two models
+  ---
+  duration_ms: 2.6539
+  type: 'test'
+  ...
+# Subtest: CSV round-trips context, full precision, undefined metrics, fold SD and signed differences
+ok 23 - CSV round-trips context, full precision, undefined metrics, fold SD and signed differences
+  ---
+  duration_ms: 209.5449
+  type: 'test'
+  ...
+# Subtest: SVG is parseable, escapes labels and retains experiment sample and threshold context
+ok 24 - SVG is parseable, escapes labels and retains experiment sample and threshold context
+  ---
+  duration_ms: 264.7565
+  type: 'test'
+  ...
+# Subtest: dashboard uses the actual BRFSS test and averaged UCI OOF counts without mixing protocols
+ok 25 - dashboard uses the actual BRFSS test and averaged UCI OOF counts without mixing protocols
+  ---
+  duration_ms: 5.1718
+  type: 'test'
+  ...
+# Subtest: dashboard refuses stale datasets and inconsistent aggregate totals
+ok 26 - dashboard refuses stale datasets and inconsistent aggregate totals
+  ---
+  duration_ms: 2.0143
+  type: 'test'
+  ...
+# Subtest: empty classes and unavailable metrics stay undefined, not fabricated zero scores
+ok 27 - empty classes and unavailable metrics stay undefined, not fabricated zero scores
+  ---
+  duration_ms: 0.6831
+  type: 'test'
+  ...
+# Subtest: calibration only plots observed finite bins and preserves their original coordinates
+ok 28 - calibration only plots observed finite bins and preserves their original coordinates
+  ---
+  duration_ms: 0.8244
+  type: 'test'
+  ...
+# Subtest: public diagnostics use fixed predictions and export exact metrics with their context
+ok 29 - public diagnostics use fixed predictions and export exact metrics with their context
+  ---
+  duration_ms: 86.9133
+  type: 'test'
+  ...
+# Subtest: transfer exposes aggregates for three unused centers and no record-level inputs
+ok 30 - transfer exposes aggregates for three unused centers and no record-level inputs
+  ---
+  duration_ms: 4.5497
+  type: 'test'
+  ...
+# Subtest: benchmark CSV preserves UCI fold variability and health reports the actual release
+ok 31 - benchmark CSV preserves UCI fold variability and health reports the actual release
+  ---
+  duration_ms: 5.4932
+  type: 'test'
+  ...
+# Subtest: public experiments expose aggregate evidence, preserve denominators and never enable hosted training
+ok 32 - public experiments expose aggregate evidence, preserve denominators and never enable hosted training
+  ---
+  duration_ms: 100.7486
+  type: 'test'
+  ...
+# Subtest: hosted training rejects both same-origin and cross-origin mutations
+ok 33 - hosted training rejects both same-origin and cross-origin mutations
+  ---
+  duration_ms: 5.9046
+  type: 'test'
+  ...
+# Subtest: late poll and report responses cannot undo cancellation or terminal job status
+ok 34 - late poll and report responses cannot undo cancellation or terminal job status
+  ---
+  duration_ms: 4.4691
+  type: 'test'
+  ...
+# Subtest: completed result survives summary-only refresh, while a different active job is adopted
+ok 35 - completed result survives summary-only refresh, while a different active job is adopted
+  ---
+  duration_ms: 0.4636
+  type: 'test'
+  ...
+# Subtest: returning to the runner after completion restores the latest job and its exact saved result
+ok 36 - returning to the runner after completion restores the latest job and its exact saved result
+  ---
+  duration_ms: 0.8839
+  type: 'test'
+  ...
+# Subtest: restoring an unsuccessful recent job never borrows another run result
+ok 37 - restoring an unsuccessful recent job never borrows another run result
+  ---
+  duration_ms: 0.4646
+  type: 'test'
+  ...
+# Subtest: supplementary review is merged without mutating frozen reports or archive counts
+ok 38 - supplementary review is merged without mutating frozen reports or archive counts
+  ---
+  duration_ms: 14.7745
+  type: 'test'
+  ...
+# Subtest: DOI normalization deduplicates repeated additions and duplicates across categories
+ok 39 - DOI normalization deduplicates repeated additions and duplicates across categories
+  ---
+  duration_ms: 6.7797
+  type: 'test'
+  ...
+# Subtest: optional archive and absent paper lists do not prevent a supplementary reference
+ok 40 - optional archive and absent paper lists do not prevent a supplementary reference
+  ---
+  duration_ms: 2.0029
+  type: 'test'
+  ...
+# Subtest: source record distinguishes abstract verification and background-review scope
+ok 41 - source record distinguishes abstract verification and background-review scope
+  ---
+  duration_ms: 0.7572
+  type: 'test'
+  ...
+# Subtest: Python and Worker literature merges return identical aggregate catalogs
+ok 42 - Python and Worker literature merges return identical aggregate catalogs
+  ---
+  duration_ms: 759.1262
+  type: 'test'
+  ...
+# Subtest: sorting keeps unavailable scores last in both directions and leaves rows unchanged
+ok 43 - sorting keeps unavailable scores last in both directions and leaves rows unchanged
+  ---
+  duration_ms: 3.9471
+  type: 'test'
+  ...
+# Subtest: comparison uses signed absolute differences and preserves undefined scores
+ok 44 - comparison uses signed absolute differences and preserves undefined scores
+  ---
+  duration_ms: 1.66
+  type: 'test'
+  ...
+# Subtest: scenario points use the actual model and preserve baseline/input/model data
+ok 45 - scenario points use the actual model and preserve baseline/input/model data
+  ---
+  duration_ms: 29.1153
+  type: 'test'
+  ...
+# Subtest: both public scenario demos are fixed synthetic profiles without custom arguments
+ok 46 - both public scenario demos are fixed synthetic profiles without custom arguments
+  ---
+  duration_ms: 26.9817
+  type: 'test'
+  ...
+# Subtest: scenario owner gate precedes body reading; authorized requests enforce32KiB
+ok 47 - scenario owner gate precedes body reading; authorized requests enforce32KiB
+  ---
+  duration_ms: 21.8396
+  type: 'test'
+  ...
+# Subtest: scenario keys, point counts/types/uniqueness and clinical schema are strict
+ok 48 - scenario keys, point counts/types/uniqueness and clinical schema are strict
+  ---
+  duration_ms: 36.283
+  type: 'test'
+  ...
+# Subtest: reproducibility download contains only aggregate protocol and public schema
+ok 49 - reproducibility download contains only aggregate protocol and public schema
+  ---
+  duration_ms: 15.2853
+  type: 'test'
+  ...
+# Subtest: cross-year baseline reproduces the frozen held-out evaluation and mask keeps the same cohort
+ok 50 - cross-year baseline reproduces the frozen held-out evaluation and mask keeps the same cohort
+  ---
+  duration_ms: 6.2559
+  type: 'test'
+  ...
+# Subtest: each temporal cohort has internally consistent class, confusion, calibration and missingness counts
+ok 51 - each temporal cohort has internally consistent class, confusion, calibration and missingness counts
+  ---
+  duration_ms: 1.1313
+  type: 'test'
+  ...
+# Subtest: transfer preserves the frozen model protocol and explicitly declares absent source predictors
+ok 52 - transfer preserves the frozen model protocol and explicitly declares absent source predictors
+  ---
+  duration_ms: 1.1817
+  type: 'test'
+  ...
+# Subtest: the initial and reset reference is the exact saved validation result, not its nearest grid point
+ok 53 - the initial and reset reference is the exact saved validation result, not its nearest grid point
+  ---
+  duration_ms: 15.0128
+  type: 'test'
+  ...
+# Subtest: all saved grid points are comparable and preserve class totals, monotonic counts and metric formulas
+ok 54 - all saved grid points are comparable and preserve class totals, monotonic counts and metric formulas
+  ---
+  duration_ms: 2.4482
+  type: 'test'
+  ...
+# Subtest: counts per 1000 preserve proportions and do not change metrics or treat validation as new patients
+ok 55 - counts per 1000 preserve proportions and do not change metrics or treat validation as new patients
+  ---
+  duration_ms: 1.1784
+  type: 'test'
+  ...
+# Subtest: small nonzero deltas keep their sign instead of displaying misleading signed zero
+ok 56 - small nonzero deltas keep their sign instead of displaying misleading signed zero
+  ---
+  duration_ms: 182.5642
+  type: 'test'
+  ...
+# Subtest: undefined ratios stay null and invalid matrices cannot create misleading statistics
+ok 57 - undefined ratios stay null and invalid matrices cannot create misleading statistics
+  ---
+  duration_ms: 2.0726
+  type: 'test'
+  ...
+# Subtest: duplicate thresholds are replaced with the exact working point and mismatched validation rows are excluded
+ok 58 - duplicate thresholds are replaced with the exact working point and mismatched validation rows are excluded
+  ---
+  duration_ms: 8.1466
+  type: 'test'
+  ...
+# Subtest: CSV preserves exact thresholds, validation context, raw and scaled counts, and scenario deltas
+ok 59 - CSV preserves exact thresholds, validation context, raw and scaled counts, and scenario deltas
+  ---
+  duration_ms: 3.18
+  type: 'test'
+  ...
+# Subtest: transfer metrics handle tied scores, ranking, confusion and absent classes
+ok 60 - transfer metrics handle tied scores, ranking, confusion and absent classes
+  ---
+  duration_ms: 6.1812
+  type: 'test'
+  ...
+# Subtest: source parser preserves zero, missing fields, feature order and binary severity mapping
+ok 61 - source parser preserves zero, missing fields, feature order and binary severity mapping
+  ---
+  duration_ms: 1.3813
+  type: 'test'
+  ...
+# Subtest: published transfer report is aggregate-only and bound to the frozen artifact
+ok 62 - published transfer report is aggregate-only and bound to the frozen artifact
+  ---
+  duration_ms: 13.5544
+  type: 'test'
+  ...
+# Subtest: frontend and aggregate routes are available while private artifacts are inaccessible
+ok 63 - frontend and aggregate routes are available while private artifacts are inaccessible
+  ---
+  duration_ms: 28.6311
+  type: 'test'
+  ...
+# Subtest: guests receive fixed demo predictions and cannot invoke protected actions
+ok 64 - guests receive fixed demo predictions and cannot invoke protected actions
+  ---
+  duration_ms: 238.238
+  type: 'test'
+  ...
+# Subtest: BRFSS deployed artifact reproduces Python result including explanations
+ok 65 - BRFSS deployed artifact reproduces Python result including explanations
+  ---
+  duration_ms: 28.3166
+  type: 'test'
+  ...
+# Subtest: strict JSON types, category range, minimum fields and size limit
+ok 66 - strict JSON types, category range, minimum fields and size limit
+  ---
+  duration_ms: 15.3848
+  type: 'test'
+  ...
+# Subtest: CSV validation identifies line3, blocks errors and exports the real model version
+ok 67 - CSV validation identifies line3, blocks errors and exports the real model version
+  ---
+  duration_ms: 23.1816
+  type: 'test'
+  ...
+# Subtest: CSV parser supports quoted commas, escaped quotes and physical line numbers
+ok 68 - CSV parser supports quoted commas, escaped quotes and physical line numbers
+  ---
+  duration_ms: 1.8043
+  type: 'test'
+  ...
+# Subtest: metrics export retains comparable sample sizes and weighting
+ok 69 - metrics export retains comparable sample sizes and weighting
+  ---
+  duration_ms: 2.3881
+  type: 'test'
+  ...
+# Subtest: hosted PDF embeds a Cyrillic-capable font and returns a valid document
+ok 70 - hosted PDF embeds a Cyrillic-capable font and returns a valid document
+  ---
+  duration_ms: 553.7624
+  type: 'test'
+  ...
+1..70
+# tests 70
+# suites 0
+# pass 70
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3851.5075

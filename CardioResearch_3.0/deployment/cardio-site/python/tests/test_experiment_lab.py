@@ -169,7 +169,14 @@ def test_cancellation_and_single_active_job(data_root):
 
 def test_routes_require_loopback_and_same_origin_before_any_execution(data_root):
     app = FastAPI(); lab.register_experiment_lab_routes(app, data_root)
-    local = TestClient(app, base_url='http://127.0.0.1:8000', client=('127.0.0.1', 1234))
+    def client_at(base_url, peer):
+        # Starlette 0.41 (pinned by FastAPI) has no TestClient(client=).
+        # Set the public ASGI connection scope, preserving real route guards.
+        async def connection_scope(scope, receive, send):
+            await app({**scope, 'client': (peer, 1234)}, receive, send)
+        return TestClient(connection_scope, base_url=base_url)
+
+    local = client_at('http://127.0.0.1:8000', '127.0.0.1')
     report = local.get('/api/experiment-lab')
     assert report.status_code == 200 and report.json()['runner']['available']
     assert report.headers['cache-control'] == 'no-store'
@@ -178,10 +185,10 @@ def test_routes_require_loopback_and_same_origin_before_any_execution(data_root)
     valid = {'origin': 'http://127.0.0.1:8000'}
     assert local.post('/api/experiment-lab/runs', json={'seed': True}, headers=valid).status_code == 422
     assert local.post('/api/experiment-lab/runs', json={'x': 'a' * 3000}, headers=valid).status_code == 413
-    remote = TestClient(app, base_url='http://127.0.0.1:8000', client=('192.0.2.1', 1234))
+    remote = client_at('http://127.0.0.1:8000', '192.0.2.1')
     assert not remote.get('/api/experiment-lab').json()['runner']['available']
     assert remote.post('/api/experiment-lab/runs', json={}, headers=valid).status_code == 403
-    evil_host = TestClient(app, base_url='http://evil.example', client=('127.0.0.1', 1234))
+    evil_host = client_at('http://evil.example', '127.0.0.1')
     assert evil_host.post('/api/experiment-lab/runs', json={}, headers={'origin': 'http://evil.example'}).status_code == 403
     assert local.get('/api/experiment-lab/runs/unknown').status_code == 404
 
