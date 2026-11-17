@@ -12,7 +12,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict
 from .config import ROOT,REPORTS,MODELS,SCHEMAS,DISCLAIMER
 
-app=FastAPI(title='CardioResearch',version='3.1.0',description=DISCLAIMER)
+app=FastAPI(title='CardioResearch',version='3.2.0',description=DISCLAIMER)
 BATCH_MAX_BYTES=1024*1024
 BATCH_MAX_ROWS=1000
 BATCH_MAX_ERRORS=50
@@ -90,6 +90,12 @@ def predict_payload(req):
 
 @app.get('/api/health')
 def health():return {'status':'ok','models':{ds:(MODELS/f'{ds}.joblib').exists() for ds in SCHEMAS},'runtime':'python-local','version':app.version}
+
+@app.get('/api/metrics-insights')
+def metrics_insights():return read_report('metrics-insights.json')
+
+@app.get('/api/development-study')
+def development_study():return read_report('development-study.json')
 
 @app.get('/api/scientific-audit')
 def scientific_audit():return read_report('scientific-audit.json')

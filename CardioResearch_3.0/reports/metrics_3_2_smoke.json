@@ -1,0 +1,15 @@
+{
+  "checked": true,
+  "release": "3.2.0",
+  "health": true,
+  "html": true,
+  "frontend_assets": [
+    "/assets/index-BuDPBHz7.js",
+    "/assets/index-L1-TyYOv.css"
+  ],
+  "aggregate_endpoints": [
+    "metrics-insights",
+    "development-study"
+  ],
+  "loopback_port": 54752
+}

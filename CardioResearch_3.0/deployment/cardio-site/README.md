@@ -1,5 +1,11 @@
 # CardioResearch hosted application
 
+## Application 3.2
+
+The comparison explorer now provides 13 metrics, a bilingual glossary, direction-aware deltas and CSV/SVG exports. UCI derived metrics are averaged from individual outer folds; undefined ratios remain unavailable. `/api/metrics-insights` serves saved cumulative gains/lift, missingness strata and frozen validation/test selection context. `/api/development-study` serves a new four-model, three-fold study on 36,000 rows of the original BRFSS fit pool only.
+
+The highest study AP is 0.317151 versus LR 0.316295 (+0.086 percentage points), with a positive difference in only one of three folds. This does not establish an improvement. Production models and thresholds are unchanged. These public endpoints expose aggregates; exact observations remain excluded. Both UI builds and 85 Worker / 117 Python tests passed; browser QA of these new panels was unavailable. Existing Sites publication access remains unavailable.
+
 ## Application 3.1
 
 The experiments hub now exposes saved SHAP, prevalence, calibration and missingness diagnostics through aggregate-only `/api/scientific-audit`. The overview adds saved Wilson intervals and calibration-bin tables. The artery atlas supports a resilient 2D fallback, PNG export and explicit return to 3D. The frozen predictors and thresholds are unchanged. Full local Python mode and this hosted UI share matching source files. Publication to the existing Sites account remains unavailable; the built bundle is ready locally.

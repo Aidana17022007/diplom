@@ -2,6 +2,7 @@ import {useEffect, useState, KeyboardEvent} from 'react';
 import {ArrowDownToLine, ArrowUpRight, BarChart3, Building2, CheckCircle2, CircleHelp, RotateCcw, ShieldCheck, Target} from 'lucide-react';
 import {api, Card, Chart, count, Empty, Lang, Loading, Note, T} from './ui';
 import './evaluation.css';
+import MetricsInsights from './MetricsInsights';
 
 type Metric = number | null | undefined;
 type Interval = [number, number] | null;
@@ -35,7 +36,7 @@ export default function EvaluationLab({ds,lang}:{ds:string;lang:Lang}) {
   if(error)return <Card><Empty title={t('Диагностика не загрузилась','Диагностика жүктелмеді')} body={error}><button className="secondary" onClick={()=>setReload(x=>x+1)}><RotateCcw size={16}/>{t('Повторить','Қайталау')}</button></Empty></Card>;
   if(!record || record.dataset!==ds)return <Loading text={t('Проверяем сохранённые оценки…','Сақталған бағаларды тексеру…')}/>;
   const r=record,m=r.metrics;
-  const tabs=[['quality',t('Качество и ошибки','Сапа және қателер'),ShieldCheck],['calibration',t('Калибровка','Калибрлеу'),BarChart3],...(ds==='uci'?[['transfer',t('Другие центры','Басқа орталықтар'),Building2]]:[])] as const;
+  const tabs=[['quality',t('Качество и ошибки','Сапа және қателер'),ShieldCheck],['insights',t('Глубокий анализ','Терең талдау'),BarChart3],['calibration',t('Калибровка','Калибрлеу'),BarChart3],...(ds==='uci'?[['transfer',t('Другие центры','Басқа орталықтар'),Building2]]:[])] as const;
   const changeTab=(event:KeyboardEvent<HTMLDivElement>)=>{
     const ids=tabs.map(item=>item[0]); const current=ids.indexOf(tab);
     const next=event.key==='ArrowRight'?(current+1)%ids.length:event.key==='ArrowLeft'?(current+ids.length-1)%ids.length:event.key==='Home'?0:event.key==='End'?ids.length-1:-1;
@@ -93,6 +94,7 @@ export default function EvaluationLab({ds,lang}:{ds:string;lang:Lang}) {
         <Card title={t('Наблюдения за каждой точкой','Әр нүктенің артындағы бақылаулар')} subtitle={t('Левая граница включена; правая исключена, кроме 1,0','Сол шекара кіреді; оң шекара 1,0-ден басқа кірмейді')}><div className="table-scroll" tabIndex={0} aria-label={t('Таблица калибровки','Калибрлеу кестесі')}><table><thead><tr><th>{t('Вероятность','Ықтималдық')}</th><th>n</th><th>{t('Средняя вероятность','Орташа ықтималдық')}</th><th>{t('Доля положительных','Оң үлес')}</th><th>{t('95% интервал доли','Үлестің 95% аралығы')}</th></tr></thead><tbody>{r.calibration.map((b,i)=><tr key={b.lower}><td>[ {value(b.lower,1)} – {value(b.upper,1)}{i===9?' ]':' )'}</td><td>{count(b.n)}</td><td>{value(b.mean_probability,4)}</td><td>{percent(b.observed_rate,2)}</td><td>{ciText(b.ci)}</td></tr>)}</tbody></table></div><p className="evaluation-small">{t(`Brier постоянного прогноза, равного доле класса в этой выборке: ${value(r.baselines.brier,4)}. Brier skill = 1 − Brier модели / Brier ориентира. Ориентир рассчитан на той же выборке и не является отдельно обученной моделью.`,`Осы іріктемедегі сынып үлесіне тең тұрақты болжамның Brier көрсеткіші: ${value(r.baselines.brier,4)}. Brier skill = 1 − модель Brier / бағдар Brier. Бағдар сол іріктемеде есептелген және бөлек оқытылған модель емес.`)}</p></Card>
         <Note>{t('ECE и калибровочная диаграмма — описательная проверка сохранённых прогнозов. Новый калибратор по этим результатам не обучался.','ECE және калибрлеу диаграммасы сақталған болжамдарды сипаттамалық тексереді. Осы нәтижелерде жаңа калибратор оқытылған жоқ.')} {' '}{ds==='brfss'?t('Интервалы условны: невзвешенная оценка не учитывает страты и кластеры BRFSS, неопределённость выбора и обучения модели.','Аралықтар шартты: салмақсыз бағалау BRFSS страталары мен кластерлерін, модельді таңдау және оқыту белгісіздігін ескермейді.'):t('OOF-модели обучались на пересекающихся данных. Условные интервалы не учитывают эту зависимость, выбор и обучение модели; эти оценки не являются независимой валидацией итоговой модели.','OOF модельдері қиылысатын деректерде оқытылды. Шартты аралықтар осы тәуелділікті, модельді таңдау мен оқытуды ескермейді; бұл бағалар соңғы модельдің тәуелсіз валидациясы емес.')}</Note>
       </>}
+      {tab==='insights'&&<MetricsInsights ds={ds} lang={lang}/>}
       {tab==='transfer'&&ds==='uci'&&<TransferPanel lang={lang}/>}
     </div>
     <div className="evaluation-methods"><CircleHelp size={16}/><p>{t('Метрики описывают исследовательскую выборку, а не точность диагноза для конкретного человека.','Метрикалар жеке адамның диагноз дәлдігін емес, зерттеу іріктемесін сипаттайды.')} <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noreferrer noopener">{t('Определения метрик','Метрикалар анықтамалары')}<ArrowUpRight size={12}/></a></p></div>

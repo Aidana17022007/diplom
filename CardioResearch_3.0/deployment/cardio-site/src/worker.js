@@ -5,6 +5,8 @@ import transfer from '../data/transfer.json';
 import disagreement from '../data/disagreement.json';
 import experimentLab from '../data/experiment-lab.json';
 import temporal from '../data/temporal.json';
+import metricsInsights from '../data/metrics-insights.json';
+import developmentStudy from '../data/development-study.json';
 import scientificAudit from '../data/scientific-audit.json';
 import release from '../package.json';
 import literatureAdditions from '../data/literature-additions.json';
@@ -140,6 +142,8 @@ async function route(request,env){
       }
       if(pathname==='/api/disagreement/uci')return json(disagreement);
       if(pathname==='/api/temporal/brfss')return json(temporal);
+      if(pathname==='/api/metrics-insights')return json(metricsInsights);
+      if(pathname==='/api/development-study')return json(developmentStudy);
       if(pathname==='/api/scientific-audit')return json(scientificAudit);
       if(pathname==='/api/experiment-lab')return json({...experimentLab,runner:{available:false,available_datasets:[],algorithms:['logistic_regression','random_forest'],active_job:null,recent_jobs:[],reason:'Обучение доступно в локальной Python-версии проекта.'}});
       if(pathname==='/api/health')return json({status:'ok',models:{brfss:!!models.datasets.brfss,uci:!!models.datasets.uci},runtime:'cloudflare-worker',version:release.version});

@@ -18,12 +18,13 @@ def test_local_scenario_deltas_are_real_and_input_is_unchanged(dataset):
     payload=demo_request(dataset,'kk');before=copy.deepcopy(payload)
     response=client.post('/api/scenarios',json=payload);assert response.status_code==200,response.text
     result=response.json();baseline=predict_payload(PredictionRequest(dataset=dataset,values=payload['values'],explain=False))
-    assert result['baseline']['probability']==baseline['probability']
+    # Parallel tree reductions can differ by a few machine-precision bits.
+    assert result['baseline']['probability']==pytest.approx(baseline['probability'],rel=0,abs=1e-12)
     assert result['version']==baseline['version'] and result['synthetic'] is False
     for point in result['points']:
         expected=predict_payload(PredictionRequest(dataset=dataset,values={**payload['values'],payload['vary']['feature']:point['value']},explain=False))
-        assert point['probability']==expected['probability']
-        assert point['delta']==expected['probability']-baseline['probability']
+        assert point['probability']==pytest.approx(expected['probability'],rel=0,abs=1e-12)
+        assert point['delta']==pytest.approx(expected['probability']-baseline['probability'],rel=0,abs=1e-12)
         assert point['positive']==expected['positive']
     assert payload==before
     assert 'себептік' in result['note']
