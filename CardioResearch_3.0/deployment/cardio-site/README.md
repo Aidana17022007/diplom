@@ -1,5 +1,7 @@
 # CardioResearch hosted application
 
+3.3 follow-up: batch CSV status now says the file is ready for download, and a repeated request clears prior success. Both frontend builds and 99 Worker tests passed. Browser file delivery remains unverified due to the automation interruption. [Evidence](../../reports/audit_3_3_export_followup_20261117.json).
+
 ## Application 3.3
 
 The BRFSS research lab adds hypothetical FP/FN penalty scenarios on 36 saved validation points, with recall/positive-prediction constraints, explicit ties and infeasible outcomes, and a full CSV export. It never changes the production threshold or uses test data for selection. The global metric CSV now provides 13 metrics and 13 fold-SD columns, matching Python and frontend values.
@@ -10,7 +12,7 @@ The BRFSS research lab adds hypothetical FP/FN penalty scenarios on 36 saved val
 
 Local browser smoke checks covered all 16 main pages, the 390×844 mobile layout in RU/KK, navigation, cost constraints/filter/reset, all 13 metrics and pair comparison, empty UCI diagnostic groups, study folds, a synthetic UCI prediction of 16.2% with its explanation, and artery comparison at 75% narrowing, fullscreen and 2D. Downloads through the UI remain unconfirmed because the browser tool was interrupted; CSV/PDF exports passed API checks.
 
-Evidence: [release validation](../../reports/release_3_3_validation.json), [browser audit](../../reports/audit_3_3_browser_20261117.json), [Docker audit](../../reports/audit_3_3_docker_20261117.json) and [release passport](../../reports/release-checks.json). The application remains version 3.3.0; the new archive is `CardioResearch_3.3_verified_20261117.zip`. Saved models and scientific results are unchanged. The existing public Sites deployment has not been updated; publication access remains unavailable.
+Evidence: [release validation](../../reports/release_3_3_validation.json), [browser audit](../../reports/audit_3_3_browser_20261117.json), [Docker audit](../../reports/audit_3_3_docker_20261117.json) and [release passport](../../reports/release-checks.json). The application remains version 3.3.0; the new archive is `CardioResearch_3.3_export_20261117.zip`. Saved models and scientific results are unchanged. The existing public Sites deployment has not been updated; publication access remains unavailable.
 
 ## Application 3.2
 

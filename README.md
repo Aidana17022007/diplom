@@ -1,5 +1,7 @@
 # CardioResearch — приложение для дипломного исследования
 
+Дополнение к 3.3: исправлен статус пакетного экспорта на RU/KK — CSV отмечается как готовый к скачиванию, а прежний успех очищается при повторном запросе. Обе сборки и 99 Worker-тестов прошли. Фактическое сохранение через браузер остаётся неподтверждённым из-за сбоя инструмента; [отчёт проверки](CardioResearch_3.0/reports/audit_3_3_export_followup_20261117.json).
+
 Актуальный программный проект: [CardioResearch_3.0](CardioResearch_3.0/), версия приложения **3.3.0**. Имя папки сохранено для совместимости. Репозиторий: [Aidana17022007/diplom](https://github.com/Aidana17022007/diplom), ветка `main`.
 
 ## Что добавлено в 3.3
@@ -42,7 +44,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\run.ps1 -Port 8001 -Python
 
 ## Установка после скачивания
 
-Установите Python 3.12, распакуйте [проверенный архив приложения 3.3](CardioResearch_3.3_verified_20261117.zip) и выполните в извлечённой папке `CardioResearch`:
+Установите Python 3.12, распакуйте [проверенный архив приложения 3.3](CardioResearch_3.3_export_20261117.zip) и выполните в извлечённой папке `CardioResearch`:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1

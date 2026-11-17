@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "application_version": "3.3.0",
+  "checked_date": "2026-11-17",
+  "base_github_commit": "e3a5d7f8eeb4dddebdf2a34c098b158d2dc33fca",
+  "scope": "Follow-up export-status UX fix and download-delivery verification attempt. No model/data changes.",
+  "fixes": [
+    {
+      "file": "frontend/src/main.tsx",
+      "change": "Clear batchDone at the start of a repeated batch request so an earlier success is not retained after a new failure."
+    },
+    {
+      "file": "frontend/src/main.tsx",
+      "change": "RU/KK status says calculation finished and CSV is ready for download; it no longer claims the browser saved the file."
+    }
+  ],
+  "checks": {
+    "local_frontend": "TypeScript and Vite passed",
+    "hosted_frontend": "TypeScript and Vite passed",
+    "worker_build": "esbuild passed",
+    "worker_tests": {
+      "passed": 99,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "seconds": 4.0428389,
+      "report": "audit_3_3_export_worker.txt"
+    },
+    "python_runtime_preflight": "Saved model loading, backgrounds, schemas and synthetic predictions passed. Full Python suite was not repeated for the frontend-only edit; preceding 166-test result remains in its original audit.",
+    "ui_source_parity": true,
+    "frozen_artifacts_unchanged": true
+  },
+  "browser_download_delivery": {
+    "status": "not_verified",
+    "attempted": "Local dashboard evaluation CSV link through the browser UI with explicit 5-second download/path timeouts.",
+    "result": "Browser automation returned an expired-continuation error after hanging; no downloaded-file path was returned. This does not establish a defect in the application download route.",
+    "other_formats": "No new browser confirmation of PDF/PNG delivery. Their existing API and unit checks remain separately recorded."
+  },
+  "browser_cleanup": {
+    "temporary_server_stopped": true,
+    "viewport_override_used": false
+  },
+  "new_archive": "CardioResearch_3.3_export_20261117.zip",
+  "sites_updated": false
+}
