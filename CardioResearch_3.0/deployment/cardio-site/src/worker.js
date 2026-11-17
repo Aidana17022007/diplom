@@ -1,5 +1,6 @@
 import models from '../data/models.json';
 import reports from '../data/reports.json';
+import {metricsCSV as buildMetricsCSV} from './metrics-export.js';
 import evaluation from '../data/evaluation.json';
 import transfer from '../data/transfer.json';
 import disagreement from '../data/disagreement.json';
@@ -7,6 +8,7 @@ import experimentLab from '../data/experiment-lab.json';
 import temporal from '../data/temporal.json';
 import metricsInsights from '../data/metrics-insights.json';
 import developmentStudy from '../data/development-study.json';
+import releaseChecks from '../data/release-checks.json';
 import scientificAudit from '../data/scientific-audit.json';
 import release from '../package.json';
 import literatureAdditions from '../data/literature-additions.json';
@@ -79,16 +81,9 @@ function checkedBatch(ds,text){
 }
 function metricsCSV(ds,experiment){
   if(!['benchmark','full'].includes(experiment))fail(422,'Выберите benchmark или full');
-  const report=reports.research[ds],records=report[experiment];
-  if(!records?.length)fail(404,'Такой эксперимент для набора данных отсутствует');
-  const metricNames=['roc_auc','average_precision','accuracy','precision','recall','specificity','f1','brier'];
-  const rows=[['dataset','experiment','model','evaluation','training_n','test_n','threshold','weighting',...metricNames,...metricNames.map(m=>m+'_fold_sd'),'procedure_seconds','procedure_definition','predict_seconds']];
-  for(const row of records){
-    const evaluation=ds==='uci'?'Mean of 6 outer CV folds; fold SD is not a confidence interval':experiment==='full'?'Locked independent test':'Fixed common benchmark test subset';
-    const procedure=ds==='uci'?'Total outer CV procedure including search, prediction and scoring':experiment==='full'?'Full fit plus calibration and validation procedure':'Base CV plus randomized search and refit';
-    rows.push([ds,experiment,row.name,evaluation,row.training_n,row.test_n??report.protocol?.test,row.threshold??.5,'unweighted',...metricNames.map(m=>row.metrics?.[m]),...metricNames.map(m=>row.std?.[m]),row.search_seconds??row.fit_seconds,procedure,row.predict_seconds]);
-  }
-  return download(csvText(rows),'text/csv; charset=utf-8',`${ds}_${experiment}_metrics.csv`);
+  const report=reports.research[ds];
+  if(!report[experiment]?.length)fail(404,'Такой эксперимент для набора данных отсутствует');
+  return download(buildMetricsCSV(report,ds,experiment),'text/csv; charset=utf-8',`${ds}_${experiment}_metrics.csv`);
 }
 function evaluationPayload(ds){
   return {...evaluation.datasets[ds],schema_version:evaluation.schema_version,created:evaluation.created,sources:evaluation.sources,methods:evaluation.methods};
@@ -155,7 +150,9 @@ async function route(request,env){
       if(pathname==='/api/transfer/uci')return json(transfer);
       if(pathname==='/api/transfer-export/uci')return download(JSON.stringify(transfer,null,2),'application/json; charset=utf-8','uci_transfer.json');
       if(pathname==='/api/library')return json(withLiteratureAdditions(reports.library,literatureAdditions));
-      const fixed={'/api/environment':'environment','/api/reliability':'reliability','/api/experiments':'experiments','/api/quality':'quality'};
+      if(pathname==='/api/release-checks')return json(releaseChecks);
+      if(pathname==='/api/quality'){const py=releaseChecks.checks.python,counts=['passed','failed','errors','skipped'].map(key=>py[key]);return json({...reports.quality,release:releaseChecks,tests:{...py,tests:counts.every(Number.isInteger)?counts.reduce((a,b)=>a+b,0):null,source:releaseChecks.report_file,checked_release:releaseChecks.checked_release,version_match:releaseChecks.version_match,measured_now:false}})}
+      const fixed={'/api/environment':'environment','/api/reliability':'reliability','/api/experiments':'experiments'};
       if(fixed[pathname])return json(reports[fixed[pathname]]);
       let match=pathname.match(/^\/api\/(schema|research|data)\/([^/]+)$/);
       if(match)return json(reports[match[1]][dataset(match[2])]);

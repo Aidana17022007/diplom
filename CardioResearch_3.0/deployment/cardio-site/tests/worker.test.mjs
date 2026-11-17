@@ -71,7 +71,15 @@ test('CSV parser supports quoted commas, escaped quotes and physical line number
  assert.throws(()=>parseCSV('a\n"unfinished'));
 });
 test('metrics export retains comparable sample sizes and weighting',async()=>{
- const text=await(await call('/api/research-export/brfss?experiment=benchmark')).text();assert.equal(text.trim().split('\r\n').length,9);assert.ok(text.includes('12000,12000,0.5,unweighted'));
+ const text=await(await call('/api/research-export/brfss?experiment=benchmark')).text();
+ const parsed=parseCSV(text.replace(/^\uFEFF/,''));assert.equal(parsed.length,9);
+ const header=parsed[0].cells;
+ for(const row of parsed.slice(1)){
+  const data=Object.fromEntries(header.map((key,i)=>[key,row.cells[i]]));
+  assert.equal(data.training_n,'12000');assert.equal(data.test_n,'12000');
+  assert.equal(data.threshold,'0.5');assert.equal(data.weighting,'unweighted');
+  assert.equal(data.derived_metrics_method,'confusion_counts');
+ }
  assert.equal((await call('/api/research-export/uci?experiment=full')).status,404);
 });
 test('hosted PDF embeds a Cyrillic-capable font and returns a valid document',async()=>{

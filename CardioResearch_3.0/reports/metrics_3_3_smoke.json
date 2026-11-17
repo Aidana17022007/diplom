@@ -1,0 +1,19 @@
+{
+  "checked": true,
+  "release": "3.3.0",
+  "health": true,
+  "html": true,
+  "frontend_assets": [
+    "/assets/index-5F2weKTd.js",
+    "/assets/index-BQ7pgVka.css"
+  ],
+  "aggregate_endpoints": [
+    "release-checks",
+    "quality"
+  ],
+  "csv_exports": {
+    "brfss": 13,
+    "uci": 13
+  },
+  "loopback_port": 62049
+}

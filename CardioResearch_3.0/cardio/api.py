@@ -12,7 +12,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict
 from .config import ROOT,REPORTS,MODELS,SCHEMAS,DISCLAIMER
 
-app=FastAPI(title='CardioResearch',version='3.2.0',description=DISCLAIMER)
+app=FastAPI(title='CardioResearch',version='3.3.0',description=DISCLAIMER)
 BATCH_MAX_BYTES=1024*1024
 BATCH_MAX_ROWS=1000
 BATCH_MAX_ERRORS=50
@@ -143,6 +143,12 @@ def optional_report(name):
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else None
 
 
+@app.get('/api/release-checks')
+def release_checks():
+    from .release_checks import build_release_checks
+    return build_release_checks(REPORTS,app.version)
+
+
 @app.get('/api/quality')
 def quality():
     datasets={}
@@ -156,7 +162,11 @@ def quality():
                 'fraction':training.get('missing',{}).get(f['name'],0)/training['n'] if training.get('n') else None} for f in SCHEMAS[ds]]})
         datasets[ds]=row
     verification=optional_report('verification.json') or {}
-    tests={**verification.get('automated_tests',{}),'source':'saved verification report','measured_now':False}
+    release=release_checks(); py=release['checks']['python']
+    counts=[py.get(key) for key in ('passed','failed','errors','skipped')]
+    tests={**py,'tests':sum(counts) if all(isinstance(v,int) for v in counts) else None,
+        'source':release['report_file'],'checked_release':release['checked_release'],
+        'version_match':release['version_match'],'measured_now':False}
     limits=[
       {'id':'purpose','title':'Область задачи','detail':'Классификация сообщённого или диагностированного заболевания; не прогноз события на 5 или 10 лет.','status':'limitation'},
       {'id':'population','title':'Переносимость','detail':'Нет независимой клинической проверки или проверки на населении Казахстана.','status':'not_validated'},
@@ -164,7 +174,7 @@ def quality():
       {'id':'uci_protocol','title':'UCI и финальное обучение','detail':'Внешняя CV оценила поиск по двум конфигурациям; финальный артефакт повторно настраивался по трём. Среднее CV не является независимым тестом именно финального артефакта.','status':'limitation'},
       {'id':'uci_sd','title':'Неопределённость','detail':'SD шести зависимых folds не является 95% доверительным интервалом. Дополнительные интервалы, если доступны, имеют отдельные условия в разделе надёжности.','status':'limitation'},
       {'id':'docker','title':'Контейнерный запуск','detail':verification.get('docker','Состояние запуска не проверено'),'status':'not_verified'}]
-    return {'datasets':datasets,'tests':tests,'environment':optional_report('environment.json') or {},'limits':limits,
+    return {'datasets':datasets,'tests':tests,'release':release,'environment':optional_report('environment.json') or {},'limits':limits,
         'privacy':{'answers_saved':False,'experiment_metadata_only':True,'batch_max_rows':BATCH_MAX_ROWS,'batch_max_bytes':BATCH_MAX_BYTES}}
 
 
@@ -200,22 +210,13 @@ def library():
 
 @app.get('/api/research-export/{ds}')
 def research_export(ds:str,experiment:str='benchmark'):
+    from .metrics_export import metrics_csv
     dataset_name(ds)
     if experiment not in ['benchmark','full']:raise HTTPException(422,'Выберите benchmark или full')
-    result=read_report(ds+'_results.json');rows=result.get(experiment,[])
-    if not rows:raise HTTPException(404,'Такой эксперимент для набора данных отсутствует')
-    stream=StringIO();fields=['dataset','experiment','model','evaluation','training_n','test_n','threshold','weighting','roc_auc','average_precision','accuracy','precision','recall','specificity','f1','brier','procedure_seconds','procedure_definition','predict_seconds']
-    writer=csv.DictWriter(stream,fieldnames=fields);writer.writeheader()
-    for row in rows:
-        if ds=='uci':evaluation='Mean of 6 outer CV folds; fold SD is not a confidence interval';procedure='Total outer CV procedure including search, prediction and scoring'
-        elif experiment=='full':evaluation='Locked independent test';procedure='Full fit plus calibration and validation procedure'
-        else:evaluation='Fixed common benchmark test subset';procedure='Base CV plus randomized search and refit'
-        record={'dataset':ds,'experiment':experiment,'model':row['name'],'evaluation':evaluation,'training_n':row.get('training_n'),
-            'test_n':row.get('test_n',result.get('protocol',{}).get('test')),'threshold':row.get('threshold',.5),'weighting':'unweighted',
-            'procedure_seconds':row.get('search_seconds',row.get('fit_seconds')),'procedure_definition':procedure,'predict_seconds':row.get('predict_seconds')}
-        record.update({key:row.get('metrics',{}).get(key) for key in ['roc_auc','average_precision','accuracy','precision','recall','specificity','f1','brier']})
-        writer.writerow(record)
-    return Response(stream.getvalue().encode('utf-8-sig'),media_type='text/csv',headers={'Content-Disposition':f'attachment; filename="{ds}_{experiment}_metrics.csv"'})
+    result=read_report(ds+'_results.json')
+    if not result.get(experiment):raise HTTPException(404,'Такой эксперимент для набора данных отсутствует')
+    content=metrics_csv(result,ds,experiment).encode('utf-8')
+    return Response(content,media_type='text/csv',headers={'Content-Disposition':f'attachment; filename="{ds}_{experiment}_metrics.csv"','Cache-Control':'no-store'})
 
 @app.post('/api/predict')
 def predict(req:PredictionRequest):return predict_payload(req)

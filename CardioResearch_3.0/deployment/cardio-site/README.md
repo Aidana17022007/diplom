@@ -1,5 +1,13 @@
 # CardioResearch hosted application
 
+## Application 3.3
+
+The BRFSS research lab adds hypothetical FP/FN penalty scenarios on 36 saved validation points, with recall/positive-prediction constraints, explicit ties and infeasible outcomes, and a full CSV export. It never changes the production threshold or uses test data for selection. The global metric CSV now provides 13 metrics and 13 fold-SD columns, matching Python and frontend values.
+
+`/api/release-checks` and `/api/quality` now use the versioned release passport instead of the old 45-test verification snapshot. The UI exposes report date/hash, individual check states, stale/unknown status and JSON download. After recording a new software-validation report, run `python scripts/export_release_checks.py` from the Python project before bundling the Worker. The export is not a fresh test run.
+
+155 Python tests, 97 Worker tests, both frontend builds and the local HTTP smoke check passed. New panels were not visually checked because browser tools were unavailable. Saved models and scientific results are unchanged; existing Sites publication access remains unavailable.
+
 ## Application 3.2
 
 The comparison explorer now provides 13 metrics, a bilingual glossary, direction-aware deltas and CSV/SVG exports. UCI derived metrics are averaged from individual outer folds; undefined ratios remain unavailable. `/api/metrics-insights` serves saved cumulative gains/lift, missingness strata and frozen validation/test selection context. `/api/development-study` serves a new four-model, three-fold study on 36,000 rows of the original BRFSS fit pool only.

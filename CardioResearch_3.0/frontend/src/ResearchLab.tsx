@@ -4,11 +4,13 @@ import {Card,Chart,Empty,Field,fmt,count,Lang,Note,T} from './ui';
 import {optionLabel} from './locale';
 import {buildThresholdLab,compareThresholds,thresholdComparisonCsv,formatSignedDelta,CountMode,CountKey,ThresholdMetrics} from './thresholdComparison';
 import './threshold-lab.css';
+import ThresholdCosts from './ThresholdCosts';
 
 export default function ResearchLab({research,reliability,ds,fields,lang,t}:{research:any;reliability:any;ds:string;fields:Field[];lang:Lang;t:T}){
  const [selectedTab,setTab]=useState(ds==='brfss'?'threshold':'uncertainty');const [group,setGroup]=useState('age_group');
  const tabs=[...(ds==='brfss'?[
   {id:'threshold',label:t('Лаборатория порога','Шек зертханасы'),Icon:SlidersHorizontal},
+  {id:'costs',label:t('Вес ошибок','Қате салмақтары'),Icon:SlidersHorizontal},
   {id:'groups',label:t('Подгруппы','Кіші топтар'),Icon:Users},
  ]:[]),{id:'uncertainty',label:t('Неопределённость','Белгісіздік'),Icon:ScanLine}];
  const tab=tabs.some(item=>item.id===selectedTab)?selectedTab:tabs[0].id;
@@ -76,6 +78,7 @@ export default function ResearchLab({research,reliability,ds,fields,lang,t}:{res
    </Card>
   </div>}
   {tab==='threshold'&&(!baseline||!point)&&<Card><Empty title={t('Точный рабочий порог недоступен','Нақты жұмыс шегі қолжетімсіз')} body={t('Для сравнения нужны сохранённая матрица validation и точный порог выбранной модели.','Салыстыру үшін таңдалған модельдің сақталған validation матрицасы және нақты шегі қажет.')}/></Card>}
+  {tab==='costs'&&ds==='brfss'&&<ThresholdCosts points={points} baseline={baseline} model={research?.selection?.deployed_model||'Logistic Regression'} lang={lang}/>}
   {tab==='groups'&&<>
    <div className="section-tools"><div><h2>{t('Одинаково ли модель работает для разных групп?','Модель әр топта бірдей жұмыс істей ме?')}</h2><p>{t('Описательный анализ на полном тесте, с зафиксированным порогом.','Толық тесттегі бекітілген шек бойынша сипаттамалық талдау.')}</p></div><div className="segmented"><button className={group==='age_group'?'active':''} onClick={()=>setGroup('age_group')}>{t('Возраст','Жас')}</button><button className={group==='sex'?'active':''} onClick={()=>setGroup('sex')}>{t('Пол','Жыныс')}</button></div></div>
    <Card title={t('Чувствительность по подгруппам','Кіші топтар бойынша сезімталдық')} subtitle={t('Recall · выше означает больше обнаруженных положительных наблюдений','Recall · мәні жоғары болғанда оң бақылаулар көбірек анықталған')}>
